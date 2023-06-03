@@ -33,11 +33,5 @@
       md = "mkdir -p";
     };
     shellGlobalAliases = {exa = "exa --icons --git";};
-    zplug = {
-      enable = true;
-      plugins = [
-        { name = "zdharma-continuum/fast-syntax-highlighting"; }
-      ];
-    };
   };
 }
