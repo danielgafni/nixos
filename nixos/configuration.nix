@@ -110,6 +110,7 @@
       slurp
       telegram-desktop
       google-chrome
+
     ];
   };
 
@@ -126,6 +127,7 @@
     curl
     lynx
     sddm
+    python3.10
   ];
 
   nixpkgs.config = {
