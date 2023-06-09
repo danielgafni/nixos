@@ -127,7 +127,7 @@
     curl
     lynx
     sddm
-    python3.10
+    python310
   ];
 
   nixpkgs.config = {
