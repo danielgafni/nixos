@@ -2,8 +2,8 @@
 
 My NixOS configuration.
 
-[!WARNING]
-WIP, not documented, perhaps not usable.
+> **Warning**
+> WIP, not documented, perhaps not usable.
 
 ## Usage
 
