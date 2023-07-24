@@ -2,7 +2,7 @@
 
 My NixOS configuration.
 
-> **Warning**
+> [!WARNING]  
 > WIP, not documented, perhaps not usable.
 
 ## Usage
