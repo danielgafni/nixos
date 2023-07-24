@@ -103,3 +103,7 @@ unfunction kitty-integration
 command_not_found_handler() {
   ${pkgs.comma}/bin/comma "$@"
 }
+
+# Direnv
+eval "$(direnv hook zsh)"
+

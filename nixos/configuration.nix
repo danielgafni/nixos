@@ -153,6 +153,7 @@
     lynx
     sddm
     pavucontrol
+    direnv
     python310
   ];
 
@@ -203,6 +204,9 @@
       # gtkUsePortal = true;  # reprecated
     };
   };
+
+  # Lorri - direnv integration for Nix
+  services.lorri.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
