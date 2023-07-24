@@ -46,7 +46,7 @@
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git.enable = true;
-
+  
   # systemd.user,targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target"  ];
 
   wayland.windowManager.hyprland = {

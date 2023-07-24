@@ -116,6 +116,7 @@
       grim
       slurp
       telegram-desktop
+      slack
       google-chrome
       (vscode-with-extensions.override {
     vscodeExtensions = with vscode-extensions; [
@@ -134,6 +135,9 @@
   })
     ];
   };
+
+  # Slack native Wayland support
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -163,13 +167,18 @@
 
   };
 
+  # programs = {
+  #   direnv.enable = true;
+  #   nix-direnv.enable = true;
+  # };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
   programs.zsh.enable = true;
   # programs.helix.enable = true;
   # programs.helix.defaultEditor = true;
@@ -186,6 +195,14 @@
   services.xserver.displayManager.sddm.enable = true;
 
   security.polkit.enable = true;
+
+  # Screen Sharing
+  xdg = {
+    portal = {
+      enable = true;
+      # gtkUsePortal = true;  # reprecated
+    };
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
