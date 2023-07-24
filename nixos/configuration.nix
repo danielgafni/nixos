@@ -118,6 +118,7 @@
       telegram-desktop
       slack
       google-chrome
+      jetbrains.pycharm-professional
       (vscode-with-extensions.override {
     vscodeExtensions = with vscode-extensions; [
       bbenoist.nix
