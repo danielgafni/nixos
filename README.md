@@ -2,6 +2,9 @@
 
 My NixOS configuration.
 
+> [!WARNING]
+> WIP, not documented, perhaps not usable.
+
 ## Usage
 
 ### Installation
