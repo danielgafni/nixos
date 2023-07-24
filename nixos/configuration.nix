@@ -6,6 +6,7 @@
 
 {
   nix.settings = {
+    netrc-file = /etc/nix/.netrc;  # for credentials (like pribate PyPI server)
     substituters = ["https://hyprland.cachix.org"];
     trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
     experimental-features = [ "nix-command" "flakes" ];
@@ -86,38 +87,50 @@
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       git
-      zsh
       home-manager
+      curl
+      zsh
       starship
       zellij
-      helix
       bat
       exa
+      
       vim
       neovim
+      helix
+      
       wget
-      curl
       lynx
       starship
-      kitty
       pipewire
       wireplumber
       alacritty
+      kitty
       pfetch
-      wofi
+      ranger
+     
+
+      # wayland/DE
+      eww
       mako
       swaylock
+      wofi
       waybar
-      eww
       hyprpaper
       hyprpicker
-      firefox
-      ranger
       grim
       slurp
+      
+      # messengers
       telegram-desktop
+      signal-desktop
       slack
+      discord
+
       google-chrome
+      firefox
+      
+      # IDE
       jetbrains.pycharm-professional
       (vscode-with-extensions.override {
     vscodeExtensions = with vscode-extensions; [
