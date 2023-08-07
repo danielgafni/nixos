@@ -97,7 +97,7 @@ input {
 	sensitivity = 0.3
 
 	# must click on window to move focus
-	follow_mouse=2
+	# follow_mouse=2
 
 	touchpad {
 	    natural_scroll=yes
