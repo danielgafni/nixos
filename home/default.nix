@@ -43,6 +43,11 @@
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
 
+  home.packages = with pkgs; [
+    awscli2
+    (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
+  ];
+
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git.enable = true;
