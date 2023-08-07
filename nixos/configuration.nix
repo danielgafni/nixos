@@ -82,6 +82,11 @@
 
   # Enable Docker
   virtualisation.docker.enable = true;
+  virtualisation.docker.daemon.settings = {
+    features = {
+      buildkit = true;
+    };
+  };
 
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
