@@ -48,7 +48,7 @@
   #   useXkbConfig = true; # use xkbOptions in tty.
   # };
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
     noto-fonts
     noto-fonts-cjk
@@ -132,6 +132,7 @@
       grim
       slurp
       wev  # show wayland events
+      wl-clipboard
       
       # messengers
       telegram-desktop
@@ -170,6 +171,9 @@
   environment.systemPackages = with pkgs; [
     zsh
     starship
+    ripgrep
+    bat
+    exa
     zellij
     helix
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
