@@ -131,6 +131,7 @@
       hyprpicker
       grim
       slurp
+      wev  # show wayland events
       
       # messengers
       telegram-desktop
@@ -177,6 +178,7 @@
     curl
     lynx
     sddm
+    brightnessctl
     pavucontrol
     direnv
     python310

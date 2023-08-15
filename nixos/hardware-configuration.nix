@@ -12,6 +12,12 @@
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
+  
+  # Framework Laptops have auto brightness detection which has to be disabled
+  # otherwise the brightness keys don't work
+  boot.blacklistedKernelModules = [
+    "hid_sensor_hub"
+  ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =

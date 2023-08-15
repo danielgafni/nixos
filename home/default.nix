@@ -195,6 +195,10 @@ windowrule=size 418 234,title:^(clock_is_kitty)$
 #windowrule=pseudo,abc
 #windowrule=monitor 0,xyz
 
+# brightness control
+bind = , XF86MonBrightnessUp,     exec, brightnessctl set 10%+
+bind = , XF86MonBrightnessDown,   exec, brightnessctl set 10%-
+
 # move and resize windows with the mouse cursor
 bindm=SUPER,mouse:272,movewindow
 bindm=SHIFT_SUPER,mouse:272,resizewindow
