@@ -131,20 +131,23 @@ general {
 }
     
 decoration {
-	blur_new_optimizations = true
 	drop_shadow = true
 	shadow_range=20
 	shadow_render_power=3
 	col.shadow=0xee1a1a1a
 	col.shadow_inactive=0xee1a1a1a
 	rounding=10
-	blur=true
-	blur_size=5 # minimum 1
-	blur_passes=3 # minimum 1, more passes = more resource intensive.
-	# Your blur "amount" is blur_size * blur_passes, but high blur_size (over around 5-ish) will produce artifacts.
-	# if you want heavy blur, you need to up the blur_passes.
-	# the more passes, the more you can up the blur_size without noticing artifacts.
-	blur_xray=true
+
+	blur {
+		enabled=true
+		size=5 # minimum 1
+		passes=3 # minimum 1, more passes = more resource intensive.
+		# Your blur "amount" is blur_size * blur_passes, but high blur_size (over around 5-ish) will produce artifacts.
+		# if you want heavy blur, you need to up the blur_passes.
+		# the more passes, the more you can up the blur_size without noticing artifacts.
+		noise=0.05	
+		xray=true
+	}
 }
 
     
