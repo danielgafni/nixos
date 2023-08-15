@@ -228,6 +228,10 @@
 
   security.polkit.enable = true;
 
+  # YubiKey
+  services.udev.packages = [ pkgs.yubikey-personalization ];
+  services.pcscd.enable = true;
+
   # Screen Sharing
   xdg = {
     portal = {

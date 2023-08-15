@@ -44,6 +44,9 @@
   # home.packages = with pkgs; [ steam ];
 
   home.packages = with pkgs; [
+    # YubiKey
+    yubioath-flutter
+
     awscli2
     (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
   ];
