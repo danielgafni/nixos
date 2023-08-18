@@ -204,6 +204,16 @@ windowrule=size 418 234,title:^(clock_is_kitty)$
 bind = , XF86MonBrightnessUp,     exec, brightnessctl set 10%+
 bind = , XF86MonBrightnessDown,   exec, brightnessctl set 10%-
 
+# pulseaudio volume control
+bind = , xf86audioraisevolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%
+bind = , xf86audiolowervolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%
+bind =, XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# pipewire / wireplumber
+#bind = , xf86audioraisevolume, exec, wpctl set-sink-volume @DEFAULT_SINK@ +5%
+#bind = , xf86audiolowervolume, exec, wpctl set-sink-volume @DEFAULT_SINK@ -5%
+
+
 # move and resize windows with the mouse cursor
 bindm=SUPER,mouse:272,movewindow
 bindm=SHIFT_SUPER,mouse:272,resizewindow
@@ -284,6 +294,14 @@ bind=SUPER,tab,changegroupactive
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
+  
+  # Using Bluetooth headset buttons to control media player
+  systemd.user.services.mpris-proxy = {
+    Unit.Description = "Mpris proxy";
+    Unit.After = [ "network.target" "sound.target" ];
+    Service.ExecStart = "${pkgs.bluez}/bin/mpris-proxy";
+    Install.WantedBy = [ "default.target" ];
+  };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "22.11";
