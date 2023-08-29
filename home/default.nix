@@ -99,7 +99,7 @@ exec-once=mako
 # idle detection
 exec-once=swayidle -w timeout 1800 'swaylock' timeout 12000 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock'
 # eww widgets
-exec-once=eww open-many bar
+exec-once=eww daemon --restart && eww close-all && eww open-many bar
 
 # blur layers (hyprctl layers to get the correct namespace)
 layerrule = blur,notifications

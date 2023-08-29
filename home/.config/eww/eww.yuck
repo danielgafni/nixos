@@ -6,7 +6,7 @@
   :exclusive true 
   :geometry (geometry :x "0%"
                       :y "0%"
-                      :width "97%"
+                      :width "99%"
                       :height "3%"
                       :anchor "top center")
   (bar))
@@ -226,8 +226,8 @@
                :onclick "${TERM_CMD} --class nmtui nmtui"
                :class "network ${network.name == "" ? "disconnected" : ""}"
                :spacing 3
-               "${network.icon} ${network.name ?: "<Disconnected>"}"
-               " 󰓅 ${network.rate}"
+               "${network.icon} "
+               "${network.name ?: "<Disconnected>"} 󰓅 ${network.rate}"
                ""))
 
 (defvar show-memory false)
@@ -260,7 +260,7 @@
     (stat :class "temperature"
           :label ""
           :value {round(EWW_TEMPS.CORETEMP_CORE_0, 0)}
-          :unit "°C "
+          :unit "°C"
           :urgent 60
           :critical 75
           :min-graph 30
