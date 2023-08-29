@@ -12,6 +12,7 @@
     ./shell
     ./terminals/kitty.nix
     ./eww.nix
+    ./hyprpaper.nix
   ];
 
   nixpkgs = {
@@ -60,9 +61,19 @@
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
-  programs.git.enable = true;
+  programs.git = {
+    enable = true;
+    userName = "danielgafni";
+    userEmail = "danielgafni16@gmail.com";
+  };
   
   # systemd.user,targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target"  ];
+
+  # Wallpapers
+  xdg.configFile."wallpapers" = {
+    recursive = true;
+    source = ./.config/wallpapers;
+  };
 
   wayland.windowManager.hyprland = {
 	enable = true;
@@ -86,10 +97,8 @@ exec-once=mako
 #exec-once=waybar
 # idle detection
 exec-once=swayidle -w timeout 1800 'swaylock' timeout 12000 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock'
-# wallpaper
-#exec-once=hyprpaper
 # eww widgets
-#exec-once=eww open-many weather uptime
+exec-once=eww open-many bar
 
 # blur layers (hyprctl layers to get the correct namespace)
 layerrule = blur,notifications

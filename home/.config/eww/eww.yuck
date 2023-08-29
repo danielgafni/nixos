@@ -5,7 +5,7 @@
   :monitor 0
   :exclusive true 
   :geometry (geometry :x "0%"
-                      :y "2%"
+                      :y "0%"
                       :width "97%"
                       :height "3%"
                       :anchor "top center")
