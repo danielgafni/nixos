@@ -7,6 +7,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
     helix.url = "github:helix-editor/helix";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager";

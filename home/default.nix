@@ -13,6 +13,7 @@
     ./terminals/kitty.nix
     ./eww.nix
     ./hyprpaper.nix
+    ./vscode.nix
   ];
 
   nixpkgs = {

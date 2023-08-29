@@ -81,7 +81,7 @@
                :onclick "${EWW_CONFIG_DIR}/scripts/pop-window.sh calendar"
                :onrightclick "${EWW_CONFIG_DIR}/scripts/toggle-var.sh military-time"
                :spacing 5
-               {formattime(timestamp, "󰅐 ${military-time ? "%T" : "%r"}")}
+               {formattime(timestamp, "󰅐 ${military-time ? "%T" : "%r"} ")}
                {formattime(timestamp, "  %b %d, %Y")}
                ""))
 
@@ -209,7 +209,8 @@
                (scale :min 0
                       :max 101
                       :active true
-                      :value {volume * 100}
+		      :round-digits 0
+                      :value {round(volume * 100, 0)}
                       :onchange "wpctl set-volume @DEFAULT_AUDIO_SINK@ {}%")
                ""))
 
@@ -226,7 +227,7 @@
                :class "network ${network.name == "" ? "disconnected" : ""}"
                :spacing 3
                "${network.icon} ${network.name ?: "<Disconnected>"}"
-               "󰓅 ${network.rate}"
+               " 󰓅 ${network.rate}"
                ""))
 
 (defvar show-memory false)
@@ -239,6 +240,7 @@
   (box :class "statistics"
        :space-evenly false
        :spacing 5
+    
     ; TODO: Show totals on click
     (percent :class "memory"
              :label "󰍛"
@@ -252,18 +254,25 @@
     ; TODO: Show used and free on click
     (percent :class "disk"
              :label "󰋊"
-             :value {EWW_DISK["/persist"].used_perc}
+             :value {EWW_DISK["/dev/nvme0nvp1"].used_perc}
              :reveal-graph show-disk)
     ; TODO: Show all temps and which one is being shown on bar on click
     (stat :class "temperature"
           :label ""
-          :value {round(EWW_TEMPS.AMDGPU_EDGE, 0)}
-          :unit "°C"
+          :value {round(EWW_TEMPS.CORETEMP_CORE_0, 0)}
+          :unit "°C "
           :urgent 60
           :critical 75
           :min-graph 30
           :max-graph 90
-          :reveal-graph show-temperature)))
+          :reveal-graph show-temperature)
+    (percent :class "battery"
+	     :label "🔋"
+	     :unit "% "
+	     :urgent 30
+	     :critical 10
+             :value {round(EWW_BATTERY.total_avg, 0)}
+	     :reveal-graph false)))
 
 (defwidget percent [class label value reveal-graph]
   (stat :class class
