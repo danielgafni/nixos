@@ -54,6 +54,8 @@
 
     awscli2
     (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
+    pipewire
+    wireplumber
   ];
 
   # Enable home-manager and git
@@ -208,13 +210,14 @@ bind = , XF86MonBrightnessUp,     exec, brightnessctl set 10%+
 bind = , XF86MonBrightnessDown,   exec, brightnessctl set 10%-
 
 # pulseaudio volume control
-bind = , xf86audioraisevolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%
-bind = , xf86audiolowervolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%
-bind =, XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle
+#bind = , xf86audioraisevolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%
+#bind = , xf86audiolowervolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%
+
 
 # pipewire / wireplumber
-#bind = , xf86audioraisevolume, exec, wpctl set-sink-volume @DEFAULT_SINK@ +5%
-#bind = , xf86audiolowervolume, exec, wpctl set-sink-volume @DEFAULT_SINK@ -5%
+bind =, XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bind = , XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%+
+bind = , XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-
 
 
 # move and resize windows with the mouse cursor
