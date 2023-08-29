@@ -2,6 +2,7 @@
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 
 { inputs, lib, config, pkgs, ... }: {
+
   # You can import other home-manager modules here
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors):
@@ -10,6 +11,7 @@
     # You can also split up your configuration and import pieces of it here:
     ./shell
     ./terminals/kitty.nix
+    ./eww.nix
   ];
 
   nixpkgs = {
@@ -23,6 +25,7 @@
       #     patches = [ ./change-hello-to-hi.patch ];
       #   });
       # })
+      inputs.nixpkgs-wayland.overlay
     ];
     # Configure your nixpkgs instance
     config = {

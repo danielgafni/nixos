@@ -7,8 +7,14 @@
 {
   nix.settings = {
     netrc-file = /etc/nix/.netrc;  # for credentials (like pribate PyPI server)
-    substituters = ["https://hyprland.cachix.org"];
-    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+    substituters = [
+      "https://hyprland.cachix.org"
+      "https://nixpkgs-wayland.cachix.org"
+    ];
+    trusted-public-keys = [
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
+    ];
     experimental-features = [ "nix-command" "flakes" ];
     auto-optimise-store = true;
   };
@@ -55,6 +61,20 @@
     noto-fonts-emoji
     liberation_ttf
   ];
+
+  # login screen
+  services.greetd = {
+    enable = true;
+    settings = {
+     default_session.command = ''
+      ${pkgs.greetd.tuigreet}/bin/tuigreet \
+        --time \
+        --asterisks \
+        --user-menu \
+        --cmd Hyprland
+    '';
+    };
+  };
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
@@ -134,7 +154,6 @@
      
 
       # wayland/DE
-      eww
       mako
       swaylock
       wofi
@@ -193,7 +212,7 @@
     wget
     curl
     lynx
-    sddm
+    lemurs
     brightnessctl
     pavucontrol
     direnv
@@ -235,8 +254,8 @@
   services.fprintd.tod.enable = true;
   services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090;
   
-  services.xserver.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
+  #services.xserver.enable = true;
+  #services.xserver.displayManager.sddm.enable = true;
 
   security.polkit.enable = true;
 
@@ -254,6 +273,19 @@
 
   # Lorri - direnv integration for Nix
   services.lorri.enable = true;
+
+  environment.etc."greetd/environments".text = ''
+    Hyprland
+  '';
+
+  # Custom /etc files
+  #environment.etc."lemurs.wayland.Hyprland" = {
+  #  text = ''
+  #    #! /bin/sh
+  #    exec Hyprland
+  #    '';
+  #  mode = "0755";
+  #};
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

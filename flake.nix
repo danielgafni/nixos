@@ -6,6 +6,7 @@
     nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
     hyprland.url = "github:hyprwm/Hyprland";
     helix.url = "github:helix-editor/helix";
+    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
