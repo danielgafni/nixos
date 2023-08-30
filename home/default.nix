@@ -55,9 +55,12 @@
     yubikey-personalization-gui
     yubikey-manager
 
+    # devops
+    kubectl
+    (pkgs.wrapHelm pkgs.kubernetes-helm { plugins = [ pkgs.kubernetes-helmPlugins.helm-secrets ]; })
     awscli2
     (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
-    
+
     pipewire
     wireplumber
 
@@ -91,13 +94,13 @@
   };
 
   # default mime apps
-  xdg.mimeApps = {
-    enable = true;
-    associations.added = {
-    };
-    defaultApplications = {
-    };
-  };
+  # xdg.mimeApps = {
+  #   enable = true;
+  #   associations.added = {
+  #   };
+  #   defaultApplications = {
+  #   };
+  # };
 
   wayland.windowManager.hyprland = {
 	enable = true;

@@ -16,6 +16,9 @@ My NixOS configuration.
 
 ## Notes
 
+### Fonds
+ - Coding: `Fira Code Nerd Fonts`
+
 ### Debugging mime-type 
 
 ```shell
