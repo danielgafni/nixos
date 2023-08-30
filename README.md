@@ -11,7 +11,7 @@ My NixOS configuration.
 ```shell
 ./install.sh # test mode by default - won't add a new bootloader entry
 #or
-./install.sh switch  # add a bootloader entry to permanently save the new system
+./install.sh install  # add a bootloader entry to permanently save the new system
 ```
 
 ## Notes
