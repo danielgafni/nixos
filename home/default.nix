@@ -48,6 +48,7 @@
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
 
+  fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
     # YubiKey
     #yubioath-flutter
@@ -56,8 +57,21 @@
 
     awscli2
     (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
+    
     pipewire
     wireplumber
+
+    font-manager
+
+    # fonts
+    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+    fira-code
+    fira-code-symbols
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    liberation_ttf
+
   ];
 
   # Enable home-manager and git
@@ -76,6 +90,15 @@
     source = ./.config/wallpapers;
   };
 
+  # default mime apps
+  xdg.mimeApps = {
+    enable = true;
+    associations.added = {
+    };
+    defaultApplications = {
+    };
+  };
+
   wayland.windowManager.hyprland = {
 	enable = true;
 	extraConfig = ''
@@ -83,7 +106,7 @@ env = WLR_NO_HARDWARE_CURSORS,1
 exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec-once=systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
     
-# polkit (the thing that asks for the root password)
+# polkit (the app which asks for the root password access)
 exec-once=/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
     
 # theming
@@ -246,6 +269,7 @@ bind=SHIFT,Print,exec,grim -g "$(slurp)" - | wl-copy
 bind=SUPER,RETURN,exec,kitty --title kitty
 bind=SUPER,Q,killactive,
 bind=SUPER,M,exit,
+bind=SUPER,R,exec,hyprctl reload
 bind=SUPER,E,exec,kitty --title kitty -e ranger
 bind=SUPER,S,togglefloating,
 bind=SUPER,F,fullscreen,

@@ -54,19 +54,16 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkbOptions in tty.
-  # };
+  console = {
+    font = "FiraCode";
+    # keyMap = "us";
+    useXkbConfig = true; # use xkbOptions in tty.
+  };
 
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    liberation_ttf
-  ];
+  # moved to home-manager
+  # fonts.packages = with pkgs; [
+    
+  # ];
 
   # login screen
   services.greetd = {
@@ -209,6 +206,8 @@
     ripgrep
     bat
     exa
+    fd
+    btop
     zellij
     helix
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.

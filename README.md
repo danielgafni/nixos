@@ -9,5 +9,19 @@ My NixOS configuration.
 
 ### Installation
 ```shell
-./rebuild.sh
+./install.sh # test mode by default - won't add a new bootloader entry
+#or
+./install.sh switch  # add a bootloader entry to permanently save the new system
+```
+
+## Notes
+
+### Debugging mime-type 
+
+```shell
+XDG_UTILS_DEBUG_LEVEL=2 xdg-mime query filetype foo.pdf
+
+XDG_UTILS_DEBUG_LEVEL=2 xdg-mime query default application/pdf
+
+fd evince.desktop /
 ```

@@ -1,4 +1,4 @@
-(defvar TERM_CMD "handlr launch x-scheme-handler/terminal --")
+(defvar TERM_CMD "kitty -1 --detach")
 (defvar EXEC_CMD "hyprctl dispatch exec --")
 
 (defwindow bar
@@ -235,7 +235,6 @@
 (defvar show-disk false)
 (defvar show-temperature false)
 
-; TODO: After getting laptop, make stat for battery with critical <= 15, urgent <= 30;
 (defwidget statistics []
   (box :class "statistics"
        :space-evenly false
@@ -245,16 +244,18 @@
     (percent :class "memory"
              :label "󰍛"
              :value {EWW_RAM.used_mem_perc}
+             :onclick "${TERM_CMD} --class memory-btop btop"
              :reveal-graph show-memory)
     ; TODO: Show all cores on click
     (percent :class "cpu"
              :label "󰘚"
              :value {jq(EWW_CPU.cores, "[.[].usage] | add / length")}
+             :onclick "${TERM_CMD} --class cpu-btop btop"
              :reveal-graph show-cpu)
     ; TODO: Show used and free on click
     (percent :class "disk"
              :label "󰋊"
-             :value {EWW_DISK["/dev/nvme0nvp1"].used_perc}
+             :value {EWW_DISK["/"].used_perc}
              :reveal-graph show-disk)
     ; TODO: Show all temps and which one is being shown on bar on click
     (stat :class "temperature"
@@ -267,11 +268,12 @@
           :max-graph 90
           :reveal-graph show-temperature)
     (percent :class "battery"
-	     :label "🔋"
-	     :unit "% "
-	     :urgent 30
-	     :critical 10
-             :value {round(EWW_BATTERY.total_avg, 0)}
+	    ;  :label "${EWW_BATTERY.total_avg}"
+       :label {EWW_BATTERY.total_avg <= 10 ? "󰁺" : EWW_BATTERY.total_avg <= 33 ? "󱊡" : EWW_BATTERY.total_avg <= 66 ? "󱊢" : "󱊣"}
+       :unit "% "
+	    ;  :urgent 33
+	    ;  :critical 10
+       :value {round(EWW_BATTERY.total_avg, 0)}
 	     :reveal-graph false)))
 
 (defwidget percent [class label value reveal-graph]
