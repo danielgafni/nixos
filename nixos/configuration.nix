@@ -144,6 +144,10 @@
     isNormalUser = true;
     initialPassword = "pw123";
     extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
+    packages = with pkgs;
+      [
+        home-manager
+      ];
   };
 
   # Slack native Wayland support

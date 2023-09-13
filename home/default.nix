@@ -50,8 +50,6 @@
 
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
-    home-manager
-
     # YubiKey
     #yubioath-flutter
     yubikey-personalization-gui
