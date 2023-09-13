@@ -1,8 +1,7 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
+{ config
+, pkgs
+, lib
+, ...
 }: {
   programs.zsh = {
     enable = true;
@@ -32,7 +31,7 @@
       la = "exa -la";
       md = "mkdir -p";
     };
-    shellGlobalAliases = {exa = "exa --icons --git";};
+    shellGlobalAliases = { exa = "exa --icons --git"; };
     zplug = {
       enable = true;
       plugins = [

@@ -6,14 +6,16 @@
 
 {
   nix.settings = {
-    netrc-file = /etc/nix/.netrc;  # for credentials (like pribate PyPI server)
+    netrc-file = /etc/nix/.netrc; # for credentials (like pribate PyPI server)
     substituters = [
       "https://hyprland.cachix.org"
       "https://nixpkgs-wayland.cachix.org"
+      "https://pre-commit-hooks.cachix.org"
     ];
     trusted-public-keys = [
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
+      "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
     ];
     experimental-features = [ "nix-command" "flakes" ];
     auto-optimise-store = true;
@@ -26,7 +28,8 @@
   };
 
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -38,12 +41,12 @@
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager = {
-    enable=true;
-    extraConfig=''
-    [main]
-    auth-polkit=false
+    enable = true;
+    extraConfig = ''
+      [main]
+      auth-polkit=false
     '';
-  };  # Easiest to use and most distros use this by default.
+  }; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "Europe/Belgrade";
@@ -62,20 +65,20 @@
 
   # moved to home-manager
   # fonts.packages = with pkgs; [
-    
+
   # ];
 
   # login screen
   services.greetd = {
     enable = true;
     settings = {
-     default_session.command = ''
-      ${pkgs.greetd.tuigreet}/bin/tuigreet \
-        --time \
-        --asterisks \
-        --user-menu \
-        --cmd Hyprland
-    '';
+      default_session.command = ''
+        ${pkgs.greetd.tuigreet}/bin/tuigreet \
+          --time \
+          --asterisks \
+          --user-menu \
+          --cmd Hyprland
+      '';
     };
   };
 
@@ -174,10 +177,10 @@
     brightnessctl
     pavucontrol
     direnv
-    (python310.withPackages(ps: with ps; [ 
+    (python310.withPackages (ps: with ps; [
       pipx
       pre-commit
-      ]))
+    ]))
   ];
 
   nixpkgs.config = {
@@ -185,8 +188,8 @@
     allowUnfree = true;
 
     firefox = {
-     enableGoogleTalkPlugin = true;
-     enableAdobeFlash = true;
+      enableGoogleTalkPlugin = true;
+      enableAdobeFlash = true;
     };
 
   };
@@ -214,7 +217,7 @@
   services.fprintd.enable = true;
   services.fprintd.tod.enable = true;
   services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090;
-  
+
   #services.xserver.enable = true;
   #services.xserver.displayManager.sddm.enable = true;
 
@@ -240,15 +243,15 @@
   '';
 
   # Custom /etc files
-  
+
   environment.etc."wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
-		bluez_monitor.properties = {
-			["bluez5.enable-sbc-xq"] = true,
-			["bluez5.enable-msbc"] = true,
-			["bluez5.enable-hw-volume"] = true,
-			["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
-		}
-	'';
+    		bluez_monitor.properties = {
+    			["bluez5.enable-sbc-xq"] = true,
+    			["bluez5.enable-msbc"] = true,
+    			["bluez5.enable-hw-volume"] = true,
+    			["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
+    		}
+    	'';
 
   #environment.etc."lemurs.wayland.Hyprland" = {
   #  text = ''

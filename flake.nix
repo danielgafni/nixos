@@ -30,10 +30,10 @@
         specialArgs = { inherit inputs; }; # Pass flake inputs to our config
         # > Our main nixos configuration file <
         modules = [
-	  ./nixos/configuration.nix
-	  hyprland.nixosModules.default
-	  {programs.hyprland.enable = true;}
-	  ];
+          ./nixos/configuration.nix
+          hyprland.nixosModules.default
+          { programs.hyprland.enable = true; }
+        ];
       };
     };
 
@@ -45,12 +45,12 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         # > Our main home-manager configuration file <
-        modules = [ 
-	  ./lib/default.nix
-	  ./home/default.nix
-	  hyprland.homeManagerModules.default
-	  {wayland.windowManager.hyprland.enable = true;}
-	  ];
+        modules = [
+          ./lib/default.nix
+          ./home/default.nix
+          hyprland.homeManagerModules.default
+          { wayland.windowManager.hyprland.enable = true; }
+        ];
       };
     };
   };

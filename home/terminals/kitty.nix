@@ -1,6 +1,8 @@
-{default, ...}: let
+{ default, ... }:
+let
   inherit (default) xcolors;
-in {
+in
+{
   programs.kitty = {
     enable = true;
     font = {
@@ -13,7 +15,7 @@ in {
 
       allow_remote_control = "yes";
       enable_audio_bell = "no";
-      
+
       # idk who even could have the thought cancer like this should exist
       #visual_bell_duration = "0.1";
       #visual_bell_color = xcolors.rosewater;

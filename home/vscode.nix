@@ -2,10 +2,10 @@
   programs.vscode = {
     enable = true;
     extensions = with pkgs.vscode-extensions; [
-        ms-azuretools.vscode-docker
-        catppuccin.catppuccin-vsc
-        catppuccin.catppuccin-vsc-icons
-        jnoortheen.nix-ide
+      ms-azuretools.vscode-docker
+      catppuccin.catppuccin-vsc
+      catppuccin.catppuccin-vsc-icons
+      jnoortheen.nix-ide
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "yuck";

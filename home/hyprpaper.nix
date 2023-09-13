@@ -1,7 +1,7 @@
-{ pkgs, ... }:{
+{ pkgs, ... }: {
 
   home.packages = [ pkgs.hyprpaper ];
-  
+
   xdg.configFile."hypr/hyprpaper.conf".text = ''
     preload=~/.config/wallpapers/catppuccin-forrest.png
     wallpaper =,~/.config/wallpapers/catppuccin-forrest.png

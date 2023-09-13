@@ -1,4 +1,4 @@
-export EDITOR=nvim
+export EDITOR=hx
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # ZSH settings
