@@ -144,55 +144,6 @@
     isNormalUser = true;
     initialPassword = "pw123";
     extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      git
-      home-manager
-      curl
-      zsh
-      starship
-      zellij
-      bat
-      exa
-      
-      vim
-      neovim
-      helix
-      
-      wget
-      lynx
-      starship
-      pipewire
-      wireplumber
-      alacritty
-      kitty
-      pfetch
-      ranger
-     
-
-      # wayland/DE
-      mako
-      swaylock
-      wofi
-      waybar
-      hyprpaper
-      hyprpicker
-      grim
-      slurp
-      wev  # show wayland events
-      wl-clipboard
-      
-      # messengers
-      telegram-desktop
-      signal-desktop
-      slack
-      discord
-
-      google-chrome
-      firefox
-      
-      # IDE
-      jetbrains.pycharm-professional
-    ];
   };
 
   # Slack native Wayland support

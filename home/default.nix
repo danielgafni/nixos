@@ -50,6 +50,8 @@
 
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
+    home-manager
+
     # YubiKey
     #yubioath-flutter
     yubikey-personalization-gui
@@ -57,14 +59,44 @@
 
     # devops
     kubectl
+    k9s
+    sops
+    age
     (pkgs.wrapHelm pkgs.kubernetes-helm { plugins = [ pkgs.kubernetes-helmPlugins.helm-secrets ]; })
     awscli2
     (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
 
+    # wayland/DE
+    libnotify  # notify-send command
+    mako
+    swaylock
+    wofi
+    waybar
+    hyprpaper
+    hyprpicker
+    grim
+    slurp
+    wev  # show wayland events
+    wl-clipboard
+    font-manager
+    alacritty
+    kitty
+    ranger
+
+    # audio
     pipewire
     wireplumber
 
-    font-manager
+    # CLI
+    git
+    curl
+    wget
+    zsh
+    starship
+    zellij
+    bat
+    exa
+    pfetch
 
     # fonts
     (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
@@ -75,6 +107,22 @@
     noto-fonts-emoji
     liberation_ttf
 
+    # messengers
+    telegram-desktop
+    signal-desktop
+    slack
+    discord
+
+    # browsers
+    google-chrome
+    firefox
+    lynx
+
+    # editors & IDE            
+    vim
+    neovim
+    helix
+    jetbrains.pycharm-professional
   ];
 
   # Enable home-manager and git
@@ -91,6 +139,12 @@
   xdg.configFile."wallpapers" = {
     recursive = true;
     source = ./.config/wallpapers;
+  };
+
+  # mako (notifications) config
+  xdg.configFile."mako" = {
+    recursive = true;
+    source = ./.config/mako;
   };
 
   # default mime apps
