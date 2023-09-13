@@ -6,6 +6,7 @@ if [ $mode == "test" ]; then
     echo "Building in test mode, will not add ad bootloader entry"
 elif [ $mode == "install" ]; then
     echo "Building in switch mode, will add a new bootloader entry!"
+    mode=switch
 else
     echo "Unknown mode ${mode}"
     exit 1

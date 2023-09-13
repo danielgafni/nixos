@@ -1,30 +1,29 @@
-font=Fira Code Nerd Font Mono 24
-border-size=2
-margin=2,4
-padding=2
+font=Fira Code Nerd Font Mono 10
+# border-size=2
+# margin=2,4
+# padding=1
 
-width=700
-height=300
-max-icon-size=128
+# width=300
+# height=100
+# max-icon-size=32
 default-timeout=10000
 
-background-color=#2e344099
-text-color=#e5e9f0
-border-color=#ebcb8B
+# Colors
+
+background-color=#1e1e2e
+text-color=#cdd6f4
+border-color=#89b4fa
+progress-color=over #313244
 
 [urgency=low]
-background-color=#2e344099
-text-color=#5e81ac
-border-color=#ebcb8b
-
+border-color=#b4befe
 [urgency=normal]
-# on-notify=exec mpv ~/sounds/notification.ogg
+
+border-color=#f2cdcd
 
 [urgency=high]
-background-color=#2e3440
-text-color=#88c0d0
-border-color=#ebcb8b
-on-notify=exec mpv ~/sounds/notification.ogg
+border-color=#f38ba8
+#on-notify=exec mpv ~/sounds/notification.ogg
 
 [category=music-notify]
 default-timeout=5000
