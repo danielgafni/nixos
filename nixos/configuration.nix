@@ -63,11 +63,6 @@
     useXkbConfig = true; # use xkbOptions in tty.
   };
 
-  # moved to home-manager
-  # fonts.packages = with pkgs; [
-
-  # ];
-
   # login screen
   services.greetd = {
     enable = true;
