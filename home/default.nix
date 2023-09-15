@@ -126,6 +126,14 @@
     neovim
     helix
     jetbrains.pycharm-professional
+
+    # Python tools
+    poetry
+    pyright
+    mypy
+    black
+    ruff
+    isort
   ];
 
   # Enable home-manager and git
