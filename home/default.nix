@@ -163,6 +163,11 @@
     source = ./.config/helix;
   };
 
+  xdg.configFile."btop" = {
+    recursive = true;
+    source = ./.config/btop;
+  };
+
   # default mime apps
   # xdg.mimeApps = {
   #   enable = true;
