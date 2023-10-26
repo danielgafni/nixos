@@ -83,12 +83,14 @@
     alacritty
     kitty
     ranger
+    pkgs.catppuccin-cursors.mochaDark
 
     # audio
     pipewire
     wireplumber
 
     # CLI
+    comma
     git
     curl
     wget
