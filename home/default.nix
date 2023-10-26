@@ -83,7 +83,6 @@
     alacritty
     kitty
     ranger
-    pkgs.catppuccin-cursors.mochaDark
 
     # audio
     pipewire
@@ -160,6 +159,13 @@
   xdg.configFile."wallpapers" = {
     recursive = true;
     source = ./.config/wallpapers;
+  };
+
+  # Cursor
+  home.pointerCursor = {
+    name = "Catppuccin-Mocha-Dark-Cursors";
+    package = pkgs.catppuccin-cursors.mochaDark;
+    size = 16;
   };
 
   # mako (notifications) config
