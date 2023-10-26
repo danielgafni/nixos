@@ -151,6 +151,10 @@
     enable = true;
     userName = "danielgafni";
     userEmail = "danielgafni16@gmail.com";
+    extraConfig = {
+        commit.gpgsign = true;
+        user.signingkey = "7B0740201D518DB134D5C75AB8D13360DED17662";
+      };
   };
 
   # systemd.user,targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target"  ];
