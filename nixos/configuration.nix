@@ -95,7 +95,7 @@
     enable = true;
     nssmdns = true;
     openFirewall = true;
-  }
+  };
 
 
   # Enable sound.
