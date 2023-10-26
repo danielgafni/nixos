@@ -89,6 +89,7 @@
     wireplumber
 
     # CLI
+    comma
     git
     curl
     wget
@@ -150,6 +151,10 @@
     enable = true;
     userName = "danielgafni";
     userEmail = "danielgafni16@gmail.com";
+    extraConfig = {
+        commit.gpgsign = true;
+        user.signingkey = "7B0740201D518DB134D5C75AB8D13360DED17662";
+      };
   };
 
   # systemd.user,targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target"  ];
@@ -158,6 +163,13 @@
   xdg.configFile."wallpapers" = {
     recursive = true;
     source = ./.config/wallpapers;
+  };
+
+  # Cursor
+  home.pointerCursor = {
+    name = "Catppuccin-Mocha-Dark-Cursors";
+    package = pkgs.catppuccin-cursors.mochaDark;
+    size = 16;
   };
 
   # mako (notifications) config

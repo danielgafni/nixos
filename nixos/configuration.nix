@@ -90,6 +90,13 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  # network printers auto-discovery
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+    openFirewall = true;
+  };
+
 
   # Enable sound.
   #sound.enable = true;
@@ -102,6 +109,10 @@
 
   # rtkit is optional but recommended
   security.rtkit.enable = true;
+  security.pam.services = {
+    login.u2fAuth = true;
+    sudo.u2fAuth = true;
+  };
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -211,7 +222,8 @@
   # services.openssh.enable = true;
   services.fprintd.enable = true;
   services.fprintd.tod.enable = true;
-  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090;
+  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix; # try this driver)
+  # services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090; # or this one
 
   #services.xserver.enable = true;
   #services.xserver.displayManager.sddm.enable = true;
