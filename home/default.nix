@@ -178,6 +178,12 @@
     source = ./.config/mako;
   };
 
+  # wofi (app launcher)
+  xdg.configFile."wofi" = {
+    recursive = true;
+    source = ./.config/wofi;
+  };
+
   xdg.configFile."helix" = {
     recursive = true;
     source = ./.config/helix;
@@ -371,7 +377,7 @@
       bind=SUPER,E,exec,kitty --title kitty -e ranger
       bind=SUPER,S,togglefloating,
       bind=SUPER,F,fullscreen,
-      bind=SUPER,space,exec,wofi --show drun -I -G -o DP-3
+      bind=SUPER,space,exec,wofi --show drun -I -G -o DP-3 --width 30%
       bind=SUPER,P,pseudo,
 
       # special workspace
