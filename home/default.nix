@@ -196,7 +196,6 @@
     recursive = true;
     source = ./.config/swaylock;
   };
-
   xdg.configFile."helix" = {
     recursive = true;
     source = ./.config/helix;
