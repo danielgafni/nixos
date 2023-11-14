@@ -77,6 +77,7 @@
     hyprpicker
     grim
     slurp
+    flameshot
     wev # show wayland events
     wl-clipboard
     font-manager
@@ -184,6 +185,12 @@
     source = ./.config/wofi;
   };
 
+  # swaylock
+  xdg.configFile."swaylock" = {
+    recursive = true;
+    source = ./.config/swaylock;
+  };
+  
   xdg.configFile."helix" = {
     recursive = true;
     source = ./.config/helix;
