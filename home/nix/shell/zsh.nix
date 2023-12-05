@@ -27,10 +27,10 @@
     shellAliases = {
       grep = "grep --color";
       ip = "ip --color";
-      l = "exa -l";
-      la = "exa -la";
+      l = "eza -l";
+      la = "eza -la";
       md = "mkdir -p";
     };
-    shellGlobalAliases = { exa = "exa --icons --git"; };
+    shellGlobalAliases = { eza = "eza --icons --git"; };
   };
 }

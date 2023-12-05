@@ -113,6 +113,12 @@
     login.u2fAuth = true;
     sudo.u2fAuth = true;
   };
+
+  security.pam.services.swaylock = {
+    text = ''auth include login'';
+  };
+
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -169,7 +175,7 @@
     starship
     ripgrep
     bat
-    exa
+    eza
     fd
     btop
     zellij

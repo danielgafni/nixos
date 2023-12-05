@@ -23,8 +23,9 @@ in
 
     # enable scrolling in git diff
     DELTA_PAGER = "less -R";
-
     EDITOR = "hx";
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+
+    SOPS_PGP_FP="72165858C879B2CB";
   };
 }
