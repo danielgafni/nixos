@@ -98,7 +98,7 @@
     starship
     zellij
     bat
-    exa
+    eza
     pfetch
     neofetch
     pre-commit

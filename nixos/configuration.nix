@@ -175,7 +175,7 @@
     starship
     ripgrep
     bat
-    exa
+    eza
     fd
     btop
     zellij
