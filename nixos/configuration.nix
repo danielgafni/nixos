@@ -248,12 +248,14 @@
   services.pcscd.enable = true;
 
   # Screen Sharing
-  xdg = {
-    portal = {
-      enable = true;
-      # gtkUsePortal = true;  # reprecated
-    };
-  };
+  xdg.portal.config.common.default = "*";
+
+  # xdg = {
+  #   portal = {
+  #     enable = true;
+  #     # gtkUsePortal = true;  # reprecated
+  #   };
+  # };
 
   # Lorri - direnv integration for Nix
   services.lorri.enable = true;

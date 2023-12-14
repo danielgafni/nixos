@@ -51,7 +51,6 @@
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
 
-  # fonts.enableDefaultPackages = true;
   home.packages = with pkgs; [
     # YubiKey
     #yubioath-flutter
@@ -147,7 +146,12 @@
   ];
 
   # Enable home-manager and git
-  programs.home-manager.enable = true;
+  # programs.home-manager.enable = true;
+
+  news.display = "silent";
+  news.json = lib.mkForce { };
+  news.entries = lib.mkForce [ ];
+
   programs.git = {
     enable = true;
     userName = "danielgafni";
