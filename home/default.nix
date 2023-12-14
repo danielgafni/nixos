@@ -279,15 +279,18 @@
       general {
       	sensitivity=1.0 # for mouse cursor
       	resize_on_border=true
-
       	gaps_in=3
       	gaps_out=3
       	border_size=2
       	col.active_border = rgba(88c0d0ff) rgba(b48eadff) rgba(ebcb8bff) rgba(a3be8cff) 45deg
       	col.inactive_border=0xff434c5e
       	apply_sens_to_raw=0 # whether to apply the sensitivity to raw input (e.g. used by games where you aim using your mouse)
-      	col.group_border=0xff89dceb
-      	col.group_border_active=rgba(88c0d0ff) rgba(b48eadff) rgba(ebcb8bff) rgba(a3be8cff) 45deg
+      }
+
+      group {
+        col.border_inactive=0xff89dceb
+      	col.border_active=rgba(88c0d0ff) rgba(b48eadff) rgba(ebcb8bff) rgba(a3be8cff) 45deg
+
       }
     
       decoration {
