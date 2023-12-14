@@ -49,10 +49,10 @@
       auth-polkit=false
     '';
   }; # Easiest to use and most distros use this by default.
-    
+
   # disable firewall (required for WireGuard to work)
   # https://nixos.wiki/wiki/WireGuard#Setting_up_WireGuard_with_NetworkManager
-  networking.firewall.checkReversePath = false; 
+  networking.firewall.checkReversePath = false;
 
   # Set your time zone.
   # time.timeZone = "Europe/Belgrade";

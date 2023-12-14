@@ -47,6 +47,8 @@
   colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
   programs.dircolors.enable = true;
 
+  fonts.fontconfig.enable = true;
+
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
@@ -105,13 +107,13 @@
     # fonts
     (
       nerdfonts.override {
-         fonts = [ 
+        fonts = [
           "FiraCode"
           "DroidSansMono"
-        ]; 
+        ];
       }
     )
-    recursive  # for eww
+    recursive # for eww
     fira-code
     fira-code-symbols
     noto-fonts
@@ -146,7 +148,7 @@
   ];
 
   # Enable home-manager and git
-  # programs.home-manager.enable = true;
+  programs.home-manager.enable = true;
 
   news.display = "silent";
   news.json = lib.mkForce { };
@@ -157,9 +159,9 @@
     userName = "danielgafni";
     userEmail = "danielgafni16@gmail.com";
     extraConfig = {
-        commit.gpgsign = true;
-        user.signingkey = "7B0740201D518DB134D5C75AB8D13360DED17662";
-      };
+      commit.gpgsign = true;
+      user.signingkey = "7B0740201D518DB134D5C75AB8D13360DED17662";
+    };
   };
 
   # systemd.user,targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target"  ];
@@ -194,7 +196,7 @@
     recursive = true;
     source = ./.config/swaylock;
   };
-  
+
   xdg.configFile."helix" = {
     recursive = true;
     source = ./.config/helix;

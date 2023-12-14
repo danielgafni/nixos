@@ -1,3 +1,5 @@
+# can be executed with nix-build -A pre-commit-check
+
 let
   nix-pre-commit-hooks = import (builtins.fetchTarball "https://github.com/cachix/pre-commit-hooks.nix/tarball/master");
 in
