@@ -51,7 +51,7 @@
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
 
-  fonts.fontconfig.enable = true;
+  # fonts.enableDefaultPackages = true;
   home.packages = with pkgs; [
     # YubiKey
     #yubioath-flutter
@@ -98,7 +98,7 @@
     starship
     zellij
     bat
-    exa
+    eza
     pfetch
     neofetch
     pre-commit

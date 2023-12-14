@@ -11,11 +11,13 @@
       "https://hyprland.cachix.org"
       "https://nixpkgs-wayland.cachix.org"
       "https://pre-commit-hooks.cachix.org"
+      "https://nixpkgs-wayland.cachix.org"
     ];
     trusted-public-keys = [
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
       "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
+      "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
     ];
     experimental-features = [ "nix-command" "flakes" ];
     auto-optimise-store = true;
@@ -47,9 +49,14 @@
       auth-polkit=false
     '';
   }; # Easiest to use and most distros use this by default.
+    
+  # disable firewall (required for WireGuard to work)
+  # https://nixos.wiki/wiki/WireGuard#Setting_up_WireGuard_with_NetworkManager
+  networking.firewall.checkReversePath = false; 
 
   # Set your time zone.
-  time.timeZone = "Europe/Belgrade";
+  # time.timeZone = "Europe/Belgrade";
+  services.automatic-timezoned.enable = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -175,7 +182,7 @@
     starship
     ripgrep
     bat
-    exa
+    eza
     fd
     btop
     zellij

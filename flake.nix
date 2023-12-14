@@ -3,11 +3,17 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
     hyprland.url = "github:hyprwm/Hyprland";
     helix.url = "github:helix-editor/helix";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+
+    nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
+    rust-overlay.url = "github:oxalica/rust-overlay";
+    eww-wayland.url = "github:elkowar/eww";
+    # tmp fix https://github.com/elkowar/eww/issues/817
+    eww-wayland.inputs.nixpkgs.follows = "nixpkgs-wayland";
+    # eww-wayland.inputs.rust-overlay.follows = "rust-overlay";
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
