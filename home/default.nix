@@ -47,6 +47,8 @@
   colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
   programs.dircolors.enable = true;
 
+  fonts.fontconfig.enable = true;
+
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
@@ -146,7 +148,7 @@
   ];
 
   # Enable home-manager and git
-  # programs.home-manager.enable = true;
+  programs.home-manager.enable = true;
 
   news.display = "silent";
   news.json = lib.mkForce { };
