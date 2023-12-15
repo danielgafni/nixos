@@ -56,7 +56,9 @@
 
   # Set your time zone.
   # time.timeZone = "Europe/Belgrade";
+  services.localtimed.enable = true;
   services.automatic-timezoned.enable = true;
+  location.provider = "geoclue2";
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
