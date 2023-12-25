@@ -11,11 +11,13 @@
       "https://hyprland.cachix.org"
       "https://nixpkgs-wayland.cachix.org"
       "https://pre-commit-hooks.cachix.org"
+      "https://nixpkgs-wayland.cachix.org"
     ];
     trusted-public-keys = [
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
       "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
+      "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
     ];
     experimental-features = [ "nix-command" "flakes" ];
     auto-optimise-store = true;
@@ -48,8 +50,15 @@
     '';
   }; # Easiest to use and most distros use this by default.
 
+  # disable firewall (required for WireGuard to work)
+  # https://nixos.wiki/wiki/WireGuard#Setting_up_WireGuard_with_NetworkManager
+  networking.firewall.checkReversePath = false;
+
   # Set your time zone.
-  time.timeZone = "Europe/Belgrade";
+  # time.timeZone = "Europe/Belgrade";
+  services.localtimed.enable = true;
+  services.automatic-timezoned.enable = true;
+  location.provider = "geoclue2";
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -113,6 +122,12 @@
     login.u2fAuth = true;
     sudo.u2fAuth = true;
   };
+
+  security.pam.services.swaylock = {
+    text = ''auth include login'';
+  };
+
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -169,7 +184,7 @@
     starship
     ripgrep
     bat
-    exa
+    eza
     fd
     btop
     zellij
@@ -235,12 +250,14 @@
   services.pcscd.enable = true;
 
   # Screen Sharing
-  xdg = {
-    portal = {
-      enable = true;
-      # gtkUsePortal = true;  # reprecated
-    };
-  };
+  xdg.portal.config.common.default = "*";
+
+  # xdg = {
+  #   portal = {
+  #     enable = true;
+  #     # gtkUsePortal = true;  # reprecated
+  #   };
+  # };
 
   # Lorri - direnv integration for Nix
   services.lorri.enable = true;
@@ -272,7 +289,7 @@
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = false;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you

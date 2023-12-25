@@ -3,15 +3,22 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
     hyprland.url = "github:hyprwm/Hyprland";
     helix.url = "github:helix-editor/helix";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
+    nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
+    rust-overlay.url = "github:oxalica/rust-overlay";
+    eww-wayland.url = "github:elkowar/eww";
+    # tmp fix https://github.com/elkowar/eww/issues/817
+    # eww-wayland.inputs.nixpkgs.follows = "nixpkgs-wayland";
+    # eww-wayland.inputs.rust-overlay.follows = "rust-overlay";
+
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
 
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
@@ -30,7 +37,8 @@
         modules = [
           ./nixos/configuration.nix
           hyprland.nixosModules.default
-          { programs.hyprland.enable = true; }
+          # { programs.hyprland.enable = true; }
+
         ];
       };
     };
@@ -46,7 +54,13 @@
           ./lib/default.nix
           ./home/default.nix
           hyprland.homeManagerModules.default
-          { wayland.windowManager.hyprland.enable = true; }
+          {
+            wayland.windowManager.hyprland.enable = true;
+          }
+          # {
+          # home-manager.useGlobalPkgs = true;
+          # home-manager.useUserPackages = true;
+          # }
         ];
       };
     };

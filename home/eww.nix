@@ -1,7 +1,6 @@
 { pkgs, ... }: {
   # dependencies for widgets
   home.packages = with pkgs; [
-    eww-wayland
     socat
     jq # Various scripts and commands
     playerctl # Music info

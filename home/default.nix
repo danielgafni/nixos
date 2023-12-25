@@ -47,11 +47,12 @@
   colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
   programs.dircolors.enable = true;
 
+  fonts.fontconfig.enable = true;
+
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
 
-  fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
     # YubiKey
     #yubioath-flutter
@@ -77,6 +78,7 @@
     hyprpicker
     grim
     slurp
+    flameshot
     wev # show wayland events
     wl-clipboard
     font-manager
@@ -97,7 +99,7 @@
     starship
     zellij
     bat
-    exa
+    eza
     pfetch
     neofetch
     pre-commit
@@ -105,13 +107,13 @@
     # fonts
     (
       nerdfonts.override {
-         fonts = [ 
+        fonts = [
           "FiraCode"
           "DroidSansMono"
-        ]; 
+        ];
       }
     )
-    recursive  # for eww
+    recursive # for eww
     fira-code
     fira-code-symbols
     noto-fonts
@@ -147,14 +149,19 @@
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
+
+  news.display = "silent";
+  news.json = lib.mkForce { };
+  news.entries = lib.mkForce [ ];
+
   programs.git = {
     enable = true;
     userName = "danielgafni";
     userEmail = "danielgafni16@gmail.com";
     extraConfig = {
-        commit.gpgsign = true;
-        user.signingkey = "7B0740201D518DB134D5C75AB8D13360DED17662";
-      };
+      commit.gpgsign = true;
+      user.signingkey = "7B0740201D518DB134D5C75AB8D13360DED17662";
+    };
   };
 
   # systemd.user,targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target"  ];
@@ -182,6 +189,12 @@
   xdg.configFile."wofi" = {
     recursive = true;
     source = ./.config/wofi;
+  };
+
+  # swaylock
+  xdg.configFile."swaylock" = {
+    recursive = true;
+    source = ./.config/swaylock;
   };
 
   xdg.configFile."helix" = {
@@ -266,15 +279,18 @@
       general {
       	sensitivity=1.0 # for mouse cursor
       	resize_on_border=true
-
       	gaps_in=3
       	gaps_out=3
       	border_size=2
       	col.active_border = rgba(88c0d0ff) rgba(b48eadff) rgba(ebcb8bff) rgba(a3be8cff) 45deg
       	col.inactive_border=0xff434c5e
       	apply_sens_to_raw=0 # whether to apply the sensitivity to raw input (e.g. used by games where you aim using your mouse)
-      	col.group_border=0xff89dceb
-      	col.group_border_active=rgba(88c0d0ff) rgba(b48eadff) rgba(ebcb8bff) rgba(a3be8cff) 45deg
+      }
+
+      group {
+        col.border_inactive=0xff89dceb
+      	col.border_active=rgba(88c0d0ff) rgba(b48eadff) rgba(ebcb8bff) rgba(a3be8cff) 45deg
+
       }
     
       decoration {
