@@ -93,6 +93,7 @@
     # CLI
     comma
     git
+    delta
     curl
     wget
     zsh
