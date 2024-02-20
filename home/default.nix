@@ -200,7 +200,7 @@
       pull.rebase = true;
       fetch.prune = true;
       init.defaultBranch = "main";
-      merge.conflictstyle = "zdiff3";
+      merge.conflictstyle = "diff3";
       rerere.enabled = true;
       diff.algorithm = "histogram";
     };
