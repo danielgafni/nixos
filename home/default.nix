@@ -80,6 +80,7 @@
 
     # devops
     kubectl
+    kubeseal
     k9s
     sops
     age
