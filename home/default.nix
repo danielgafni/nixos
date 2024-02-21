@@ -306,15 +306,15 @@
       	}
       }
     
-      misc{
-      	animate_manual_resizes true
-      	enable_swallow true
-      	animate_mouse_windowdragging true
+      misc {
+          enable_swallow=true
+      	  animate_manual_resizes=true
+      	  animate_mouse_windowdragging=true
+          disable_hyprland_logo=true
 
-      	# this should spawn a window right on top of the terminal
-      	# but I couldn't get it working yet
-      	#     swallow_regex ^(kitty)$
-
+          # this should spawn a window right on top of the terminal
+          # but I couldn't get it working yet
+          swallow_regex=^(Alacritty|kitty)$
       }
     
       general {
