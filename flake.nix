@@ -1,5 +1,5 @@
 {
-  description = "@danielgafni's Framework 13 NixOS config";
+  description = "@danielgafni's NixOS config";
 
   inputs = {
     # Nixpkgs
@@ -35,7 +35,19 @@
         specialArgs = { inherit inputs; }; # Pass flake inputs to our config
         # > Our main nixos configuration file <
         modules = [
-          ./nixos/configuration.nix
+          ./hosts/framnix/configuration.nix
+          hyprland.nixosModules.default
+          # { programs.hyprland.enable = true; }
+
+        ];
+      };
+
+      
+      DanPC = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; }; # Pass flake inputs to our config
+        # > Our main nixos configuration file <
+        modules = [
+          ./hosts/DanPC/configuration.nix
           hyprland.nixosModules.default
           # { programs.hyprland.enable = true; }
 
@@ -47,6 +59,24 @@
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
       "dan@framnix" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+        extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
+        # > Our main home-manager configuration file <
+        modules = [
+          ./lib/default.nix
+          ./home/default.nix
+          hyprland.homeManagerModules.default
+          {
+            wayland.windowManager.hyprland.enable = true;
+          }
+          # {
+          # home-manager.useGlobalPkgs = true;
+          # home-manager.useUserPackages = true;
+          # }
+        ];
+      };
+
+      "dan@DanPC" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         # > Our main home-manager configuration file <

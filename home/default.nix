@@ -124,6 +124,7 @@
     neofetch
     pre-commit
     strace
+    just
 
     # fonts
     (
@@ -260,6 +261,7 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
+    enableNvidiaPatches = true;
     extraConfig = ''
       env = WLR_NO_HARDWARE_CURSORS,1
       exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
