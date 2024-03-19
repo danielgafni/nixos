@@ -1,9 +1,11 @@
-{ default, config, ... }:
-let
+{
+  default,
+  config,
+  ...
+}: let
   inherit (default) xcolors;
   # inherit (default) config;
-in
-{
+in {
   programs.kitty = {
     enable = true;
     font = {

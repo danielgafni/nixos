@@ -1,5 +1,4 @@
 # catppuccin mocha theme
-
 rec {
   rosewater = "f5e0dc";
   flamingo = "f2cdcd";

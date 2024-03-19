@@ -92,8 +92,6 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
 zstyle ':completion:*' verbose true
 _comp_options+=(globdots)
 
-gnupg_path=$(ls $XDG_RUNTIME_DIR/gnupg)
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/$gnupg_path/S.gpg-agent.ssh"
 export KITTY_SHELL_INTEGRATION=enabled
 autoload -Uz -- "$KITTY_INSTALLATION_DIR"/shell-integration/zsh/kitty-integration
 kitty-integration

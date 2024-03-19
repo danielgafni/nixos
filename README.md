@@ -9,14 +9,13 @@ My NixOS configuration.
 
 ### Installation
 ```shell
-./install.sh # test mode by default - won't add a new bootloader entry
-#or
-./install.sh install  # add a bootloader entry to permanently save the new system
+nix -p just
+just nixos-rebuild <host>  # add mode=switch, default mode is test
 ```
 
 ## Notes
 
-### Fonds
+### Fonts
  - Coding: `Fira Code Nerd Fonts`
 
 ### Debugging mime-type 
