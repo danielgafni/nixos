@@ -7,7 +7,7 @@ in {
     # If your hooks are intrusive, avoid running on each commit with a default_states like this:
     # default_stages = ["manual" "push"];
     hooks = {
-      nixpkgs-fmt.enable = true;
+      alejandra.enable = true;
     };
 
     # Some hooks offer custom settings that affect how they execute

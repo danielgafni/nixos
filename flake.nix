@@ -24,14 +24,32 @@
 
     # nixify themex and make everything match nicely with nix-colors!
     nix-colors.url = "github:misterio77/nix-colors";
+
+    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
   };
 
   outputs = {
+    self,
     nixpkgs,
+    pre-commit-hooks,
     home-manager,
     hyprland,
     ...
   } @ inputs: {
+    checks = {
+      pre-commit-check = pre-commit-hooks.lib."x86_64-linux".run {
+        src = ./.;
+        hooks = {
+          alejandra.enable = true;
+        };
+      };
+    };
+
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
+    devShells.x86_64-linux.default = nixpkgs.legacyPackages.x86_64-linux.mkShell {
+      inherit (self.checks.pre-commit-check) shellHook;
+    };
+
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
@@ -95,7 +113,5 @@
         ];
       };
     };
-
-    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
   };
 }

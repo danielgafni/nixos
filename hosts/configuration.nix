@@ -240,7 +240,7 @@
   # YubiKey
   services.udev.packages = [pkgs.yubikey-personalization];
   services.yubikey-agent.enable = false;
-  programs.ssh.startAgent = false;  # using gpg agent instead
+  programs.ssh.startAgent = false; # using gpg agent instead
 
   environment.shellInit = ''
     gpg-connect-agent /bye
