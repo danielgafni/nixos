@@ -239,6 +239,14 @@
 
   # YubiKey
   services.udev.packages = [pkgs.yubikey-personalization];
+  services.yubikey-agent.enable = false;
+  programs.ssh.startAgent = false;  # using gpg agent instead
+
+  environment.shellInit = ''
+    gpg-connect-agent /bye
+    export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+  '';
+
   services.pcscd.enable = true;
 
   # Screen Sharing
