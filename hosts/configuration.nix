@@ -1,10 +1,12 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, lib, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   nix.settings = {
     netrc-file = /etc/nix/.netrc; # for credentials (like pribate PyPI server)
     substituters = [
@@ -19,7 +21,7 @@
       "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
       "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
     ];
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = ["nix-command" "flakes"];
     auto-optimise-store = true;
   };
 
@@ -34,7 +36,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.useDHCP = lib.mkDefault true;
-  networking.nameservers = [ "1.1.1.1" "1.0.0.1" "8.8.8.8" "8.8.4.4" "9.9.9.9" ];
+  networking.nameservers = ["1.1.1.1" "1.0.0.1" "8.8.8.8" "8.8.4.4" "9.9.9.9"];
 
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -85,7 +87,6 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
-
   # Configure keymap in X11
   # services.xserver.layout = "us";
   # services.xserver.xkbOptions = {
@@ -102,12 +103,11 @@
     openFirewall = true;
   };
 
-
   # Enable sound.
   #sound.enable = true;
   #hardware.pulseaudio = {
   #  enable = true;
-  #  package = pkgs.pulseaudioFull;  # extra codecs 
+  #  package = pkgs.pulseaudioFull;  # extra codecs
   #};
 
   # Remove sound.enable or set it to false if you had it set previously, as sound.enable is only meant for ALSA-based configurations
@@ -122,7 +122,6 @@
   security.pam.services.swaylock = {
     text = ''auth include login'';
   };
-
 
   services.pipewire = {
     enable = true;
@@ -146,7 +145,7 @@
   # services.xserver.libinput.enable = true;
 
   users.defaultUserShell = pkgs.zsh;
-  environment.shells = with pkgs; [ zsh ];
+  environment.shells = with pkgs; [zsh];
 
   # Enable Docker
   virtualisation.docker.enable = true;
@@ -156,18 +155,16 @@
     };
   };
 
-  users.extraGroups.docker.members = [ "dan" ];
-
+  users.extraGroups.docker.members = ["dan"];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.dan = {
     isNormalUser = true;
     initialPassword = "pw123";
-    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs;
-      [
-        home-manager
-      ];
+    extraGroups = ["wheel" "docker"]; # Enable ‘sudo’ for the user.
+    packages = with pkgs; [
+      home-manager
+    ];
   };
 
   # Slack native Wayland support
@@ -194,21 +191,20 @@
     brightnessctl
     pavucontrol
     direnv
-    (python310.withPackages (ps: with ps; [
-      pipx
-      pre-commit
-    ]))
+    (python310.withPackages (ps:
+      with ps; [
+        pipx
+        pre-commit
+      ]))
   ];
 
   nixpkgs.config = {
-
     allowUnfree = true;
 
     firefox = {
       enableGoogleTalkPlugin = true;
       enableAdobeFlash = true;
     };
-
   };
 
   # programs = {
@@ -242,7 +238,7 @@
   security.polkit.enable = true;
 
   # YubiKey
-  services.udev.packages = [ pkgs.yubikey-personalization ];
+  services.udev.packages = [pkgs.yubikey-personalization];
   services.pcscd.enable = true;
 
   # Screen Sharing
@@ -265,13 +261,13 @@
   # Custom /etc files
 
   environment.etc."wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
-    		bluez_monitor.properties = {
-    			["bluez5.enable-sbc-xq"] = true,
-    			["bluez5.enable-msbc"] = true,
-    			["bluez5.enable-hw-volume"] = true,
-    			["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
-    		}
-    	'';
+    bluez_monitor.properties = {
+    	["bluez5.enable-sbc-xq"] = true,
+    	["bluez5.enable-msbc"] = true,
+    	["bluez5.enable-hw-volume"] = true,
+    	["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
+    }
+  '';
 
   #environment.etc."lemurs.wayland.Hyprland" = {
   #  text = ''
@@ -292,4 +288,3 @@
   # accidentally delete configuration.nix.
   # system.copySystemConfiguration = true;
 }
-

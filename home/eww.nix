@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   # dependencies for widgets
   home.packages = with pkgs; [
     socat
@@ -14,13 +14,12 @@
   services.playerctld.enable = true;
 
   systemd.user.services.eww = {
-    Unit = { Description = "eww"; };
+    Unit = {Description = "eww";};
     Service = {
       Type = "simple";
       ExecStart = "eww daemon --restart";
       Restart = "on-failure";
     };
-    Install = { WantedBy = [ "hyprland-session.target" ]; };
+    Install = {WantedBy = ["hyprland-session.target"];};
   };
 }
-

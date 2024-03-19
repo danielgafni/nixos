@@ -1,8 +1,12 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-
-{ inputs, lib, config, pkgs, ... }: {
-
+{
+  inputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   # You can import other home-manager modules here
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors):
@@ -34,7 +38,7 @@
       # Disable if you don't want unfree packages
       allowUnfree = true;
       # Workaround for https://github.com/nix-community/home-manager/issues/2942
-      allowUnfreePredicate = (_: true);
+      allowUnfreePredicate = _: true;
     };
   };
 
@@ -52,7 +56,7 @@
       pager = "less -FR";
       theme = "CatppuccinMocha";
     };
-    extraPackages = with pkgs.bat-extras; [ batdiff batman batgrep batwatch ];
+    extraPackages = with pkgs.bat-extras; [batdiff batman batgrep batwatch];
     themes = {
       CatppuccinMocha = {
         src = pkgs.fetchFromGitHub {
@@ -84,9 +88,9 @@
     k9s
     sops
     age
-    (pkgs.wrapHelm pkgs.kubernetes-helm { plugins = [ pkgs.kubernetes-helmPlugins.helm-secrets ]; })
+    (pkgs.wrapHelm pkgs.kubernetes-helm {plugins = [pkgs.kubernetes-helmPlugins.helm-secrets];})
     awscli2
-    (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
+    (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
 
     # wayland/DE
     libnotify # notify-send command
@@ -154,7 +158,7 @@
     firefox
     lynx
 
-    # editors & IDE            
+    # editors & IDE
     vim
     neovim
     helix
@@ -173,8 +177,8 @@
   programs.home-manager.enable = true;
 
   news.display = "silent";
-  news.json = lib.mkForce { };
-  news.entries = lib.mkForce [ ];
+  news.json = lib.mkForce {};
+  news.entries = lib.mkForce [];
 
   programs.git = {
     enable = true;
@@ -261,15 +265,14 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
-    enableNvidiaPatches = true;
     extraConfig = ''
       env = WLR_NO_HARDWARE_CURSORS,1
       exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       exec-once=systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-    
+
       # polkit (the app which asks for the root password access)
       exec-once=/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-    
+
       # theming
       #exec-once=gsettings set org.gnome.desktop.interface cursor-size 48
       #exec-once=gsettings set org.gnome.desktop.interface gtk-theme "Nordic"
@@ -293,7 +296,7 @@
       #blurls=notifications
       #blurls=wofi
       #blurls=gtk-layer-shell
-    
+
       input {
       	kb_layout=us,ru
       	kb_variant=ffffff
@@ -308,7 +311,7 @@
       	    scroll_factor=0.7
       	}
       }
-    
+
       misc {
           enable_swallow=true
       	  animate_manual_resizes=true
@@ -319,7 +322,7 @@
           # but I couldn't get it working yet
           swallow_regex=^(Alacritty|kitty)$
       }
-    
+
       general {
       	sensitivity=1.0 # for mouse cursor
       	resize_on_border=true
@@ -336,7 +339,7 @@
       	col.border_active=rgba(88c0d0ff) rgba(b48eadff) rgba(ebcb8bff) rgba(a3be8cff) 45deg
 
       }
-    
+
       decoration {
       	drop_shadow = true
       	shadow_range=20
@@ -352,24 +355,24 @@
       		# Your blur "amount" is blur_size * blur_passes, but high blur_size (over around 5-ish) will produce artifacts.
       		# if you want heavy blur, you need to up the blur_passes.
       		# the more passes, the more you can up the blur_size without noticing artifacts.
-      		noise=0.05	
+      		noise=0.05
       		xray=true
       	}
       }
 
-    
+
 
       animations {
               enabled=1
-        
+
               bezier=easeOutQuint,0.22, 1, 0.36, 1  # https://easings.net/#easeOutQuint
               bezier=easeOutSine,0.61, 1, 0.88, 1)  # https://easings.net/#easeOutSine
-    
+
               animation=windows,1,4,easeOutQuint,popin
               animation=border,1,20,easeOutQuint
               animation=fade,1,10,easeOutQuint
               animation=workspaces,1,6,easeOutQuint,slide
-      	
+
       	# gradient disco party borders
               animation = borderangle, 1, 30, easeOutSine, loop
           }
@@ -381,12 +384,12 @@
 
       master {
       }
-    
+
       gestures {
       	workspace_swipe=yes
       	workspace_swipe_fingers=4
       }
-    
+
       # example window rules
       # for windows named/classed as abc and xyz
       #windowrule=move 69 420,abc
@@ -502,9 +505,9 @@
   # Using Bluetooth headset buttons to control media player
   systemd.user.services.mpris-proxy = {
     Unit.Description = "Mpris proxy";
-    Unit.After = [ "network.target" "sound.target" ];
+    Unit.After = ["network.target" "sound.target"];
     Service.ExecStart = "${pkgs.bluez}/bin/mpris-proxy";
-    Install.WantedBy = [ "default.target" ];
+    Install.WantedBy = ["default.target"];
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

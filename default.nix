@@ -1,9 +1,7 @@
 # can be executed with nix-build -A pre-commit-check
-
 let
   nix-pre-commit-hooks = import (builtins.fetchTarball "https://github.com/cachix/pre-commit-hooks.nix/tarball/master");
-in
-{
+in {
   pre-commit-check = nix-pre-commit-hooks.run {
     src = ./.;
     # If your hooks are intrusive, avoid running on each commit with a default_states like this:
@@ -13,6 +11,6 @@ in
     };
 
     # Some hooks offer custom settings that affect how they execute
-    settings = { };
+    settings = {};
   };
 }

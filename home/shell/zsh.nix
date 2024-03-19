@@ -1,11 +1,12 @@
-{ config
-, pkgs
-, lib
-, ...
+{
+  config,
+  pkgs,
+  lib,
+  ...
 }: {
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     autocd = true;
     dirHashes = {
       dl = "$HOME/Downloads";
@@ -22,7 +23,7 @@
       path = "${config.xdg.dataHome}/zsh_history";
     };
 
-    initExtra = (builtins.readFile ./.zshrc);
+    initExtra = builtins.readFile ./.zshrc;
 
     shellAliases = {
       grep = "grep --color";
@@ -31,11 +32,11 @@
       la = "eza -la";
       md = "mkdir -p";
     };
-    shellGlobalAliases = { eza = "eza --icons --git"; };
+    shellGlobalAliases = {eza = "eza --icons --git";};
     zplug = {
       enable = true;
       plugins = [
-        { name = "zdharma-continuum/fast-syntax-highlighting"; }
+        {name = "zdharma-continuum/fast-syntax-highlighting";}
       ];
     };
   };

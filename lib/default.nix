@@ -1,14 +1,13 @@
-{ inputs, ... }:
+{inputs, ...}:
 # personal lib
 let
   inherit (inputs.nixpkgs) lib;
 
   colorlib = import ./colors.nix lib;
-  default = import ./theme { inherit colorlib lib; };
-in
-{
+  default = import ./theme {inherit colorlib lib;};
+in {
   imports = [
-    { _module.args = { inherit default; }; }
+    {_module.args = {inherit default;};}
   ];
 
   #perSystem = {system, ...}: {
@@ -40,4 +39,6 @@ in
   #     ];
   #   };
   # };
-}#
+}
+#
+

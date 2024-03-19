@@ -8,6 +8,8 @@ fmt:
 nixos-rebuild host:
   sudo nixos-rebuild --flake .#{{host}} {{mode}}
 
+set positional-arguments
 
-home-rebuild host:
-  home-manager --flake .#{{user}}@{{host}} switch
+home host *args='':
+  home-manager --flake .#{{user}}@{{host}} "${@:2}"
+

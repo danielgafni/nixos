@@ -19,7 +19,6 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
 
@@ -27,30 +26,32 @@
     nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { nixpkgs, home-manager, hyprland, ... }@inputs: {
+  outputs = {
+    nixpkgs,
+    home-manager,
+    hyprland,
+    ...
+  } @ inputs: {
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
       framnix = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; }; # Pass flake inputs to our config
+        specialArgs = {inherit inputs;}; # Pass flake inputs to our config
         # > Our main nixos configuration file <
         modules = [
           ./hosts/framnix/configuration.nix
           hyprland.nixosModules.default
           # { programs.hyprland.enable = true; }
-
         ];
       };
 
-      
       DanPC = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; }; # Pass flake inputs to our config
+        specialArgs = {inherit inputs;}; # Pass flake inputs to our config
         # > Our main nixos configuration file <
         modules = [
           ./hosts/DanPC/configuration.nix
           hyprland.nixosModules.default
           # { programs.hyprland.enable = true; }
-
         ];
       };
     };
@@ -60,7 +61,7 @@
     homeConfigurations = {
       "dan@framnix" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
+        extraSpecialArgs = {inherit inputs;}; # Pass flake inputs to our config
         # > Our main home-manager configuration file <
         modules = [
           ./lib/default.nix
@@ -78,7 +79,7 @@
 
       "dan@DanPC" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
+        extraSpecialArgs = {inherit inputs;}; # Pass flake inputs to our config
         # > Our main home-manager configuration file <
         modules = [
           ./lib/default.nix
@@ -94,5 +95,7 @@
         ];
       };
     };
+
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
   };
 }

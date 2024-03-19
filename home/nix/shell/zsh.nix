@@ -1,7 +1,8 @@
-{ config
-, pkgs
-, lib
-, ...
+{
+  config,
+  pkgs,
+  lib,
+  ...
 }: {
   programs.zsh = {
     enable = true;
@@ -22,7 +23,7 @@
       path = "${config.xdg.dataHome}/zsh_history";
     };
 
-    initExtra = (builtins.readFile ./.zshrc);
+    initExtra = builtins.readFile ./.zshrc;
 
     shellAliases = {
       grep = "grep --color";
@@ -31,6 +32,6 @@
       la = "eza -la";
       md = "mkdir -p";
     };
-    shellGlobalAliases = { eza = "eza --icons --git"; };
+    shellGlobalAliases = {eza = "eza --icons --git";};
   };
 }

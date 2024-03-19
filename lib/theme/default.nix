@@ -1,6 +1,6 @@
-{ colorlib
-, lib
-,
+{
+  colorlib,
+  lib,
 }: rec {
   colors = import ./colors.nix;
   # #RRGGBB
