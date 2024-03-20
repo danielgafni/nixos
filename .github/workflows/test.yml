@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - uses: DeterminateSystems/magic-nix-cache-action@v2
     - uses: DeterminateSystems/nix-installer-action@main
-    - run: nixos-rebuild --flake .#${{ matrix.host }} build
+    - uses: DeterminateSystems/magic-nix-cache-action@v2
+    - run: nix build .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
     - run: nix flake check
 
