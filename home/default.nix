@@ -116,6 +116,7 @@
 
     # CLI
     comma
+    statix
     git
     delta
     curl

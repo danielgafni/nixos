@@ -9,7 +9,6 @@ in {
   programs.kitty = {
     enable = true;
     font = {
-      inherit (default.terminal) size;
       name = default.terminal.font;
     };
     theme = "Catppuccin-Mocha";

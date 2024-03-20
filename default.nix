@@ -8,6 +8,7 @@ in {
     # default_stages = ["manual" "push"];
     hooks = {
       alejandra.enable = true;
+      statix.enable = true;
     };
 
     # Some hooks offer custom settings that affect how they execute

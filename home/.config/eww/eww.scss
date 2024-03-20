@@ -1,5 +1,3 @@
-// Catppuccin Mocha colors
-
 $background-color: #1e1e2e;
 $text-color: #cdd6f4;
 $light-background: #7f849c;
@@ -23,6 +21,7 @@ $orange: #fab387;
   color: $text-color;
   border-radius: 1.2rem;
   border: 0.05rem solid $accent-color;
+  font-size: 1.5rem;
 }
 
 .bar {
@@ -108,7 +107,7 @@ calendar.header, calendar:selected {
 
 .music-title {
   @include heading;
-  font-size: 1.2rem;
+  font-size: 20%;
 }
 
 .music-album {
