@@ -10,10 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    - uses: DeterminateSystems/magic-nix-cache-action@v2
     - uses: cachix/install-nix-action@v25
       with:
         nix_path: nixpkgs=channel:nixos-unstable
-    - uses: DeterminateSystems/magic-nix-cache-action@v2
-    - run: nix-shell -p nixos-rebuild --run nixos-rebuild --flake .#${{ matrix.host }} build
+        extra_nix_config: "system-features = nixos-test benchmark big-parallel kvm"
+    - run: nixos-rebuild --flake .#${{ matrix.host }} build
     - run: nix flake check
 
