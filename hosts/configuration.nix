@@ -37,7 +37,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.useDHCP = lib.mkDefault true;
-  networking.nameservers = ["1.1.1.1" "1.0.0.1" "8.8.8.8" "8.8.4.4" "9.9.9.9"];
+  # networking.nameservers = ["1.1.1.1" "1.0.0.1" "8.8.8.8" "8.8.4.4" "9.9.9.9"];
 
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
