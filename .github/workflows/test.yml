@@ -14,8 +14,9 @@ jobs:
     - uses: cachix/install-nix-action@v25
       with:
         nix_path: nixpkgs=channel:nixos-unstable
-    - run: nix-env -i nixos-rebuild
     - uses: DeterminateSystems/magic-nix-cache-action@v2
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
     - run: nixos-rebuild --flake .#${{ matrix.host }} build
     - run: nix flake check
 
