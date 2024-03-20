@@ -8,9 +8,13 @@ My NixOS configuration.
 ## Usage
 
 ### Installation
+
+prerequisites: `nix` 
+
 ```shell
-nix -p just
+nix-shell -p just
 just nixos-rebuild <host>  # add mode=switch, default mode is test
+just home DanPC switch  # invoke home-manager to create files in $HOME
 ```
 
 ## Notes
