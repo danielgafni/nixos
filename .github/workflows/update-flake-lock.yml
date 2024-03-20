@@ -20,9 +20,7 @@ jobs:
           pr-labels: |                  # Labels to be set on the PR
             dependencies
             automated
-
           git-author-name: 'GitHub Actions'
           git-author-email: 'github-actions[bot]@users.noreply.github.com'
           git-committer-name: 'GitHub Actions'
-          git-committer-email: 'github-actions[bot]@users.noreply.github.com
-
+          git-committer-email: 'github-actions[bot]@users.noreply.github.com'
