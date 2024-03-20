@@ -36,18 +36,20 @@
     hyprland,
     ...
   } @ inputs: {
-    checks = {
+    checks.x86_64-linux = {
       pre-commit-check = pre-commit-hooks.lib."x86_64-linux".run {
         src = ./.;
         hooks = {
           alejandra.enable = true;
+          # TODO: enable # statix.enable = true;
         };
       };
     };
 
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
     devShells.x86_64-linux.default = nixpkgs.legacyPackages.x86_64-linux.mkShell {
-      inherit (self.checks.pre-commit-check) shellHook;
+      inherit (self.checks.x86_64-linux.pre-commit-check) shellHook;
+      buildINputs = self.checks.x86_64-linux.pre-commit-check.enabledPackages;
     };
 
     # NixOS configuration entrypoint
@@ -84,6 +86,7 @@
         modules = [
           ./lib/default.nix
           ./home/default.nix
+          ./hosts/framnix/default.nix
           hyprland.homeManagerModules.default
           {
             wayland.windowManager.hyprland.enable = true;
@@ -102,6 +105,7 @@
         modules = [
           ./lib/default.nix
           ./home/default.nix
+          ./hosts/DanPC/default.nix
           hyprland.homeManagerModules.default
           {
             wayland.windowManager.hyprland.enable = true;
