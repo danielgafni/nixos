@@ -8,6 +8,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../configuration.nix
+    ../common/bluetooth.nix
   ];
 
   networking.hostName = "framnix";
