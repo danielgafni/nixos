@@ -5,14 +5,17 @@
   config,
   lib,
   pkgs,
+  stylix,
   ...
-}: {
+}: let
+  settings = import ./settings.nix;
+in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./stylix.nix
     ../configuration.nix
   ];
-
   networking.hostName = "DanPC";
 
   hardware.opengl = {

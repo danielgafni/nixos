@@ -22,8 +22,11 @@
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
 
-    # nixify themex and make everything match nicely with nix-colors!
+    # TODO: remove and switch to stylix completely
     nix-colors.url = "github:misterio77/nix-colors";
+
+    # stylix
+    stylix.url = "github:danth/stylix";
 
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
   };
@@ -34,6 +37,7 @@
     pre-commit-hooks,
     home-manager,
     hyprland,
+    stylix,
     ...
   } @ inputs: {
     checks.x86_64-linux = {
@@ -61,7 +65,7 @@
         modules = [
           ./hosts/framnix/configuration.nix
           hyprland.nixosModules.default
-          # { programs.hyprland.enable = true; }
+          stylix.nixosModules.stylix
         ];
       };
 
@@ -71,7 +75,7 @@
         modules = [
           ./hosts/DanPC/configuration.nix
           hyprland.nixosModules.default
-          # { programs.hyprland.enable = true; }
+          stylix.nixosModules.stylix
         ];
       };
     };

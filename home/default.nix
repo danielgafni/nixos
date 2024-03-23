@@ -141,8 +141,6 @@
       }
     )
     recursive # for eww
-    fira-code
-    fira-code-symbols
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
@@ -220,14 +218,6 @@
     recursive = true;
     source = ./.config/wallpapers;
   };
-
-  # Cursor
-  home.pointerCursor = {
-    name = "Catppuccin-Mocha-Dark-Cursors";
-    package = pkgs.catppuccin-cursors.mochaDark;
-    size = 16;
-  };
-
   # mako (notifications) config
   xdg.configFile."mako" = {
     recursive = true;

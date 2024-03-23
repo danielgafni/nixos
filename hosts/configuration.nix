@@ -5,8 +5,21 @@
   config,
   pkgs,
   lib,
+  stylix,
   ...
 }: {
+  # styling
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+  stylix.fonts = {
+    monospace = {
+      package = pkgs.nerdfonts.override {fonts = ["FiraCode"];};
+      name = "FiraCode Nerd Font Mono";
+    };
+    emoji = {
+      package = pkgs.noto-fonts-emoji;
+      name = "Noto Color Emoji";
+    };
+  };
   nix.settings = {
     netrc-file = /etc/nix/.netrc; # for credentials (like pribate PyPI server)
     substituters = [
