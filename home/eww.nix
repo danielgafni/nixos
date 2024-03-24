@@ -7,7 +7,6 @@
   ];
   programs.eww = {
     enable = true;
-    package = pkgs.eww-wayland;
     configDir = ./.config/eww;
   };
   # Needed for music widget

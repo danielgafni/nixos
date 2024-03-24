@@ -5,6 +5,7 @@
   lib,
   config,
   pkgs,
+  stylix,
   ...
 }: {
   # You can import other home-manager modules here
@@ -42,11 +43,27 @@
     };
   };
 
-  # TODO: Set your username
   home = {
     username = "dan";
     homeDirectory = "/home/dan";
   };
+
+  stylix.image = ./.config/wallpapers/catppuccin-forrest.png;
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+  stylix.fonts = {
+    monospace = {
+      package = pkgs.nerdfonts.override {fonts = ["FiraCode"];};
+      name = "FiraCode Nerd Font Mono";
+    };
+    emoji = {
+      package = pkgs.noto-fonts-emoji;
+      name = "Noto Color Emoji";
+    };
+  };
+  stylix.opacity.terminal = 0.9;
+
+  # managing these manually
+  stylix.targets.vscode.enable = false;
 
   colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
   programs.dircolors.enable = true;
@@ -54,20 +71,20 @@
     enable = true;
     config = {
       pager = "less -FR";
-      theme = "CatppuccinMocha";
+      # theme = "CatppuccinMocha";
     };
     extraPackages = with pkgs.bat-extras; [batdiff batman batgrep batwatch];
-    themes = {
-      CatppuccinMocha = {
-        src = pkgs.fetchFromGitHub {
-          owner = "catppuccin";
-          repo = "bat"; # Bat uses sublime syntax for its themes
-          rev = "ba4d16880d63e656acced2b7d4e034e4a93f74b1";
-          sha256 = "1g2r6j33f4zys853i1c5gnwcdbwb6xv5w6pazfdslxf69904lrg9";
-        };
-        file = "Catppuccin-mocha.tmTheme";
-      };
-    };
+    # themes = {
+    #   CatppuccinMocha = {
+    #     src = pkgs.fetchFromGitHub {
+    #       owner = "catppuccin";
+    #       repo = "bat"; # Bat uses sublime syntax for its themes
+    #       rev = "ba4d16880d63e656acced2b7d4e034e4a93f74b1";
+    #       sha256 = "1g2r6j33f4zys853i1c5gnwcdbwb6xv5w6pazfdslxf69904lrg9";
+    #     };
+    #     file = "Catppuccin-mocha.tmTheme";
+    #   };
+    # };
   };
 
   fonts.fontconfig.enable = true;
@@ -94,10 +111,9 @@
 
     # wayland/DE
     libnotify # notify-send command
-    mako
+    # mako
     swaylock
     wofi
-    waybar
     hyprpaper
     hyprpicker
     grim
@@ -109,6 +125,7 @@
     alacritty
     kitty
     ranger
+    dconf # needed for smth with gtk
 
     # audio
     pipewire
@@ -219,10 +236,12 @@
     source = ./.config/wallpapers;
   };
   # mako (notifications) config
-  xdg.configFile."mako" = {
-    recursive = true;
-    source = ./.config/mako;
-  };
+  # xdg.configFile."mako" = {
+  #   recursive = true;
+  #   source = ./.config/mako;
+  # };
+
+  services.mako.enable = true;
 
   # wofi (app launcher)
   xdg.configFile."wofi" = {
