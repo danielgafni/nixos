@@ -17,6 +17,6 @@ jobs:
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
     - run: nix-channel --add https://nixos.org/channels/nixos-unstable
     - run: nix-channel --update
-    - run: nix-env -i nixpkgs#nix-output-monitor
+    - run: nix-env -i nix-output-monitor
     - run: nix build .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel --log-format internal-json -v |& nom --json
     - run: nix flake check
