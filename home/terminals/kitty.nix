@@ -8,10 +8,6 @@
 in {
   programs.kitty = {
     enable = true;
-    font = {
-      name = default.terminal.font;
-    };
-    theme = "Catppuccin-Mocha";
     settings = {
       scrollback_lines = 10000;
       placement_strategy = "center";
@@ -27,8 +23,6 @@ in {
 
       selection_foreground = "none";
       selection_background = "none";
-
-      background_opacity = toString default.terminal.opacity;
     };
   };
 }

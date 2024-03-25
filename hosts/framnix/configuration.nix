@@ -7,6 +7,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./stylix.nix
     ../configuration.nix
   ];
 

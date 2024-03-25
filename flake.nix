@@ -10,10 +10,6 @@
 
     nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
     rust-overlay.url = "github:oxalica/rust-overlay";
-    eww-wayland.url = "github:elkowar/eww";
-    # tmp fix https://github.com/elkowar/eww/issues/817
-    # eww-wayland.inputs.nixpkgs.follows = "nixpkgs-wayland";
-    # eww-wayland.inputs.rust-overlay.follows = "rust-overlay";
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
@@ -22,8 +18,11 @@
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
 
-    # nixify themex and make everything match nicely with nix-colors!
+    # TODO: remove and switch to stylix completely
     nix-colors.url = "github:misterio77/nix-colors";
+
+    # stylix
+    stylix.url = "github:danth/stylix";
 
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
   };
@@ -34,6 +33,7 @@
     pre-commit-hooks,
     home-manager,
     hyprland,
+    stylix,
     ...
   } @ inputs: {
     checks.x86_64-linux = {
@@ -61,7 +61,7 @@
         modules = [
           ./hosts/framnix/configuration.nix
           hyprland.nixosModules.default
-          # { programs.hyprland.enable = true; }
+          stylix.nixosModules.stylix
         ];
       };
 
@@ -71,7 +71,7 @@
         modules = [
           ./hosts/DanPC/configuration.nix
           hyprland.nixosModules.default
-          # { programs.hyprland.enable = true; }
+          stylix.nixosModules.stylix
         ];
       };
     };
@@ -87,6 +87,8 @@
           ./lib/default.nix
           ./home/default.nix
           ./hosts/framnix/default.nix
+          stylix.homeManagerModules.stylix
+          ./hosts/framnix/stylix.nix
           hyprland.homeManagerModules.default
           {
             wayland.windowManager.hyprland.enable = true;
@@ -106,6 +108,8 @@
           ./lib/default.nix
           ./home/default.nix
           ./hosts/DanPC/default.nix
+          stylix.homeManagerModules.stylix
+          ./hosts/DanPC/stylix.nix
           hyprland.homeManagerModules.default
           {
             wayland.windowManager.hyprland.enable = true;

@@ -5,14 +5,17 @@
   config,
   lib,
   pkgs,
+  stylix,
   ...
-}: {
+}: let
+  settings = import ./settings.nix;
+in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./stylix.nix
     ../configuration.nix
   ];
-
   networking.hostName = "DanPC";
 
   hardware.opengl = {
@@ -31,6 +34,8 @@
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
+
+  environment.variables."GDK_SCALE" = "2";
 
   # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
   # and migrated your data accordingly.
