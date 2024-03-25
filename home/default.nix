@@ -77,6 +77,8 @@
   # home.packages = with pkgs; [ steam ];
 
   home.packages = with pkgs; [
+    nix-output-monitor
+
     # YubiKey
     #yubioath-flutter
     yubikey-personalization-gui

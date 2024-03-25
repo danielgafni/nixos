@@ -6,7 +6,7 @@ fmt:
   nix fmt
 
 nixos-rebuild host:
-  sudo nixos-rebuild --flake .#{{host}} {{mode}}
+  sudo nixos-rebuild --log-format internal-json -v --flake .#{{host}} {{mode}} |& nom --json
 
 set positional-arguments
 

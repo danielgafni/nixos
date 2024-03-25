@@ -49,7 +49,7 @@
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
     devShells.x86_64-linux.default = nixpkgs.legacyPackages.x86_64-linux.mkShell {
       inherit (self.checks.x86_64-linux.pre-commit-check) shellHook;
-      buildINputs = self.checks.x86_64-linux.pre-commit-check.enabledPackages;
+      buildINputs = self.checks.x86_64-linux.pre-commit-check.enabledPackages ++ (with nixpkgs.legacyPackages.x86_64-linux; [nix-output-monitor]);
     };
 
     # NixOS configuration entrypoint
