@@ -193,11 +193,11 @@
     brightnessctl
     pavucontrol
     direnv
-    (python310.withPackages (ps:
-      with ps; [
-        pipx
-        pre-commit
-      ]))
+    pre-commit
+    # (python310.withPackages (ps:
+    #   with ps; [
+    #     pre-commit
+    #   ]))
   ];
 
   nixpkgs.config = {
