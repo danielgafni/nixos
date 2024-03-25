@@ -13,6 +13,12 @@
   networking.hostName = "framnix";
 
   powerManagement.powertop.enable = true;
+
+  services.fprintd.enable = false;
+  services.fprintd.tod.enable = true;
+  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix; # try this driver)
+  # services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090; # or this one
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

@@ -229,10 +229,6 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-  services.fprintd.enable = true;
-  services.fprintd.tod.enable = true;
-  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix; # try this driver)
-  # services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090; # or this one
 
   #services.xserver.enable = true;
   #services.xserver.displayManager.sddm.enable = true;
