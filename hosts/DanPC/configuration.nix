@@ -35,6 +35,8 @@ in {
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
+  environment.variables."GDK_SCALE" = "2";
+
   # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
   # and migrated your data accordingly.
   #

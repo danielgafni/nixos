@@ -140,7 +140,6 @@
     wget
     zsh
     starship
-    zellij
     eza
     pfetch
     neofetch
@@ -249,11 +248,14 @@
     source = ./.config/wofi;
   };
 
+  programs.swaylock.enable = true;
+  programs.zellij.enable = true;
+
   # swaylock
-  xdg.configFile."swaylock" = {
-    recursive = true;
-    source = ./.config/swaylock;
-  };
+  # xdg.configFile."swaylock" = {
+  #   recursive = true;
+  #   source = ./.config/swaylock;
+  # };
   xdg.configFile."helix" = {
     recursive = true;
     source = ./.config/helix;

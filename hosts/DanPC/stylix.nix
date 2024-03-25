@@ -10,7 +10,7 @@
 }: {
   stylix.cursor = {
     name = "Catppuccin-Mocha-Dark-Cursors";
-    size = 32;
+    size = 64;
     package = pkgs.catppuccin-cursors.mochaDark;
   };
 
