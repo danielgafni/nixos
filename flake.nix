@@ -25,6 +25,9 @@
     # nixify themex and make everything match nicely with nix-colors!
     nix-colors.url = "github:misterio77/nix-colors";
 
+    # stylix (currently only used for system theminx liks GRUB due to inflexibility)
+    stylix.url = "github:danth/stylix";
+
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
   };
 
@@ -34,6 +37,7 @@
     pre-commit-hooks,
     home-manager,
     hyprland,
+    stylix,
     ...
   } @ inputs: {
     checks.x86_64-linux = {
@@ -61,6 +65,7 @@
         modules = [
           ./hosts/framnix/configuration.nix
           hyprland.nixosModules.default
+          stylix.nixosModules.stylix
           # { programs.hyprland.enable = true; }
         ];
       };
@@ -71,6 +76,7 @@
         modules = [
           ./hosts/DanPC/configuration.nix
           hyprland.nixosModules.default
+          stylix.nixosModules.stylix
           # { programs.hyprland.enable = true; }
         ];
       };

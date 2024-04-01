@@ -53,6 +53,20 @@
   # https://nixos.wiki/wiki/WireGuard#Setting_up_WireGuard_with_NetworkManager
   networking.firewall.checkReversePath = false;
 
+  # stylix
+  stylix.image = ./.config/wallpapers/catppuccin-forrest.png;
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+  stylix.fonts = {
+    monospace = {
+      package = pkgs.nerdfonts.override {fonts = ["FiraCode"];};
+      name = "Fira Code Nerd Font";
+    };
+    emoji = {
+      package = pkgs.noto-fonts-emoji;
+      name = "Noto Color Emoji";
+    };
+  };
+
   # Set your time zone.
   # time.timeZone = "Europe/Belgrade";
   services.localtimed.enable = true;
