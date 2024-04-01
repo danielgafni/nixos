@@ -72,6 +72,9 @@
     };
   };
 
+  fonts.fontDir.enable = true;
+  fonts.fontconfig.enable = true;
+
   # Set your time zone.
   # time.timeZone = "Europe/Belgrade";
   services.localtimed.enable = true;
