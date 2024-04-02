@@ -88,6 +88,8 @@
     (pkgs.wrapHelm pkgs.kubernetes-helm {plugins = [pkgs.kubernetes-helmPlugins.helm-secrets];})
     awscli2
     (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
+    opentofu
+    terragrunt
 
     # wayland/DE
     libnotify # notify-send command
