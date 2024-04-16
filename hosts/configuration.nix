@@ -220,6 +220,8 @@
         pipx
         pre-commit
       ]))
+    nix-output-monitor
+    minikube
   ];
 
   nixpkgs.config = {
