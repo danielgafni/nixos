@@ -10,7 +10,7 @@
 
     nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
     rust-overlay.url = "github:oxalica/rust-overlay";
-    eww-wayland.url = "github:elkowar/eww";
+    # eww-wayland.url = "github:elkowar/eww";
     # tmp fix https://github.com/elkowar/eww/issues/817
     # eww-wayland.inputs.nixpkgs.follows = "nixpkgs-wayland";
     # eww-wayland.inputs.rust-overlay.follows = "rust-overlay";

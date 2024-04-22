@@ -224,7 +224,7 @@
   home.pointerCursor = {
     name = "Catppuccin-Mocha-Dark-Cursors";
     package = pkgs.catppuccin-cursors.mochaDark;
-    size = 16;
+    # size is defined in hosts//home.nix
   };
 
   # mako (notifications) config
