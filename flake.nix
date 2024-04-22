@@ -92,7 +92,11 @@
         modules = [
           ./lib/default.nix
           ./home/default.nix
+
+          # TODO: squash these 2 in 1 module
+          ./hosts/framnix/home.nix
           ./hosts/framnix/default.nix
+
           hyprland.homeManagerModules.default
           {
             wayland.windowManager.hyprland.enable = true;
@@ -111,7 +115,11 @@
         modules = [
           ./lib/default.nix
           ./home/default.nix
+
+          # TODO: squash these 2 in 1 module
           ./hosts/DanPC/default.nix
+          ./hosts/DanPC/home.nix
+
           hyprland.homeManagerModules.default
           {
             wayland.windowManager.hyprland.enable = true;
