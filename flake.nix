@@ -10,7 +10,7 @@
 
     nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
     rust-overlay.url = "github:oxalica/rust-overlay";
-    eww-wayland.url = "github:elkowar/eww";
+    # eww-wayland.url = "github:elkowar/eww";
     # tmp fix https://github.com/elkowar/eww/issues/817
     # eww-wayland.inputs.nixpkgs.follows = "nixpkgs-wayland";
     # eww-wayland.inputs.rust-overlay.follows = "rust-overlay";
@@ -92,7 +92,11 @@
         modules = [
           ./lib/default.nix
           ./home/default.nix
+
+          # TODO: squash these 2 in 1 module
+          ./hosts/framnix/home.nix
           ./hosts/framnix/default.nix
+
           hyprland.homeManagerModules.default
           {
             wayland.windowManager.hyprland.enable = true;
@@ -111,7 +115,11 @@
         modules = [
           ./lib/default.nix
           ./home/default.nix
+
+          # TODO: squash these 2 in 1 module
           ./hosts/DanPC/default.nix
+          ./hosts/DanPC/home.nix
+
           hyprland.homeManagerModules.default
           {
             wayland.windowManager.hyprland.enable = true;
