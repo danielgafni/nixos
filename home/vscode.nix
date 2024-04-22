@@ -7,6 +7,8 @@
         catppuccin.catppuccin-vsc
         catppuccin.catppuccin-vsc-icons
         jnoortheen.nix-ide
+        hashicorp.hcl
+        hashicorp.terraform
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
