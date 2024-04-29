@@ -20,4 +20,4 @@ jobs:
     - run: nix-env -i home-manager
     - run: nix build .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
     - run: nix flake check
-    - run: home-manager --flake .#dan@{{ matrix.host }} build
+    - run: home-manager --flake .#dan@${{ matrix.host }} build
