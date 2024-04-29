@@ -7,8 +7,8 @@
         catppuccin.catppuccin-vsc
         catppuccin.catppuccin-vsc-icons
         jnoortheen.nix-ide
-        GitHub.copilot
-        HashiCorp.terraform
+        github.copilot
+        hashicorp.terraform
         ms-kubernetes-tools.vscode-kubernetes-tools
         ms-python.python
         shd101wyy.markdown-preview-enhanced
