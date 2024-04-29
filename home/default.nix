@@ -85,7 +85,7 @@
     k9s
     sops
     age
-    (pkgs.wrapHelm pkgs.kubernetes-helm {plugins = [pkgs.kubernetes-helmPlugins.helm-secrets];})
+    (pkgs.wrapHelm pkgs.kubernetes-helm {plugins = [];})
     awscli2
     (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
     opentofu

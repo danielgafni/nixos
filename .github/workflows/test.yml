@@ -9,12 +9,30 @@ jobs:
         host: [DanPC, framnix]
     runs-on: ubuntu-latest
     steps:
+    - name: Free Disk Space (Ubuntu)
+      uses: jlumbroso/free-disk-space@main
+      with:
+        # this might remove tools that are actually needed,
+        # if set to "true" but frees about 6 GB
+        tool-cache: false
+        
+        # all of these default to true, but feel free to set to
+        # "false" if necessary for your workflow
+        android: true
+        dotnet: true
+        haskell: true
+        large-packages: true
+        docker-images: true
+        swap-storage: true
     - uses: actions/checkout@v4
     - uses: DeterminateSystems/nix-installer-action@main
     - uses: cachix/cachix-action@v14
       with:
         name: danielgafni
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+    - run: nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+    - run: nix-channel --update
+    - run: nix-env -i home-manager
     - run: nix build .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
     - run: nix flake check
-
+    - run: home-manager --flake .#dan@${{ matrix.host }} build
