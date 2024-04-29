@@ -11,6 +11,7 @@
         hashicorp.terraform
         ms-kubernetes-tools.vscode-kubernetes-tools
         ms-python.python
+        redhat.vscode-yaml
         shd101wyy.markdown-preview-enhanced
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
