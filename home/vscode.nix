@@ -7,6 +7,11 @@
         catppuccin.catppuccin-vsc
         catppuccin.catppuccin-vsc-icons
         jnoortheen.nix-ide
+        GitHub.copilot
+        HashiCorp.terraform
+        ms-kubernetes-tools.vscode-kubernetes-tools
+        ms-python.python
+        shd101wyy.markdown-preview-enhanced
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
