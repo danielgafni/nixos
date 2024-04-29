@@ -16,7 +16,7 @@ jobs:
         name: danielgafni
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
     - run: nix-channel --add https://nixos.org/channels/nixos-unstable nixpkgs
-    # - run: nix-channel --update
+    - run: nix-channel --update
     - run: nix-env -i nixpkgs#home-manager
     - run: nix build .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
     - run: nix flake check
