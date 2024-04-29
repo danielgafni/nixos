@@ -43,10 +43,7 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager = {
     enable = true;
-    extraConfig = ''
-      [main]
-      auth-polkit=false
-    '';
+    settings.main.authPolkit = false;
   }; # Easiest to use and most distros use this by default.
 
   networking.networkmanager.insertNameservers = ["1.1.1.1" "8.8.8.8"];
