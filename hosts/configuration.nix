@@ -26,6 +26,8 @@
     auto-optimise-store = true;
   };
 
+  nix.settings.trusted-users = ["root" "dan"];
+
   nix.gc = {
     automatic = true;
     dates = "weekly";
