@@ -221,6 +221,7 @@
       ]))
     nix-output-monitor
     minikube
+    amazon-ecr-credential-helper
   ];
 
   nixpkgs.config = {
