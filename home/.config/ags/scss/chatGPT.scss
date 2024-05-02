@@ -1,0 +1,32 @@
+.ai-container {
+  .ai-message-list {
+    margin-bottom: 3px;
+
+    .ai-message {
+      font-size: 0.9rem;
+      font-weight: bold;
+      .ai-role {
+        &.user {
+          color: $primary_fg
+        }
+
+        &.assistant {
+          color: $secondary_fg;
+        }
+      }
+      .ai-msg-content {
+        background-color: $secondary_bg;
+      }
+    }
+  }
+  .ai-entry-box {
+    border: 1px solid $primary_fg;
+    border-radius: 1rem;
+    padding: 8px;
+    .ai-send-button {
+      min-width: 2rem;
+      border-radius: 5px;
+      background-color: $secondary_bg;
+    }
+  }
+}

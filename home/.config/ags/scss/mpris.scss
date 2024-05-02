@@ -1,0 +1,57 @@
+.bar-music-container {
+  background-color: $primary_bg;
+  padding: 1px;
+
+  .music-progress {
+    font-size: 2px;
+    min-width: 12px;
+    min-height: 12px;
+
+    image {
+      font-size: 0.5rem;
+    }
+  }
+}
+
+.music-container {
+
+  background-color: $primary_bg;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-top: 5px;
+  min-height: 10rem;
+
+  .music-player-icon {
+    font-size: 1.6rem;
+    padding-right: 8px
+  }
+
+  .music-player-name {
+    text-shadow: 0.1rem 0.1rem $primary_bg;
+  }
+
+  .music-artist {
+    text-shadow: 0.1rem 0.1rem $primary_bg;
+    padding-top: 5px;
+  }
+
+  .music-title {
+    font-weight: bold;
+    text-shadow: 0.1rem 0.1rem $primary_bg;
+    padding-top: 5px;
+  }
+
+  .music-control-box {
+    padding-top: 1.5rem;
+    .music-button {
+      font-size: 1.6rem;
+      -gtk-icon-shadow: 0.1rem 0.1rem $primary_bg;
+    }
+
+    .music-progress {
+      font-size: 3px;
+      min-width: 40px;
+      min-height: 40px;
+    }
+  }
+}

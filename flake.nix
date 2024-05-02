@@ -10,10 +10,9 @@
 
     nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
     rust-overlay.url = "github:oxalica/rust-overlay";
-    # eww-wayland.url = "github:elkowar/eww";
-    # tmp fix https://github.com/elkowar/eww/issues/817
-    # eww-wayland.inputs.nixpkgs.follows = "nixpkgs-wayland";
-    # eww-wayland.inputs.rust-overlay.follows = "rust-overlay";
+
+    catppuccin.url = "github:catppuccin/nix";
+    ags.url = "github:Aylur/ags";
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
@@ -38,6 +37,7 @@
     home-manager,
     hyprland,
     stylix,
+    catppuccin,
     ...
   } @ inputs: {
     checks.x86_64-linux = {
@@ -66,7 +66,7 @@
           ./hosts/framnix/configuration.nix
           hyprland.nixosModules.default
           stylix.nixosModules.stylix
-          # { programs.hyprland.enable = true; }
+          home-manager.nixosModules.home-manager
         ];
       };
 
@@ -77,7 +77,7 @@
           ./hosts/DanPC/configuration.nix
           hyprland.nixosModules.default
           stylix.nixosModules.stylix
-          # { programs.hyprland.enable = true; }
+          home-manager.nixosModules.home-manager
         ];
       };
     };
@@ -97,14 +97,12 @@
           ./hosts/framnix/home.nix
           ./hosts/framnix/default.nix
 
+          catppuccin.homeManagerModules.catppuccin
+
           hyprland.homeManagerModules.default
           {
             wayland.windowManager.hyprland.enable = true;
           }
-          # {
-          # home-manager.useGlobalPkgs = true;
-          # home-manager.useUserPackages = true;
-          # }
         ];
       };
 
@@ -120,14 +118,12 @@
           ./hosts/DanPC/default.nix
           ./hosts/DanPC/home.nix
 
+          catppuccin.homeManagerModules.catppuccin
+
           hyprland.homeManagerModules.default
           {
             wayland.windowManager.hyprland.enable = true;
           }
-          # {
-          # home-manager.useGlobalPkgs = true;
-          # home-manager.useUserPackages = true;
-          # }
         ];
       };
     };

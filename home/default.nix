@@ -18,6 +18,10 @@
     ./eww.nix
     ./hyprpaper.nix
     ./vscode.nix
+    ./catppuccin.nix
+    ./starship.nix
+    ./gtk.nix
+    ./ags.nix
   ];
 
   nixpkgs = {
@@ -73,6 +77,8 @@
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
 
+  xdg.enable = true;
+
   home.packages = with pkgs; [
     # YubiKey
     #yubioath-flutter
@@ -121,7 +127,6 @@
     curl
     wget
     zsh
-    starship
     zellij
     eza
     pfetch
