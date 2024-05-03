@@ -66,7 +66,7 @@
           ./hosts/framnix/configuration.nix
           hyprland.nixosModules.default
           stylix.nixosModules.stylix
-          # { programs.hyprland.enable = true; }
+          {programs.hyprland.xwayland.enable = true;}
         ];
       };
 
@@ -77,7 +77,7 @@
           ./hosts/DanPC/configuration.nix
           hyprland.nixosModules.default
           stylix.nixosModules.stylix
-          # { programs.hyprland.enable = true; }
+          {programs.hyprland.xwayland.enable = true;}
         ];
       };
     };
