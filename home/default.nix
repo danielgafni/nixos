@@ -83,6 +83,7 @@
     kubectl
     kubeseal
     k9s
+    lens
     sops
     age
     (pkgs.wrapHelm pkgs.kubernetes-helm {plugins = [];})
