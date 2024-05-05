@@ -5,6 +5,7 @@
   config,
   pkgs,
   lib,
+  allowed-unfree-packages,
   ...
 }: {
   nix.settings = {
@@ -24,6 +25,10 @@
     ];
     experimental-features = ["nix-command" "flakes"];
     auto-optimise-store = true;
+  };
+
+  nixpkgs.config = {
+    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
   };
 
   nix.settings.trusted-users = ["root" "dan"];

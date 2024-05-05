@@ -39,9 +39,27 @@
     hyprland,
     stylix,
     ...
-  } @ inputs: {
-    checks.x86_64-linux = {
-      pre-commit-check = pre-commit-hooks.lib."x86_64-linux".run {
+  } @ inputs: let
+    system = "x86_64-linux";
+    user = "dan";
+
+    # Define the list of unfree packages to allow here, so you can pass it to
+    # both `sudo nixos-rebuild` and `home-manager`
+    allowed-unfree-packages = [
+      "google-chrome"
+      "obsidian"
+      "postman"
+      "vscode"
+      "vscode-extension-github-copilot"
+      "lens-desktop"
+      "slack"
+      "discord"
+      "pycharm-professional"
+      "gateway"
+    ];
+  in {
+    checks."${system}" = {
+      pre-commit-check = pre-commit-hooks.lib."${system}".run {
         src = ./.;
         hooks = {
           alejandra.enable = true;
@@ -50,17 +68,18 @@
       };
     };
 
-    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
-    devShells.x86_64-linux.default = nixpkgs.legacyPackages.x86_64-linux.mkShell {
-      inherit (self.checks.x86_64-linux.pre-commit-check) shellHook;
-      buildINputs = self.checks.x86_64-linux.pre-commit-check.enabledPackages;
+    formatter."${system}" = nixpkgs.legacyPackages."${system}".alejandra;
+    devShells."${system}".default = nixpkgs.legacyPackages."${system}".mkShell {
+      inherit (self.checks."${system}".pre-commit-check) shellHook;
+      buildINputs = self.checks."${system}".pre-commit-check.enabledPackages;
     };
 
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
       framnix = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;}; # Pass flake inputs to our config
+        inherit system;
+        specialArgs = {inherit allowed-unfree-packages user inputs;}; # Pass flake inputs to our config
         # > Our main nixos configuration file <
         modules = [
           ./hosts/framnix/configuration.nix
@@ -71,7 +90,8 @@
       };
 
       DanPC = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;}; # Pass flake inputs to our config
+        inherit system;
+        specialArgs = {inherit allowed-unfree-packages user inputs;}; # Pass flake inputs to our config
         # > Our main nixos configuration file <
         modules = [
           ./hosts/DanPC/configuration.nix
@@ -85,9 +105,9 @@
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
-      "dan@framnix" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs;}; # Pass flake inputs to our config
+      "${user}@framnix" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages."${system}"; # Home-manager requires 'pkgs' instance
+        extraSpecialArgs = {inherit allowed-unfree-packages user inputs;}; # Pass flake inputs to our config
         # > Our main home-manager configuration file <
         modules = [
           ./lib/default.nix
@@ -101,16 +121,12 @@
           {
             wayland.windowManager.hyprland.enable = true;
           }
-          # {
-          # home-manager.useGlobalPkgs = true;
-          # home-manager.useUserPackages = true;
-          # }
         ];
       };
 
-      "dan@DanPC" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs;}; # Pass flake inputs to our config
+      "${user}@DanPC" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages."${system}"; # Home-manager requires 'pkgs' instance
+        extraSpecialArgs = {inherit allowed-unfree-packages user inputs;}; # Pass flake inputs to our config
         # > Our main home-manager configuration file <
         modules = [
           ./lib/default.nix
@@ -124,10 +140,6 @@
           {
             wayland.windowManager.hyprland.enable = true;
           }
-          # {
-          # home-manager.useGlobalPkgs = true;
-          # home-manager.useUserPackages = true;
-          # }
         ];
       };
     };
