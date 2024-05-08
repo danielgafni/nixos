@@ -153,6 +153,7 @@
     signal-desktop
     slack
     discord
+    zoom
 
     # browsers
     google-chrome
