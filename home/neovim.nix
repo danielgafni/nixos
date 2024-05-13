@@ -27,9 +27,13 @@
     plugins.noice.enable = true;
     plugins.lightline.enable = true;
     plugins.treesitter.enable = true;
+    plugins.fugitive.enable = true;
+    plugins.chadtree.enable = true;
+    plugins.bufferline.enable = true;
 
     plugins.lsp.enable = true;
     plugins.lsp-format.enable = true;
+    plugins.helm.enable = true;
 
     opts = {
       number = true; # Show line numbers
