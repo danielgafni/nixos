@@ -17,6 +17,7 @@
 
     plugins.nix.enable = true;
     plugins.lightline.enable = true;
+    plugins.copiloy-vim.enable = true;
     plugins.cmp.enable = true;
     plugins.cmp-path.enable = true;
     plugins.cmp-buffer.enable = true;

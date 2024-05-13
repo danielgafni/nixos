@@ -19,6 +19,7 @@
     ./hyprpaper.nix
     ./vscode.nix
     ./neovim.nix
+    inputs.nixvim.homeManagerModules.nixvim
   ];
 
   nixpkgs = {

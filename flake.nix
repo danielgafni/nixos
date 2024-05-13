@@ -15,6 +15,11 @@
     # eww-wayland.inputs.nixpkgs.follows = "nixpkgs-wayland";
     # eww-wayland.inputs.rust-overlay.follows = "rust-overlay";
 
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -38,6 +43,7 @@
     home-manager,
     hyprland,
     stylix,
+    nixvim,
     ...
   } @ inputs: {
     checks.x86_64-linux = {
