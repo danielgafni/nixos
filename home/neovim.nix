@@ -23,7 +23,6 @@
     plugins.cmp-path.enable = true;
     plugins.cmp-buffer.enable = true;
     plugins.cmp-cmdline.enable = true;
-    plugins.copilot-cmp.enable = true;
 
     plugins.noice.enable = true;
     plugins.lightline.enable = true;
