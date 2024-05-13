@@ -16,14 +16,17 @@
     };
 
     plugins.nix.enable = true;
-    plugins.lightline.enable = true;
+
     plugins.copilot-vim.enable = true;
+
     plugins.cmp.enable = true;
     plugins.cmp-path.enable = true;
     plugins.cmp-buffer.enable = true;
     plugins.cmp-cmdline.enable = true;
     plugins.copilot-cmp.enable = true;
 
+    plugins.noice.enable = true;
+    plugins.lightline.enable = true;
     plugins.treesitter.enable = true;
 
     plugins.lsp.enable = true;
