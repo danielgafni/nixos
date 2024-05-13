@@ -233,6 +233,11 @@
     };
   };
 
+  #programs.ags = {
+  #  enable = true;
+  #  configDir = "../home/.config/ags";
+  #};
+
   # programs = {
   #   direnv.enable = true;
   #   nix-direnv.enable = true;

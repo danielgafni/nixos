@@ -24,5 +24,7 @@ in {
 
     EDITOR = "hx";
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+
+    TERRAGRUNT_PROVIDER_CACHE = "1";
   };
 }
