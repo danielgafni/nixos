@@ -119,6 +119,7 @@
     pre-commit
     strace
     just
+    sad
 
     # fonts
     (
