@@ -2,8 +2,16 @@
 
 My NixOS configuration.
 
+Key specs:
+ - `home-manager` for user configuration
+ - `hyprland` as Wayland compositor & window manager
+ - `catppuccin` theme for everything 
+
+
+![assets/NixOS-rice.png](assets/NixOS-rice.png)
+
 > [!WARNING]  
-> WIP, not documented, perhaps not usable.
+> WIP, not documented, perhaps not usable
 
 ## Usage
 
