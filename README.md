@@ -5,6 +5,7 @@ My NixOS configuration.
 Key specs:
  - `home-manager` for user configuration
  - `hyprland` as Wayland compositor & window manager
+ - `eww` for status bar amd some widgets
  - `catppuccin` theme for everything 
 
 
