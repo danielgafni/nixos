@@ -58,7 +58,7 @@
     keymaps = [
       {
         key = "<leader>t";
-        action = "<cmd>:CHADopen<CR>";
+        action = "<cmd>CHADopen<CR>";
       }
     ];
   };

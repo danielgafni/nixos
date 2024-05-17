@@ -27,6 +27,9 @@
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
 
+    # provides catppuccin for lots of packages
+    catppuccin.url = "github:catppuccin/nix";
+
     # nixify themex and make everything match nicely with nix-colors!
     nix-colors.url = "github:misterio77/nix-colors";
 
@@ -41,6 +44,7 @@
     nixpkgs,
     pre-commit-hooks,
     home-manager,
+    catppuccin,
     hyprland,
     stylix,
     nixvim,
@@ -71,6 +75,7 @@
         modules = [
           ./hosts/framnix/configuration.nix
           hyprland.nixosModules.default
+          catppuccin.nixosModules.catppuccin
           stylix.nixosModules.stylix
           {programs.hyprland.xwayland.enable = true;}
         ];
@@ -82,6 +87,7 @@
         modules = [
           ./hosts/DanPC/configuration.nix
           hyprland.nixosModules.default
+          catppuccin.nixosModules.catppuccin
           stylix.nixosModules.stylix
           {programs.hyprland.xwayland.enable = true;}
         ];
@@ -93,7 +99,7 @@
     homeConfigurations = {
       "dan@framnix" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs;}; # Pass flake inputs to our config
+        extraSpecialArgs = {inherit inputs home-manager;}; # Pass flake inputs to our config
         # > Our main home-manager configuration file <
         modules = [
           ./lib/default.nix
@@ -103,14 +109,11 @@
           ./hosts/framnix/home.nix
           ./hosts/framnix/default.nix
 
+          catppuccin.homeManagerModules.catppuccin
           hyprland.homeManagerModules.default
           {
             wayland.windowManager.hyprland.enable = true;
           }
-          # {
-          # home-manager.useGlobalPkgs = true;
-          # home-manager.useUserPackages = true;
-          # }
         ];
       };
 
@@ -126,14 +129,11 @@
           ./hosts/DanPC/default.nix
           ./hosts/DanPC/home.nix
 
+          catppuccin.homeManagerModules.catppuccin
           hyprland.homeManagerModules.default
           {
             wayland.windowManager.hyprland.enable = true;
           }
-          # {
-          # home-manager.useGlobalPkgs = true;
-          # home-manager.useUserPackages = true;
-          # }
         ];
       };
     };

@@ -5,6 +5,8 @@
   lib,
   config,
   pkgs,
+  home-manager,
+  catppuccin,
   ...
 }: {
   # You can import other home-manager modules here
@@ -19,6 +21,7 @@
     ./hyprpaper.nix
     ./vscode.nix
     ./neovim.nix
+    ./k9s.nix
     inputs.nixvim.homeManagerModules.nixvim
   ];
 
@@ -34,11 +37,16 @@
     };
   };
 
+  # home-manager.backupFileExtension = ".bak";
+
   # TODO: Set your username
   home = {
     username = "dan";
     homeDirectory = "/home/dan";
   };
+
+  catppuccin.flavour = "mocha";
+  xdg.enable = true;
 
   colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
   programs.dircolors.enable = true;
@@ -71,7 +79,7 @@
     # devops
     kubectl
     kubeseal
-    k9s
+    # k9s
     lens
     sops
     age
