@@ -106,6 +106,7 @@
     alacritty
     kitty
     ranger
+    graphviz
 
     # audio
     pipewire
