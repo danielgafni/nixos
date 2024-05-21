@@ -5,6 +5,7 @@
   lib,
   config,
   pkgs,
+  allowed-unfree-packages,
   home-manager,
   catppuccin,
   ...
@@ -30,10 +31,7 @@
       inputs.nixpkgs-wayland.overlay
     ];
     config = {
-      # Disable if you don't want unfree packages
-      allowUnfree = true;
-      # Workaround for https://github.com/nix-community/home-manager/issues/2942
-      allowUnfreePredicate = _: true;
+      allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
     };
   };
 
@@ -163,6 +161,7 @@
     vim
     helix
     jetbrains.pycharm-professional
+    jetbrains.gateway
 
     # Python tools
     poetry
