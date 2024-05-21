@@ -6,6 +6,8 @@
   config,
   pkgs,
   allowed-unfree-packages,
+  home-manager,
+  catppuccin,
   ...
 }: {
   # You can import other home-manager modules here
@@ -19,19 +21,13 @@
     ./eww.nix
     ./hyprpaper.nix
     ./vscode.nix
+    ./neovim.nix
+    ./k9s.nix
+    inputs.nixvim.homeManagerModules.nixvim
   ];
 
   nixpkgs = {
-    # You can add overlays here
     overlays = [
-      # If you want to use overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
       inputs.nixpkgs-wayland.overlay
     ];
     config = {
@@ -39,11 +35,16 @@
     };
   };
 
+  # home-manager.backupFileExtension = ".bak";
+
   # TODO: Set your username
   home = {
     username = "dan";
     homeDirectory = "/home/dan";
   };
+
+  catppuccin.flavour = "mocha";
+  xdg.enable = true;
 
   colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
   programs.dircolors.enable = true;
@@ -66,9 +67,6 @@
       };
     };
   };
-  # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
-  # home.packages = with pkgs; [ steam ];
 
   home.packages = with pkgs; [
     # YubiKey
@@ -79,7 +77,7 @@
     # devops
     kubectl
     kubeseal
-    k9s
+    # k9s
     lens
     sops
     age
@@ -106,6 +104,7 @@
     alacritty
     kitty
     ranger
+    graphviz
 
     # audio
     pipewire
@@ -127,6 +126,7 @@
     pre-commit
     strace
     just
+    sad
 
     # fonts
     (
@@ -159,7 +159,6 @@
 
     # editors & IDE
     vim
-    neovim
     helix
     jetbrains.pycharm-professional
     jetbrains.gateway
