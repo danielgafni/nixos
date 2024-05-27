@@ -43,7 +43,7 @@
     homeDirectory = "/home/dan";
   };
 
-  catppuccin.flavour = "mocha";
+  catppuccin.flavor = "mocha";
   xdg.enable = true;
 
   colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
