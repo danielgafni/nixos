@@ -43,7 +43,7 @@
     homeDirectory = "/home/dan";
   };
 
-  catppuccin.flavour = "mocha";
+  catppuccin.flavor = "mocha";
   xdg.enable = true;
 
   colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
@@ -92,7 +92,6 @@
     mako
     swaylock
     wofi
-    waybar
     hyprpaper
     hyprpicker
     grim
@@ -281,7 +280,6 @@
       # notifications
       exec-once=mako
       # bar
-      #exec-once=waybar
       # idle detection
       exec-once=swayidle -w timeout 1800 'swaylock' timeout 12000 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock'
       # eww widgets
