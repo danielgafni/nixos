@@ -3,11 +3,8 @@
 {
   inputs,
   lib,
-  config,
   pkgs,
   allowed-unfree-packages,
-  home-manager,
-  catppuccin,
   ...
 }: {
   # You can import other home-manager modules here
@@ -16,13 +13,11 @@
     inputs.nix-colors.homeManagerModule
 
     # You can also split up your configuration and import pieces of it here:
+    ./programs
     ./shell
-    ./terminals/kitty.nix
     ./eww.nix
     ./hyprpaper.nix
-    ./vscode.nix
-    ./neovim.nix
-    ./k9s.nix
+    ./environment.nix
     inputs.nixvim.homeManagerModules.nixvim
   ];
 
@@ -48,25 +43,6 @@
 
   colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
   programs.dircolors.enable = true;
-  programs.bat = {
-    enable = true;
-    config = {
-      pager = "less -FR";
-      theme = "CatppuccinMocha";
-    };
-    extraPackages = with pkgs.bat-extras; [batdiff batman batgrep batwatch];
-    themes = {
-      CatppuccinMocha = {
-        src = pkgs.fetchFromGitHub {
-          owner = "catppuccin";
-          repo = "bat"; # Bat uses sublime syntax for its themes
-          rev = "ba4d16880d63e656acced2b7d4e034e4a93f74b1";
-          sha256 = "1g2r6j33f4zys853i1c5gnwcdbwb6xv5w6pazfdslxf69904lrg9";
-        };
-        file = "Catppuccin-mocha.tmTheme";
-      };
-    };
-  };
 
   home.packages = with pkgs; [
     # YubiKey
@@ -118,7 +94,6 @@
     wget
     zsh
     starship
-    zellij
     eza
     pfetch
     neofetch
@@ -177,38 +152,6 @@
   news.display = "silent";
   news.json = lib.mkForce {};
   news.entries = lib.mkForce [];
-
-  programs.git = {
-    enable = true;
-    userName = "danielgafni";
-    userEmail = "danielgafni16@gmail.com";
-    delta = {
-      enable = true;
-      options = {
-        side-by-side = true;
-        decorations = {
-          commit-decoration-style = "bold yellow box ul";
-          file-decoration-style = "none";
-          file-style = "bold yellow ul";
-        };
-        features = "decorations";
-        whitespace-error-style = "22 reverse";
-      };
-    };
-    extraConfig = {
-      commit.gpgsign = true;
-      user.signingkey = "7B0740201D518DB134D5C75AB8D13360DED17662";
-      # the below options are mostly taken from https://jvns.ca/blog/2024/02/16/popular-git-config-options/
-      push.autosetupremote = true;
-      push.default = "current";
-      pull.rebase = true;
-      fetch.prune = true;
-      init.defaultBranch = "main";
-      merge.conflictstyle = "diff3";
-      rerere.enabled = true;
-      diff.algorithm = "histogram";
-    };
-  };
 
   # systemd.user,targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target"  ];
 

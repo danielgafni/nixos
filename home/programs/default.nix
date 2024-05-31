@@ -1,0 +1,7 @@
+{...}: {
+  imports = [
+    ./terminals
+    ./cli
+    ./editors
+  ];
+}
