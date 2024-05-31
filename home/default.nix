@@ -9,9 +9,6 @@
 }: {
   # You can import other home-manager modules here
   imports = [
-    # If you want to use home-manager modules from other flakes (such as nix-colors):
-    inputs.nix-colors.homeManagerModule
-
     # You can also split up your configuration and import pieces of it here:
     ./programs
     ./shell
@@ -38,10 +35,10 @@
     homeDirectory = "/home/dan";
   };
 
+  # catppuccin.enable = true; # sets Catppuccin theme for all programs supported by https://github.com/catppuccin/nix
   catppuccin.flavor = "mocha";
   xdg.enable = true;
 
-  colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
   programs.dircolors.enable = true;
 
   home.packages = with pkgs; [
