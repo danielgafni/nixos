@@ -1,4 +1,6 @@
 {pkgs, ...}: {
+  programs.neovim.catppuccin.enable = false; # don't use catppuccin-nix, use catppuccin from nixvim instead (see below)
+
   programs.nixvim = {
     enable = true;
     clipboard.providers.wl-copy.enable = true;

@@ -2,7 +2,6 @@
   description = "@danielgafni's NixOS config";
 
   inputs = {
-    # Nixpkgs
     hyprland.url = "github:hyprwm/Hyprland?rev=fe7b748eb668136dd0558b7c8279bfcd7ab4d759"; # v0.39.1
     helix.url = "github:helix-editor/helix";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
@@ -29,9 +28,6 @@
 
     # provides catppuccin for lots of packages
     catppuccin.url = "github:catppuccin/nix";
-
-    # nixify themex and make everything match nicely with nix-colors!
-    nix-colors.url = "github:misterio77/nix-colors";
 
     # stylix (currently only used for system theminx liks GRUB due to inflexibility)
     stylix.url = "github:danth/stylix";
@@ -122,7 +118,6 @@
         extraSpecialArgs = {inherit allowed-unfree-packages user inputs home-manager;}; # Pass flake inputs to our config
         # > Our main home-manager configuration file <
         modules = [
-          ./lib/default.nix
           ./home/default.nix
 
           # TODO: squash these 2 in 1 module
@@ -142,7 +137,6 @@
         extraSpecialArgs = {inherit allowed-unfree-packages user inputs home-manager;}; # Pass flake inputs to our config
         # > Our main home-manager configuration file <
         modules = [
-          ./lib/default.nix
           ./home/default.nix
 
           # TODO: squash these 2 in 1 module
