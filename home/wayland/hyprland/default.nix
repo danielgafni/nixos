@@ -40,16 +40,16 @@
         gaps_out = 3;
         border_size = 2;
         # rotating gradeint border!
-        col.active_border = "rgba(88c0d0ff) rgba(b48eadff) rgba(ebcb8bff) rgba(a3be8cff) 45deg";
-        col.inactive_border = "0xff434c5e";
+        "col.active_border" = "rgba(88c0d0ff) rgba(b48eadff) rgba(ebcb8bff) rgba(a3be8cff) 45deg";
+        "col.inactive_border" = "0xff434c5e";
         apply_sens_to_raw = 0; # whether to apply the sensitivity to raw input (e.g. used by games where you aim using your mouse)
       };
       decoration = {
         drop_shadow = true;
         shadow_range = 20;
         shadow_render_power = 3;
-        col.shadow = "0xee1a1a1a";
-        col.shadow_inactive = "0xee1a1a1a";
+        "col.shadow" = "0xee1a1a1a";
+        "col.shadow_inactive" = "0xee1a1a1a";
         rounding = 10;
 
         blur = {
@@ -134,7 +134,8 @@
       	force_split=0
       }
 
-      master {}
+      master {
+      }
 
 
 
