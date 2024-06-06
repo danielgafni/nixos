@@ -81,7 +81,7 @@
         ];
 
         animation = [
-          "windows,1,4,easeOutQuint,popin"
+          "windows,1,2,easeOutQuint,popin"
           "border,1,20,easeOutQuint"
           "fade,1,10,easeOutQuint"
           "workspaces,1,6,easeOutQuint,slide"
