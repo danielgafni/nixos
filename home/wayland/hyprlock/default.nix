@@ -12,6 +12,7 @@
   inherit (config.catppuccin) sources;
   cfg = config.wayland.windowManager.hyprland.catppuccin;
 in {
+  # important! security.pam.services.hyprlock = {}; has to be added to NixOS config
   programs.hyprlock = {
     enable = true;
     settings = {
@@ -29,7 +30,7 @@ in {
       };
       background = {
         monitor = "";
-        path = "$HOME/.config/wallpapers/catppuccin-forest.png";
+        path = "screenshot";
         blur_passes = 2;
         color = "$base";
       };
