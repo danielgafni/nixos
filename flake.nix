@@ -2,17 +2,21 @@
   description = "@danielgafni's NixOS config";
 
   inputs = {
-    hyprland.url = "github:hyprwm/Hyprland?rev=fe7b748eb668136dd0558b7c8279bfcd7ab4d759"; # v0.39.1
+    hyprland = {
+      type = "git";
+      url = "https://github.com/hyprwm/Hyprland";
+      submodules = true;
+    };
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
     helix.url = "github:helix-editor/helix";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
     nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
     rust-overlay.url = "github:oxalica/rust-overlay";
-    # eww-wayland.url = "github:elkowar/eww";
-    # tmp fix https://github.com/elkowar/eww/issues/817
-    # eww-wayland.inputs.nixpkgs.follows = "nixpkgs-wayland";
-    # eww-wayland.inputs.rust-overlay.follows = "rust-overlay";
 
     nixvim = {
       url = "github:nix-community/nixvim";
@@ -42,6 +46,7 @@
     home-manager,
     catppuccin,
     hyprland,
+    hyprland-plugins,
     stylix,
     nixvim,
     ...
