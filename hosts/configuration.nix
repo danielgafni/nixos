@@ -150,6 +150,8 @@
     text = ''auth include login'';
   };
 
+  security.pam.services.hyprlock = {};
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;

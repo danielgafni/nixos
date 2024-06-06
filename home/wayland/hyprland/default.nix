@@ -81,7 +81,7 @@
         ];
 
         animation = [
-          "windows,1,4,easeOutQuint,popin"
+          "windows,1,2,easeOutQuint,popin"
           "border,1,20,easeOutQuint"
           "fade,1,10,easeOutQuint"
           "workspaces,1,6,easeOutQuint,slide"
@@ -96,7 +96,14 @@
         # notifications
         "mako"
         # idle notification
-        ''swayidle -w timeout 1800 'swaylock' timeout 12000 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock' ''
+        ''swayidle -w timeout 1800 'hyprlock' timeout 12000 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'hyprlock' ''
+      ];
+      plugin = [
+        {
+          hyprtrails = {
+            color = "$sapphire";
+          };
+        }
       ];
     };
 
@@ -197,7 +204,7 @@
       bind=SHIFT_SUPER,W,exec, hyprctl dispatch togglespecialworkspace ""
 
       # screen locking
-      bind=SUPER,L,exec,swaylock
+      bind=SUPER,L,exec,hyprlock
 
       # clear notifications
       bind=SUPER,N,exec,makoctl dismiss --all
