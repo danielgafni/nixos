@@ -43,7 +43,7 @@
     homeDirectory = "/home/dan";
   };
 
-  # catppuccin.enable = true; # sets Catppuccin theme for all programs supported by https://github.com/catppuccin/nix
+  catppuccin.enable = true; # sets Catppuccin theme for all programs supported by https://github.com/catppuccin/nix
   catppuccin.flavor = "mocha";
   xdg.enable = true;
 
@@ -72,7 +72,6 @@
     # wayland/DE
     libnotify # notify-send command
     mako
-    swaylock
     wofi
     hyprpaper
     hyprpicker
@@ -191,6 +190,7 @@
   };
 
   # swaylock
+  programs.swaylock.enable = true;
   xdg.configFile."swaylock" = {
     recursive = true;
     source = ./.config/swaylock;
