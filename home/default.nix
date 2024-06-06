@@ -43,7 +43,7 @@
     homeDirectory = "/home/dan";
   };
 
-  # catppuccin.enable = true; # sets Catppuccin theme for all programs supported by https://github.com/catppuccin/nix
+  catppuccin.enable = true; # sets Catppuccin theme for all programs supported by https://github.com/catppuccin/nix
   catppuccin.flavor = "mocha";
   xdg.enable = true;
 
@@ -67,11 +67,11 @@
     (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
     opentofu
     terragrunt
+    argocd
 
     # wayland/DE
     libnotify # notify-send command
     mako
-    swaylock
     wofi
     hyprpaper
     hyprpicker
@@ -190,6 +190,7 @@
   };
 
   # swaylock
+  programs.swaylock.enable = true;
   xdg.configFile."swaylock" = {
     recursive = true;
     source = ./.config/swaylock;
