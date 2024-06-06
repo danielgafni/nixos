@@ -298,13 +298,6 @@
     config.common.default = "*";
   };
 
-  # xdg = {
-  #   portal = {
-  #     enable = true;
-  #     # gtkUsePortal = true;  # reprecated
-  #   };
-  # };
-
   # Lorri - direnv integration for Nix
   services.lorri.enable = true;
 
@@ -324,6 +317,14 @@
       }
     '')
   ];
+
+  # update nix index for comma every week
+  services.cron = {
+    enable = true;
+    systemCronJobs = [
+      "0 0 * * 6      dan    nix run 'nixpkgs#nix-index' --extra-experimental-features 'nix-command flakes' >> /tmp/update-comma-index.log"
+    ];
+  };
 
   #environment.etc."lemurs.wayland.Hyprland" = {
   #  text = ''
