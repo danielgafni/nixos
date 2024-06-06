@@ -98,6 +98,13 @@
         # idle notification
         ''swayidle -w timeout 1800 'hyprlock' timeout 12000 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'hyprlock' ''
       ];
+      plugin = [
+        {
+          hyprtrails = {
+            color = "$sapphire";
+          };
+        }
+      ];
     };
 
     extraConfig = ''
