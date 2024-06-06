@@ -197,7 +197,7 @@
       bind=SHIFT_SUPER,W,exec, hyprctl dispatch togglespecialworkspace ""
 
       # screen locking
-      bind=SUPER,L,exec,swaylock
+      bind=SUPER,L,exec,hyprlock
 
       # clear notifications
       bind=SUPER,N,exec,makoctl dismiss --all
