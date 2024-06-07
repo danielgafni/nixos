@@ -91,10 +91,11 @@
         # use `hyprctl layers` to get layer namespaces
         # rules for Mako notifications
         "blur, notifications"
-        "ignorealpha 0, notifications" # make mako truly rounded by not displaing blurred surface around the borders
+        "ignorealpha 0, notifications" # remove blurred surface around borders
 
         # wofi
-        "blur,wofi"
+        "blur, wofi"
+        "ignorealpha 30, wofi" # remove blurred surface around borders
         "dimaround, wofi"
       ];
       env = [
@@ -137,8 +138,6 @@
       	col.border_active=rgba(88c0d0ff) rgba(b48eadff) rgba(ebcb8bff) rgba(a3be8cff) 45deg
 
       }
-
-
 
       dwindle {
               pseudotile=1 # enable pseudotiling on dwindle
@@ -199,7 +198,9 @@
       bind=SUPER,E,exec,kitty --title kitty -e ranger
       bind=SUPER,S,togglefloating,
       bind=SUPER,F,fullscreen,
-      bind=SUPER,space,exec,wofi --show drun -I -G -o DP-3 --width 30%
+
+      # TODO: exlore running with --normal-window for Hyprland theming purposes
+      bind=SUPER,space,exec,wofi --show drun -M fuzzy -i -I -m -G -o DP-3 --width 35% --height 50%
       bind=SUPER,P,pseudo,
 
       # special workspace
