@@ -1,5 +1,3 @@
-# This is your home-manager configuration file
-# Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
   inputs,
   lib,
@@ -89,6 +87,16 @@
           "borderangle, 1, 30, easeOutSine, loop"
         ];
       };
+      layerrule = [
+        # use `hyprctl layers` to get layer namespaces
+        # rules for Mako notifications
+        "blur, notifications"
+        "ignorealpha 0, notifications" # make mako truly rounded by not displaing blurred surface around the borders
+
+        # wofi
+        "blur,wofi"
+        "dimaround, wofi"
+      ];
       env = [
         "WLR_NO_HARDWARE_CURSORS,1"
       ];
@@ -124,8 +132,6 @@
       exec-once=eww daemon --restart && eww close-all && eww open-many bar
 
       # blur layers (hyprctl layers to get the correct namespace)
-      layerrule = blur,notifications
-      layerrule = blur,wofi
       layerrule = blur,gtk-layer-shell
 
       group {
