@@ -33,7 +33,8 @@
   gtk = {
     enable = true;
     font = {
-      name = "Fira Code Nerd Font";
+      name = "Cabin";
+      package = pkgs.cabin;
     };
 
     gtk3.extraConfig = {
@@ -63,14 +64,12 @@
 
   home.packages = with pkgs; [
     # YubiKey
-    #yubioath-flutter
     yubikey-personalization-gui
     yubikey-manager
 
     # devops
     kubectl
     kubeseal
-    # k9s
     lens
     sops
     age
@@ -83,7 +82,6 @@
 
     # wayland/DE
     libnotify # notify-send command
-    mako
     wofi
     hyprpaper
     hyprpicker
@@ -95,9 +93,8 @@
     font-manager
     alacritty
     kitty
-    ranger
-    graphviz
 
+    graphviz
     # audio
     pipewire
     wireplumber
@@ -119,6 +116,9 @@
     just
     sad
 
+    # TUI
+    ranger
+
     # fonts
     (
       nerdfonts.override {
@@ -135,6 +135,7 @@
     noto-fonts-cjk
     noto-fonts-emoji
     liberation_ttf
+    cabin
 
     # messengers
     telegram-desktop
@@ -187,12 +188,6 @@
     name = "Catppuccin-Mocha-Dark-Cursors";
     package = pkgs.catppuccin-cursors.mochaDark;
     # size is defined in hosts//home.nix
-  };
-
-  # mako (notifications) config
-  xdg.configFile."mako" = {
-    recursive = true;
-    source = ./.config/mako;
   };
 
   # wofi (app launcher)

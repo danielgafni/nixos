@@ -120,7 +120,7 @@
     homeConfigurations = {
       "${user}@framnix" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."${system}"; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit allowed-unfree-packages user inputs home-manager;}; # Pass flake inputs to our config
+        extraSpecialArgs = {inherit allowed-unfree-packages user inputs home-manager catppuccin;}; # Pass flake inputs to our config
         # > Our main home-manager configuration file <
         modules = [
           ./home/default.nix
@@ -139,7 +139,7 @@
 
       "${user}@DanPC" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."${system}"; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit allowed-unfree-packages user inputs home-manager;}; # Pass flake inputs to our config
+        extraSpecialArgs = {inherit allowed-unfree-packages user inputs home-manager catppuccin;}; # Pass flake inputs to our config
         # > Our main home-manager configuration file <
         modules = [
           ./home/default.nix

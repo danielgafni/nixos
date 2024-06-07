@@ -3,5 +3,6 @@
     ./hyprland
     ./hyprlock
     ./hypridle
+    ./mako
   ];
 }
