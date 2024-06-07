@@ -58,7 +58,7 @@
           # if you want heavy blur, you need to up the blur_passes.
           # the more passes, the more you can up the blur_size without noticing artifacts.
           noise = 0.05;
-          xray = true;
+          xray = false;
         };
       };
       misc = {
