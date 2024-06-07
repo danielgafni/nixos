@@ -8,7 +8,7 @@
   services.mako = {
     enable = true;
     font = "Recursive 10";
-    backgroundColor = lib.mkForce "#1e1e2e80"; # b3 # add transparency
+    backgroundColor = lib.mkForce "#1e1e2e80"; # add transparency
     defaultTimeout = 10000;
     anchor = "bottom-right";
     height = 150;
