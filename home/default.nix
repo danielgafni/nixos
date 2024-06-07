@@ -63,14 +63,12 @@
 
   home.packages = with pkgs; [
     # YubiKey
-    #yubioath-flutter
     yubikey-personalization-gui
     yubikey-manager
 
     # devops
     kubectl
     kubeseal
-    # k9s
     lens
     sops
     age
@@ -83,7 +81,6 @@
 
     # wayland/DE
     libnotify # notify-send command
-    mako
     wofi
     hyprpaper
     hyprpicker
@@ -95,9 +92,8 @@
     font-manager
     alacritty
     kitty
-    ranger
-    graphviz
 
+    graphviz
     # audio
     pipewire
     wireplumber
@@ -118,6 +114,9 @@
     strace
     just
     sad
+
+    # TUI
+    ranger
 
     # fonts
     (
@@ -187,12 +186,6 @@
     name = "Catppuccin-Mocha-Dark-Cursors";
     package = pkgs.catppuccin-cursors.mochaDark;
     # size is defined in hosts//home.nix
-  };
-
-  # mako (notifications) config
-  xdg.configFile."mako" = {
-    recursive = true;
-    source = ./.config/mako;
   };
 
   # wofi (app launcher)
