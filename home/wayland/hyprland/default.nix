@@ -101,10 +101,8 @@
         "WLR_NO_HARDWARE_CURSORS,1"
       ];
       exec-once = [
-        # notifications
-        "mako"
-        # idle notification
-        ''swayidle -w timeout 1800 'hyprlock' timeout 12000 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'hyprlock' ''
+        "mako" # notifications
+        "${pkgs.hypridle}/bin/hypridle" # idle event trigger
       ];
       plugin = [
         {
