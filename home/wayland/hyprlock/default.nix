@@ -12,6 +12,10 @@
   inherit (config.catppuccin) sources;
   cfg = config.wayland.windowManager.hyprland.catppuccin;
 in {
+  # tmp workaround for https://github.com/catppuccin/nix/issues/205
+  # just enable programs.swaylock for now
+  programs.swaylock.enable = true;
+
   # important! security.pam.services.hyprlock = {}; has to be added to NixOS config
   programs.hyprlock = {
     enable = true;
