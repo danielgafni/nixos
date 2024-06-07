@@ -33,7 +33,8 @@
   gtk = {
     enable = true;
     font = {
-      name = "Fira Code Nerd Font";
+      name = "Cabin";
+      package = pkgs.cabin;
     };
 
     gtk3.extraConfig = {
@@ -135,6 +136,7 @@
     noto-fonts-cjk
     noto-fonts-emoji
     liberation_ttf
+    cabin
 
     # messengers
     telegram-desktop

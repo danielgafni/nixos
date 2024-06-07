@@ -66,6 +66,11 @@
   stylix.image = ./.config/wallpapers/catppuccin-forrest.png;
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
   stylix.fonts = {
+    sansSerif = {
+      package = pkgs.cabin;
+      name = "Cabin";
+    };
+    serif = config.stylix.fonts.sansSerif;
     monospace = {
       package = pkgs.nerdfonts.override {fonts = ["FiraCode"];};
       name = "Fira Code Nerd Font";
