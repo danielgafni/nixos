@@ -201,13 +201,6 @@
     source = ./.config/wofi;
   };
 
-  # swaylock
-  programs.swaylock.enable = true;
-  xdg.configFile."swaylock" = {
-    recursive = true;
-    source = ./.config/swaylock;
-  };
-
   xdg.configFile."helix" = {
     recursive = true;
     source = ./.config/helix;
