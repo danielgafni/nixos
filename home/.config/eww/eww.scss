@@ -19,7 +19,7 @@ $orange: #fab387;
 @mixin rootContainer {  
   background-color: $background-color;
   color: $text-color;
-  border-radius: 1.0rem;
+  border-radius: 0.5rem 2.5rem 0.5rem;
   border: 0.05rem solid $accent-color;
   font-size: 1.2rem;
 }

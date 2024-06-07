@@ -88,6 +88,10 @@
         ];
       };
       layerrule = [
+        # eww
+        "blur, gtk-layer-shell"
+        "ignorealpha 0, gtk-layer-shell" # remove blurred surface around borders
+
         # use `hyprctl layers` to get layer namespaces
         # rules for Mako notifications
         "blur, notifications"
@@ -129,9 +133,6 @@
 
       # eww widgets
       exec-once=eww daemon --restart && eww close-all && eww open-many bar
-
-      # blur layers (hyprctl layers to get the correct namespace)
-      layerrule = blur,gtk-layer-shell
 
       group {
         col.border_inactive=0xff89dceb
