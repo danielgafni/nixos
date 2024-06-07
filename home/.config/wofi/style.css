@@ -11,12 +11,14 @@
 
  /* Window */
  window {
-    margin: 0px;
     padding: 6px;
     border: 3px solid @accent;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: @bg;
-    animation: slideIn 0.3s ease-in-out both;
+    animation: slideIn 0.2s ease-in-out both;
+    opacity: 0.7;
+    margin: 5px 10px 15px;
+    box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.3);
  }
 
  /* Slide In */
@@ -35,8 +37,9 @@
     margin: 3px;
     padding: 6px;
     border: none;
+    border-radius: 10px;
     background-color: @bg;
-    animation: fadeIn 0.3s ease-in-out both;
+    animation: fadeIn 0.2s ease-in-out both;
  }
 
  /* Fade In */
@@ -55,6 +58,7 @@
     margin: 3px;
     padding: 6px;
     border: none;
+    border-radius: 10px;
     background-color: @bg;
  }
 
@@ -72,7 +76,7 @@
     border: none;
     color: @accent;
     background-color: @bg2;
-    animation: fadeIn 0.3s ease-in-out both;
+    animation: fadeIn 0.2s ease-in-out both;
  }
 
  /* Text */
@@ -81,7 +85,7 @@
     padding: 6px;
     border: none;
     color: @txt;
-    animation: fadeIn 0.3s ease-in-out both;
+    animation: fadeIn 0.2s ease-in-out both;
  }
 
  /* Selected Entry */
