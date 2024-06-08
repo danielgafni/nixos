@@ -3,5 +3,6 @@
     ./terminals
     ./cli
     ./editors
+    ./media
   ];
 }
