@@ -162,6 +162,9 @@
     black
     ruff
     isort
+
+    # extra
+    xarchiver
   ];
 
   # Enable home-manager

@@ -200,7 +200,7 @@
       bind=SUPER,F,fullscreen,
 
       # TODO: exlore running with --normal-window for Hyprland theming purposes
-      bind=SUPER,space,exec,wofi --show drun -M fuzzy -i -I -m -G -o DP-3 --width 35% --height 50%
+      bind=SUPER,space,exec,wofi --show drun -i -I -m -G -o DP-3 --width 35% --height 50%
       bind=SUPER,P,pseudo,
 
       # special workspace
