@@ -79,6 +79,7 @@
     opentofu
     terragrunt
     argocd
+    kind
 
     # wayland/DE
     libnotify # notify-send command
