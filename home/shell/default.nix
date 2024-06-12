@@ -22,7 +22,7 @@ in {
     # enable scrolling in git diff
     DELTA_PAGER = "less -R";
 
-    EDITOR = "hx";
+    EDITOR = "nvim";
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
 
     TERRAGRUNT_PROVIDER_CACHE = "1";
