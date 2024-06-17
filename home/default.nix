@@ -28,6 +28,25 @@
     };
   };
 
+  home = {
+    username = "dan";
+    homeDirectory = "/home/dan";
+  };
+
+  catppuccin.enable = true; # sets Catppuccin theme for all programs supported by https://github.com/catppuccin/nix
+  catppuccin.flavor = "mocha";
+  xdg.enable = true;
+
+  programs.dircolors.enable = true;
+
+  # Cursor
+  home.pointerCursor = {
+    name = "Catppuccin-Mocha-Dark-Cursors";
+    package = pkgs.catppuccin-cursors.mochaDark;
+    gtk.enable = true;
+    # size is defined in hosts//home.nix
+  };
+
   # home-manager.backupFileExtension = ".bak";
 
   gtk = {
@@ -49,18 +68,6 @@
       '';
     };
   };
-
-  # TODO: Set your username
-  home = {
-    username = "dan";
-    homeDirectory = "/home/dan";
-  };
-
-  catppuccin.enable = true; # sets Catppuccin theme for all programs supported by https://github.com/catppuccin/nix
-  catppuccin.flavor = "mocha";
-  xdg.enable = true;
-
-  programs.dircolors.enable = true;
 
   home.packages = with pkgs; [
     # YubiKey
@@ -185,13 +192,6 @@
   xdg.configFile."wallpapers" = {
     recursive = true;
     source = ./.config/wallpapers;
-  };
-
-  # Cursor
-  home.pointerCursor = {
-    name = "Catppuccin-Mocha-Dark-Cursors";
-    package = pkgs.catppuccin-cursors.mochaDark;
-    # size is defined in hosts//home.nix
   };
 
   # wofi (app launcher)

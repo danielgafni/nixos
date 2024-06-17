@@ -13,6 +13,10 @@
     ];
     systemd.variables = ["--all"];
     settings = {
+      cursor = {
+        # needed for nvidia
+        no_hardware_cursors = true;
+      };
       input = {
         kb_layout = "us,ru";
         kb_variant = "ffffff";
@@ -104,6 +108,10 @@
       ];
       env = [
         "WLR_NO_HARDWARE_CURSORS,1"
+        "LIBVA_DRIVER_NAME,nvidia"
+        "XDG_SESSION_TYPE,wayland"
+        "GBM_BACKEND,nvidia-drm"
+        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
       ];
       exec-once = [
         "mako" # notifications
@@ -124,12 +132,6 @@
 
       # polkit (the app which asks for the root password access)
       exec-once=/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-
-      # theming
-      #exec-once=gsettings set org.gnome.desktop.interface cursor-size 48
-      #exec-once=gsettings set org.gnome.desktop.interface gtk-theme "Nordic"
-      #exec-once=gsettings set org.gnome.desktop.wm.preferences theme "Nordic"
-      #exec-once=exec-once=hyprctl setcursor Nordzy-cursors 24
 
       # eww widgets
       exec-once=eww daemon --restart && eww close-all && eww open-many bar
