@@ -1,9 +1,10 @@
-{...}: {
+{host-settings, ...}: {
   programs.kitty = {
     enable = true;
     catppuccin.enable = true;
     font = {
       name = "Fira Code Nerd Font";
+      size = host-settings.font.text.size;
     };
     settings = {
       scrollback_lines = 10000;

@@ -5,6 +5,7 @@
   lib,
   pkgs,
   allowed-unfree-packages,
+  host-settings,
   ...
 }: {
   # You can import other home-manager modules here
@@ -32,6 +33,11 @@
     username = "dan";
     homeDirectory = "/home/dan";
   };
+
+  home.pointerCursor = {
+    size = host-settings.cursor.size;
+  };
+  gtk.cursorTheme.size = host-settings.cursor.size;
 
   catppuccin.enable = true; # sets Catppuccin theme for all programs supported by https://github.com/catppuccin/nix
   catppuccin.flavor = "mocha";
