@@ -27,9 +27,6 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # TODO: Add any other flake you might need
-    # hardware.url = "github:nixos/nixos-hardware";
-
     # provides catppuccin for lots of packages
     catppuccin.url = "github:catppuccin/nix";
 
@@ -93,7 +90,9 @@
         specialArgs = {inherit allowed-unfree-packages user inputs;}; # Pass flake inputs to our config
         # > Our main nixos configuration file <
         modules = [
-          ./hosts/framnix/configuration.nix
+          ./hosts/configuration.nix
+          ./hosts/framnix/NixOS
+
           hyprland.nixosModules.default
           catppuccin.nixosModules.catppuccin
           stylix.nixosModules.stylix
@@ -106,7 +105,8 @@
         specialArgs = {inherit allowed-unfree-packages user inputs;}; # Pass flake inputs to our config
         # > Our main nixos configuration file <
         modules = [
-          ./hosts/DanPC/configuration.nix
+          ./hosts/configuration.nix
+          ./hosts/DanPC/NixOS
           hyprland.nixosModules.default
           catppuccin.nixosModules.catppuccin
           stylix.nixosModules.stylix
@@ -123,11 +123,8 @@
         extraSpecialArgs = {inherit allowed-unfree-packages user inputs home-manager catppuccin;}; # Pass flake inputs to our config
         # > Our main home-manager configuration file <
         modules = [
-          ./home/default.nix
-
-          # TODO: squash these 2 in 1 module
-          ./hosts/framnix/home.nix
-          ./hosts/framnix/default.nix
+          ./home
+          ./hosts/framnix/home
 
           catppuccin.homeManagerModules.catppuccin
           hyprland.homeManagerModules.default
@@ -142,11 +139,8 @@
         extraSpecialArgs = {inherit allowed-unfree-packages user inputs home-manager catppuccin;}; # Pass flake inputs to our config
         # > Our main home-manager configuration file <
         modules = [
-          ./home/default.nix
-
-          # TODO: squash these 2 in 1 module
-          ./hosts/DanPC/default.nix
-          ./hosts/DanPC/home.nix
+          ./home
+          ./hosts/DanPC/home
 
           catppuccin.homeManagerModules.catppuccin
           hyprland.homeManagerModules.default
