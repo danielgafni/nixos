@@ -77,7 +77,6 @@
         modules = [
           ./hosts/configuration.nix
           ./hosts/${host}/NixOS
-
           hyprland.nixosModules.default
           catppuccin.nixosModules.catppuccin
           stylix.nixosModules.stylix
@@ -88,7 +87,11 @@
     mkHomeConfiguration = host:
       home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."${system}"; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit allowed-unfree-packages user inputs home-manager catppuccin;}; # Pass flake inputs to our config
+        extraSpecialArgs = {
+          # these args are passed to the other home-manager modules
+          inherit allowed-unfree-packages user inputs home-manager catppuccin;
+          host-settings = import ./hosts/${host}/settings.nix;
+        };
         # > Our main home-manager configuration file <
         modules = [
           ./home

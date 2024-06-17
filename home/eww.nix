@@ -1,10 +1,15 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  host-settings,
+  ...
+}: {
   # dependencies for widgets
   home.packages = with pkgs; [
     socat
     jq # Various scripts and commands
     playerctl # Music info
   ];
+
   programs.eww = {
     enable = true;
     # package = pkgs.eww-wayland;
@@ -22,4 +27,13 @@
     };
     Install = {WantedBy = ["hyprland-session.target"];};
   };
+
+  # host-specific settings
+  # xdg.configFile."eww/hostSettings.scss" = {
+  #   text = ''
+  #     @mixin rootContainer {
+  #       font-size = ${toString settings.textFontSize};
+  #     }
+  #   '';
+  # };
 }

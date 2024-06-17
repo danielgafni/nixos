@@ -1,13 +1,13 @@
+* {
+   font-family: 'Cabin';
+   font-size: 2.5rem;
+ }
+
 /* Mocha Flamingo */
 @define-color accent #f2cdcd;
 @define-color txt #cad3f5;
 @define-color bg #24273a;
 @define-color bg2 #494d64;
-
- * {
-    font-family: 'Recursive', monospace;
-    font-size: 13px;
- }
 
  /* Window */
  window {
@@ -15,7 +15,7 @@
     border: 3px solid @accent;
     border-radius: 10px;
     background-color: @bg;
-    animation: slideIn 0.2s ease-in-out both;
+    animation: slideIn 0.1s ease-in-out both;
     opacity: 0.7;
     margin: 5px 10px 15px;
     box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.3);
@@ -39,7 +39,7 @@
     border: none;
     border-radius: 10px;
     background-color: @bg;
-    animation: fadeIn 0.2s ease-in-out both;
+    animation: fadeIn 0.1s ease-in-out both;
  }
 
  /* Fade In */
@@ -76,7 +76,7 @@
     border: none;
     color: @accent;
     background-color: @bg2;
-    animation: fadeIn 0.2s ease-in-out both;
+    animation: fadeIn 0.1s ease-in-out both;
  }
 
  /* Text */
@@ -85,7 +85,7 @@
     padding: 6px;
     border: none;
     color: @txt;
-    animation: fadeIn 0.2s ease-in-out both;
+    animation: fadeIn 0.1s ease-in-out both;
  }
 
  /* Selected Entry */
