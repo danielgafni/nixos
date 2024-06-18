@@ -1,4 +1,13 @@
 {
-  # settings specific to this host
-  font.size = 10;
+  font = {
+    titles = {
+      size = 20;
+    };
+    text = {
+      size = 18;
+    };
+  };
+  cursor = {
+    size = 18;
+  };
 }

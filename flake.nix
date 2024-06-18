@@ -27,9 +27,6 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # TODO: Add any other flake you might need
-    # hardware.url = "github:nixos/nixos-hardware";
-
     # provides catppuccin for lots of packages
     catppuccin.url = "github:catppuccin/nix";
 
@@ -51,8 +48,11 @@
     nixvim,
     ...
   } @ inputs: let
+    # helper variables and functions
+    # used to produce the main configurations in the flake
     system = "x86_64-linux";
     user = "dan";
+    hosts = ["DanPC" "framnix"];
 
     # Define the list of unfree packages to allow here, so you can pass it to
     # both `sudo nixos-rebuild` and `home-manager`
@@ -68,7 +68,46 @@
       "pycharm-professional"
       "gateway"
     ];
+
+    mkNixosConfiguration = host:
+      nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = {inherit allowed-unfree-packages user inputs;}; # Pass flake inputs to our config
+        # > Our main nixos configuration file <
+        modules = [
+          ./hosts/configuration.nix
+          ./hosts/${host}/NixOS
+          hyprland.nixosModules.default
+          catppuccin.nixosModules.catppuccin
+          stylix.nixosModules.stylix
+          {programs.hyprland.xwayland.enable = true;}
+        ];
+      };
+
+    mkHomeConfiguration = host:
+      home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages."${system}"; # Home-manager requires 'pkgs' instance
+        extraSpecialArgs = {
+          # these args are passed to the other home-manager modules
+          inherit allowed-unfree-packages user inputs home-manager catppuccin;
+          host-settings = import ./hosts/${host}/settings.nix;
+        };
+        # > Our main home-manager configuration file <
+        modules = [
+          ./home
+          ./hosts/${host}/home
+
+          catppuccin.homeManagerModules.catppuccin
+          hyprland.homeManagerModules.default
+          {
+            wayland.windowManager.hyprland.enable = true;
+          }
+        ];
+      };
   in {
+    # actual configurations
+
+    # supporting configurations for development of this flake
     checks."${system}" = {
       pre-commit-check = pre-commit-hooks.lib."${system}".run {
         src = ./.;
@@ -78,7 +117,6 @@
         };
       };
     };
-
     formatter."${system}" = nixpkgs.legacyPackages."${system}".alejandra;
     devShells."${system}".default = nixpkgs.legacyPackages."${system}".mkShell {
       inherit (self.checks."${system}".pre-commit-check) shellHook;
@@ -86,75 +124,20 @@
     };
 
     # NixOS configuration entrypoint
-    # Available through 'nixos-rebuild --flake .#your-hostname'
-    nixosConfigurations = {
-      framnix = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {inherit allowed-unfree-packages user inputs;}; # Pass flake inputs to our config
-        # > Our main nixos configuration file <
-        modules = [
-          ./hosts/framnix/configuration.nix
-          hyprland.nixosModules.default
-          catppuccin.nixosModules.catppuccin
-          stylix.nixosModules.stylix
-          {programs.hyprland.xwayland.enable = true;}
-        ];
-      };
-
-      DanPC = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {inherit allowed-unfree-packages user inputs;}; # Pass flake inputs to our config
-        # > Our main nixos configuration file <
-        modules = [
-          ./hosts/DanPC/configuration.nix
-          hyprland.nixosModules.default
-          catppuccin.nixosModules.catppuccin
-          stylix.nixosModules.stylix
-          {programs.hyprland.xwayland.enable = true;}
-        ];
-      };
-    };
+    # Available through 'nixos-rebuild --flake .#<hostname>' (hosts are taken from the 'hosts' list above)
+    nixosConfigurations = builtins.listToAttrs (map (host: {
+        name = host;
+        value = mkNixosConfiguration host;
+      })
+      hosts);
 
     # Standalone home-manager configuration entrypoint
-    # Available through 'home-manager --flake .#your-username@your-hostname'
-    homeConfigurations = {
-      "${user}@framnix" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages."${system}"; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit allowed-unfree-packages user inputs home-manager catppuccin;}; # Pass flake inputs to our config
-        # > Our main home-manager configuration file <
-        modules = [
-          ./home/default.nix
+    # Available through 'home-manager --flake .#<user>@<hostname>' (hosts are taken from the 'hosts' list above)
 
-          # TODO: squash these 2 in 1 module
-          ./hosts/framnix/home.nix
-          ./hosts/framnix/default.nix
-
-          catppuccin.homeManagerModules.catppuccin
-          hyprland.homeManagerModules.default
-          {
-            wayland.windowManager.hyprland.enable = true;
-          }
-        ];
-      };
-
-      "${user}@DanPC" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages."${system}"; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit allowed-unfree-packages user inputs home-manager catppuccin;}; # Pass flake inputs to our config
-        # > Our main home-manager configuration file <
-        modules = [
-          ./home/default.nix
-
-          # TODO: squash these 2 in 1 module
-          ./hosts/DanPC/default.nix
-          ./hosts/DanPC/home.nix
-
-          catppuccin.homeManagerModules.catppuccin
-          hyprland.homeManagerModules.default
-          {
-            wayland.windowManager.hyprland.enable = true;
-          }
-        ];
-      };
-    };
+    homeConfigurations = builtins.listToAttrs (map (host: {
+        name = "${user}@${host}";
+        value = mkHomeConfiguration host;
+      })
+      hosts);
   };
 }

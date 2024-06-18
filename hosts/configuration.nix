@@ -271,9 +271,6 @@
   services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix; # try this driver)
   # services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090; # or this one
 
-  #services.xserver.enable = true;
-  #services.xserver.displayManager.sddm.enable = true;
-
   security.polkit.enable = true;
 
   # YubiKey
@@ -326,14 +323,6 @@
       "0 0 * * 6      dan    nix run 'nixpkgs#nix-index' --extra-experimental-features 'nix-command flakes' >> /tmp/update-comma-index.log"
     ];
   };
-
-  #environment.etc."lemurs.wayland.Hyprland" = {
-  #  text = ''
-  #    #! /bin/sh
-  #    exec Hyprland
-  #    '';
-  #  mode = "0755";
-  #};
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
