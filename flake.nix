@@ -67,6 +67,7 @@
       "discord"
       "pycharm-professional"
       "gateway"
+      "copilot.vim"
     ];
 
     mkNixosConfiguration = host:
