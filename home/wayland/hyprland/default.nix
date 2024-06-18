@@ -13,6 +13,11 @@
     ];
     systemd.variables = ["--all"];
     settings = {
+      monitor = [
+        ",preferred,auto,1"
+        # workaround for https://github.com/hyprwm/Hyprland/issues/6309
+        "Unknown-1,disable"
+      ];
       cursor = {
         # needed for nvidia
         no_hardware_cursors = true;
