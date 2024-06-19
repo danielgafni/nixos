@@ -1,4 +1,7 @@
 {
+  wayland.hyprland.monitor = [
+    ",preferred,auto,1"
+  ];
   font = {
     titles = {
       size = 20;
