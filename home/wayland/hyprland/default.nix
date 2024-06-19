@@ -3,6 +3,7 @@
   lib,
   pkgs,
   allowed-unfree-packages,
+  host-settings,
   ...
 }: {
   wayland.windowManager.hyprland = {
@@ -13,11 +14,7 @@
     ];
     systemd.variables = ["--all"];
     settings = {
-      monitor = [
-        ",preferred,auto,1"
-        # workaround for https://github.com/hyprwm/Hyprland/issues/6309
-        "Unknown-1,disable"
-      ];
+      monitor = host-settings.wayland.hyprland.monitor;
       cursor = {
         # needed for nvidia
         no_hardware_cursors = true;
