@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  host-settings,
+  ...
+}: {
   programs.vscode = {
     enable = true;
     extensions = with pkgs.vscode-extensions;
@@ -26,9 +30,10 @@
     userSettings = {
       "workbench.colorTheme" = "Catppuccin Mocha";
       "workbench.iconTheme" = "catppuccin-mocha";
+      "window.zoomLevel" = 1;
       "editor.fontFamily" = "Fira Code Nerd Font Mono";
-      "editor.fontSize" = 18;
-      "terminal.integrated.fontSize" = 18;
+      "editor.fontSize" = host-settings.font.text.size;
+      "terminal.integrated.fontSize" = host-settings.font.text.size;
       "github.copilot.enable" = {
         "*" = true;
         "plaintext" = false;
