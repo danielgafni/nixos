@@ -3,9 +3,9 @@ let
   lockAfterSeconds = 60 * 15;
   suspendAfterSeconds = 60 * 30;
 in rec {
-  ui.scale = 1.0;
+  ui.scale = 1;
   wayland.hyprland.monitor = [
-    ",preferred,auto,${ui.scale}"
+    ",preferred,auto,${toString ui.scale}"
   ];
   wayland.hypridle.listener = [
     {
