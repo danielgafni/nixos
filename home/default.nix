@@ -37,7 +37,6 @@
   home.pointerCursor = {
     size = host-settings.cursor.size;
   };
-  gtk.cursorTheme.size = host-settings.cursor.size;
 
   catppuccin.enable = true; # sets Catppuccin theme for all programs supported by https://github.com/catppuccin/nix
   catppuccin.flavor = "mocha";
@@ -60,6 +59,12 @@
     font = {
       name = "Cabin";
       package = pkgs.cabin;
+    };
+
+    cursorTheme = {
+      name = "Catppuccin-Mocha-Dark-Cursors";
+      package = pkgs.catppuccin-cursors.mochaDark;
+      size = host-settings.cursor.size;
     };
 
     gtk3.extraConfig = {
