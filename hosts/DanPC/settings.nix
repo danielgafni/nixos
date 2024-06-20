@@ -3,7 +3,7 @@ let
   lockAfterSeconds = 60 * 15;
   suspendAfterSeconds = 60 * 30;
 in rec {
-  ui.scale = 1.6;
+  ui.scale = 1.5;
   wayland.hyprland.monitor = [
     ",preferred,auto,${toString ui.scale}"
     # workaround for https://github.com/hyprwm/Hyprland/issues/6309
