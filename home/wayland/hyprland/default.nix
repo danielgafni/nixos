@@ -9,7 +9,8 @@
     enable = true;
     catppuccin.enable = true;
     plugins = [
-      inputs.hyprland-plugins.packages.${pkgs.system}.hyprtrails
+      # TODO: re-enable once it builds correctly
+      # inputs.hyprland-plugins.packages.${pkgs.system}.hyprtrails
     ];
     systemd.variables = ["--all"];
     settings = {
