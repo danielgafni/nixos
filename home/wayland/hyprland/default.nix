@@ -123,11 +123,12 @@
         "${pkgs.hypridle}/bin/hypridle" # idle event trigger
       ];
       plugin = [
-        {
-          hyprtrails = {
-            color = "$sapphire";
-          };
-        }
+        # TODO: re-enable once it builds correctly
+        # {
+        #   hyprtrails = {
+        #     color = "$sapphire";
+        #   };
+        # }
       ];
     };
 
