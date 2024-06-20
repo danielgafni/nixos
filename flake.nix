@@ -20,7 +20,7 @@
 
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
+      #inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Home manager
@@ -67,6 +67,7 @@
       "discord"
       "pycharm-professional"
       "gateway"
+      "copilot.vim"
     ];
 
     mkNixosConfiguration = host:
