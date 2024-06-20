@@ -19,15 +19,6 @@ in rec {
       timeout = lockAfterSeconds;
       on-timeout = ''loginctl lock-session''; # lock screen when timeout has passed
     }
-    {
-      timeout = lockAfterSeconds + 30;
-      on-timeout = ''hyprctl dispatch dpms off''; # screen off when timeout has passed
-      on-resume = ''hyprctl dispatch dpms on''; # screen on when activity is detected after timeout has fired.
-    }
-    {
-      timeout = suspendAfterSeconds;
-      on-timeout = ''systemctl suspend''; # suspend pc
-    }
   ];
   font = {
     titles = {
