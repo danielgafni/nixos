@@ -220,7 +220,7 @@
       bind=SHIFT_SUPER,W,exec, hyprctl dispatch togglespecialworkspace ""
 
       # screen locking
-      bind=SUPER,L,exec,hyprlock
+      bind=SUPER,L,exec,pidof hyprlock || (grim -o HDMI-A-1 /tmp/screenshot.png && hyprlock)
 
       # clear notifications
       bind=SUPER,N,exec,makoctl dismiss --all
