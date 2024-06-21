@@ -9,7 +9,7 @@
   home.packages = with pkgs; [
     hyprcursor # catppuccin-nix will automatically set the cursor theme
   ];
-  home.sessionVariables.HYPRCURSOR_SIZE = lib.mkForce (toString (host-settings.scaled host-settings.cursor.size));
+  home.sessionVariables.HYPRCURSOR_SIZE = lib.mkForce (toString host-settings.cursor.size);
   wayland.windowManager.hyprland = {
     enable = true;
     catppuccin.enable = true;
@@ -260,7 +260,6 @@
 
       bind=SUPER,g,togglegroup
       bind=SUPER,tab,changegroupactive
-
 
       # rec
       #bind=CTRL,1,exec,kitty --title fly_is_kitty --hold cava

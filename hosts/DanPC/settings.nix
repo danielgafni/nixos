@@ -30,6 +30,6 @@ in rec {
     };
   };
   cursor = {
-    size = 12;
+    size = 32;
   };
 }

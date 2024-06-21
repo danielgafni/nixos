@@ -7,8 +7,13 @@
   pkgs,
   allowed-unfree-packages,
   host-settings,
+  user,
   ...
-}: {
+}: let
+  catppuccinFlavor = "mocha";
+  cursorAccent = "teal";
+  cursorPackage = pkgs.catppuccin-cursors.mochaTeal;
+in {
   # You can import other home-manager modules here
   imports = [
     # You can also split up your configuration and import pieces of it here:
@@ -31,41 +36,45 @@
   };
 
   home = {
-    username = "dan";
-    homeDirectory = "/home/dan";
+    username = user;
+    homeDirectory = "/home/${user}";
   };
 
-  home.pointerCursor = {
-    size = host-settings.cursor.size;
-  };
-
-  catppuccin.enable = true; # sets Catppuccin theme for all programs supported by https://github.com/catppuccin/nix
-  catppuccin.flavor = "mocha";
   xdg.enable = true;
 
   programs.dircolors.enable = true;
 
+  catppuccin.enable = true; # sets Catppuccin theme for all programs supported by https://github.com/catppuccin/nix
+  catppuccin.flavor = catppuccinFlavor;
+
   # Cursor
   home.pointerCursor = {
-    name = "Catppuccin-Mocha-Dark-Cursors";
-    package = pkgs.catppuccin-cursors.mochaDark;
-    gtk.enable = true;
-    # size is defined in hosts//home.nix
+    name = "catppuccin-${catppuccinFlavor}-${cursorAccent}-cursors";
+    package = cursorPackage;
+    size = host-settings.cursor.size;
+    # gtk.enable = true;
   };
 
   # home-manager.backupFileExtension = ".bak";
 
   gtk = {
     enable = true;
-    catppuccin.cursor.enable = true;
+
+    catppuccin = {
+      enable = true; # TODO: remove as it's deprecated
+      cursor = {
+        enable = true;
+        accent = cursorAccent; # affects HYPRCURSOR_THEME
+      };
+      icon.enable = true;
+    };
+
     font = {
       name = "Cabin";
       package = pkgs.cabin;
     };
 
     cursorTheme = {
-      name = "Catppuccin-Mocha-Dark-Cursors";
-      package = pkgs.catppuccin-cursors.mochaDark;
       size = host-settings.cursor.size;
     };
 
