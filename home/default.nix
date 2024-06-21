@@ -1,6 +1,7 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
+  config,
   inputs,
   lib,
   pkgs,
@@ -112,6 +113,7 @@
     font-manager
     alacritty
     kitty
+    dconf # needed for gtk
 
     graphviz
     # audio
@@ -171,7 +173,7 @@
     # editors & IDE
     vim
     helix
-    jetbrains.pycharm-professional
+
     jetbrains.gateway
 
     # Python tools
