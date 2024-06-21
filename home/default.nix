@@ -228,7 +228,7 @@ in {
 
   # Nicely reload system units when changing configs
   systemd = {
-    startServices = "sd-switch";
+    user.startServices = "sd-switch";
 
     # Using Bluetooth headset buttons to control media player
     user.services.mpris-proxy = {

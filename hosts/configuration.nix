@@ -54,23 +54,23 @@
     networkmanager = {
       enable = true;
       settings.main.authPolkit = false;
-
-      # Open ports in the firewall.
-      # networking.firewall.allowedTCPPorts = [ ... ];
-      # networking.firewall.allowedUDPPorts = [ ... ];
-      # Or disable the firewall altogether.
-
-      # disable firewall (required for WireGuard to work)
-      # https://nixos.wiki/wiki/WireGuard#Setting_up_WireGuard_with_NetworkManager
-
-      firewall.enable = false;
-
-      # Configure network proxy if necessary
-      # networking.proxy.default = "http://user:password@proxy:port/";
-      proxy.noProxy = "127.0.0.1,localhost";
       # Easiest to use and most distros use this by default.
-      networkmanager.insertNameservers = ["1.1.1.1" "8.8.8.8"];
+      insertNameservers = ["1.1.1.1" "8.8.8.8"];
     };
+
+    # Configure network proxy if necessary
+    # networking.proxy.default = "http://user:password@proxy:port/";
+    proxy.noProxy = "127.0.0.1,localhost";
+
+    # Open ports in the firewall.
+    # networking.firewall.allowedTCPPorts = [ ... ];
+    # networking.firewall.allowedUDPPorts = [ ... ];
+    # Or disable the firewall altogether.
+
+    # disable firewall (required for WireGuard to work)
+    # https://nixos.wiki/wiki/WireGuard#Setting_up_WireGuard_with_NetworkManager
+
+    firewall.enable = false;
 
     firewall.checkReversePath = false;
   };
