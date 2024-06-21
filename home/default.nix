@@ -8,6 +8,7 @@
   allowed-unfree-packages,
   host-settings,
   user,
+  stdenv,
   ...
 }: let
   catppuccinFlavor = "mocha";
@@ -103,6 +104,8 @@ in {
       ranger
 
       # fonts
+      (callPackage (import ../packages/poiretone) {})
+
       (
         nerdfonts.override {
           fonts = [
