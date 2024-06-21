@@ -12,45 +12,46 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.loader.grub.extraConfig = ''GRUB_CMDLINE_LINUX_DEFAULT="nvidia_drm.modeset=1"'';
+  boot = {
+    loader.grub.extraConfig = ''GRUB_CMDLINE_LINUX_DEFAULT="nvidia_drm.modeset=1"'';
 
-  boot.initrd.availableKernelModules = [
-    "nvme"
-    "xhci_pci"
-    "ahci"
-    "usbhid"
-    "usb_storage"
-    "sd_mod"
-    "nvidia"
-    "nvidia_modeset"
-    "nvidia_uvm"
-    "nvidia_drm"
-  ];
-  boot.initrd.kernelModules = ["nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm"];
-  boot.kernelModules = ["kvm-amd"];
-  boot.extraModulePackages = [];
-
-  fileSystems."/" = {
-    device = "/dev/disk/by-label/NIXROOT";
-    fsType = "btrfs";
-    options = ["subvol=root"];
+    initrd.availableKernelModules = [
+      "nvme"
+      "xhci_pci"
+      "ahci"
+      "usbhid"
+      "usb_storage"
+      "sd_mod"
+      "nvidia"
+      "nvidia_modeset"
+      "nvidia_uvm"
+      "nvidia_drm"
+    ];
+    initrd.kernelModules = ["nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm"];
+    kernelModules = ["kvm-amd"];
+    extraModulePackages = [];
   };
 
-  fileSystems."/home" = {
-    device = "/dev/disk/by-label/NIXROOT";
-    fsType = "btrfs";
-    options = ["subvol=home"];
-  };
-
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-label/NIXROOT";
-    fsType = "btrfs";
-    options = ["subvol=nix" "noatime"];
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-label/NIXBOOT";
-    fsType = "vfat";
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-label/NIXROOT";
+      fsType = "btrfs";
+      options = ["subvol=root"];
+    };
+    "/home" = {
+      device = "/dev/disk/by-label/NIXROOT";
+      fsType = "btrfs";
+      options = ["subvol=home"];
+    };
+    "/nix" = {
+      device = "/dev/disk/by-label/NIXROOT";
+      fsType = "btrfs";
+      options = ["subvol=nix" "noatime"];
+    };
+    "/boot" = {
+      device = "/dev/disk/by-label/NIXBOOT";
+      fsType = "vfat";
+    };
   };
 
   swapDevices = [];

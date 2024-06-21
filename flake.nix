@@ -114,7 +114,7 @@
         src = ./.;
         hooks = {
           alejandra.enable = true;
-          # TODO: enable # statix.enable = true;
+          statix.enable = true;
         };
       };
     };

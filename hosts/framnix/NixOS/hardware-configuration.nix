@@ -12,17 +12,19 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.loader.grub.device = "/dev/nvme0n1";
-  boot.initrd.availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod"];
-  boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-intel"];
+  boot = {
+    loader.grub.device = "/dev/nvme0n1";
+    initrd.availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod"];
+    initrd.kernelModules = [];
+    kernelModules = ["kvm-intel"];
 
-  # Framework Laptops have auto brightness detection which has to be disabled
-  # otherwise the brightness keys don't work
-  boot.blacklistedKernelModules = [
-    "hid_sensor_hub"
-  ];
-  boot.extraModulePackages = [];
+    # Framework Laptops have auto brightness detection which has to be disabled
+    # otherwise the brightness keys don't work
+    blacklistedKernelModules = [
+      "hid_sensor_hub"
+    ];
+    extraModulePackages = [];
+  };
 
   fileSystems."/" = {
     device = "/dev/disk/by-label/NIXROOT";

@@ -4,7 +4,7 @@
     catppuccin.enable = true;
     font = {
       name = "Fira Code Nerd Font";
-      size = host-settings.font.text.size;
+      inherit (host-settings.font.text) size;
     };
     settings = {
       scrollback_lines = 10000;
