@@ -56,6 +56,7 @@
 
   gtk = {
     enable = true;
+    catppuccin.cursor.enable = true;
     font = {
       name = "Cabin";
       package = pkgs.cabin;
