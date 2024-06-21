@@ -19,7 +19,7 @@
     ];
     systemd.variables = ["--all"];
     settings = {
-      monitor = host-settings.wayland.hyprland.monitor;
+      inherit (host-settings.wayland.hyprland) monitor;
       cursor = {
         # needed for nvidia
         no_hardware_cursors = true;

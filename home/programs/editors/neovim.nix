@@ -17,38 +17,40 @@
       };
     };
 
-    plugins.nix.enable = true;
+    plugins = {
+      nix.enable = true;
 
-    plugins.copilot-vim.enable = true;
+      copilot-vim.enable = true;
 
-    plugins.cmp.enable = true;
-    plugins.cmp-path.enable = true;
-    plugins.cmp-buffer.enable = true;
-    plugins.cmp-cmdline.enable = true;
+      cmp.enable = true;
+      cmp-path.enable = true;
+      cmp-buffer.enable = true;
+      cmp-cmdline.enable = true;
 
-    plugins.noice.enable = true;
-    plugins.lightline.enable = true;
-    plugins.treesitter.enable = true;
-    plugins.fugitive.enable = true;
-    plugins.chadtree.enable = true;
-    plugins.bufferline.enable = true;
+      noice.enable = true;
+      lightline.enable = true;
+      treesitter.enable = true;
+      fugitive.enable = true;
+      chadtree.enable = true;
+      bufferline.enable = true;
 
-    plugins.lsp = {
-      enable = true;
-      servers = {
-        nixd.enable = true;
-        ruff.enable = true;
-        pyright.enable = true;
-        yamlls.enable = true;
-        jsonls.enable = true;
-        helm-ls.enable = true;
-        dockerls.enable = true;
-        docker-compose-language-service.enable = true;
-        terraformls.enable = true;
+      lsp = {
+        enable = true;
+        servers = {
+          nixd.enable = true;
+          ruff.enable = true;
+          pyright.enable = true;
+          yamlls.enable = true;
+          jsonls.enable = true;
+          helm-ls.enable = true;
+          dockerls.enable = true;
+          docker-compose-language-service.enable = true;
+          terraformls.enable = true;
+        };
       };
+      lsp-format.enable = true;
+      helm.enable = true;
     };
-    plugins.lsp-format.enable = true;
-    plugins.helm.enable = true;
 
     opts = {
       number = true; # Show line numbers

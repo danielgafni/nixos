@@ -24,7 +24,7 @@ in {
         ignore_dbus_inhibit = false; # whether to ignore dbus-sent idle-inhibit requests (used by e.g. firefox or steam)
         ignore_systemd_inhibit = false; # whether to ignore systemd-inhibit --what=idle inhibitors
       };
-      listener = host-settings.wayland.hypridle.listener;
+      inherit (host-settings.wayland.hypridle) listener;
     };
   };
 }
