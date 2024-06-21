@@ -4,6 +4,7 @@ let
   suspendAfterSeconds = 60 * 30;
 in rec {
   ui.scale = 1;
+  scaled = x: (builtins.ceil (x * ui.scale));
   wayland.hyprland.monitor = [
     ",preferred,auto,${toString ui.scale}"
   ];

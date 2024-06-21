@@ -25,7 +25,7 @@ in {
           $accentAlpha=''$${cfg.accent}Alpha
         '')
       ];
-      "$font" = "Fira Code Nerd Font";
+      "$font" = "Recursive";
       general = {
         disable_loading_bar = false;
         hide_cursor = false;

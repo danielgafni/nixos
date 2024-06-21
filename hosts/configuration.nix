@@ -42,6 +42,7 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  # boot.loader.grub.catppuccin.enable = true;
 
   networking.useDHCP = lib.mkDefault true;
   # networking.nameservers = ["1.1.1.1" "1.0.0.1" "8.8.8.8" "8.8.4.4" "9.9.9.9"];
