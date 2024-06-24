@@ -1,6 +1,6 @@
 # NixOS Config
 
-My NixOS configuration.
+My NixOS configuration featuring multi-host setup, a few GitHub Actions, remote caching, pre-commit hooks & CI, and [Catppuccin](https://catppuccin.com/) theme for all programs. 
 
 Key specs:
 
@@ -12,7 +12,7 @@ Key specs:
 ![assets/NixOS-rice.png](assets/NixOS-rice.png)
 
 > [!WARNING]  
-> WIP, not documented, perhaps not usable
+> WIP, not documented
 
 ## Usage
 
