@@ -1,18 +1,18 @@
 # NixOS Config
 
-My NixOS configuration.
+My NixOS configuration featuring multi-host setup, a few GitHub Actions, remote caching, pre-commit hooks & CI, and [Catppuccin](https://catppuccin.com/) theme for all programs. 
 
 Key specs:
 
 - `home-manager` for user configuration
 - `hyprland` as Wayland compositor & window manager
-- `eww` for status bar amd some widgets
+- `eww` for status bar and a few widgets
 - `catppuccin` theme for everything
 
 ![assets/NixOS-rice.png](assets/NixOS-rice.png)
 
 > [!WARNING]  
-> WIP, not documented, perhaps not usable
+> WIP, not documented
 
 ## Usage
 
@@ -53,11 +53,11 @@ just home <host> switch
 
 ### Fonts
 
-| Purpose | Name |
-|----------|----------|
-| Code    | Fira Code Nerd Font |
-| UI (GTK)    | Cabin   |
-| Wofi    | Recursive  |
+| Purpose | Name | Comment |
+|----------|----------|-------|
+| Code    | Fira Code Nerd Font | |
+| UI    | Cabin   | Easy on eyes, good default |
+| UI    | Recursive  | Eye candy, catchy |
 
 ### Debugging mime-type
 

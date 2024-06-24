@@ -115,10 +115,7 @@
       ];
       env = [
         "WLR_NO_HARDWARE_CURSORS,1"
-        "LIBVA_DRIVER_NAME,nvidia"
         "XDG_SESSION_TYPE,wayland"
-        "GBM_BACKEND,nvidia-drm"
-        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
       ];
       exec-once = [
         "mako" # notifications
@@ -211,7 +208,7 @@
       bind=SUPER,F,fullscreen,
 
       # TODO: exlore running with --normal-window for Hyprland theming purposes
-      bind=SUPER,space,exec,wofi --show drun -i -I -m -G -o DP-3 --width 35% --height 50%
+      bind=SUPER,space,exec,wofi --show drun -i -I -m -G -o DP-3 --width 55% --height 50%
       bind=SUPER,P,pseudo,
 
       # special workspace
