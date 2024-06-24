@@ -6,7 +6,7 @@ Key specs:
 
 - `home-manager` for user configuration
 - `hyprland` as Wayland compositor & window manager
-- `eww` for status bar amd some widgets
+- `eww` for status bar and a few widgets
 - `catppuccin` theme for everything
 
 ![assets/NixOS-rice.png](assets/NixOS-rice.png)
