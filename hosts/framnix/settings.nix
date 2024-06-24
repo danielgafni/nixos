@@ -3,7 +3,7 @@ let
   lockAfterSeconds = 60 * 15;
   suspendAfterSeconds = 60 * 30;
 in rec {
-  ui.scale = 1;
+  ui.scale = 1.566667;
   scaled = x: (builtins.ceil (x * ui.scale));
   wayland.hyprland.monitor = [
     ",preferred,auto,${toString ui.scale}"
@@ -35,13 +35,13 @@ in rec {
   ];
   font = {
     titles = {
-      size = 16;
+      size = 14;
     };
     text = {
-      size = 14;
+      size = 12;
     };
   };
   cursor = {
-    size = 14;
+    size = 12;
   };
 }

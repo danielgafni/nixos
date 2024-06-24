@@ -53,11 +53,11 @@ just home <host> switch
 
 ### Fonts
 
-| Purpose | Name |
-|----------|----------|
-| Code    | Fira Code Nerd Font |
-| UI (GTK)    | Cabin   |
-| Wofi    | Recursive  |
+| Purpose | Name | Comment |
+|----------|----------|-------|
+| Code    | Fira Code Nerd Font | |
+| UI    | Cabin   | Easy on eyes, good default |
+| UI    | Recursive  | Eye candy, catchy |
 
 ### Debugging mime-type
 
