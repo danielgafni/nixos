@@ -3,7 +3,7 @@
     enable = true;
     catppuccin.enable = true;
     font = {
-      name = "Fira Code Nerd Font";
+      name = "FiraCode Nerd Font Mono";
       inherit (host-settings.font.text) size;
     };
     settings = {

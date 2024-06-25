@@ -90,7 +90,7 @@
       serif = config.stylix.fonts.sansSerif;
       monospace = {
         package = pkgs.nerdfonts.override {fonts = ["FiraCode"];};
-        name = "Fira Code Nerd Font";
+        name = "FiraCode Nerd Font Mono";
       };
       emoji = {
         package = pkgs.noto-fonts-emoji;

@@ -1,6 +1,6 @@
 # NixOS Config
 
-My NixOS configuration featuring multi-host setup, a few GitHub Actions, remote caching, pre-commit hooks & CI, and [Catppuccin](https://catppuccin.com/) theme for all programs. 
+My NixOS configuration featuring multi-host setup, a few GitHub Actions, remote caching, pre-commit hooks & CI, and [Catppuccin](https://catppuccin.com/) theme for all programs.
 
 Key specs:
 
@@ -55,7 +55,7 @@ just home <host> switch
 
 | Purpose | Name | Comment |
 |----------|----------|-------|
-| Code    | Fira Code Nerd Font | |
+| Code    | FiraCode Nerd Font | |
 | UI    | Cabin   | Easy on eyes, good default |
 | UI    | Recursive  | Eye candy, catchy |
 
