@@ -40,7 +40,7 @@
         "markdown" = false;
         "scminput" = false;
       };
-      "editor.fontLigatures" = true;
+      "editor.fontLigatures" = "'ss09', 'zero', 'cv27', 'ss10'"; # https://github.com/tonsky/FiraCode/wiki/How-to-enable-stylistic-sets
 
       "editor.codeActionsOnSave" = {
         "source.fixAll.markdownlint" = true;
