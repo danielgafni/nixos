@@ -32,6 +32,7 @@
       "workbench.iconTheme" = "catppuccin-mocha";
       "window.zoomLevel" = 1;
       "editor.fontFamily" = "FiraCode Nerd Font Mono, Fira Code Symbol, monospace";
+      "terminal.integrated.fontFamily" = "FiraCode Nerd Font Mono, Fira Code Symbol, monospace";
       "editor.fontSize" = host-settings.font.text.size;
       "terminal.integrated.fontSize" = host-settings.font.text.size;
       "github.copilot.enable" = {
