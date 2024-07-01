@@ -39,8 +39,8 @@ in {
     username = user;
     homeDirectory = "/home/${user}";
     pointerCursor = {
-      name = "catppuccin-${catppuccinFlavor}-${cursorAccent}-cursors";
-      package = cursorPackage;
+      # name = "catppuccin-${catppuccinFlavor}-${cursorAccent}-cursors";
+      #package = cursorPackage;
       inherit (host-settings.cursor) size;
     };
     packages = with pkgs; [
@@ -176,6 +176,10 @@ in {
   catppuccin = {
     enable = true; # sets Catppuccin theme for all programs supported by https://github.com/catppuccin/nix
     flavor = catppuccinFlavor;
+    pointerCursor = {
+      enable = true;
+      accent = cursorAccent; # affects HYPRCURSOR_THEME
+    };
   };
 
   gtk = {
@@ -183,20 +187,12 @@ in {
 
     catppuccin = {
       enable = true; # TODO: remove as it's deprecated
-      cursor = {
-        enable = true;
-        accent = cursorAccent; # affects HYPRCURSOR_THEME
-      };
       icon.enable = true;
     };
 
     font = {
       name = "Cabin";
       package = pkgs.cabin;
-    };
-
-    cursorTheme = {
-      inherit (host-settings.cursor) size;
     };
 
     gtk3.extraConfig = {
