@@ -9,20 +9,24 @@
 }: {
   networking.hostName = "DanPC";
 
-  hardware.opengl = {
-    enable = true;
-  };
-
   services.xserver.videoDrivers = ["nvidia"];
 
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
-    open = false;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  hardware = {
+    nvidia = {
+      modesetting.enable = true;
+      powerManagement.enable = false;
+      powerManagement.finegrained = false;
+      open = false;
+      nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.production;
+    };
+    opengl = {
+      enable = true;
+    };
+    graphics.enable32Bit = true; # this is requried by nvidia docker
   };
+
+  virtualisation.docker.enableNvidia = true;
 
   # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
   # and migrated your data accordingly.
