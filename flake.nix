@@ -34,6 +34,9 @@
     stylix.url = "github:danth/stylix";
 
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
+
+    # tmp fix for nvidia-docker until it's working in nixos-unstable
+    nixpkgs-23_11.url = "github:nixos/nixpkgs/nixos-23.11";
   };
 
   outputs = {
@@ -70,10 +73,31 @@
       "copilot.vim"
     ];
 
+    pkgs-23_11 = import inputs.nixpkgs-23_11 {
+      inherit system;
+      config = {
+        allowUnfree = true;
+        allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) allowed-unfree-packages;
+      };
+    };
+
+    pkgs = import inputs.nixpkgs {
+      inherit system;
+      config = {
+        allowUnfree = true;
+        allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) allowed-unfree-packages;
+      };
+      overlays = [
+        (final: prev: {
+          inherit (pkgs-23_11.nvidia-docker);
+        })
+      ];
+    };
+
     mkNixosConfiguration = host:
       nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = {inherit allowed-unfree-packages user inputs;}; # Pass flake inputs to our config
+        specialArgs = {inherit pkgs allowed-unfree-packages user inputs;}; # Pass flake inputs to our config
         # > Our main nixos configuration file <
         modules = [
           ./hosts/configuration.nix
@@ -87,7 +111,8 @@
 
     mkHomeConfiguration = host:
       home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages."${system}"; # Home-manager requires 'pkgs' instance
+        inherit pkgs;
+        # pkgs = nixpkgs.legacyPackages."${system}"; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {
           # these args are passed to the other home-manager modules
           inherit allowed-unfree-packages user inputs home-manager catppuccin;
