@@ -21,10 +21,10 @@ Key specs:
 prerequisites: `nix`
 
 The repo contains a helper `justfile` to assist with common NixOS management tasks.
-`just` and `nom` commands are required to use it. They can be installed with `Nix` in case they are missing:
+`just`, `unbuffer` (provided by `expect` package) and `nom` commands are required to use it. They can be installed with `Nix` in case they are missing:
 
 ```shell
-nix-shell -p just nix-output-monitor
+nix-shell -p just expect nix-output-monitor
 ```
 
 To test a new NixOS build, run:

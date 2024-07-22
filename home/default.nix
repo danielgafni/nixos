@@ -98,6 +98,7 @@ in {
       strace
       just
       sad
+      expect
 
       # TUI
       ranger
