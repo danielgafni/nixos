@@ -11,5 +11,5 @@ nixos-rebuild host:
 set positional-arguments
 
 home host *args='':
-  unbuffer home-manager --flake .#{{user}}@{{host}} "${@:2}" |& nom
+  home-manager --flake .#{{user}}@{{host}} "${@:2}" |& nom
 

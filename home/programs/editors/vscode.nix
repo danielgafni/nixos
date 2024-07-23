@@ -3,6 +3,9 @@
   host-settings,
   ...
 }: {
+  home.packages = with pkgs; [
+    nil # Nix language server
+  ];
   programs.vscode = {
     enable = true;
     extensions = with pkgs.vscode-extensions;
@@ -18,6 +21,7 @@
         redhat.vscode-yaml
         shd101wyy.markdown-preview-enhanced
         davidanson.vscode-markdownlint
+        dbaeumer.vscode-eslint
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
@@ -50,6 +54,8 @@
         "editor.formatOnSave" = false;
         "editor.formatOnPaste" = true;
       };
+      "nix.enableLanguageServer" = true; # Enable LSP.
+      "nix.serverPath" = "nil"; # The path to the LSP server executable.
     };
   };
 }
