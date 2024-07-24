@@ -235,4 +235,9 @@ in {
       Install.WantedBy = ["default.target"];
     };
   };
+
+  # User avatar
+  home.file."Media/avatar.jpg" = {
+    source = ./assets/avatar.jpg;
+  };
 }

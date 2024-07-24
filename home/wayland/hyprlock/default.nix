@@ -97,22 +97,19 @@ in {
           shadow_passes = 2;
         }
       ];
+      image = [
+        {
+          monitor = "";
+          path = "$HOME/Media/avatar.jpg"; # avatar set in home/default.nix
+          size = 350;
+          border_color = "$accent";
+          rounding = -1;
+          position = "0, 75";
+          halign = "center";
+          valign = "center";
+          shadow_passes = 2;
+        }
+      ];
     };
-    extraConfig = ''
-
-      # USER AVATAR
-      # image {
-      #     monitor =
-      #     path = $HOME/.face
-      #     size = 350
-      #     border_color = $accent
-      #     rounding = -1
-
-      #     position = 0, 75
-      #     halign = center
-      #     valign = center
-      #     shadow_passes = 2
-      # }
-    '';
   };
 }
