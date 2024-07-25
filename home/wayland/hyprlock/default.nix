@@ -4,6 +4,7 @@
   pkgs,
   allowed-unfree-packages,
   config,
+  user,
   ...
 }: let
   # TODO: probably these is a cleaner way to get access to these variables?
@@ -100,7 +101,7 @@ in {
       # image = [
       #   {
       #     monitor = "";
-      #     path = "$HOME/Media/avatar.jpg"; # avatar set in home/default.nix
+      #     path = "/home/${user}/Media/avatar.jpg"; # avatar set in home/default.nix
       #     size = 350;
       #     border_color = "$accent";
       #     rounding = -1;
