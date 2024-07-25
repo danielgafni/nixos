@@ -146,7 +146,7 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
-    font = "FiraCode Nerd Font";
+    #font = "FiraCode Nerd Font Mono";
     # keyMap = "us";
     useXkbConfig = true; # use xkbOptions in tty.
   };
