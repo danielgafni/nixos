@@ -238,6 +238,8 @@
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
+    enableExtraSocket = true;
+    pinentryPackage = pkgs.ncurses;
   };
   programs.zsh.enable = true;
 

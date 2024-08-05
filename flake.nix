@@ -70,6 +70,7 @@
       "slack"
       "discord"
       "pycharm-professional"
+      "pycharm-professional-with-plugins"
       "gateway"
       "copilot.vim"
     ];
