@@ -239,7 +239,7 @@
     enable = true;
     enableSSHSupport = true;
     enableExtraSocket = true;
-    pinentryFlavor = "curses";
+    pinentryPackage = pkgs.ncurses;
   };
   programs.zsh.enable = true;
 
