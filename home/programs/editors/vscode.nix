@@ -30,6 +30,12 @@
           version = "0.0.3";
           sha256 = "0c84e02de75a3b421faedb6ef995e489a540ed46b94577388d74073d82eaadc3";
         }
+        {
+          name = "grafana-alloy";
+          publisher = "Grafana";
+          version = "0.2.0";
+          sha256 = "5dca2210308fa7a1b36100e1240ad90445b14a766b4931e87c8c8b15e82c6e1d";
+        }
       ];
     userSettings = {
       "workbench.colorTheme" = "Catppuccin Mocha";
