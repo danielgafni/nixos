@@ -136,6 +136,7 @@ in {
       # editors & IDE
       vim
       helix
+      obsidian
 
       jetbrains.gateway
 
