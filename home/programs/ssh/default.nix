@@ -4,8 +4,8 @@ _: {
     forwardAgent = true;
     matchBlocks = {
       devbox = {
-        hostname = "64.176.70.67";
-        user = "root";
+        hostname = "16.171.214.85";
+        user = "dan";
       };
       skynet = {
         hostname = "76.126.173.16";

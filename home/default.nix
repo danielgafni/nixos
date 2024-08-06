@@ -148,6 +148,9 @@ in {
       ruff
       isort
 
+      # development
+      graphite-cli
+
       # extra
       xarchiver
     ];
