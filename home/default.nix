@@ -18,6 +18,7 @@ in {
   imports = [
     # You can also split up your configuration and import pieces of it here:
     ./wayland
+    ./services
     ./programs
     ./shell
     ./eww.nix
@@ -213,7 +214,9 @@ in {
   # list of enabled programs with (almost) default configuration
   # if a program requires more configuration, it should be moved to ./programs/...
   programs = {
-    home-manager.enable = true;
+    home-manager = {
+      enable = true;
+    };
     dircolors.enable = true;
     btop.enable = true;
   };

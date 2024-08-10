@@ -2,6 +2,10 @@
 
 My NixOS configuration featuring multi-host setup, a few GitHub Actions, remote caching, pre-commit hooks & CI, and [Catppuccin](https://catppuccin.com/) theme for all programs.
 
+
+> [!WARNING]  
+> WIP, not documented
+
 Key specs:
 
 - `home-manager` for user configuration
@@ -11,8 +15,14 @@ Key specs:
 
 ![assets/NixOS-rice.png](assets/NixOS-rice.png)
 
-> [!WARNING]  
-> WIP, not documented
+
+### Fonts
+
+| Purpose | Name | Comment |
+|----------|----------|-------|
+| Code    | FiraCode Nerd Font | |
+| UI    | Cabin   | Easy on eyes, good default |
+| UI    | Recursive  | Eye candy, catchy |
 
 ## Usage
 
@@ -49,17 +59,17 @@ Files in `$HOME` are defined via `Home Manager`, which can be invoked separately
 just home <host> switch
 ```
 
-## Notes
+## Installing on non-NixOS distros
 
-### Fonts
+All of the `$HOME` directory configuration (installed packages, programs, and configs from `home` directory of this repo) from `home-manager` can be installed on a non-NixOS distro. However, system settings would have to be configured manually. Below is an incomplete set of isntructions for system configuration on other distros.
 
-| Purpose | Name | Comment |
-|----------|----------|-------|
-| Code    | FiraCode Nerd Font | |
-| UI    | Cabin   | Easy on eyes, good default |
-| UI    | Recursive  | Eye candy, catchy |
+### ArchLinux
 
-### Debugging mime-type
+WIP
+
+# Random Debugging Stuff
+
+### mime-type
 
 ```shell
 XDG_UTILS_DEBUG_LEVEL=2 xdg-mime query filetype foo.pdf
