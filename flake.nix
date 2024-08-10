@@ -73,6 +73,7 @@
       "pycharm-professional-with-plugins"
       "gateway"
       "copilot.vim"
+      "graphite-cli"
     ];
 
     pkgs-23_11 = import inputs.nixpkgs-23_11 {
