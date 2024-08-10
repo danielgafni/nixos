@@ -138,7 +138,6 @@
   };
 
   environment = {
-    sessionVariables.NIXOS_OZONE_WL = "1";
     shells = with pkgs; [zsh];
     etc."greetd/environments".text = ''
       Hyprland
@@ -153,7 +152,6 @@
       fd
       btop
       zellij
-      helix
       vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       neovim
       wget
@@ -229,9 +227,6 @@
     ];
     config.common.default = "*";
   };
-
-  # Lorri - direnv integration for Nix
-  services.lorri.enable = true;
 
   # update nix index for comma every week
   services.cron = {

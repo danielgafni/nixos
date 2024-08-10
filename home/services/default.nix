@@ -1,5 +1,6 @@
 {...}: {
   imports = [
     ./gpg-agent
+    ./lorri
   ];
 }
