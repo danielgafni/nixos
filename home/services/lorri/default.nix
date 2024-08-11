@@ -1,4 +1,4 @@
-{_}: {
+_: {
   # Lorri - direnv integration for Nix
   services.lorri.enable = true;
 }
