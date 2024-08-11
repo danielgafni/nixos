@@ -163,6 +163,9 @@
   };
 
   environment = {
+    sessionVariables = {
+      "NIXOS_OZONE_WL" = "1"; # this **must** be a system variable, it can't be defined in user space
+    };
     shells = with pkgs; [zsh];
     etc."greetd/environments".text = ''
       Hyprland

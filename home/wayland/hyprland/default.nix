@@ -12,7 +12,6 @@
     ];
     sessionVariables = {
       HYPRCURSOR_SIZE = lib.mkForce (toString host-settings.cursor.size);
-      NIXOS_OZONE_WL = "1";
     };
   };
 
