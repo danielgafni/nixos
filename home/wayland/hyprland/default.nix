@@ -6,10 +6,15 @@
   host-settings,
   ...
 }: {
-  home.packages = with pkgs; [
-    hyprcursor # catppuccin-nix will automatically set the cursor theme
-  ];
-  home.sessionVariables.HYPRCURSOR_SIZE = lib.mkForce (toString host-settings.cursor.size);
+  home = {
+    packages = with pkgs; [
+      hyprcursor # catppuccin-nix will automatically set the cursor theme
+    ];
+    sessionVariables = {
+      HYPRCURSOR_SIZE = lib.mkForce (toString host-settings.cursor.size);
+    };
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     catppuccin.enable = true;

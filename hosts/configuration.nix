@@ -12,10 +12,10 @@
     ../modules/NixOS/bluetooth
     ../modules/NixOS/yubikey
   ];
+
   nix = {
     settings = {
-      netrc-file = /etc/nix/.netrc; # for credentials (like pribate PyPI server)
-      trusted-users = ["root" "dan"];
+      trusted-users = ["root" "dan" "@wheel"];
       substituters = [
         "https://hyprland.cachix.org"
         "https://nixpkgs-wayland.cachix.org"
@@ -32,6 +32,7 @@
       experimental-features = ["nix-command" "flakes"];
       auto-optimise-store = true;
     };
+
     gc = {
       automatic = true;
       dates = "weekly";
@@ -162,7 +163,9 @@
   };
 
   environment = {
-    sessionVariables.NIXOS_OZONE_WL = "1";
+    sessionVariables = {
+      "NIXOS_OZONE_WL" = "1"; # this **must** be a system variable, it can't be defined in user space
+    };
     shells = with pkgs; [zsh];
     etc."greetd/environments".text = ''
       Hyprland
@@ -177,7 +180,6 @@
       fd
       btop
       zellij
-      helix
       vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       neovim
       wget
@@ -234,13 +236,6 @@
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
-  # programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-    enableExtraSocket = true;
-    pinentryPackage = pkgs.pinentry-curses;
-  };
   programs.zsh.enable = true;
 
   services.fprintd.enable = true;
@@ -260,9 +255,6 @@
     ];
     config.common.default = "*";
   };
-
-  # Lorri - direnv integration for Nix
-  services.lorri.enable = true;
 
   # update nix index for comma every week
   services.cron = {
