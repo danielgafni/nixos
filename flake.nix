@@ -38,6 +38,11 @@
 
     # tmp fix for nvidia-docker until it's working in nixos-unstable
     nixpkgs-23_11.url = "github:nixos/nixpkgs/nixos-23.11";
+
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -50,6 +55,7 @@
     hyprland-plugins,
     stylix,
     nixvim,
+    nixos-cosmic,
     ...
   } @ inputs: let
     # helper variables and functions
@@ -109,6 +115,7 @@
           catppuccin.nixosModules.catppuccin
           stylix.nixosModules.stylix
           {programs.hyprland.xwayland.enable = true;}
+          nixos-cosmic.nixosModules.default
         ];
       };
 

@@ -21,6 +21,7 @@
         "https://nixpkgs-wayland.cachix.org"
         "https://pre-commit-hooks.cachix.org"
         "https://nixpkgs-wayland.cachix.org"
+        "https://cosmic.cachix.org"
       ];
       trusted-public-keys = [
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
@@ -28,6 +29,7 @@
         "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
         "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
         "danielgafni.cachix.org-1:ZdXJoJEqeiGGOf/MtAiocqj7/vvFbA2MWFVwopJ2WQM="
+        "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
       ];
       experimental-features = ["nix-command" "flakes"];
       auto-optimise-store = true;
@@ -108,11 +110,13 @@
   services = {
     localtimed.enable = true;
     automatic-timezoned.enable = true;
+    desktopManager.cosmic.enable = true;
+    displayManager.cosmic-greeter.enable = true;
     # login screen
     greetd = {
       enable = true;
       settings = {
-        default_session.command = ''
+        initial_session.command = ''
           ${pkgs.greetd.tuigreet}/bin/tuigreet \
             --time \
             --asterisks \
