@@ -31,6 +31,7 @@
       l = "eza -l";
       la = "eza -la";
       md = "mkdir -p";
+      cd = "z";
     };
     shellGlobalAliases = {eza = "eza --icons --git";};
     zplug = {
