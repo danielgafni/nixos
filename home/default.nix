@@ -138,6 +138,7 @@ in {
       vim
       helix
       obsidian
+      zed-editor
 
       jetbrains.gateway
 
