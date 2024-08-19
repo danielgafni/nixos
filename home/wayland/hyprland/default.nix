@@ -134,6 +134,10 @@
         #   };
         # }
       ];
+
+      windowrulev2 = [
+        "float,title:^(Open Folder)$"
+      ];
     };
 
     extraConfig = ''
