@@ -8,6 +8,7 @@
   ];
   programs.vscode = {
     enable = true;
+    enableUpdateCheck = false;
     mutableExtensionsDir = false;
     extensions = with pkgs.vscode-extensions;
       [

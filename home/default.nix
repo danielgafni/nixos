@@ -16,6 +16,7 @@
 in {
   # You can import other home-manager modules here
   imports = [
+    ./modules
     # You can also split up your configuration and import pieces of it here:
     ./wayland
     ./services
@@ -70,7 +71,6 @@ in {
       hyprpicker
       grim
       slurp
-      flameshot
       wev # show wayland events
       wl-clipboard
       font-manager
@@ -222,6 +222,10 @@ in {
     };
     dircolors.enable = true;
     btop.enable = true;
+  };
+
+  module = {
+    flameshot.enable = true; # custom module defined in ./modules/flameshot
   };
 
   news = {
