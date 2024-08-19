@@ -8,6 +8,7 @@
   ];
   programs.vscode = {
     enable = true;
+    mutableExtensionsDir = false;
     extensions = with pkgs.vscode-extensions;
       [
         ms-azuretools.vscode-docker

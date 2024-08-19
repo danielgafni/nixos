@@ -13,8 +13,6 @@
   ];
 
   boot = {
-    loader.grub.extraConfig = ''GRUB_CMDLINE_LINUX_DEFAULT="nvidia_drm.modeset=1"'';
-
     initrd.availableKernelModules = [
       "nvme"
       "xhci_pci"
@@ -29,6 +27,10 @@
     ];
     initrd.kernelModules = ["nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm"];
     kernelModules = ["kvm-amd"];
+    kernelParams = [
+      "nvidia_drm.fbdev=1"
+      "nvidia_drm.modeset=1"
+    ];
     extraModulePackages = [];
   };
 
