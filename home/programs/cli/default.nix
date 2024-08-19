@@ -4,5 +4,7 @@
     ./git.nix
     ./k9s.nix
     ./bat.nix
+    ./yazi.nix
+    ./zoxide.nix
   ];
 }

@@ -210,7 +210,7 @@
       bind=SUPER,Q,killactive,
       bind=SUPER,M,exit,
       bind=SUPER,R,exec,hyprctl reload
-      bind=SUPER,E,exec,kitty --title kitty -e ranger
+      bind=SUPER,E,exec,kitty --title kitty -e yazi
       bind=SUPER,S,togglefloating,
       bind=SUPER,F,fullscreen,
 

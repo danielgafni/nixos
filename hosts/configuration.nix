@@ -111,7 +111,7 @@
     localtimed.enable = true;
     automatic-timezoned.enable = true;
     desktopManager.cosmic.enable = true;
-    displayManager.cosmic-greeter.enable = true;
+    #displayManager.cosmic-greeter.enable = true;
     # login screen
     greetd = {
       enable = true;
@@ -167,6 +167,7 @@
   };
 
   environment = {
+    pathsToLink = ["/share/zsh"]; # for zsh completions
     sessionVariables = {
       "NIXOS_OZONE_WL" = "1"; # this **must** be a system variable, it can't be defined in user space
     };
