@@ -255,10 +255,20 @@
     enable = true;
     wlr.enable = true;
     extraPortals = [
-      # pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal-hyprland
     ];
-    config.common.default = "*";
+    config = {
+      common = {
+        default = [
+          "hyprland"
+          "gtk"
+        ];
+      };
+      hyprland = {
+        "org.freedesktop.impl.portal.FileChooser" = "gtk"; # hyprland doesn't provide an implementaion of file chooser
+      };
+    };
   };
 
   # update nix index for comma every week

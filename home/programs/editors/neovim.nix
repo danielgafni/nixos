@@ -1,9 +1,11 @@
 _: {
+  home.sessionVariables.SUDO_EDITOR = "nvim";
   programs = {
     neovim.catppuccin.enable = false; # don't use catppuccin-nix, use catppuccin from nixvim instead (see below)
 
     nixvim = {
       enable = true;
+      defaultEditor = true;
       clipboard.providers.wl-copy.enable = true;
       colorschemes = {
         catppuccin = {

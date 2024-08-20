@@ -177,6 +177,25 @@ in {
         source = ./.config/helix;
       };
     };
+    portal = {
+      enable = true;
+      config = {
+        common = {
+          default = [
+            "hyprland"
+            "gtk"
+          ];
+        };
+        hyprland = {
+          "org.freedesktop.impl.portal.FileChooser" = "gtk"; # hyprland doesn't provide an implementaion of file chooser
+        };
+      };
+
+      extraPortals = [
+        pkgs.xdg-desktop-portal-hyprland
+        pkgs.xdg-desktop-portal-gtk
+      ];
+    };
   };
 
   catppuccin = {

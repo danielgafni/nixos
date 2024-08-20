@@ -1,4 +1,4 @@
-{...}: {
+_: {
   imports = [
     ./vscode.nix
     ./neovim.nix
