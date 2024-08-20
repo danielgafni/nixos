@@ -24,6 +24,7 @@
         shd101wyy.markdown-preview-enhanced
         davidanson.vscode-markdownlint
         dbaeumer.vscode-eslint
+        hashicorp.hcl
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
@@ -64,6 +65,9 @@
       };
       "nix.enableLanguageServer" = true; # Enable LSP.
       "nix.serverPath" = "nil"; # The path to the LSP server executable.
+      "files.associations" = {
+        "*.hcl" = "terraform";
+      };
     };
   };
 }
