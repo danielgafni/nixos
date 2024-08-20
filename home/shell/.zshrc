@@ -1,4 +1,3 @@
-export EDITOR=hx
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # ZSH settings
@@ -104,4 +103,3 @@ command_not_found_handler() {
 
 # Direnv
 eval "$(direnv hook zsh)"
-
