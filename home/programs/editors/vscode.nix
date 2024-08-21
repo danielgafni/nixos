@@ -24,6 +24,7 @@
         shd101wyy.markdown-preview-enhanced
         davidanson.vscode-markdownlint
         dbaeumer.vscode-eslint
+        hashicorp.hcl
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {

@@ -136,7 +136,8 @@
       ];
 
       windowrulev2 = [
-        "float,title:^(Open Folder)$"
+        "float,title:^(Open Folder)$" # File Shooser
+        "float,class:xarchiver"
       ];
     };
 
