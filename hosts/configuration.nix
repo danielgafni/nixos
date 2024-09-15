@@ -244,8 +244,8 @@
   programs.zsh.enable = true;
 
   services.fprintd.enable = true;
-  services.fprintd.tod.enable = true;
-  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix; # try this driver)
+  # services.fprintd.tod.enable = true;
+  #services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix; # try this driver)
   # services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090; # or this one
 
   services.pcscd.enable = true;

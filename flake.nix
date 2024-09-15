@@ -2,6 +2,8 @@
   description = "@danielgafni's NixOS config";
 
   inputs = {
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
+
     hyprland = {
       type = "git";
       url = "https://github.com/hyprwm/Hyprland";
@@ -48,6 +50,7 @@
   outputs = {
     self,
     nixpkgs,
+    nixos-hardware,
     pre-commit-hooks,
     home-manager,
     catppuccin,
@@ -106,7 +109,7 @@
     mkNixosConfiguration = host:
       nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = {inherit pkgs allowed-unfree-packages user inputs;}; # Pass flake inputs to our config
+        specialArgs = {inherit pkgs nixos-hardware allowed-unfree-packages user inputs;}; # Pass flake inputs to our config
         # > Our main nixos configuration file <
         modules = [
           ./hosts/configuration.nix
