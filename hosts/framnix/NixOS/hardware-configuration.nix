@@ -5,11 +5,13 @@
   config,
   lib,
   pkgs,
+  nixos-hardware,
   modulesPath,
   ...
 }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
+    nixos-hardware.nixosModules.framework-12th-gen-intel
   ];
 
   boot = {
@@ -62,4 +64,6 @@
       libvdpau-va-gl
     ];
   };
+
+  services.fwupd.enable = true;
 }
