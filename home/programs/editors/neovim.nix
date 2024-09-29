@@ -41,6 +41,14 @@ _: {
         chadtree.enable = true;
         bufferline.enable = true;
 
+        mini = {
+          enable = true;
+          mockDevIcons = true;
+          modules = {
+            icons = {};
+          };
+        };
+
         lsp = {
           enable = true;
           servers = {
