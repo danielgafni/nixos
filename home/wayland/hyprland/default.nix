@@ -143,7 +143,9 @@
     };
 
     extraConfig = ''
-      debug:disable_logs = false
+      debug {
+      	disable_logs = false
+      }
 
       exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       exec-once=systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP

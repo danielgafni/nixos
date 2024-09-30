@@ -86,6 +86,7 @@ in {
       # CLI
       comma
       statix
+      nix-output-monitor
       git
       delta
       curl
