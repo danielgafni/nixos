@@ -8,6 +8,7 @@
       type = "git";
       url = "https://github.com/hyprwm/Hyprland";
       submodules = true;
+      ref = "v0.41.2";
     };
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
