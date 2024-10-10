@@ -154,7 +154,6 @@ in {
 
       # extra
       xarchiver
-      qbittorrent
       mullvad-vpn
       wireguard-ui
       mpv

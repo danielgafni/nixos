@@ -6,5 +6,6 @@
     ./terminals
     ./cli
     ./editors
+    ./content
   ];
 }
