@@ -225,7 +225,7 @@
     users.dan = {
       isNormalUser = true;
       initialPassword = "pw123";
-      extraGroups = ["wheel" "docker"]; # Enable ‘sudo’ for the user.
+      extraGroups = ["wheel" "docker" "video"];
       packages = with pkgs; [
         home-manager
       ];
