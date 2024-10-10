@@ -1,8 +1,6 @@
 {
-  inputs,
   lib,
   pkgs,
-  allowed-unfree-packages,
   host-settings,
   ...
 }: {
@@ -33,7 +31,7 @@
         kb_layout = "us,ru";
         kb_variant = "ffffff";
         kb_options = "grp:alt_shift_toggle";
-        sensitivity = 0.3;
+        sensitivity = 0.3; # for mouse cursor
 
         # must click on window to move focus
         # follow_mouse=2
@@ -48,7 +46,6 @@
         workspace_swipe_fingers = 4;
       };
       general = {
-        sensitivity = 1.0; # for mouse cursor
         resize_on_border = true;
         gaps_in = 3;
         gaps_out = 3;
@@ -56,7 +53,6 @@
         # rotating gradeint border!
         "col.active_border" = "rgba(88c0d0ff) rgba(b48eadff) rgba(ebcb8bff) rgba(a3be8cff) 45deg";
         "col.inactive_border" = "0xff434c5e";
-        apply_sens_to_raw = 0; # whether to apply the sensitivity to raw input (e.g. used by games where you aim using your mouse)
       };
       decoration = {
         drop_shadow = true;
