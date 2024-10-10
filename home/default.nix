@@ -154,6 +154,11 @@ in {
 
       # extra
       xarchiver
+      qbittorrent
+      mullvad-vpn
+      wireguard-ui
+      mpv
+      vlc
     ];
 
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
