@@ -14,7 +14,6 @@
       inputs.hyprland.follows = "hyprland";
     };
     ags.url = "github:Aylur/ags";
-    helix.url = "github:helix-editor/helix";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
