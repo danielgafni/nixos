@@ -9,5 +9,8 @@
       "mode": "system",
       "light": "Catppuccin Mocha",
       "dark": "Catppuccin Mocha"
+    },
+    "terminal": {
+      "font_family": "FiraCode Nerd Font Mono"
     }
   }

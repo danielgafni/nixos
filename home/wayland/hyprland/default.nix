@@ -134,7 +134,7 @@
       windowrulev2 = [
         "float,title:^(Open Folder)$" # File Shooser
         "float,class:xarchiver"
-        "float,class:Bitwarden"
+        "float,title:Bitwarden"
       ];
     };
 
