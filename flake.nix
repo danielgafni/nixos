@@ -40,6 +40,11 @@
     # tmp fix for nvidia-docker until it's working in nixos-unstable
     nixpkgs-23_11.url = "github:nixos/nixpkgs/nixos-23.11";
 
+    zed = {
+      url = "github:zed-industries/zed";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     #nixos-cosmic = {
     #  url = "github:lilyinstarlight/nixos-cosmic";
     #  inputs.nixpkgs.follows = "nixpkgs";
@@ -57,6 +62,7 @@
     hyprland-plugins,
     stylix,
     nixvim,
+    zed,
     #nixos-cosmic,
     ...
   } @ inputs: let
