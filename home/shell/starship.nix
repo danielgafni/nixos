@@ -20,6 +20,20 @@
         symbol = " ";
         heuristic = true;
       };
+
+      kubernetes = {
+        disabled = false;
+        symbol = "☸ ";
+      };
+
+      aws = {
+        symbol = "🅰 ";
+      };
+
+      gcloud = {
+        disabled = true;
+        symbol = "🇬️";
+      };
     };
   };
 }

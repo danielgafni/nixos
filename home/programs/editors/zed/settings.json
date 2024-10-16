@@ -12,5 +12,18 @@
     },
     "terminal": {
       "font_family": "FiraCode Nerd Font Mono"
-    }
+    },
+    "ssh_connections": [
+      {
+        "host": "devbox",
+        "projects": [
+          {
+            "paths": [
+              "~/dagster",
+              "~/dagster-ray"
+            ]
+          }
+        ]
+      }
+    ]
   }

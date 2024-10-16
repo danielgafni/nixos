@@ -243,7 +243,16 @@
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
-  programs.zsh.enable = true;
+  programs = {
+    zsh.enable = true;
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        # python 3.10
+        python310
+      ];
+    };
+  };
 
   services.fprintd.enable = true;
   # services.fprintd.tod.enable = true;
