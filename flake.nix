@@ -68,28 +68,6 @@
   } @ inputs: let
     # helper variables and functions
     # used to produce the main configurations in the flake
-    system = "x86_64-linux";
-    user = "dan";
-    hosts = ["DanPC" "framnix"];
-
-    # Define the list of unfree packages to allow here, so you can pass it to
-    # both `sudo nixos-rebuild` and `home-manager`
-    allowed-unfree-packages = [
-      "google-chrome"
-      "obsidian"
-      "postman"
-      "vscode"
-      "vscode-extension-github-copilot"
-      "lens-desktop"
-      "slack"
-      "discord"
-      "pycharm-professional"
-      "pycharm-professional-with-plugins"
-      "gateway"
-      "copilot.vim"
-      "graphite-cli"
-    ];
-
     pkgs-23_11 = import inputs.nixpkgs-23_11 {
       inherit system;
       config = {
@@ -111,11 +89,78 @@
       ];
     };
 
-    mkNixosConfiguration = host:
+    system = "x86_64-linux";
+
+    users = {
+      dan = {
+        isNormalUser = true;
+        initialPassword = "pw123";
+        extraGroups = ["wheel" "docker" "video"];
+        packages = [pkgs.home-manager];
+      };
+      underdel = {
+        isNormalUser = true;
+        initialPassword = "pw123";
+        extraGroups = ["video"];
+        packages = [pkgs.home-manager];
+      };
+    };
+
+    user-configs = {
+      dan = rec {
+        email = "danielgafni16@gmail.com";
+        fullName = "Daniel Gafni";
+        git = {
+          userName = "danielgafni";
+          userEmail = email;
+          signingkey = "7B0740201D518DB134D5C75AB8D13360DED17662";
+        };
+      };
+      underdel = {
+        email = "linagafni@gmail.com";
+        fullName = "Lina Gafni";
+      };
+    };
+
+    host-users-map = {
+      DanPC = ["dan"];
+      framnix = ["dan" "underdel"];
+    };
+
+    # Define the list of unfree packages to allow here, so you can pass it to
+    # both `sudo nixos-rebuild` and `home-manager`
+    allowed-unfree-packages = [
+      "google-chrome"
+      "obsidian"
+      "postman"
+      "vscode"
+      "vscode-extension-github-copilot"
+      "lens-desktop"
+      "slack"
+      "discord"
+      "pycharm-professional"
+      "pycharm-professional-with-plugins"
+      "gateway"
+      "copilot.vim"
+      "graphite-cli"
+    ];
+
+    mkNixosConfiguration = {
+      host,
+      user-selection,
+    }:
       nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = {inherit pkgs nixos-hardware allowed-unfree-packages user inputs;}; # Pass flake inputs to our config
-        # > Our main nixos configuration file <
+        specialArgs = {
+          # Pass flake inputs to our config
+          inherit pkgs nixos-hardware allowed-unfree-packages inputs;
+          users = {
+            extraGroups.docker.members = ["dan"];
+            defaultUserShell = pkgs.zsh;
+            # subset of users by user-selection
+            users = nixpkgs.lib.filterAttrs (name: user: builtins.elem name user-selection) users;
+          };
+        };
         modules = [
           ./hosts/configuration.nix
           ./hosts/${host}/NixOS
@@ -127,7 +172,10 @@
         ];
       };
 
-    mkHomeConfiguration = host:
+    mkHomeConfiguration = {
+      host,
+      user,
+    }:
       home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         # pkgs = nixpkgs.legacyPackages."${system}"; # Home-manager requires 'pkgs' instance
@@ -135,6 +183,7 @@
           # these args are passed to the other home-manager modules
           inherit allowed-unfree-packages user inputs home-manager catppuccin;
           host-settings = import ./hosts/${host}/settings.nix;
+          userConfig = user-configs.${user};
         };
         # > Our main home-manager configuration file <
         modules = [
@@ -149,7 +198,7 @@
         ];
       };
   in {
-    # actual configurations
+    # actual flake outputs
 
     # supporting configurations for development of this flake
     checks."${system}" = {
@@ -169,19 +218,22 @@
 
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#<hostname>' (hosts are taken from the 'hosts' list above)
-    nixosConfigurations = builtins.listToAttrs (map (host: {
-        name = host;
-        value = mkNixosConfiguration host;
-      })
-      hosts);
+    nixosConfigurations =
+      nixpkgs.lib.attrsets.mapAttrs (host: user-selection: mkNixosConfiguration {inherit host user-selection;})
+      host-users-map;
 
     # Standalone home-manager configuration entrypoint
-    # Available through 'home-manager --flake .#<user>@<hostname>' (hosts are taken from the 'hosts' list above)
+    # Available through 'home-manager --flake .#<user>@<hostname>'
 
-    homeConfigurations = builtins.listToAttrs (map (host: {
-        name = "${user}@${host}";
-        value = mkHomeConfiguration host;
-      })
-      hosts);
+    homeConfigurations =
+      pkgs.lib.concatMapAttrs (
+        host: users:
+          pkgs.lib.listToAttrs (pkgs.lib.map (user: {
+              name = "${user}@${host}";
+              value = mkHomeConfiguration {inherit host user;};
+            })
+            users)
+      )
+      host-users-map;
   };
 }
