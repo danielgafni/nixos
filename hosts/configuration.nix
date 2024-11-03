@@ -6,8 +6,11 @@
   pkgs,
   lib,
   allowed-unfree-packages,
+  users,
   ...
 }: {
+  inherit users;
+
   imports = [
     ../modules/NixOS/bluetooth
     ../modules/NixOS/yubikey
@@ -192,7 +195,7 @@
       wget
       curl
       lynx
-      lemurs
+      #lemurs
       brightnessctl
       pavucontrol
       direnv
@@ -214,21 +217,6 @@
       features = {
         buildkit = true;
       };
-    };
-  };
-
-  users.extraGroups.docker.members = ["dan"];
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users = {
-    defaultUserShell = pkgs.zsh;
-    users.dan = {
-      isNormalUser = true;
-      initialPassword = "pw123";
-      extraGroups = ["wheel" "docker" "video"];
-      packages = with pkgs; [
-        home-manager
-      ];
     };
   };
 

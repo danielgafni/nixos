@@ -1,0 +1,103 @@
+name: "Build"
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Flake Check
+    steps:
+    - uses: actions/checkout@v4
+    - uses: DeterminateSystems/nix-installer-action@main
+    - uses: cachix/cachix-action@v15
+      with:
+        name: danielgafni
+        authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+        useDaemon: true
+    - run: nix-channel --update
+    - run: nix flake check
+  
+  build-nixos:
+    strategy:
+      matrix:
+        host:
+          - DanPC
+          - framnix
+    runs-on: ubuntu-latest
+    name: Build NixOS for ${{ matrix.host }}
+    steps:
+    - name: Free Disk Space (Ubuntu)
+      uses: jlumbroso/free-disk-space@main
+      with:
+        # this might remove tools that are actually needed,
+        # if set to "true" but frees about 6 GB
+        tool-cache: false
+        
+        # all of these default to true, but feel free to set to
+        # "false" if necessary for your workflow
+        android: true
+        dotnet: true
+        haskell: true
+        large-packages: true
+        docker-images: true
+        swap-storage: true
+    - uses: actions/checkout@v4
+    - uses: DeterminateSystems/nix-installer-action@main
+    - uses: cachix/cachix-action@v15
+      with:
+        name: danielgafni
+        authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+        useDaemon: true
+    - run: nix-channel --update
+    - run: nix build .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
+  
+  build-home:
+    strategy:
+      matrix:
+        host-users:
+          - host: DanPC
+            user: dan
+          - host: framnix
+            user: dan
+          - host: framnix
+            user: underdel
+    runs-on: ubuntu-latest
+    name: Build Home for ${{ matrix.host-users.user }}@${{ matrix.host-users.host }}
+    steps:
+    - name: Free Disk Space (Ubuntu)
+      uses: jlumbroso/free-disk-space@main
+      with:
+        # this might remove tools that are actually needed,
+        # if set to "true" but frees about 6 GB
+        tool-cache: false
+        
+        # all of these default to true, but feel free to set to
+        # "false" if necessary for your workflow
+        android: true
+        dotnet: true
+        haskell: true
+        large-packages: true
+        docker-images: true
+        swap-storage: true
+    - uses: actions/checkout@v4
+    - uses: DeterminateSystems/nix-installer-action@main
+    - uses: cachix/cachix-action@v15
+      with:
+        name: danielgafni
+        authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+        useDaemon: true
+    - run: nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+    - run: nix-channel --update
+    - run: nix-env -i home-manager
+    - run: home-manager --flake .#${{ matrix.host-users.user }}@${{ matrix.host-users.host }} build
+  
+  result:
+    needs:
+      - test
+      - build-nixos
+      - build-home
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "Build succeeded"

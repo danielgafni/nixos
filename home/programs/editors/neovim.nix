@@ -52,14 +52,14 @@ _: {
         lsp = {
           enable = true;
           servers = {
-            nil-ls.enable = true;
+            nil_ls.enable = true;
             ruff.enable = true;
             pyright.enable = true;
             yamlls.enable = true;
             jsonls.enable = true;
-            helm-ls.enable = true;
+            helm_ls.enable = true;
             dockerls.enable = true;
-            docker-compose-language-service.enable = true;
+            docker_compose_language_service.enable = true;
             terraformls.enable = true;
           };
         };
