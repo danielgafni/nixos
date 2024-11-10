@@ -55,11 +55,13 @@
         "col.inactive_border" = "0xff434c5e";
       };
       decoration = {
-        drop_shadow = true;
-        shadow_range = 20;
-        shadow_render_power = 3;
-        "col.shadow" = "0xee1a1a1a";
-        "col.shadow_inactive" = "0xee1a1a1a";
+        shadow = {
+          enabled = true;
+          range = 20;
+          render_power = 3;
+          color = "0xee1a1a1a";
+          color_inactive = "0xee1a1a1a";
+        };
         rounding = 10;
 
         blur = {
