@@ -41,7 +41,8 @@
     nixpkgs-23_11.url = "github:nixos/nixpkgs/nixos-23.11";
 
     zed = {
-      url = "github:zed-industries/zed";
+      # pin specific commit
+      url = "github:zed-industries/zed?ref=cdead5760a2c200179e6a51d5a396c33a3e06e3d";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
