@@ -1,15 +1,24 @@
-{inputs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [
+    # Nix language servers
+    nixd
+    nil
+  ];
   programs.zed-editor = {
     enable = true;
     package = inputs.zed.packages.x86_64-linux.zed-editor;
-    # read settings.json
-    userSettings = builtins.fromJSON (builtins.readFile ./settings.json);
     extensions = [
       "catppuccin-blur"
       "nix"
       "dockerfile"
       "docker-compose"
       "git-firefly"
+      "helm"
+      "markdown-oxide"
     ];
     userSettings = {
       auto_update = false;
@@ -25,7 +34,19 @@
         dark = "Catppuccin Espresso (Blur)";
       };
       terminal = {
-        font_family = "ZedMono Nerd Font";
+        env = {
+          # use zed as commit editor
+          # TODO: enable once remote development supports running the "zed" command properly
+          # EDITOR = "zed --wait";
+        };
+        font_family = "'ZedMono Nerd Font', 'Noto Sans Symbols'";
+      };
+      indent_guides = {
+        enabled = true;
+        coloring = "indent_aware";
+      };
+      inlay_hints = {
+        enabled = true;
       };
       ssh_connections = [
         {
@@ -43,6 +64,7 @@
           ];
         }
       ];
+
       languages = {
         Python = {
           language_servers = ["ruff" "pyright"];

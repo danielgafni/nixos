@@ -91,14 +91,9 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
 zstyle ':completion:*' verbose true
 _comp_options+=(globdots)
 
-export KITTY_SHELL_INTEGRATION=enabled
-autoload -Uz -- "$KITTY_INSTALLATION_DIR"/shell-integration/zsh/kitty-integration
-kitty-integration
-unfunction kitty-integration
-
 # run programs that are not in PATH with comma
 command_not_found_handler() {
-  ${pkgs.comma}/bin/comma "$@"
+  , "$@"
 }
 
 # Direnv

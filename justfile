@@ -11,4 +11,4 @@ nixos-rebuild host:
 set positional-arguments
 
 home host *args='':
-  unbuffer home-manager --cores 12 --max-jobs 6 --flake .#{{user}}@{{host}} "${@:2}" |& nom
+  unbuffer home-manager --cores 12 --max-jobs 6 --flake .#{{user}}@{{host}} "${@:2}" |& grep -v '^$' | nom
