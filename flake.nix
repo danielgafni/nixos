@@ -43,6 +43,7 @@
     zed = {
       # pinned specific tag
       url = "github:zed-industries/zed?ref=tags/v0.160.7";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     #nixos-cosmic = {

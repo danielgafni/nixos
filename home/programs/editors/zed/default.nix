@@ -13,3 +13,21 @@
     ];
   };
 }
+# "ssh_connections": [
+#       {
+#         "host": "devbox",
+#         "projects": [
+#           {
+#             "paths": [
+#               "~/dagster"
+#             ]
+#           },
+#           {
+#             "paths": [
+#               "~/dagster-ray"
+#             ]
+#           }
+#         ]
+#       }
+#     ]
+
