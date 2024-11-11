@@ -11,7 +11,7 @@
       "dark": "Catppuccin Mocha"
     },
     "terminal": {
-      "font_family": "FiraCode Nerd Font Mono"
+      "font_family": "ZedMono Nerd Font"
     },
     "ssh_connections": [
       {
@@ -19,11 +19,16 @@
         "projects": [
           {
             "paths": [
-              "~/dagster",
+              "~/dagster"
+            ]
+          },
+          {
+            "paths": [
               "~/dagster-ray"
             ]
           }
         ]
       }
     ]
+    
   }

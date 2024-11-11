@@ -41,8 +41,8 @@
     nixpkgs-23_11.url = "github:nixos/nixpkgs/nixos-23.11";
 
     zed = {
-      url = "github:zed-industries/zed";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # pinned specific tag
+      url = "github:zed-industries/zed?ref=tags/v0.160.7";
     };
 
     #nixos-cosmic = {
