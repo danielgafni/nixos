@@ -19,7 +19,7 @@
       # devops
       kubectl
       kubeseal
-      lens
+      #lens
       sops
       age
       (pkgs.wrapHelm pkgs.kubernetes-helm {plugins = [];})
