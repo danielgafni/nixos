@@ -114,6 +114,7 @@
       black
       ruff
       isort
+      uv
 
       # development
       graphite-cli

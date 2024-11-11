@@ -7,7 +7,7 @@
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
-    autocd = true;
+    autocd = false; # using zoxide instead
     dirHashes = {
       dl = "$HOME/Downloads";
       docs = "$HOME/Documents";
