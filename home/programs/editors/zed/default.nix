@@ -7,21 +7,3 @@
     source = ./settings.json;
   };
 }
-# "ssh_connections": [
-#       {
-#         "host": "devbox",
-#         "projects": [
-#           {
-#             "paths": [
-#               "~/dagster"
-#             ]
-#           },
-#           {
-#             "paths": [
-#               "~/dagster-ray"
-#             ]
-#           }
-#         ]
-#       }
-#     ]
-
