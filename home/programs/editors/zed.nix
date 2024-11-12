@@ -19,6 +19,7 @@
       "git-firefly"
       "helm"
       "markdown-oxide"
+      "toml"
     ];
     userSettings = {
       auto_update = false;
