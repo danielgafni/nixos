@@ -1,6 +1,6 @@
 {host-settings, ...}: {
   programs.wezterm = {
-    enable = true;
+    enable = false; # cause performance issues in zsh (wtf?)
     enableZshIntegration = true;
     extraConfig = ''
       return {
