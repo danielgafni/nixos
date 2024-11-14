@@ -26,7 +26,7 @@
       magnification = 1.1;
       border_size = 5.0;
       inactive_opacity = 0.9;
-      format_on_save = false;
+      format_on_save = "off";
       buffer_font_family = "FiraCode Nerd Font Mono";
       buffer_font_features = {
         calt = true;
@@ -90,6 +90,13 @@
           settings = {
             python = {
               pythonPath = ".venv/bin/python";
+            };
+          };
+        };
+        yaml-language-server = {
+          settings = {
+            editor = {
+              tabSize = 2;
             };
           };
         };
