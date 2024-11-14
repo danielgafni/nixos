@@ -65,13 +65,16 @@
           host = "devbox";
           projects = [
             {
-              paths = ["~/dagster"];
+              paths = ["~/dagster-io/dagster"];
             }
             {
               paths = ["~/dagster-ray"];
             }
             {
               paths = ["~/dagster-io/internal"];
+            }
+            {
+              paths = ["~/dagster-io/dagster-pipes-tests"];
             }
           ];
         }

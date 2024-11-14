@@ -22,7 +22,7 @@
       };
 
       kubernetes = {
-        disabled = false;
+        disabled = true;
         symbol = "☸ ";
       };
 
