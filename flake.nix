@@ -42,7 +42,7 @@
 
     zed = {
       # pinned specific tag
-      url = "github:zed-industries/zed?ref=tags/v0.160.7";
+      url = "github:zed-industries/zed?ref=tags/v0.161.1";
     };
 
     #nixos-cosmic = {

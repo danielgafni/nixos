@@ -230,8 +230,8 @@
       # screen locking
       bind=SUPER,L,exec,grim -o HDMI-A-1 /tmp/screenshot.png && hyprlock
 
-      # clear notifications
-      bind=SUPER,N,exec,makoctl dismiss --all
+      # disable notifications
+      bind=SHIFT_SUPER,N,exec,makoctl mode -t do-not-disturb
 
       # navigation between windows
       bind=SUPER,left,movefocus,l

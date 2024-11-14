@@ -26,6 +26,9 @@ in {
     extraConfig = ''
       [category=music-notify]
       default-timeout=5000
+
+      [mode=do-not-disturb]
+      invisible=1
     '';
   };
 }
