@@ -3,7 +3,7 @@
     enable = true;
     enableSshSupport = true;
     enableExtraSocket = true;
-    pinentryPackage = pkgs.pinentry-curses;
+    pinentryPackage = pkgs.pinentry-gnome3;
     extraConfig = ''
       extra-socket /run/user/1001/gnupg/S.gpg-agent.extra
     '';
