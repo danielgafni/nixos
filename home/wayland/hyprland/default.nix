@@ -121,7 +121,9 @@
         "XDG_SESSION_TYPE,wayland"
       ];
       exec-once = [
-        "mako" # notifications
+        #"mako"  # using hyprlanel instead
+        # "eww daemon --restart && eww close-all && eww open-many bar"  # using hyprlanel instead
+        "hyprpanel"
         "${pkgs.hypridle}/bin/hypridle" # idle event trigger
       ];
       plugin = [
@@ -148,9 +150,6 @@
 
       # polkit (the app which asks for the root password access)
       exec-once=/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-
-      # eww widgets
-      exec-once=eww daemon --restart && eww close-all && eww open-many bar
 
       group {
         col.border_inactive=0xff89dceb
