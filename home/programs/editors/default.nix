@@ -1,7 +1,7 @@
 _: {
   imports = [
     ./vscode.nix
-    ./neovim.nix
+    ./neovim
     ./pycharm.nix
     ./zed.nix
   ];
