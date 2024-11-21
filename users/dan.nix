@@ -76,6 +76,8 @@
           fonts = [
             "FiraCode"
             "DroidSansMono"
+            "NerdFontsSymbolsOnly"
+            #"ShureTechMono"
           ];
         }
       )

@@ -7,11 +7,13 @@ _: {
       enable = true;
       defaultEditor = true;
       clipboard.providers.wl-copy.enable = true;
+
       colorschemes = {
         catppuccin = {
           enable = true;
           settings = {
             flavour = "mocha";
+            transparent_background = true;
             integrations = {
               cmp = true;
               gitsigns = true;
@@ -34,8 +36,12 @@ _: {
         cmp-buffer.enable = true;
         cmp-cmdline.enable = true;
 
+        gitsigns.enable = true;
         noice.enable = true;
-        lightline.enable = true;
+
+        lualine.enable = true;
+        #lualine.theme = "catppuccin";
+
         treesitter.enable = true;
         fugitive.enable = true;
         chadtree.enable = true;

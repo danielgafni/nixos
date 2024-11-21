@@ -13,7 +13,8 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-    ags.url = "github:Aylur/ags";
+    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+    #ags.url = "github:Aylur/ags";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
@@ -60,6 +61,7 @@
     catppuccin,
     hyprland,
     hyprland-plugins,
+    hyprpanel,
     stylix,
     nixvim,
     zed,
@@ -85,6 +87,34 @@
       overlays = [
         (final: prev: {
           inherit (pkgs-23_11.nvidia-docker);
+        })
+        inputs.hyprpanel.overlay
+
+        # https://github.com/Jas-SinghFSU/HyprPanel/issues/479
+        # remove after inxpkgs update
+        (final: prev: {
+          matugen = final.rustPlatform.buildRustPackage rec {
+            pname = "matugen";
+            version = "2.4.0";
+
+            src = final.fetchFromGitHub {
+              owner = "InioX";
+              repo = "matugen";
+              rev = "refs/tags/v${version}";
+              hash = "sha256-l623fIVhVCU/ylbBmohAtQNbK0YrWlEny0sC/vBJ+dU=";
+            };
+
+            cargoHash = "sha256-FwQhhwlldDskDzmIOxhwRuUv8NxXCxd3ZmOwqcuWz64=";
+
+            meta = {
+              description = "Material you color generation tool";
+              homepage = "https://github.com/InioX/matugen";
+              changelog = "https://github.com/InioX/matugen/blob/${src.rev}/CHANGELOG.md";
+              license = final.lib.licenses.gpl2Only;
+              maintainers = with final.lib.maintainers; [lampros];
+              mainProgram = "matugen";
+            };
+          };
         })
       ];
     };
