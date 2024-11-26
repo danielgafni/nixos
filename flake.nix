@@ -46,10 +46,7 @@
       url = "github:zed-industries/zed?ref=tags/v0.161.1";
     };
 
-    #nixos-cosmic = {
-    #  url = "github:lilyinstarlight/nixos-cosmic";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 
   outputs = {
@@ -65,7 +62,7 @@
     stylix,
     nixvim,
     zed,
-    #nixos-cosmic,
+    sops-nix,
     ...
   } @ inputs: let
     # helper variables and functions
@@ -198,7 +195,7 @@
           catppuccin.nixosModules.catppuccin
           stylix.nixosModules.stylix
           {programs.hyprland.xwayland.enable = true;}
-          #nixos-cosmic.nixosModules.default
+          sops-nix.nixosModules.sops
         ];
       };
 
@@ -222,9 +219,11 @@
 
           catppuccin.homeManagerModules.catppuccin
           hyprland.homeManagerModules.default
+          nixvim.homeManagerModules.nixvim
           {
             wayland.windowManager.hyprland.enable = true;
           }
+          sops-nix.homeManagerModules.sops
         ];
       };
   in {
