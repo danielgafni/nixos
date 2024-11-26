@@ -170,6 +170,10 @@
       "gateway"
       "copilot.vim"
       "graphite-cli"
+      "steam"
+      "steam-original"
+      "steam-unwrapped"
+      "steam-run"
     ];
 
     mkNixosConfiguration = {
