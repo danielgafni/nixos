@@ -240,6 +240,9 @@
         python310
       ];
     };
+    steam = {
+      enable = true;
+    };
   };
 
   services.fprintd.enable = true;

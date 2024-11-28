@@ -22,10 +22,9 @@ in {
     ./services
     ./programs
     ./shell
-    ./eww.nix
+    #./eww.nix
     ./hyprpaper.nix
     ./environment.nix
-    inputs.nixvim.homeManagerModules.nixvim
 
     # per-user settings (like packages) are here
     ../users/${user}.nix

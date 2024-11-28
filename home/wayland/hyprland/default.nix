@@ -138,7 +138,8 @@
       windowrulev2 = [
         "float,title:^(Open Folder)$" # File Shooser
         "float,class:xarchiver"
-        "float,title:Bitwarden"
+        "float,class:^(chrome-.*)$"
+        "stayfocused,class:^(pinentry-.*)$"
       ];
     };
 

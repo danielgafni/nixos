@@ -1,15 +1,17 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
     enableExtraSocket = true;
-    pinentryPackage = pkgs.pinentry-gnome3;
+    pinentryPackage = lib.mkForce pkgs.pinentry-gtk2;
     extraConfig = ''
       extra-socket /run/user/1001/gnupg/S.gpg-agent.extra
+      #pinentry-mode loopback
+      allow-loopback-pinentry
     '';
-    #extraConfig = ''
-    #  pinentry-mode loopback
-    #  allow-loopback-pinentry
-    #'';
   };
 }
