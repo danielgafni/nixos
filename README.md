@@ -2,11 +2,11 @@
 
 My NixOS configuration featuring multi-host setup, a few GitHub Actions, remote caching, pre-commit hooks & CI, and [Catppuccin](https://catppuccin.com/) theme for all programs.
 
-Key specs:
+Key features:
 
 - `home-manager` for user configuration
 - `hyprland` as Wayland compositor & window manager
-- `eww` for status bar and a few widgets
+- `hyprpanel` for status bar and widgets
 - `catppuccin` theme for everything
 
 ![assets/NixOS-rice.png](assets/NixOS-rice.png)
