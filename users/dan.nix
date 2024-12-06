@@ -96,6 +96,7 @@
       slack
       discord
       zoom
+      whatsapp-for-linux
 
       # browsers
       google-chrome
