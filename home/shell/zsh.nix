@@ -21,6 +21,8 @@
     history = {
       expireDuplicatesFirst = true;
       path = "${config.xdg.dataHome}/zsh_history";
+      size = 100000;
+      save = 100000;
     };
 
     initExtra = builtins.readFile ./.zshrc;
@@ -32,6 +34,8 @@
       la = "eza -la";
       md = "mkdir -p";
       cd = "z";
+      devbox-start = "aws ec2 start-instances --instance-ids i-04faa7b6877e3da94 --region eu-north-1";
+      devbox-stop = "aws ec2 stop-instances --instance-ids i-04faa7b6877e3da94 --region eu-north-1";
     };
     shellGlobalAliases = {eza = "eza --icons --git";};
     zplug = {
