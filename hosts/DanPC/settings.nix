@@ -32,4 +32,14 @@ in rec {
   cursor = {
     size = 32;
   };
+  hyprpanel = {
+    modules = {
+      network = false;
+      battery = false;
+      cpuTemperature = {
+        sensorPath = "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp1_input";
+      };
+    };
+  };
+  bluetooth = false;
 }

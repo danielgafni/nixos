@@ -43,24 +43,6 @@
       just
       expect
 
-      # fonts
-      (
-        nerdfonts.override {
-          fonts = [
-            "FiraCode"
-            "DroidSansMono"
-          ];
-        }
-      )
-      recursive # for eww
-      fira-code
-      fira-code-symbols
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-emoji
-      liberation_ttf
-      cabin
-
       # messengers
       telegram-desktop
       slack

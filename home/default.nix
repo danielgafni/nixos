@@ -22,9 +22,8 @@ in {
     ./services
     ./programs
     ./shell
-    #./eww.nix
-    ./hyprpaper.nix
     ./environment.nix
+    ./fonts.nix
 
     # per-user settings (like packages) are here
     ../users/${user}.nix
@@ -50,6 +49,15 @@ in {
 
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "22.11";
+  };
+
+  catppuccin = {
+    enable = true; # sets Catppuccin theme for all programs supported by https://github.com/catppuccin/nix
+    flavor = catppuccinFlavor;
+    pointerCursor = {
+      enable = true;
+      accent = cursorAccent; # affects HYPRCURSOR_THEME
+    };
   };
 
   # Wallpapers
@@ -87,15 +95,6 @@ in {
         pkgs.xdg-desktop-portal-hyprland
         pkgs.xdg-desktop-portal-gtk
       ];
-    };
-  };
-
-  catppuccin = {
-    enable = true; # sets Catppuccin theme for all programs supported by https://github.com/catppuccin/nix
-    flavor = catppuccinFlavor;
-    pointerCursor = {
-      enable = true;
-      accent = cursorAccent; # affects HYPRCURSOR_THEME
     };
   };
 
@@ -145,8 +144,8 @@ in {
     entries = lib.mkForce [];
   };
 
-  # Nicely reload system units when changing configs
   systemd = {
+    # Nicely reload system units when changing configs
     user.startServices = "sd-switch";
 
     # Using Bluetooth headset buttons to control media player

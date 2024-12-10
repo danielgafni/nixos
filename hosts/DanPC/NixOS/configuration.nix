@@ -11,6 +11,7 @@
   services.xserver.videoDrivers = ["nvidia"];
 
   hardware = {
+    nvidia-container-toolkit.enable = true;
     nvidia = {
       modesetting.enable = true;
       powerManagement.enable = false;
@@ -37,13 +38,12 @@
       #     patches = [rcu_patch];
       #   };
     };
-    opengl = {
-      enable = true;
-    };
-    graphics.enable32Bit = true; # this is requried by nvidia docker
-  };
 
-  virtualisation.docker.enableNvidia = true;
+    graphics = {
+      enable = true;
+      enable32Bit = true; # this is requried by nvidia docker
+    };
+  };
 
   # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
   # and migrated your data accordingly.
