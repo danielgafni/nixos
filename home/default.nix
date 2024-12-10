@@ -21,9 +21,8 @@ in {
     ./services
     ./programs
     ./shell
-    #./eww.nix
-    ./hyprpaper.nix
     ./environment.nix
+    ./fonts.nix
 
     # per-user settings (like packages) are here
     ../users/${user}.nix
@@ -51,20 +50,14 @@ in {
     stateVersion = "22.11";
   };
 
-  fonts.packages = with pkgs; [
-    nerd-fonts.fira-code
-    nerd-fonts.zed-mono
-    nerd-fonts.symbols-only
-
-    recursive # for eww
-    #fira-code
-    #fira-code-symbols
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-emoji
-    liberation_ttf
-    cabin
-  ];
+  catppuccin = {
+    enable = true; # sets Catppuccin theme for all programs supported by https://github.com/catppuccin/nix
+    flavor = catppuccinFlavor;
+    pointerCursor = {
+      enable = true;
+      accent = cursorAccent; # affects HYPRCURSOR_THEME
+    };
+  };
 
   # Wallpapers
   xdg = {
@@ -101,15 +94,6 @@ in {
         pkgs.xdg-desktop-portal-hyprland
         pkgs.xdg-desktop-portal-gtk
       ];
-    };
-  };
-
-  catppuccin = {
-    enable = true; # sets Catppuccin theme for all programs supported by https://github.com/catppuccin/nix
-    flavor = catppuccinFlavor;
-    pointerCursor = {
-      enable = true;
-      accent = cursorAccent; # affects HYPRCURSOR_THEME
     };
   };
 

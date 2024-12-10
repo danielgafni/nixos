@@ -36,9 +36,10 @@
     "menus.volume.raiseMaximumVolume" = true;
     "menus.clock.weather.location" = "Bucharest";
     # use "Media/avatar.jpg" created by home-manager
-    "menus.dashboard.powermenu.avatar.image" = "~/Media/avatar.jpg";
+    "menus.dashboard.powermenu.avatar.image" = config.home.file."Media/avatar.jpg".source;
     "menus.clock.time.military" = false;
     "theme.bar.buttons.modules.kbLayout.enableBorder" = false;
+    "bar.customModules.cpuTemp.sensor" = host-settings.hyprpanel.modules.cpuTemperature.sensorPath;
     "bar.layouts" = {
       "0" = {
         "left" = ["dashboard" "workspaces" "windowtitle"];
@@ -73,6 +74,8 @@
             "clock"
             "kbinput"
             "notifications"
+            "hypridle"
+            "power"
           ];
       };
       # TODO: add layouts for more monitors once I have them :)

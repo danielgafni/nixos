@@ -94,7 +94,7 @@
       };
       serif = config.stylix.fonts.sansSerif;
       monospace = {
-        package = pkgs.nerdfonts.override {fonts = ["FiraCode"];};
+        package = pkgs.nerd-fonts.fira-code;
         name = "FiraCode Nerd Font Mono";
       };
       emoji = {
@@ -107,20 +107,6 @@
   fonts = {
     fontDir.enable = true;
     fontconfig.enable = true;
-    packages = with pkgs; [
-      nerd-fonts.fira-code
-      nerd-fonts.zed-mono
-      nerd-fonts.symbols-only
-
-      recursive # for eww
-      #fira-code
-      #fira-code-symbols
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-emoji
-      liberation_ttf
-      cabin
-    ];
   };
 
   services = {
