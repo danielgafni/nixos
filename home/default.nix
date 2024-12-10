@@ -12,6 +12,7 @@
 }: let
   catppuccinFlavor = "mocha";
   cursorAccent = "teal";
+  cursorPackage = pkgs.catppuccin-cursors.mochaTeal;
 in {
   # You can import other home-manager modules here
   imports = [
