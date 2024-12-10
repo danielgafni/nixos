@@ -44,4 +44,11 @@ in rec {
   cursor = {
     size = 12;
   };
+  hyprpanel = {
+    modules = {
+      network = true;
+      battery = true;
+    };
+  };
+  bluetooth = true;
 }

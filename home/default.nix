@@ -12,7 +12,6 @@
 }: let
   catppuccinFlavor = "mocha";
   cursorAccent = "teal";
-  cursorPackage = pkgs.catppuccin-cursors.mochaTeal;
 in {
   # You can import other home-manager modules here
   imports = [
@@ -51,6 +50,21 @@ in {
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "22.11";
   };
+
+  fonts.packages = with pkgs; [
+    nerd-fonts.fira-code
+    nerd-fonts.zed-mono
+    nerd-fonts.symbols-only
+
+    recursive # for eww
+    #fira-code
+    #fira-code-symbols
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-emoji
+    liberation_ttf
+    cabin
+  ];
 
   # Wallpapers
   xdg = {
@@ -145,8 +159,8 @@ in {
     entries = lib.mkForce [];
   };
 
-  # Nicely reload system units when changing configs
   systemd = {
+    # Nicely reload system units when changing configs
     user.startServices = "sd-switch";
 
     # Using Bluetooth headset buttons to control media player

@@ -4,6 +4,9 @@
   lib,
   ...
 }: {
+  imports = [
+    ../../../modules/NixOS/bluetooth
+  ];
   networking.hostName = "framnix";
 
   powerManagement.powertop.enable = true;

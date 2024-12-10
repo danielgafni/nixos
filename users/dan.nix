@@ -70,26 +70,6 @@
       # TUI
       ranger
 
-      # fonts
-      (
-        nerdfonts.override {
-          fonts = [
-            "FiraCode"
-            "DroidSansMono"
-            "NerdFontsSymbolsOnly"
-            #"ShureTechMono"
-          ];
-        }
-      )
-      recursive # for eww
-      fira-code
-      fira-code-symbols
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-emoji
-      liberation_ttf
-      cabin
-
       # messengers
       telegram-desktop
       signal-desktop

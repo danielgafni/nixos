@@ -32,4 +32,11 @@ in rec {
   cursor = {
     size = 32;
   };
+  hyprpanel = {
+    modules = {
+      network = false;
+      battery = false;
+    };
+  };
+  bluetooth = false;
 }
