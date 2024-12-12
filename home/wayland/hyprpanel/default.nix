@@ -23,7 +23,7 @@
     "bar.launcher.autoDetectIcon" = false;
     "theme.bar.buttons.dashboard.enableBorder" = false;
     "theme.bar.buttons.workspaces.enableBorder" = false;
-    "theme.bar.buttons.workspaces.fontSize" = "1.2em";
+    "theme.font.size" = toString host-settings.font.text.size;
     "bar.workspaces.show_icons" = false;
     "bar.workspaces.show_numbered" = false;
     "bar.workspaces.numbered_active_indicator" = "underline";
@@ -39,44 +39,12 @@
     "menus.dashboard.powermenu.avatar.image" = config.home.file."Media/avatar.jpg".source;
     "menus.clock.time.military" = false;
     "theme.bar.buttons.modules.kbLayout.enableBorder" = false;
-    "bar.customModules.cpuTemp.sensor" = host-settings.hyprpanel.modules.cpuTemperature.sensorPath;
+    "bar.customModules.cpuTemp.sensor" = host-settings.hyprpanel.modules.config.cpuTemperature.sensorPath;
     "bar.layouts" = {
       "0" = {
         "left" = ["dashboard" "workspaces" "windowtitle"];
         "middle" = ["media"];
-        "right" =
-          [
-            "volume"
-          ]
-          ++ [
-            "ram"
-            "cpu"
-            "cputemp"
-            "storage"
-          ]
-          ++ (
-            if host-settings.hyprpanel.modules.network
-            then ["network"]
-            else []
-          )
-          ++ (
-            if host-settings.bluetooth
-            then ["bluetooth"]
-            else []
-          )
-          ++ (
-            if host-settings.hyprpanel.modules.battery
-            then ["battery"]
-            else []
-          )
-          ++ [
-            "systray"
-            "clock"
-            "kbinput"
-            "notifications"
-            "hypridle"
-            "power"
-          ];
+        "right" = host-settings.hyprpanel.modules.right;
       };
       # TODO: add layouts for more monitors once I have them :)
       #   "1"= {
@@ -105,6 +73,7 @@ in {
     btop
     matugen
     swww
+    grimblast
   ];
 
   home.file."${config.xdg.cacheHome}/ags/hyprpanel/options.json".text = builtins.toJSON hyprpanelOptions;
