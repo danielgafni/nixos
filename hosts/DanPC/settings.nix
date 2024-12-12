@@ -34,12 +34,26 @@ in rec {
   };
   hyprpanel = {
     modules = {
-      network = false;
-      battery = false;
-      cpuTemperature = {
-        sensorPath = "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp1_input";
+      config = {
+        cpuTemperature = {
+          sensorPath = "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp1_input";
+        };
       };
+      right = [
+        "clock"
+        "volume"
+        "ram"
+        "cpu"
+        "storage"
+        "cputemp"
+
+        "systray"
+
+        "hypridle"
+        "notifications"
+        "kbinput"
+        "power"
+      ];
     };
   };
-  bluetooth = false;
 }

@@ -45,13 +45,30 @@ in rec {
     size = 12;
   };
   hyprpanel = {
+    settings = {
+    };
     modules = {
-      network = true;
-      battery = true;
-      cpuTemperature = {
-        sensorPath = "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp1_input";
+      config = {
+        cpuTemperature = {
+          sensorPath = "/sys/devices/platform/coretemp.0/hwmon/hwmon5/temp1_input";
+        };
       };
+      right = [
+        "clock"
+        "volume"
+        "network"
+        "bluetooth"
+
+        "cputemp"
+
+        "systray"
+
+        "hypridle"
+        "notifications"
+        "battery"
+        "kbinput"
+        "power"
+      ];
     };
   };
-  bluetooth = true;
 }
