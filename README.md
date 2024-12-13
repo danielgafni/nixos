@@ -59,6 +59,12 @@ just home <host> switch
 | UI    | Cabin   | Easy on eyes, good default |
 | UI    | Recursive  | Eye candy, catchy |
 
+It's necessary to rebuild fonts cache in order to observe live changes after modifying the config:
+
+```shell
+fc-cache -rf
+```
+
 ### Debugging mime-type
 
 ```shell
