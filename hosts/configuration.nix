@@ -180,6 +180,7 @@
       Hyprland
     '';
     systemPackages = with pkgs; [
+      gnumake
       cachix
       zsh
       starship

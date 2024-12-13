@@ -54,6 +54,7 @@
       statix
       git
       delta
+      ruplacer
       curl
       wget
       zsh
