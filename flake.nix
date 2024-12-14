@@ -122,13 +122,13 @@
       dan = {
         isNormalUser = true;
         initialPassword = "pw123";
-        extraGroups = ["wheel" "docker" "video"];
+        extraGroups = ["wheel" "docker" "video" "networkmanager"];
         packages = [pkgs.home-manager];
       };
       underdel = {
         isNormalUser = true;
         initialPassword = "pw123";
-        extraGroups = ["video"];
+        extraGroups = ["video" "networkmanager"];
         packages = [pkgs.home-manager];
       };
     };
