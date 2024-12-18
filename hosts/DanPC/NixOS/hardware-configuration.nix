@@ -35,15 +35,15 @@
       "kvm-amd"
 
       # for OpenRGB https://github.com/NixOS/nixpkgs/issues/267915
-      "acpi_enforce_resources=lax"
+      "i2c-dev"
+      "i2c-piix4"
     ];
     kernelParams = [
       "nvidia_drm.fbdev=1"
       "nvidia_drm.modeset=1"
 
       # for OpenRGB https://github.com/NixOS/nixpkgs/issues/267915
-      "i2c-dev"
-      "i2c-piix4"
+      "acpi_enforce_resources=lax"
     ];
     extraModulePackages = [];
   };
