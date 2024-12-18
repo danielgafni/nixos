@@ -25,11 +25,25 @@
       "nvidia_uvm"
       "nvidia_drm"
     ];
-    initrd.kernelModules = ["nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm"];
-    kernelModules = ["kvm-amd"];
+    initrd.kernelModules = [
+      "nvidia"
+      "nvidia_modeset"
+      "nvidia_uvm"
+      "nvidia_drm"
+    ];
+    kernelModules = [
+      "kvm-amd"
+
+      # for OpenRGB https://github.com/NixOS/nixpkgs/issues/267915
+      "i2c-dev"
+      "i2c-piix4"
+    ];
     kernelParams = [
       "nvidia_drm.fbdev=1"
       "nvidia_drm.modeset=1"
+
+      # for OpenRGB https://github.com/NixOS/nixpkgs/issues/267915
+      "acpi_enforce_resources=lax"
     ];
     extraModulePackages = [];
   };
@@ -67,4 +81,8 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  # for OpenRGB
+  hardware.i2c.enable = true;
+  services.hardware.openrgb.motherboard = "amd";
 }

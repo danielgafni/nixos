@@ -122,7 +122,7 @@
       dan = {
         isNormalUser = true;
         initialPassword = "pw123";
-        extraGroups = ["wheel" "docker" "video" "networkmanager"];
+        extraGroups = ["wheel" "docker" "i2c" "video" "networkmanager"];
         packages = [pkgs.home-manager];
       };
       underdel = {

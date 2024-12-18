@@ -148,6 +148,20 @@
     };
 
     mullvad-vpn.enable = true;
+
+    fprintd.enable = true;
+    pcscd.enable = true;
+    hardware.openrgb = {
+      enable = true;
+      package = pkgs.openrgb-with-all-plugins;
+    };
+    cron = {
+      enable = true;
+      systemCronJobs = [
+        # update nix index for comma every week
+        "0 0 * * 6      dan    nix run 'nixpkgs#nix-index' --extra-experimental-features 'nix-command flakes' >> /tmp/update-comma-index.log"
+      ];
+    };
   };
 
   location.provider = "geoclue2";
@@ -207,6 +221,10 @@
       nix-output-monitor
       minikube
       amazon-ecr-credential-helper
+
+      # for openrgb
+      i2c-tools
+      liquidctl
     ];
   };
 
@@ -245,13 +263,6 @@
     };
   };
 
-  services.fprintd.enable = true;
-  # services.fprintd.tod.enable = true;
-  #services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix; # try this driver)
-  # services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090; # or this one
-
-  services.pcscd.enable = true;
-
   # Screen Sharing
   xdg.portal = {
     enable = true;
@@ -271,13 +282,5 @@
         "org.freedesktop.impl.portal.FileChooser" = "gtk"; # hyprland doesn't provide an implementaion of file chooser
       };
     };
-  };
-
-  # update nix index for comma every week
-  services.cron = {
-    enable = true;
-    systemCronJobs = [
-      "0 0 * * 6      dan    nix run 'nixpkgs#nix-index' --extra-experimental-features 'nix-command flakes' >> /tmp/update-comma-index.log"
-    ];
   };
 }
