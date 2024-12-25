@@ -16,9 +16,25 @@
 
   boot = {
     loader.grub.device = "/dev/nvme0n1";
-    initrd.availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod"];
+    initrd.availableKernelModules = [
+      "xhci_pci"
+      "thunderbolt"
+      "nvme"
+      "usb_storage"
+      "sd_mod"
+    ];
+    kernelParams = [
+      # for OpenRGB https://github.com/NixOS/nixpkgs/issues/267915
+      "i2c-dev"
+      "i2c-piix4"
+    ];
     initrd.kernelModules = [];
-    kernelModules = ["kvm-intel"];
+    kernelModules = [
+      "kvm-intel"
+
+      # for OpenRGB https://github.com/NixOS/nixpkgs/issues/267915
+      "acpi_enforce_resources=lax"
+    ];
 
     # Framework Laptops have auto brightness detection which has to be disabled
     # otherwise the brightness keys don't work
@@ -49,21 +65,27 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   nixpkgs.config.packageOverrides = pkgs: {
     vaapiIntel = pkgs.vaapiIntel.override {enableHybridCodec = true;};
   };
 
-  hardware.graphics = {
-    enable = true;
-    extraPackages = with pkgs; [
-      intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-      vaapiVdpau
-      libvdpau-va-gl
-    ];
+  hardware = {
+    cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    graphics = {
+      enable = true;
+      extraPackages = with pkgs; [
+        intel-media-driver # LIBVA_DRIVER_NAME=iHD
+        vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+        vaapiVdpau
+        libvdpau-va-gl
+      ];
+    };
+    # for OpenRGB
+    i2c.enable = true;
   };
 
   services.fwupd.enable = true;
+
+  services.hardware.openrgb.motherboard = "intel";
 }
