@@ -43,7 +43,7 @@
 
     zed = {
       # pinned specific tag
-      url = "github:zed-industries/zed?ref=tags/v0.164.2-pre";
+      url = "github:zed-industries/zed?ref=tags/v0.168.2";
     };
 
     sops-nix.url = "github:Mic92/sops-nix";
