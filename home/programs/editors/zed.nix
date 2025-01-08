@@ -7,6 +7,8 @@
     # Nix language servers
     nixd
     nil
+    # zig language server
+    zls
   ];
   programs.zed-editor = {
     enable = true;
@@ -20,6 +22,7 @@
       "helm"
       "markdown-oxide"
       "toml"
+      "zig"
     ];
     userSettings = {
       auto_update = false;
@@ -83,6 +86,9 @@
       languages = {
         Python = {
           language_servers = ["ruff" "pyright"];
+        };
+        Zig = {
+          language_servers = ["zls"];
         };
       };
       lsp = {
