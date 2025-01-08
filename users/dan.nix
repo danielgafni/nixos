@@ -103,6 +103,8 @@
       # development
       graphite-cli
 
+      yarn
+
       # extra
       xarchiver
       mullvad-vpn
