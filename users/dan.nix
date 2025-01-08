@@ -41,7 +41,6 @@
       wl-clipboard
       font-manager
       alacritty
-      kitty
       dconf # needed for gtk
 
       graphviz

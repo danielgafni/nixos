@@ -82,7 +82,7 @@
         disable_hyprland_logo = true;
         # this should spawn a window right on top of the terminal
         # but I couldn't get it working yet
-        swallow_regex = "^(Alacritty|kitty)$";
+        swallow_regex = "^(Alacritty|kitty|ghostty)$";
       };
       animations = {
         enabled = 1;
@@ -141,6 +141,49 @@
         "float,class:^(chrome-.*)$"
         "stayfocused,class:^(pinentry-.*)$"
       ];
+
+      bind = [
+        # starting applications
+        "SUPER,RETURN,exec,ghostty"
+        "SUPER,E,exec,ghostty -e yazi"
+
+        # window management
+        "SUPER,Q,killactive"
+        "SUPER,M,exit"
+        "SUPER,S,togglefloating"
+        "SUPER,F,fullscreen"
+
+        # move the active window to the next position
+        "SUPER,N,swapnext"
+        # make the active window the main
+        "SUPER,A,togglesplit"
+
+        # screenshots
+        ",Print,exec,grim - | wl-copy"
+        ''SHIFT,Print,exec,grim -g "$(slurp)" - | wl-copy''
+
+        # brightness control
+        ", XF86MonBrightnessUp,     exec, brightnessctl set 10%+"
+        ", XF86MonBrightnessDown,   exec, brightnessctl set 10%-"
+
+        # volume control (for pipewire / wireplumber)
+        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%+"
+        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-"
+
+        # disable notifications
+        # TODO: find how to do it with hyprpanel
+        # "SHIFT_SUPER,N,exec,makoctl mode -t do-not-disturb"
+
+        # hyprland management
+        "SUPER,R,exec,hyprctl reload"
+      ];
+
+      # move and resize windows with the mouse cursor
+      bindm = [
+        "SUPER,mouse:272,movewindow"
+        "SHIFT_SUPER,mouse:272,resizewindow"
+      ];
     };
 
     extraConfig = ''
@@ -166,58 +209,6 @@
       master {
       }
 
-
-
-      # example window rules
-      # for windows named/classed as abc and xyz
-      #windowrule=move 69 420,abc
-      windowrule=move center,title:^(fly_is_kitty)$
-      windowrule=size 800 500,title:^(fly_is_kitty)$
-      windowrule=animation slide,title:^(all_is_kitty)$
-      windowrule=float,title:^(all_is_kitty)$
-      #windowrule=tile,xy
-      windowrule=tile,title:^(kitty)$
-      windowrule=float,title:^(fly_is_kitty)$
-      windowrule=float,title:^(clock_is_kitty)$
-      windowrule=size 418 234,title:^(clock_is_kitty)$
-      #windowrule=pseudo,abc
-      #windowrule=monitor 0,xyz
-
-      # brightness control
-      bind = , XF86MonBrightnessUp,     exec, brightnessctl set 10%+
-      bind = , XF86MonBrightnessDown,   exec, brightnessctl set 10%-
-
-      # pulseaudio volume control
-      #bind = , xf86audioraisevolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%
-      #bind = , xf86audiolowervolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%
-
-      # pipewire / wireplumber
-      bind =, XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-      bind = , XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%+
-      bind = , XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-
-
-
-      # move and resize windows with the mouse cursor
-      bindm=SUPER,mouse:272,movewindow
-      bindm=SHIFT_SUPER,mouse:272,resizewindow
-
-      # move the active window to the next position
-      bind=SUPER,N,swapnext,
-      # make the active window the main
-      bind=SUPER,A,togglesplit,
-
-      # screenshots
-      bind=,Print,exec,grim - | wl-copy
-      bind=SHIFT,Print,exec,grim -g "$(slurp)" - | wl-copy
-
-      bind=SUPER,RETURN,exec,kitty --title kitty
-      bind=SUPER,Q,killactive,
-      bind=SUPER,M,exit,
-      bind=SUPER,R,exec,hyprctl reload
-      bind=SUPER,E,exec,kitty --title kitty -e yazi
-      bind=SUPER,S,togglefloating,
-      bind=SUPER,F,fullscreen,
-
       # TODO: exlore running with --normal-window for Hyprland theming purposes
       bind=SUPER,space,exec,wofi --show drun -i -I -m -G -o DP-3 --width 55% --height 50%
       bind=SUPER,P,pseudo,
@@ -229,9 +220,6 @@
 
       # screen locking
       bind=SUPER,L,exec,grim -o HDMI-A-1 /tmp/screenshot.png && hyprlock
-
-      # disable notifications
-      bind=SHIFT_SUPER,N,exec,makoctl mode -t do-not-disturb
 
       # navigation between windows
       bind=SUPER,left,movefocus,l
@@ -268,12 +256,6 @@
 
       bind=SUPER,g,togglegroup
       bind=SUPER,tab,changegroupactive
-
-      # rec
-      #bind=CTRL,1,exec,kitty --title fly_is_kitty --hold cava
-      #bind=CTRL,2,exec,code-insiders
-      #bind=CTRL,3,exec,kitty --single-instance --hold donut.c
-      #bind=CTRL,4,exec,kitty --title clock_is_kitty --hold tty-clock -C5
     '';
   };
 }

@@ -13,7 +13,7 @@
   ];
   programs.zed-editor = {
     enable = true;
-    package = inputs.zed.packages.x86_64-linux.zed-editor;
+    package = inputs.zed.packages.x86_64-linux.default;
     extensions = [
       "catppuccin-blur"
       "nix"
