@@ -4,6 +4,10 @@
   userConfig,
   ...
 }: {
+  programs.gitui = {
+    enable = true;
+  };
+
   programs.git =
     if builtins.hasAttr "git" userConfig
     then {
