@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  lib,
   ...
 }: {
   home.packages = with pkgs; [
@@ -38,8 +39,8 @@
       buffer_font_size = 16;
       theme = {
         mode = "system";
-        light = "Catppuccin Espresso (Blur)";
-        dark = "Catppuccin Espresso (Blur)";
+        light = lib.mkForce "Catppuccin Espresso (Blur)";
+        dark = lib.mkForce "Catppuccin Espresso (Blur)";
       };
       current_line_highlight = "line";
       tabs = {
