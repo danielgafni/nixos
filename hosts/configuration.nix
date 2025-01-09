@@ -153,7 +153,7 @@
   location.provider = "geoclue2";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "C.UTF-8";
   console = {
     #font = "FiraCode Nerd Font Mono";
     # keyMap = "us";
