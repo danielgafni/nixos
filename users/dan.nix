@@ -101,8 +101,11 @@
 
       # development
       graphite-cli
-
+      cargo
+      rust-analyzer
+      rustc
       yarn
+      rustlings
 
       # extra
       xarchiver

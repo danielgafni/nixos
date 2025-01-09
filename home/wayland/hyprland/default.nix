@@ -1,9 +1,13 @@
 {
+  inputs,
   lib,
   pkgs,
   host-settings,
   ...
 }: {
+  imports = [
+    inputs.hyprland.homeManagerModules.default
+  ];
   home = {
     packages = with pkgs; [
       hyprcursor # catppuccin-nix will automatically set the cursor theme
@@ -121,9 +125,6 @@
         "XDG_SESSION_TYPE,wayland"
       ];
       exec-once = [
-        #"mako"  # using hyprlanel instead
-        # "eww daemon --restart && eww close-all && eww open-many bar"  # using hyprlanel instead
-        "hyprpanel"
         "${pkgs.hypridle}/bin/hypridle" # idle event trigger
       ];
       plugin = [
