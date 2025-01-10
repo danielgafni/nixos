@@ -25,7 +25,6 @@
       slurp
       wl-clipboard
       font-manager
-      kitty
       dconf # needed for gtk
 
       # audio

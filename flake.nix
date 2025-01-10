@@ -13,7 +13,11 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+    hyprpanel = {
+      url = "github:Jas-SinghFSU/HyprPanel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     #ags.url = "github:Aylur/ags";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
@@ -41,10 +45,10 @@
     # tmp fix for nvidia-docker until it's working in nixos-unstable
     nixpkgs-23_11.url = "github:nixos/nixpkgs/nixos-23.11";
 
-    zed = {
-      # pinned specific tag
-      url = "github:zed-industries/zed?ref=tags/v0.168.2";
-    };
+    #zed = {
+    #  # pinned specific tag
+    #  url = "github:zed-industries/zed?ref=tags/v0.167.2";
+    #};
 
     sops-nix.url = "github:Mic92/sops-nix";
   };
@@ -61,7 +65,6 @@
     hyprpanel,
     stylix,
     nixvim,
-    zed,
     sops-nix,
     ...
   } @ inputs: let
@@ -82,10 +85,11 @@
         allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) allowed-unfree-packages;
       };
       overlays = [
+        inputs.nixpkgs-wayland.overlay
+        inputs.hyprpanel.overlay
         (final: prev: {
           inherit (pkgs-23_11.nvidia-docker);
         })
-        inputs.hyprpanel.overlay
 
         # https://github.com/Jas-SinghFSU/HyprPanel/issues/479
         # remove after inxpkgs update
@@ -221,13 +225,9 @@
         modules = [
           ./home
           ./hosts/${host}/home
-
           catppuccin.homeManagerModules.catppuccin
-          hyprland.homeManagerModules.default
+
           nixvim.homeManagerModules.nixvim
-          {
-            wayland.windowManager.hyprland.enable = true;
-          }
           sops-nix.homeManagerModules.sops
         ];
       };

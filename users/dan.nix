@@ -41,7 +41,6 @@
       wl-clipboard
       font-manager
       alacritty
-      kitty
       dconf # needed for gtk
 
       graphviz
@@ -102,8 +101,11 @@
 
       # development
       graphite-cli
-
+      cargo
+      rust-analyzer
+      rustc
       yarn
+      rustlings
 
       # extra
       xarchiver
