@@ -19,7 +19,6 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
-    catppuccin.enable = true;
     plugins = [
       # TODO: re-enable once it builds correctly
       # inputs.hyprland-plugins.packages.${pkgs.system}.hyprtrails

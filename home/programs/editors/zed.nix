@@ -113,6 +113,27 @@
             };
           };
         };
+        rust-analyzer = {
+          initialization_options = {
+            cargo = {
+              allFeatures = true;
+              buildScripts = {
+                rebuildOnSave = true;
+              };
+            };
+            procMacro = {
+              enable = true;
+            };
+            checkOnSave = {
+              command = "clippy";
+            };
+            hover = {
+              references = {
+                enabled = true;
+              };
+            };
+          };
+        };
       };
     };
   };

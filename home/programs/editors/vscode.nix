@@ -25,6 +25,7 @@
         davidanson.vscode-markdownlint
         dbaeumer.vscode-eslint
         hashicorp.hcl
+        rust-lang.rust-analyzer
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {

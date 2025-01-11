@@ -1,7 +1,6 @@
 {host-settings, ...}: {
   programs.kitty = {
     enable = true;
-    catppuccin.enable = true;
     font = {
       name = "FiraCode Nerd Font Mono";
       inherit (host-settings.font.text) size;

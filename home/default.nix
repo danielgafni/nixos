@@ -51,9 +51,13 @@ in {
   catppuccin = {
     enable = true; # sets Catppuccin theme for all programs supported by https://github.com/catppuccin/nix
     flavor = catppuccinFlavor;
-    pointerCursor = {
+    cursors = {
       enable = true;
       accent = cursorAccent; # affects HYPRCURSOR_THEME
+    };
+    gtk = {
+      enable = true; # TODO: remove as it's deprecated
+      icon.enable = true;
     };
   };
 
@@ -97,12 +101,6 @@ in {
 
   gtk = {
     enable = true;
-
-    catppuccin = {
-      enable = true; # TODO: remove as it's deprecated
-      icon.enable = true;
-    };
-
     font = {
       name = "Cabin";
       package = pkgs.cabin;
