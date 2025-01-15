@@ -5,7 +5,10 @@
     # catppuccin.enable = true;
     enableFishIntegration = true;
     settings = {
+      confirm-close-surface = false;
+
       theme = "catppuccin-mocha";
+
       font-family = "FiraCode Nerd Font Mono";
       font-size = host-settings.font.text.size;
 
@@ -14,6 +17,10 @@
       clipboard-write = "allow";
 
       background-opacity = 0.9;
+
+      keybind = [
+        "global:cmd+grave_accent=toggle_quick_terminal"
+      ];
     };
 
     themes = {

@@ -6,5 +6,6 @@
     ./bat.nix
     ./yazi.nix
     ./zoxide.nix
+    ./rbw.nix
   ];
 }

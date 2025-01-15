@@ -3,7 +3,6 @@
 
   inputs = {
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-
     hyprland = {
       type = "git";
       url = "https://github.com/hyprwm/Hyprland";
