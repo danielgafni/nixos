@@ -106,6 +106,7 @@
       yarn
       rustlings
       gcc
+      cmake
       rust-analyzer
 
       # extra
