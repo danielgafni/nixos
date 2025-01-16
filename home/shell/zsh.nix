@@ -6,6 +6,7 @@
 }: {
   programs.zsh = {
     enable = true;
+    #zprof.enable = true;  # enable to profile zsh startup
     autosuggestion.enable = true;
     autocd = false; # using zoxide instead
     dirHashes = {
@@ -34,6 +35,8 @@
       la = "eza -la";
       md = "mkdir -p";
       cd = "z";
+      k = "kubectl";
+      zj = "zellij";
       devbox-start = "aws ec2 start-instances --instance-ids i-04faa7b6877e3da94 --region eu-north-1";
       devbox-stop = "aws ec2 stop-instances --instance-ids i-04faa7b6877e3da94 --region eu-north-1";
     };
@@ -42,6 +45,10 @@
       enable = true;
       plugins = [
         {name = "zdharma-continuum/fast-syntax-highlighting";}
+        {
+          name = "chisui/zsh-nix-shell";
+          tags = ["lazy:true"];
+        }
       ];
     };
   };
