@@ -149,7 +149,7 @@
 
         # window management
         "SUPER,Q,killactive"
-        "SUPER,M,exit"
+        "CTRL_SUPER,M,exit"
         "SUPER,S,togglefloating"
         "SUPER,F,fullscreen"
 

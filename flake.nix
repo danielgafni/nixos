@@ -178,6 +178,7 @@
       "steam-unwrapped"
       "steam-run"
       "whatsapp-for-linux"
+      "vimplugin-copilot.vim-2024-10-08"
     ];
 
     mkNixosConfiguration = {

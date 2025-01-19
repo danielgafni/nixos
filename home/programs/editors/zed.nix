@@ -59,7 +59,7 @@
           # TODO: enable once remote development supports running the "zed" command properly
           # EDITOR = "zed --wait";
         };
-        font_family = "'ZedMono Nerd Font', 'Noto Sans Symbols'";
+        font_family = "'FiraCode Nerd Font Mono', 'Fira Code Symbol'";
         copy_on_select = true;
       };
       indent_guides = {
