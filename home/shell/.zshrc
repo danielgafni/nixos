@@ -65,3 +65,4 @@ command_not_found_handler() {
 
 # Direnv
 eval "$(direnv hook zsh)"
+
