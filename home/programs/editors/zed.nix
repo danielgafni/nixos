@@ -92,7 +92,9 @@
 
       languages = {
         Python = {
-          language_servers = ["ruff" "pyright"];
+          # the here order matters!
+          # for example, "jump to definition" doesn't work with ruff, pyright order
+          language_servers = ["pyright" "ruff"];
         };
         Zig = {
           language_servers = ["zls"];
