@@ -1,7 +1,6 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # ZSH settings
-export BROWSER=/usr/bin/google-chrome-stable
 export ZSH_CACHE_DIR=$HOME/.cache/zsh
 HISTFILE=~/.zsh_history
 HISTSIZE=1000
@@ -65,3 +64,13 @@ command_not_found_handler() {
 
 # Direnv
 eval "$(direnv hook zsh)"
+
+# Yazi - change cwd on exit
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}

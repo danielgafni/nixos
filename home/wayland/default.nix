@@ -5,7 +5,5 @@
     ./hyprlock
     ./hypridle
     ./hyprpaper
-    #./mako
-    #./ags
   ];
 }

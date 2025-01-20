@@ -138,7 +138,10 @@
       windowrulev2 = [
         "float,title:^(Open Folder)$" # File Shooser
         "float,class:xarchiver"
-        "float,class:^(chrome-.*)$"
+        "float,title:^(Вход .*)$" # chrome login in Russian
+        "float,title:^(Enter .*)$" # chrome login in English
+        "float,title:^*(Media viewer)$" # Telegram media viewer
+        "float,initialClass:^*(qimgv)$" # image viewer
         "stayfocused,class:^(pinentry-.*)$"
       ];
 

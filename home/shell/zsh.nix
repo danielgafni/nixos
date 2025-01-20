@@ -39,6 +39,7 @@
       zj = "zellij";
       devbox-start = "aws ec2 start-instances --instance-ids i-04faa7b6877e3da94 --region eu-north-1";
       devbox-stop = "aws ec2 stop-instances --instance-ids i-04faa7b6877e3da94 --region eu-north-1";
+      zed = "zeditor";
     };
     shellGlobalAliases = {eza = "eza --icons --git";};
     zplug = {

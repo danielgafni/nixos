@@ -21,6 +21,7 @@
     enable = true;
     #    package = inputs.zed.packages.x86_64-linux.default;
     extensions = [
+      "catppuccin"
       "catppuccin-blur"
       "nix"
       "dockerfile"
@@ -37,16 +38,17 @@
       border_size = 5.0;
       inactive_opacity = 0.9;
       format_on_save = "off";
-      buffer_font_family = "FiraCode Nerd Font Mono";
+      buffer_font_family = "'Fira Code Nerd Fonts Mono', 'Fira Code', 'ZedMono Nerd Font', 'Noto Sans Symbols', 'Symbols Nerd Font Mono'";
       buffer_font_features = {
         calt = true;
       };
       ui_font_size = 16;
-      buffer_font_size = 16;
+      buffer_font_size = 15;
+      buffer_font_fallbacks = ["'Symbols Nerd Font Mono'"];
       theme = {
         mode = "system";
-        light = lib.mkForce "Catppuccin Espresso (Blur)";
-        dark = lib.mkForce "Catppuccin Espresso (Blur)";
+        # light = lib.mkForce "Catppuccin Latte";
+        # dark = lib.mkForce "Catppuccin Mocha";
       };
       current_line_highlight = "line";
       tabs = {
@@ -54,12 +56,13 @@
         git_status = true;
       };
       terminal = {
+        line_height = "standard";
         env = {
           # use zed as commit editor
           # TODO: enable once remote development supports running the "zed" command properly
           # EDITOR = "zed --wait";
         };
-        font_family = "'ZedMono Nerd Font', 'Noto Sans Symbols'";
+        font_family = "'Fira Code Nerd Fonts Mono', 'Fira Code', 'ZedMono Nerd Font', 'Noto Sans Symbols', 'Symbols Nerd Font Mono'";
         copy_on_select = true;
       };
       indent_guides = {
@@ -101,6 +104,11 @@
         };
       };
       lsp = {
+        nil = {
+          settings = {
+            autoArchive = true;
+          };
+        };
         pyright = {
           settings = {
             python = {
