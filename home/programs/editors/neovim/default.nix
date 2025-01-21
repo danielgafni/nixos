@@ -1,5 +1,8 @@
 _: {
-  home.sessionVariables.SUDO_EDITOR = "nvim";
+  home.sessionVariables = {
+    SUDO_EDITOR = "nvim";
+    EDITOR = "nvim";
+  };
   catppuccin.nvim.enable = false; # don't use catppuccin-nix, use catppuccin from nixvim instead (see below)
   programs = {
     nixvim = {

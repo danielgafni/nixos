@@ -37,7 +37,6 @@
       curl
       wget
       zsh
-      starship
       eza
       just
       expect

@@ -5,6 +5,7 @@
 }: {
   home.packages = with pkgs; [
     nil # Nix language server
+    fira-code
   ];
   programs.vscode = {
     enable = true;
@@ -29,12 +30,6 @@
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
-          name = "yuck";
-          publisher = "eww-yuck";
-          version = "0.0.3";
-          sha256 = "0c84e02de75a3b421faedb6ef995e489a540ed46b94577388d74073d82eaadc3";
-        }
-        {
           name = "grafana-alloy";
           publisher = "Grafana";
           version = "0.2.0";
@@ -45,8 +40,8 @@
       "workbench.colorTheme" = "Catppuccin Mocha";
       "workbench.iconTheme" = "catppuccin-mocha";
       "window.zoomLevel" = 1;
-      "editor.fontFamily" = "FiraCode Nerd Font Mono, Fira Code Symbol, monospace";
-      "terminal.integrated.fontFamily" = "FiraCode Nerd Font Mono, Fira Code Symbol, monospace";
+      "editor.fontFamily" = "'Fira Code Nerd Fonts Mono', 'Fira Code', 'Fira Code Symbol', 'Symbols Nerd Font Mono', monospace";
+      "terminal.integrated.fontFamily" = "'Fira Code Nerd Fonts Mono', 'Fira Code', 'Fira Code Symbol', 'Symbols Nerd Font Mono', monospace";
       "editor.fontSize" = host-settings.font.text.size;
       "terminal.integrated.fontSize" = host-settings.font.text.size;
       "github.copilot.enable" = {
@@ -58,7 +53,7 @@
       "editor.fontLigatures" = "'ss09', 'zero', 'cv27', 'ss10'"; # https://github.com/tonsky/FiraCode/wiki/How-to-enable-stylistic-sets
 
       "editor.codeActionsOnSave" = {
-        "source.fixAll.markdownlint" = true;
+        # "source.fixAll.markdownlint" = true;
       };
       "[markdown]" = {
         "editor.formatOnSave" = false;

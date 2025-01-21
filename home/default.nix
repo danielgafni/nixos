@@ -16,7 +16,6 @@
 in {
   # You can import other home-manager modules here
   imports = [
-    ./modules
     # You can also split up your configuration and import pieces of it here:
     ./wayland
     ./services
@@ -46,6 +45,9 @@ in {
 
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "22.11";
+    sessionVariables = {
+      BROWSER = "google-chrome-stable";
+    };
   };
 
   catppuccin = {
@@ -64,6 +66,19 @@ in {
   # Wallpapers
   xdg = {
     enable = true;
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "image/png" = ["qimgv.desktop"];
+        "image/jpeg" = ["qimgv.desktop"];
+        "inode/directory" = ["yazi.desktop"];
+        "application/pdf" = ["org.pwmt.zathura.desktop"];
+        "text/plain" = ["dev.zed.Zed.desktop"];
+        "text/uri-list" = ["google-chrome.desktop"];
+        "x-scheme-handler/http" = ["google-chrome.desktop"];
+        "x-scheme-handler/https" = ["google-chrome.desktop"];
+      };
+    };
     configFile = {
       wallpapers = {
         recursive = true;
@@ -127,10 +142,7 @@ in {
     };
     dircolors.enable = true;
     btop.enable = true;
-  };
-
-  module = {
-    flameshot.enable = true; # custom module defined in ./modules/flameshot
+    zathura.enable = true;
   };
 
   news = {
@@ -156,4 +168,10 @@ in {
   home.file."Media/avatar.jpg" = {
     source = ./assets/avatar.jpg;
   };
+
+  # TODO: most packages were moved to users/*.nix
+  # the common packages should be moved back here
+  home.packages = with pkgs; [
+    qimgv
+  ];
 }

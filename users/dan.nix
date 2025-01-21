@@ -57,7 +57,6 @@
       curl
       wget
       zsh
-      starship
       eza
       pfetch
       neofetch
