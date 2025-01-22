@@ -63,6 +63,9 @@ in {
     };
   };
 
+  # default browser for electron-based apps
+  home.sessionVariables.DEFAULT_BROWSER = "google-chrome-stable";
+
   # Wallpapers
   xdg = {
     enable = true;
@@ -77,6 +80,9 @@ in {
         "text/uri-list" = ["google-chrome.desktop"];
         "x-scheme-handler/http" = ["google-chrome.desktop"];
         "x-scheme-handler/https" = ["google-chrome.desktop"];
+        "text/html" = ["google-chrome.desktop"];
+        "x-scheme-handler/about" = ["google-chrome.desktop"];
+        "x-scheme-handler/unknown" = ["google-chrome.desktop"];
       };
     };
     configFile = {
