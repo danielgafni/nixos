@@ -51,12 +51,9 @@
       # CLI
       comma
       statix
-      git
-      delta
       ruplacer
       curl
       wget
-      zsh
       eza
       pfetch
       neofetch
@@ -65,9 +62,6 @@
       just
       sad
       expect
-
-      # TUI
-      ranger
 
       # messengers
       telegram-desktop
@@ -79,8 +73,6 @@
 
       # browsers
       google-chrome
-      firefox
-      lynx
 
       # editors & IDE
       vim
@@ -90,12 +82,8 @@
       jetbrains.gateway
 
       # Python tools
-      poetry
       pyright
-      mypy
-      black
       ruff
-      isort
       uv
 
       # development

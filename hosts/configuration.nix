@@ -215,6 +215,10 @@
   # Enable Docker
   virtualisation.docker = {
     enable = true;
+    autoPrune = {
+      enable = true;
+      flags = ["--all"];
+    };
     daemon.settings = {
       features = {
         buildkit = true;
