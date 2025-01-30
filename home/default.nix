@@ -1,8 +1,6 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
-  config,
-  inputs,
   lib,
   pkgs,
   allowed-unfree-packages,
@@ -12,7 +10,6 @@
 }: let
   catppuccinFlavor = "mocha";
   cursorAccent = "teal";
-  cursorPackage = pkgs.catppuccin-cursors.mochaTeal;
 in {
   # You can import other home-manager modules here
   imports = [
@@ -109,7 +106,7 @@ in {
           ];
         };
         hyprland = {
-          "org.freedesktop.impl.portal.FileChooser" = "gtk"; # hyprland doesn't provide an implementaion of file chooser
+          "org.freedesktop.impl.portal.FileChooser" = "gtk"; # hyprland doesn't provide an implementation of file chooser
         };
       };
 
