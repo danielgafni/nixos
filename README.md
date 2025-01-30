@@ -1,18 +1,22 @@
 # NixOS Config
 
-My NixOS configuration featuring multi-host setup, a few GitHub Actions, remote caching, pre-commit hooks & CI, and [Catppuccin](https://catppuccin.com/) theme for all programs.
+My NixOS configuration with multi-host setup, a few GitHub Actions, [personal build cache](https://www.cachix.org/), checks via pre-commit hooks & CI, and [Catppuccin](https://catppuccin.com/) theme for all programs.
 
-Key features:
-
-- `home-manager` for user configuration
-- `hyprland` as Wayland compositor & window manager
-- `hyprpanel` for status bar and widgets
-- `catppuccin` theme for everything
+Key components:
+- [NixOS](https://nixos.org/) for system configuration
+- [Home Manager](https://github.com/nix-community/home-manager) for user configuration. Most user-space programs are installed and configured via Home Manager.
+- [Hyprland](https://hyprland.org/) as Wayland compositor & window manager. It's very fast, looks amazing, and has a lot of features. Now has a huge community and is finally stable!
+- [Hyprpanel](https://hyprpanel.com/) a panel, widgets, and notifications for Hyprland. Has very good defaults and doesn't require much configuration.
+- [Ghostty](https://mitchellh.com/ghostty) - an amazing modern terminal emulator. Very performant, has a lot of features and super good defaults.
+- [Catppuccin](https://catppuccin.com/) theme for everything - because it's beautiful, easy on eyes, and has an implementation for every app in the world. It's automatically applied to all programs via [cattppuccin/nix](https://github.com/catppuccin/nix).
 
 ![assets/NixOS-rice.png](assets/NixOS-rice.png)
 
-> [!WARNING]  
-> WIP, not documented
+Minor stuff:
+
+- [Starship](https://starship.rs/) terminal prompt. Nothing can beat it in terms of speed, features, and looks.
+- [YubiKey](https://www.yubico.com/) for SSH and GPG. It makes life easier and more secure.
+- VS Code and Zed Editor setups. I am moving to Zed while
 
 ## Usage
 
