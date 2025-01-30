@@ -1,9 +1,4 @@
-{
-  lib,
-  user,
-  userConfig,
-  ...
-}: {
+{userConfig, ...}: {
   programs.gitui = {
     enable = true;
   };
