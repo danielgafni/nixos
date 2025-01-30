@@ -17,7 +17,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    #ags.url = "github:Aylur/ags";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
@@ -44,10 +43,10 @@
     # tmp fix for nvidia-docker until it's working in nixos-unstable
     nixpkgs-23_11.url = "github:nixos/nixpkgs/nixos-23.11";
 
-    #zed = {
-    #  # pinned specific tag
-    #  url = "github:zed-industries/zed?ref=tags/v0.167.2";
-    #};
+    zed = {
+      # pinned specific tag from a custom flake with fixes for the original Zed flake which currently doesn't work
+      url = "github:jcdickinson/zed?rev=f38dc6ceca39fb0e255b2e391ba52da453e26048";
+    };
 
     sops-nix.url = "github:Mic92/sops-nix";
   };
@@ -69,14 +68,6 @@
   } @ inputs: let
     # helper variables and functions
     # used to produce the main configurations in the flake
-    pkgs-23_11 = import inputs.nixpkgs-23_11 {
-      inherit system;
-      config = {
-        allowUnfree = true;
-        allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) allowed-unfree-packages;
-      };
-    };
-
     pkgs = import inputs.nixpkgs {
       inherit system;
       config = {
@@ -86,36 +77,6 @@
       overlays = [
         inputs.nixpkgs-wayland.overlay
         inputs.hyprpanel.overlay
-        (final: prev: {
-          inherit (pkgs-23_11.nvidia-docker);
-        })
-
-        # https://github.com/Jas-SinghFSU/HyprPanel/issues/479
-        # remove after inxpkgs update
-        (final: prev: {
-          matugen = final.rustPlatform.buildRustPackage rec {
-            pname = "matugen";
-            version = "2.4.0";
-
-            src = final.fetchFromGitHub {
-              owner = "InioX";
-              repo = "matugen";
-              rev = "refs/tags/v${version}";
-              hash = "sha256-l623fIVhVCU/ylbBmohAtQNbK0YrWlEny0sC/vBJ+dU=";
-            };
-
-            cargoHash = "sha256-FwQhhwlldDskDzmIOxhwRuUv8NxXCxd3ZmOwqcuWz64=";
-
-            meta = {
-              description = "Material you color generation tool";
-              homepage = "https://github.com/InioX/matugen";
-              changelog = "https://github.com/InioX/matugen/blob/${src.rev}/CHANGELOG.md";
-              license = final.lib.licenses.gpl2Only;
-              maintainers = with final.lib.maintainers; [lampros];
-              mainProgram = "matugen";
-            };
-          };
-        })
       ];
     };
 
@@ -188,7 +149,7 @@
         inherit system;
         specialArgs = {
           # Pass flake inputs to our config
-          inherit pkgs nixos-hardware allowed-unfree-packages inputs;
+          inherit nixos-hardware allowed-unfree-packages inputs;
           users = {
             extraGroups.docker.members = ["dan"];
             defaultUserShell = pkgs.zsh;
@@ -206,6 +167,8 @@
           sops-nix.nixosModules.sops
         ];
       };
+
+    # helli world
 
     mkHomeConfiguration = {
       host,
@@ -246,7 +209,7 @@
     formatter."${system}" = nixpkgs.legacyPackages."${system}".alejandra;
     devShells."${system}".default = nixpkgs.legacyPackages."${system}".mkShell {
       inherit (self.checks."${system}".pre-commit-check) shellHook;
-      buildINputs = self.checks."${system}".pre-commit-check.enabledPackages;
+      buildInputs = self.checks."${system}".pre-commit-check.enabledPackages;
     };
 
     # NixOS configuration entrypoint

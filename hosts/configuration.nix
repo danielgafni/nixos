@@ -25,6 +25,7 @@
         "https://nixpkgs-wayland.cachix.org"
         "https://cosmic.cachix.org"
         "https://nix-community.cachix.org"
+        "https://jcdickinson.cachix.org"
       ];
       trusted-public-keys = [
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
@@ -34,6 +35,7 @@
         "danielgafni.cachix.org-1:ZdXJoJEqeiGGOf/MtAiocqj7/vvFbA2MWFVwopJ2WQM="
         "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "jcdickinson.cachix.org-1:GZBOGJF64N2yc8z/iAlApnNGgGQv1ApmuMz7xaU5dnY="
       ];
       experimental-features = ["nix-command" "flakes"];
       auto-optimise-store = true;
