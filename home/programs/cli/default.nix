@@ -7,5 +7,6 @@
     ./yazi.nix
     ./zoxide.nix
     ./rbw.nix
+    ./gh.nix
   ];
 }
