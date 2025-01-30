@@ -1,15 +1,6 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{
-  config,
-  inputs,
-  lib,
-  pkgs,
-  allowed-unfree-packages,
-  host-settings,
-  user,
-  ...
-}: {
+{pkgs, ...}: {
   home = {
     packages = with pkgs; [
       # YubiKey

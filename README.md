@@ -16,7 +16,7 @@ Minor stuff:
 
 - [Starship](https://starship.rs/) terminal prompt. Nothing can beat it in terms of speed, features, and looks.
 - [YubiKey](https://www.yubico.com/) for SSH and GPG. It makes life easier and more secure.
-- VS Code and Zed Editor setups. I am moving to Zed while
+- VS Code and [Zed](https://zed.dev/) setups. I am moving to Zed while keeping VS Code for some tasks.
 
 ## Usage
 
