@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{config, ...}: {
   programs.zsh = {
     enable = true;
     #zprof.enable = true;  # enable to profile zsh startup
@@ -40,7 +35,7 @@
       devbox-start = "aws ec2 start-instances --instance-ids i-04faa7b6877e3da94 --region eu-north-1";
       devbox-stop = "aws ec2 stop-instances --instance-ids i-04faa7b6877e3da94 --region eu-north-1";
       hyprlock-restart = "hyprctl --instance 0 'keyword misc:allow_session_lock_restore 1' && hyprctl --instance 0 'dispatch exec hyprlock'";
-      zed = "zeditor";
+      #zed = "zeditor";
     };
     shellGlobalAliases = {eza = "eza --icons --git";};
     zplug = {

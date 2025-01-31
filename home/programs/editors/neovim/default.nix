@@ -44,7 +44,15 @@ _: {
         lualine.enable = true;
         #lualine.theme = "catppuccin";
 
-        treesitter.enable = true;
+        treesitter = {
+          enable = true;
+          settings = {
+            highlight = {
+              enable = true;
+            };
+          };
+        };
+
         fugitive.enable = true;
         chadtree.enable = true;
         bufferline.enable = true;
