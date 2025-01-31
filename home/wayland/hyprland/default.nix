@@ -22,6 +22,7 @@
     plugins = [
       # TODO: re-enable once it builds correctly
       # inputs.hyprland-plugins.packages.${pkgs.system}.hyprtrails
+      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
     ];
     systemd.variables = ["--all"];
     settings = {
@@ -78,6 +79,10 @@
           xray = false;
         };
       };
+      group = {
+        "col.border_inactive" = "0xff89dceb";
+        "col.border_active" = "rgba(88c0d0ff) rgba(b48eadff) rgba(ebcb8bff) rgba(a3be8cff) 45deg";
+      };
       misc = {
         enable_swallow = true;
         animate_manual_resizes = true;
@@ -123,17 +128,9 @@
         "WLR_NO_HARDWARE_CURSORS,1"
         "XDG_SESSION_TYPE,wayland"
       ];
-      exec-once = [
-        "${pkgs.hypridle}/bin/hypridle" # idle event trigger
-      ];
-      plugin = [
-        # TODO: re-enable once it builds correctly
-        # {
-        #   hyprtrails = {
-        #     color = "$sapphire";
-        #   };
-        # }
-      ];
+
+      # list of commands to run during Hyprland startup
+      exec-once = [];
 
       windowrulev2 = [
         "float,title:^(Open Folder)$" # File Shooser
@@ -149,17 +146,23 @@
         # starting applications
         "SUPER,RETURN,exec,ghostty"
         "SUPER,E,exec,ghostty -e yazi"
+        # wofi - application launcher
+        # TODO: exlore running with --normal-window for Hyprland theming purposes
+        "SUPER,space,exec,wofi --show drun -i -I -m -G -o DP-3 --width 55% --height 50%"
 
         # window management
         "SUPER,Q,killactive"
-        "SUPER,M,exit"
+        "SUPER_SHIFT,M,exit"
         "SUPER,S,togglefloating"
         "SUPER,F,fullscreen"
-
         # move the active window to the next position
         "SUPER,N,swapnext"
         # make the active window the main
         "SUPER,A,togglesplit"
+        # toggle pseudo tiling mode for a window
+        "SUPER,P,pseudo,"
+        # start hyprexpo - an overview of all workspaces
+        "SUPER, grave, hyprexpo:expo, toggle" # can be: toggle, off/disable or on/enable
 
         # screenshots
         ",Print,exec,grim - | wl-copy"
@@ -178,6 +181,9 @@
         # TODO: find how to do it with hyprpanel
         # "SHIFT_SUPER,N,exec,makoctl mode -t do-not-disturb"
 
+        # screen locking
+        "SUPER,L,exec,grim -o HDMI-A-1 /tmp/screenshot.png && hyprlock"
+
         # hyprland management
         "SUPER,R,exec,hyprctl reload"
       ];
@@ -187,42 +193,38 @@
         "SUPER,mouse:272,movewindow"
         "SHIFT_SUPER,mouse:272,resizewindow"
       ];
+
+      dwindle = {
+        pseudotile = 1; # enable pseudotiling on dwindle
+        force_split = 0;
+      };
+
+      master = {};
+
+      plugin = [
+        {
+          hyprexpo = {
+            columns = 3;
+            gap_size = 5;
+            bg_col = "rgb(111111)";
+            workspace_method = "center current"; # [center/first] [workspace] e.g. first 1 or center m+1
+
+            enable_gesture = true; # laptop touchpad
+            gesture_fingers = 3; # 3 or 4
+            gesture_distance = 300; # how far is the "max"
+            gesture_positive = true; # positive = swipe down. Negative = swipe up.
+          };
+        }
+      ];
     };
 
     extraConfig = ''
       debug:disable_logs = false
 
-      exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-      exec-once=systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-
-      # polkit (the app which asks for the root password access)
-      exec-once=/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-
-      group {
-        col.border_inactive=0xff89dceb
-      	col.border_active=rgba(88c0d0ff) rgba(b48eadff) rgba(ebcb8bff) rgba(a3be8cff) 45deg
-
-      }
-
-      dwindle {
-              pseudotile=1 # enable pseudotiling on dwindle
-      	force_split=0
-      }
-
-      master {
-      }
-
-      # TODO: exlore running with --normal-window for Hyprland theming purposes
-      bind=SUPER,space,exec,wofi --show drun -i -I -m -G -o DP-3 --width 55% --height 50%
-      bind=SUPER,P,pseudo,
-
       # special workspace
       bind=CTRL_SUPER,W,exec,hyprctl dispatch movetoworkspace special
       bind=SUPER,W,workspace,special
       bind=SHIFT_SUPER,W,exec, hyprctl dispatch togglespecialworkspace ""
-
-      # screen locking
-      bind=SUPER,L,exec,grim -o HDMI-A-1 /tmp/screenshot.png && hyprlock
 
       # navigation between windows
       bind=SUPER,left,movefocus,l
