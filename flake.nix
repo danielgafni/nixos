@@ -139,6 +139,7 @@
       "steam-unwrapped"
       "steam-run"
       "whatsapp-for-linux"
+      "code-cursor"
     ];
 
     mkNixosConfiguration = {
