@@ -4,5 +4,6 @@ _: {
     ./neovim
     ./pycharm.nix
     ./zed.nix
+    ./cursor
   ];
 }
