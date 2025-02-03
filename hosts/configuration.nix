@@ -114,7 +114,7 @@
   };
 
   services = {
-    localtimed.enable = true;
+    #localtimed.enable = true;
     automatic-timezoned.enable = true;
     #desktopManager.cosmic.enable = true;
     #displayManager.cosmic-greeter.enable = true;
@@ -211,6 +211,7 @@
       nix-output-monitor
       minikube
       amazon-ecr-credential-helper
+      geoclue2 # for localtimed
     ];
   };
 
