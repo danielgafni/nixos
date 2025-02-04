@@ -39,7 +39,7 @@ _: {
         cmp-cmdline.enable = true;
 
         gitsigns.enable = true;
-        noice.enable = true;
+        noice.enable = true; # spellchecker:disable-line
 
         lualine.enable = true;
         #lualine.theme = "catppuccin";

@@ -14,7 +14,15 @@
     ];
     sessionVariables = {
       HYPRCURSOR_SIZE = lib.mkForce (toString host-settings.cursor.size);
+      ELECTRON_OZONE_PLATFORM_HINT = "wayland"; # helps with electron apps like 1password
     };
+  };
+
+  xdg.configFile."electron-flags.conf" = {
+    text = ''
+      --enable-features=UseOzonePlatform
+      --ozone-platform=wayland
+    '';
   };
 
   wayland.windowManager.hyprland = {
@@ -130,7 +138,10 @@
       ];
 
       # list of commands to run during Hyprland startup
-      exec-once = [];
+      exec-once = [
+        # import env vars set with home.sessionVariables
+        "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP ELECTRON_OZONE_PLATFORM_HINT"
+      ];
 
       windowrulev2 = [
         "float,title:^(Open Folder)$" # File Shooser
@@ -139,6 +150,7 @@
         "float,title:^(Enter .*)$" # chrome login in English
         "float,title:^*(Media viewer)$" # Telegram media viewer
         "float,initialClass:^*(qimgv)$" # image viewer
+        "float,initialClass:^(chrome-.*)$"
         "stayfocused,class:^(pinentry-.*)$"
       ];
 
