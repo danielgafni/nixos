@@ -140,6 +140,8 @@
       "steam-run"
       "whatsapp-for-linux"
       "cursor"
+      "1password"
+      "1password-cli"
     ];
 
     mkNixosConfiguration = {

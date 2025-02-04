@@ -53,6 +53,7 @@
       just
       sad
       expect
+      _1password-cli
 
       # messengers
       telegram-desktop
@@ -93,6 +94,8 @@
       wireguard-ui
       mpv
       vlc
+      bitwarden-desktop
+      _1password-gui-beta
     ];
   };
 }
