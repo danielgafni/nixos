@@ -69,6 +69,12 @@ It's necessary to rebuild fonts cache in order to observe live changes after mod
 fc-cache -rf
 ```
 
+### Custom modules
+
+- `modules/` contains some custom modules. They are:
+
+- `modules/home-manager/nebius-cli.nix` - [Nebius CLI](https://docs.nebius.com/cli)
+
 ### Debugging mime-type
 
 ```shell

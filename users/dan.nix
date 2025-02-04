@@ -1,6 +1,12 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {pkgs, ...}: {
+  imports = [
+    ../modules/home-manager/nebius-cli.nix
+  ];
+
+  programs.nebius-cli.enable = true;
+
   home = {
     packages = with pkgs; [
       # YubiKey
