@@ -142,6 +142,7 @@
       "cursor"
       "1password"
       "1password-cli"
+      "nebius-cli"
     ];
 
     mkNixosConfiguration = {
