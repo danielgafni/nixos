@@ -144,7 +144,12 @@ in {
       enable = true;
     };
     dircolors.enable = true;
-    btop.enable = true;
+    btop = {
+      enable = true;
+      package = pkgs.btop.override {
+        cudaSupport = host-settings.isNvidia;
+      };
+    };
     zathura.enable = true;
   };
 

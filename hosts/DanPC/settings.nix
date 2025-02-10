@@ -3,6 +3,7 @@ let
   lockAfterSeconds = 60 * 15;
   suspendAfterSeconds = 60 * 30;
 in rec {
+  isNvidia = true;
   ui.scale = 1.5;
   scaled = x: (builtins.ceil (x * ui.scale));
   wayland.hyprland.monitor = [
