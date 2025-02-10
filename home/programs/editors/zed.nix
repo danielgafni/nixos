@@ -110,7 +110,12 @@
       lsp = {
         nil = {
           settings = {
-            autoArchive = true;
+            nix = {
+              flake = {
+                autoArchive = true;
+                autoEvalInputs = true;
+              };
+            };
           };
         };
         pyright = {
