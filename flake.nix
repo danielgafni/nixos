@@ -44,8 +44,8 @@
     nixpkgs-23_11.url = "github:nixos/nixpkgs/nixos-23.11";
 
     zed = {
-      # pinned specific tag from a custom flake with fixes for the original Zed flake which currently doesn't work
-      url = "github:jcdickinson/zed?rev=f38dc6ceca39fb0e255b2e391ba52da453e26048";
+      # I'm forking Zed until https://github.com/zed-industries/zed/issues/22098 is resolved
+      url = "github:danielgafni/zed";
     };
 
     sops-nix.url = "github:Mic92/sops-nix";

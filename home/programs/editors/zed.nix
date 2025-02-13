@@ -46,8 +46,8 @@
       buffer_font_features = {
         calt = true;
       };
-      ui_font_size = 16;
-      buffer_font_size = 15;
+      ui_font_size = 18;
+      buffer_font_size = 17;
       buffer_font_fallbacks = ["'Symbols Nerd Font Mono'"];
       theme = {
         mode = "system";
