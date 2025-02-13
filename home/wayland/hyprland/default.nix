@@ -2,9 +2,18 @@
   inputs,
   lib,
   pkgs,
+  # a custom object specific to my setup
   host-settings,
+  # an custom object specific to my setup
+  userConfig,
   ...
-}: {
+}: let
+  mkAutostartEntry = {
+    program,
+    workspace,
+  }: "[workspace ${workspace} silentt] ${program}";
+  mkAutostartList = entries: (map mkAutostartEntry entries);
+in {
   imports = [
     inputs.hyprland.homeManagerModules.default
   ];
@@ -138,10 +147,12 @@
       ];
 
       # list of commands to run during Hyprland startup
-      exec-once = [
-        # import env vars set with home.sessionVariables
-        "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP ELECTRON_OZONE_PLATFORM_HINT"
-      ];
+      exec-once =
+        [
+          # import env vars set with home.sessionVariables
+          "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP ELECTRON_OZONE_PLATFORM_HINT"
+        ]
+        ++ mkAutostartList userConfig.hyprland.autostart;
 
       windowrulev2 = [
         "float,title:^(Open Folder)$" # File Shooser

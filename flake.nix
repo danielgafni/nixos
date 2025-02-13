@@ -97,6 +97,7 @@
       };
     };
 
+    # todo: move this to users/
     user-configs = {
       dan = rec {
         email = "danielgafni16@gmail.com";
@@ -106,10 +107,33 @@
           userEmail = email;
           signingkey = "7B0740201D518DB134D5C75AB8D13360DED17662";
         };
+        hyprland.autostart = with pkgs; [
+          {
+            workspace = "2";
+            program = "${slack}/bin/slack";
+          }
+          {
+            workspace = "2";
+            program = "${discord}/bin/discord";
+          }
+          {
+            workspace = "2";
+            program = "${telegram-desktop}/bin/telegram-desktop";
+          }
+          {
+            workspace = "1";
+            program = "${google-chrome}/bin/google-chrome-stable";
+          }
+          {
+            workspace = "3";
+            program = "zed";
+          }
+        ];
       };
       underdel = {
         email = "linagafni@gmail.com";
         fullName = "Lina Gafni";
+        hyprland.autostart = [];
       };
     };
 
