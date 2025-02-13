@@ -1948,17 +1948,16 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1738099267,
-        "narHash": "sha256-8UkH1cCg3M0CkVYjNNrKoM7aiCmpCT0E0HXJc4Nqxj8=",
-        "owner": "jcdickinson",
+        "lastModified": 1739481645,
+        "narHash": "sha256-oifqcaGlHND0hJSNJ5eLijNSTr1NCb7vO7agZpyVnxY=",
+        "owner": "danielgafni",
         "repo": "zed",
-        "rev": "f38dc6ceca39fb0e255b2e391ba52da453e26048",
+        "rev": "673f7e3e2685e28638862f7650b6b7fda675eb1d",
         "type": "github"
       },
       "original": {
-        "owner": "jcdickinson",
+        "owner": "danielgafni",
         "repo": "zed",
-        "rev": "f38dc6ceca39fb0e255b2e391ba52da453e26048",
         "type": "github"
       }
     }
