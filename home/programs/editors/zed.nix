@@ -106,11 +106,18 @@
         Zig = {
           language_servers = ["zls"];
         };
+        Nix = {
+          language_servers = ["nil"];
+        };
       };
       lsp = {
         nil = {
           settings = {
-            autoArchive = true;
+            nix = {
+              flake = {
+                autoArchive = true;
+              };
+            };
           };
         };
         pyright = {

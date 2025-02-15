@@ -18,6 +18,15 @@
     };
   };
 
+  home.packages = with pkgs; [
+    # Nix related packages
+    nixd
+    nil
+    nh
+    nvd
+    alejandra
+  ];
+
   nixpkgs.config = {
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
   };

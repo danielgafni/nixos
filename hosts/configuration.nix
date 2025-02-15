@@ -199,7 +199,6 @@
       wget
       curl
       lynx
-      #lemurs
       brightnessctl
       pavucontrol
       direnv
@@ -209,7 +208,6 @@
           pre-commit
         ]))
       nix-output-monitor
-      minikube
       amazon-ecr-credential-helper
       geoclue2 # for localtimed
     ];
@@ -251,6 +249,13 @@
     };
     steam = {
       enable = true;
+    };
+    # nh is a better Nix CLI: https://github.com/viperML/nh
+    nh = {
+      enable = true;
+      clean.enable = true;
+      clean.extraArgs = "--keep-since 4d --keep 3";
+      flake = "/home/dan/nixos";
     };
   };
 

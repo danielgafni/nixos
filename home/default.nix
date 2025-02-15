@@ -44,6 +44,10 @@ in {
     stateVersion = "22.11";
     sessionVariables = {
       BROWSER = "google-chrome-stable";
+
+      # the flake is expected to be here
+      # this setting is for the `nh` CLI
+      FLAKAE = "/home/${user}/nixos";
     };
   };
 
