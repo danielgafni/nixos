@@ -2,7 +2,9 @@
   pkgs,
   host-settings,
   ...
-}: {
+}: let
+  lsp = import ./lsp.nix;
+in {
   home.packages = with pkgs; [
     nil # Nix language server
     fira-code
@@ -61,6 +63,7 @@
       };
       "nix.enableLanguageServer" = true; # Enable LSP.
       "nix.serverPath" = "nil"; # The path to the LSP server executable.
+      "nix.serverSettings" = {inherit (lsp) nil;}; # The settings to pass to the LSP server.
     };
   };
 }
