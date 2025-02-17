@@ -8,6 +8,12 @@
     };
   };
   pyright = {
+    binary = {
+      path = ".venv/bin/pyright-langserver";
+      arguments = [
+        "--stdio"
+      ];
+    };
     settings = {
       python = {
         pythonPath = ".venv/bin/python";
