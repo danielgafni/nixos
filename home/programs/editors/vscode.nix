@@ -9,6 +9,8 @@
   ];
 
   # first change
+  #
+  # second change
   programs.vscode = {
     enable = true;
     enableUpdateCheck = false;
