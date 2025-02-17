@@ -7,6 +7,8 @@
     nil # Nix language server
     fira-code
   ];
+
+  # first change
   programs.vscode = {
     enable = true;
     enableUpdateCheck = false;
