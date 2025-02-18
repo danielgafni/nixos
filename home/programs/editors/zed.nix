@@ -111,6 +111,28 @@
         };
       };
       lsp = import ./lsp.nix;
+      assistant = {
+        enabled = true;
+        version = "2";
+        default_model = {
+          provider = "copilot_chat";
+          model = "gpt-4o";
+        };
+        inline_alternatives = [
+          {
+            provider = "zed.dev";
+            model = "claude-3-5-sonnet-latest";
+          }
+          {
+            provider = "zed.dev";
+            model = "gpt-4o";
+          }
+          {
+            provider = "copilot_chat";
+            model = "o1-preview";
+          }
+        ];
+      };
     };
   };
 }
