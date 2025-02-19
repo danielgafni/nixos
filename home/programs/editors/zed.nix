@@ -36,6 +36,14 @@
       "zig"
       "typos"
     ];
+    userKeymaps = [
+      {
+        context = "Editor";
+        bindings = {
+          "alt tab" = "editor::NextEditPrediction";
+        };
+      }
+    ];
     userSettings = {
       auto_update = false;
       magnification = 1.1;
