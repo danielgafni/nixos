@@ -1,9 +1,13 @@
-{
-  lib,
-  pkgs,
-  allowed-unfree-packages,
-  ...
-}: {
+{pkgs, ...}: {
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowUnfreePredicate = _: true;
+  };
+
+  programs = {
+    nix-index.enable = true;
+  };
+
   nix = {
     package = pkgs.nix;
     settings = {
@@ -26,8 +30,4 @@
     nvd
     alejandra
   ];
-
-  nixpkgs.config = {
-    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
-  };
 }

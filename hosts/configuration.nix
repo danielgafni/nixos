@@ -5,8 +5,8 @@
   config,
   pkgs,
   lib,
-  allowed-unfree-packages,
   users,
+  inputs,
   ...
 }: {
   inherit users;
@@ -22,20 +22,15 @@
         "https://hyprland.cachix.org"
         "https://nixpkgs-wayland.cachix.org"
         "https://pre-commit-hooks.cachix.org"
-        "https://nixpkgs-wayland.cachix.org"
-        "https://cosmic.cachix.org"
+        "https://danielgafni.cachix.org"
         "https://nix-community.cachix.org"
-        "https://jcdickinson.cachix.org"
       ];
       trusted-public-keys = [
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
         "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
-        "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
         "danielgafni.cachix.org-1:ZdXJoJEqeiGGOf/MtAiocqj7/vvFbA2MWFVwopJ2WQM="
-        "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        "jcdickinson.cachix.org-1:GZBOGJF64N2yc8z/iAlApnNGgGQv1ApmuMz7xaU5dnY="
       ];
       experimental-features = ["nix-command" "flakes"];
       auto-optimise-store = true;
@@ -49,7 +44,12 @@
   };
 
   nixpkgs.config = {
-    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
+    allowUnfree = true;
+    allowUnfreePredicate = _: true;
+    overlays = [
+      inputs.nixpkgs-wayland.overlay
+      inputs.hyprpanel.overlay
+    ];
   };
 
   # Use the systemd-boot EFI boot loader.
@@ -224,15 +224,6 @@
       features = {
         buildkit = true;
       };
-    };
-  };
-
-  nixpkgs.config = {
-    allowUnfree = true;
-
-    firefox = {
-      enableGoogleTalkPlugin = true;
-      enableAdobeFlash = true;
     };
   };
 

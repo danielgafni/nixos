@@ -3,7 +3,6 @@
 {
   lib,
   pkgs,
-  allowed-unfree-packages,
   host-settings,
   user,
   ...
@@ -24,12 +23,6 @@ in {
     # per-user settings (like packages) are here
     ../users/${user}.nix
   ];
-
-  nixpkgs = {
-    config = {
-      allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
-    };
-  };
 
   home = {
     username = user;

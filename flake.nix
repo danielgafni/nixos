@@ -71,21 +71,8 @@
     sops-nix,
     ...
   } @ inputs: let
-    # helper variables and functions
-    # used to produce the main configurations in the flake
-    pkgs = import inputs.nixpkgs {
-      inherit system;
-      config = {
-        allowUnfree = true;
-        allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) allowed-unfree-packages;
-      };
-      overlays = [
-        inputs.nixpkgs-wayland.overlay
-        inputs.hyprpanel.overlay
-      ];
-    };
-
     system = "x86_64-linux";
+    pkgs = inputs.nixpkgs.legacyPackages.${system};
 
     users = {
       dan = {
@@ -147,33 +134,6 @@
       framnix = ["dan" "underdel"];
     };
 
-    # Define the list of unfree packages to allow here, so you can pass it to
-    # both `sudo nixos-rebuild` and `home-manager`
-    allowed-unfree-packages = [
-      "google-chrome"
-      "obsidian"
-      "postman"
-      "vscode"
-      "vscode-extension-github-copilot"
-      "lens-desktop"
-      "slack"
-      "discord"
-      "pycharm-professional"
-      "pycharm-professional-with-plugins"
-      "gateway"
-      "copilot.vim"
-      "graphite-cli"
-      "steam"
-      "steam-original"
-      "steam-unwrapped"
-      "steam-run"
-      "whatsapp-for-linux"
-      "cursor"
-      "1password"
-      "1password-cli"
-      "nebius-cli"
-    ];
-
     mkNixosConfiguration = {
       host,
       user-selection,
@@ -182,7 +142,7 @@
         inherit system;
         specialArgs = {
           # Pass flake inputs to our config
-          inherit nixos-hardware allowed-unfree-packages inputs;
+          inherit nixos-hardware inputs;
           users = {
             extraGroups.docker.members = ["dan"];
             defaultUserShell = pkgs.zsh;
@@ -209,10 +169,9 @@
     }:
       home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        # pkgs = nixpkgs.legacyPackages."${system}"; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {
           # these args are passed to the other home-manager modules
-          inherit allowed-unfree-packages user inputs home-manager catppuccin;
+          inherit user inputs home-manager catppuccin;
           host-settings = import ./hosts/${host}/settings.nix;
           userConfig = user-configs.${user};
         };
@@ -239,8 +198,8 @@
         };
       };
     };
-    formatter."${system}" = nixpkgs.legacyPackages."${system}".alejandra;
-    devShells."${system}".default = nixpkgs.legacyPackages."${system}".mkShell {
+    formatter."${system}" = pkgs.alejandra;
+    devShells."${system}".default = pkgs.mkShell {
       inherit (self.checks."${system}".pre-commit-check) shellHook;
       buildInputs = self.checks."${system}".pre-commit-check.enabledPackages;
     };

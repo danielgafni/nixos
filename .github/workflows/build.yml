@@ -4,6 +4,9 @@ on:
   push:
   workflow_dispatch:
 
+env:
+  NIXPKGS_ALLOW_UNFREE: "1"
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -18,7 +21,7 @@ jobs:
         useDaemon: true
     - run: nix-channel --update
     - run: nix flake check
-  
+
   build-nixos:
     strategy:
       matrix:
@@ -34,7 +37,7 @@ jobs:
         # this might remove tools that are actually needed,
         # if set to "true" but frees about 6 GB
         tool-cache: false
-        
+
         # all of these default to true, but feel free to set to
         # "false" if necessary for your workflow
         android: true
@@ -50,9 +53,10 @@ jobs:
         name: danielgafni
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
         useDaemon: true
+        extraPullNames: hyprland,nixpkgs-wayland,pre-commit-hooks,nix-community
     - run: nix-channel --update
-    - run: nix build .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
-  
+    - run: nix build --impure .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
+
   build-home:
     strategy:
       matrix:
@@ -72,7 +76,7 @@ jobs:
         # this might remove tools that are actually needed,
         # if set to "true" but frees about 6 GB
         tool-cache: false
-        
+
         # all of these default to true, but feel free to set to
         # "false" if necessary for your workflow
         android: true
@@ -88,11 +92,12 @@ jobs:
         name: danielgafni
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
         useDaemon: true
+        extraPullNames: hyprland,nixpkgs-wayland,pre-commit-hooks,nix-community
     - run: nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
     - run: nix-channel --update
     - run: nix-env -i home-manager
-    - run: home-manager --flake .#${{ matrix.host-users.user }}@${{ matrix.host-users.host }} build
-  
+    - run: home-manager --flake .#${{ matrix.host-users.user }}@${{ matrix.host-users.host }} build --impure
+
   result:
     needs:
       - test
