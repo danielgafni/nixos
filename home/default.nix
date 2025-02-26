@@ -145,6 +145,7 @@ in {
   # if a program requires more configuration, it should be moved to ./programs/...
   programs = {
     home-manager = {
+      useGlobalPkgs = true;
       enable = true;
     };
     dircolors.enable = true;

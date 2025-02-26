@@ -43,10 +43,10 @@
     # tmp fix for nvidia-docker until it's working in nixos-unstable
     nixpkgs-23_11.url = "github:nixos/nixpkgs/nixos-23.11";
 
-    zed = {
-      # I'm forking Zed until https://github.com/zed-industries/zed/issues/22098 is resolved
-      url = "github:danielgafni/zed";
-    };
+    # zed = {
+    #   # I'm forking Zed until https://github.com/zed-industries/zed/issues/22098 is resolved
+    #   url = "github:danielgafni/zed";
+    # };
 
     sops-nix.url = "github:Mic92/sops-nix";
   };
