@@ -247,6 +247,13 @@
       clean.extraArgs = "--keep-since 4d --keep 3";
       flake = "/home/dan/nixos";
     };
+    _1password = {
+      enable = true;
+    };
+    _1password-gui = {
+      package = pkgs._1password-gui-beta;
+      polkitPolicyOwners = ["dan "];
+    };
   };
 
   services.fprintd.enable = true;

@@ -11,13 +11,6 @@
 
   programs = {
     nebius-cli.enable = true;
-    _1password = {
-      enable = true;
-    };
-    _1password-gui = {
-      package = pkgs._1password-gui-beta;
-      polkitPolicyOwners = ["dan "];
-    };
   };
 
   home = {
