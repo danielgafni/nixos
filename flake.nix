@@ -153,7 +153,7 @@
         modules = [
           ./hosts/configuration.nix
           ./hosts/${host}/NixOS
-          hyprland.nixosModules.default
+          # hyprland.nixosModules.default
           catppuccin.nixosModules.catppuccin
           stylix.nixosModules.stylix
           {programs.hyprland.xwayland.enable = true;}

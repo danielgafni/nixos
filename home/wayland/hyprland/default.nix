@@ -14,9 +14,9 @@
   }: "[workspace ${workspace} silentt] ${program}";
   mkAutostartList = entries: (map mkAutostartEntry entries);
 in {
-  imports = [
-    inputs.hyprland.homeManagerModules.default
-  ];
+  # imports = [
+  #   inputs.hyprland.homeManagerModules.default
+  # ];
   home = {
     packages = with pkgs; [
       hyprcursor # catppuccin-nix will automatically set the cursor theme
@@ -36,9 +36,14 @@ in {
 
   wayland.windowManager.hyprland = {
     enable = true;
+
+    # package and portportalPackage are set to null
+    # because they are installed via NixOS instead of Home Manager
+    # https://wiki.hyprland.org/Nix/Hyprland-on-Home-Manager/#using-the-home-manager-module-with-nixos
+    package = null;
+    portalPackage = null;
+
     plugins = [
-      # TODO: re-enable once it builds correctly
-      # inputs.hyprland-plugins.packages.${pkgs.system}.hyprtrails
       inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
     ];
     systemd.variables = ["--all"];

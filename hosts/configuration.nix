@@ -36,11 +36,11 @@
       auto-optimise-store = true;
     };
 
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 30d";
-    };
+    # gc = {
+    #   automatic = true;
+    #   dates = "weekly";
+    #   options = "--delete-older-than 30d";
+    # };
   };
 
   nixpkgs.config = {
@@ -230,6 +230,14 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   programs = {
+    hyprland = {
+      enable = true;
+      xwayland.enable = true;
+      # set the flake package
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      # make sure to also set the portal package, so that they are in sync
+      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    };
     zsh.enable = true;
     nix-ld = {
       enable = true;
