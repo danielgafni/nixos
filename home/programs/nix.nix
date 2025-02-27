@@ -1,9 +1,4 @@
 {pkgs, ...}: {
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowUnfreePredicate = _: true;
-  };
-
   programs = {
     nix-index.enable = true;
   };
