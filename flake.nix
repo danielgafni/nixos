@@ -49,6 +49,11 @@
     };
 
     sops-nix.url = "github:Mic92/sops-nix";
+
+    dagger = {
+      url = "github:dagger/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
