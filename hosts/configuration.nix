@@ -5,8 +5,8 @@
   config,
   pkgs,
   lib,
-  allowed-unfree-packages,
   users,
+  inputs,
   ...
 }: {
   inherit users;
@@ -22,34 +22,34 @@
         "https://hyprland.cachix.org"
         "https://nixpkgs-wayland.cachix.org"
         "https://pre-commit-hooks.cachix.org"
-        "https://nixpkgs-wayland.cachix.org"
-        "https://cosmic.cachix.org"
+        "https://danielgafni.cachix.org"
         "https://nix-community.cachix.org"
-        "https://jcdickinson.cachix.org"
       ];
       trusted-public-keys = [
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
         "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
-        "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
         "danielgafni.cachix.org-1:ZdXJoJEqeiGGOf/MtAiocqj7/vvFbA2MWFVwopJ2WQM="
-        "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        "jcdickinson.cachix.org-1:GZBOGJF64N2yc8z/iAlApnNGgGQv1ApmuMz7xaU5dnY="
       ];
       experimental-features = ["nix-command" "flakes"];
       auto-optimise-store = true;
     };
 
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 30d";
-    };
+    # gc = {
+    #   automatic = true;
+    #   dates = "weekly";
+    #   options = "--delete-older-than 30d";
+    # };
   };
 
   nixpkgs.config = {
-    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
+    allowUnfree = true;
+    allowUnfreePredicate = _: true;
+    overlays = [
+      inputs.nixpkgs-wayland.overlay
+      inputs.hyprpanel.overlay
+    ];
   };
 
   # Use the systemd-boot EFI boot loader.
@@ -227,18 +227,17 @@
     };
   };
 
-  nixpkgs.config = {
-    allowUnfree = true;
-
-    firefox = {
-      enableGoogleTalkPlugin = true;
-      enableAdobeFlash = true;
-    };
-  };
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   programs = {
+    hyprland = {
+      enable = true;
+      xwayland.enable = true;
+      # set the flake package
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      # make sure to also set the portal package, so that they are in sync
+      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    };
     zsh.enable = true;
     nix-ld = {
       enable = true;
@@ -272,7 +271,7 @@
     wlr.enable = true;
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal-hyprland
+      #pkgs.xdg-desktop-portal-hyprland
     ];
     config = {
       common = {

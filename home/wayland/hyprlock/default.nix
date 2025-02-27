@@ -1,10 +1,6 @@
 {
   inputs,
-  lib,
-  pkgs,
-  allowed-unfree-packages,
   config,
-  user,
   ...
 }: let
   # TODO: probably these is a cleaner way to get access to these variables?
