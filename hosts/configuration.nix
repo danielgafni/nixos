@@ -105,10 +105,10 @@
   };
 
   services = {
-    #localtimed.enable = true;
+    tailscale = {
+      enable = true;
+    };
     automatic-timezoned.enable = true;
-    #desktopManager.cosmic.enable = true;
-    #displayManager.cosmic-greeter.enable = true;
     # login screen
     greetd = {
       enable = true;
@@ -246,6 +246,13 @@
       clean.enable = true;
       clean.extraArgs = "--keep-since 4d --keep 3";
       flake = "/home/dan/nixos";
+    };
+    _1password = {
+      enable = true;
+    };
+    _1password-gui = {
+      package = pkgs._1password-gui-beta;
+      polkitPolicyOwners = ["dan "];
     };
   };
 

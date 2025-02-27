@@ -9,7 +9,9 @@
     ../modules/home-manager/nebius-cli.nix
   ];
 
-  programs.nebius-cli.enable = true;
+  programs = {
+    nebius-cli.enable = true;
+  };
 
   home = {
     packages = with pkgs; [
@@ -64,7 +66,6 @@
       just
       sad
       expect
-      _1password-cli
 
       # messengers
       telegram-desktop
@@ -106,7 +107,6 @@
       mpv
       vlc
       bitwarden-desktop
-      _1password-gui-beta
       keepassxc
     ];
   };
