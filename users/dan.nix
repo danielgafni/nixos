@@ -1,6 +1,10 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ../modules/home-manager/nebius-cli.nix
   ];
@@ -26,6 +30,7 @@
       terragrunt
       argocd
       kind
+      inputs.dagger.packages.x86_64-linux.dagger
 
       # wayland/DE
       libnotify # notify-send command

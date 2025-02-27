@@ -210,6 +210,26 @@
         "type": "github"
       }
     },
+    "dagger": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1740677434,
+        "narHash": "sha256-TNSSDjVF4+I+LlcA3tWc5kgoDtGCLusrNdhdkciSUig=",
+        "owner": "dagger",
+        "repo": "nix",
+        "rev": "588d2e8a81dc965705d56e83f0392f76f93985e4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dagger",
+        "repo": "nix",
+        "type": "github"
+      }
+    },
     "devshell": {
       "inputs": {
         "nixpkgs": [
@@ -1593,6 +1613,7 @@
     "root": {
       "inputs": {
         "catppuccin": "catppuccin",
+        "dagger": "dagger",
         "home-manager": "home-manager_2",
         "hyprland": "hyprland",
         "hyprland-plugins": "hyprland-plugins",
