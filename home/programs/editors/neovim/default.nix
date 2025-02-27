@@ -1,4 +1,4 @@
-_: {
+{pkgs, ...}: {
   home.sessionVariables = {
     SUDO_EDITOR = "nvim";
     EDITOR = "nvim";
@@ -31,7 +31,10 @@ _: {
       plugins = {
         nix.enable = true;
 
-        copilot-vim.enable = true;
+        copilot-vim = {
+          enable = true;
+          package = pkgs.vimPlugins.copilot-vim;
+        };
 
         cmp.enable = true;
         cmp-path.enable = true;

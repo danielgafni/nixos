@@ -25,7 +25,7 @@
 
     nixvim = {
       url = "github:nix-community/nixvim";
-      #inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Home manager
@@ -72,7 +72,18 @@
     ...
   } @ inputs: let
     system = "x86_64-linux";
-    pkgs = inputs.nixpkgs.legacyPackages.${system};
+
+    pkgs = import nixpkgs {
+      inherit system;
+      overlays = [
+        inputs.nixpkgs-wayland.overlay
+        inputs.hyprpanel.overlay
+      ];
+      config = {
+        allowUnfree = true;
+        allowUnfreePredicate = _: true;
+      };
+    };
 
     users = {
       dan = {
@@ -139,7 +150,7 @@
       user-selection,
     }:
       nixpkgs.lib.nixosSystem {
-        inherit system;
+        inherit system pkgs;
         specialArgs = {
           # Pass flake inputs to our config
           inherit nixos-hardware inputs;
@@ -171,7 +182,7 @@
         inherit pkgs;
         extraSpecialArgs = {
           # these args are passed to the other home-manager modules
-          inherit user inputs home-manager catppuccin;
+          inherit user inputs;
           host-settings = import ./hosts/${host}/settings.nix;
           userConfig = user-configs.${user};
         };
@@ -180,7 +191,6 @@
           ./home
           ./hosts/${host}/home
           catppuccin.homeManagerModules.catppuccin
-
           nixvim.homeManagerModules.nixvim
           sops-nix.homeManagerModules.sops
         ];

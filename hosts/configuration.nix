@@ -43,15 +43,6 @@
     # };
   };
 
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowUnfreePredicate = _: true;
-    overlays = [
-      inputs.nixpkgs-wayland.overlay
-      inputs.hyprpanel.overlay
-    ];
-  };
-
   # Use the systemd-boot EFI boot loader.
   boot = {
     loader.systemd-boot.enable = true;
@@ -114,10 +105,10 @@
   };
 
   services = {
-    #localtimed.enable = true;
+    tailscale = {
+      enable = true;
+    };
     automatic-timezoned.enable = true;
-    #desktopManager.cosmic.enable = true;
-    #displayManager.cosmic-greeter.enable = true;
     # login screen
     greetd = {
       enable = true;
