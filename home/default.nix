@@ -1,10 +1,9 @@
-# This is your home-manager configuration file
-# Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
   lib,
   pkgs,
   host-settings,
   user,
+  inputs,
   ...
 }: let
   catppuccinFlavor = "mocha";
@@ -23,7 +22,6 @@ in {
     # per-user settings (like packages) are here
     ../users/${user}.nix
   ];
-
   home = {
     username = user;
     homeDirectory = "/home/${user}";
@@ -136,6 +134,7 @@ in {
 
   # list of enabled programs with (almost) default configuration
   # if a program requires more configuration, it should be moved to ./programs/...
+
   programs = {
     home-manager = {
       enable = true;

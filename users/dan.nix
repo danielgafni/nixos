@@ -107,6 +107,7 @@
       vlc
       bitwarden-desktop
       _1password-gui-beta
+      keepassxc
     ];
   };
 }
