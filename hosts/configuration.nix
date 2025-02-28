@@ -105,10 +105,10 @@
   };
 
   services = {
-    #localtimed.enable = true;
+    tailscale = {
+      enable = true;
+    };
     automatic-timezoned.enable = true;
-    #desktopManager.cosmic.enable = true;
-    #displayManager.cosmic-greeter.enable = true;
     # login screen
     greetd = {
       enable = true;
