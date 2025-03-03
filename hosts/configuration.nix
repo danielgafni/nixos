@@ -107,6 +107,9 @@
   services = {
     tailscale = {
       enable = true;
+      extraUpFlags = [
+        "--accept-routes true"
+      ];
     };
     automatic-timezoned.enable = true;
     # login screen
