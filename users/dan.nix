@@ -102,7 +102,7 @@
 
       # extra
       xarchiver
-      mullvad-vpn
+      #mullvad-vpn
       wireguard-ui
       mpv
       vlc

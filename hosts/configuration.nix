@@ -145,7 +145,7 @@
       #jack.enable = true;
     };
 
-    mullvad-vpn.enable = true;
+    #mullvad-vpn.enable = true;
   };
 
   location.provider = "geoclue2";
