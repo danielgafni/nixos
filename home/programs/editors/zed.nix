@@ -25,6 +25,7 @@
     # package = inputs.zed.packages.x86_64-linux.default;
     extensions = [
       "catppuccin"
+      "catppuccin-icons"
       "catppuccin-blur"
       "nix"
       "dockerfile"
@@ -38,9 +39,19 @@
     ];
     userKeymaps = [
       {
-        context = "Editor";
+        context = "Editor && edit_prediction";
         bindings = {
-          "alt tab" = "editor::NextEditPrediction";
+          "tab" = "editor::AcceptEditPrediction";
+          # Optional: This makes the default `alt-l` binding do nothing.
+          "alt-l" = null;
+        };
+      }
+      {
+        context = "Editor && edit_prediction_conflict";
+        bindings = {
+          "alt-tab" = "editor::AcceptEditPrediction";
+          # Optional: This makes the default `alt-l` binding do nothing.
+          "alt-l" = null;
         };
       }
     ];
@@ -61,6 +72,12 @@
         mode = "system";
         # light = lib.mkForce "Catppuccin Latte";
         # dark = lib.mkForce "Catppuccin Mocha";
+      };
+      icon_theme = {
+        mode = "system";
+        # TODO: infer from catppuccin-nix instead once https://github.com/catppuccin/nix/pull/467 is merged
+        light = "Catppuccin Mocha";
+        dark = "Catppuccin Mocha";
       };
       current_line_highlight = "line";
       tabs = {
@@ -119,6 +136,7 @@
         };
       };
       lsp = import ./lsp.nix;
+      show_edit_predictions = true;
       assistant = {
         enabled = true;
         version = "2";
