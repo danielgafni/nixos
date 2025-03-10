@@ -36,6 +36,9 @@
       "toml"
       "zig"
       "typos"
+      "justfile"
+      "sql"
+      "csv"
     ];
     userKeymaps = [
       {
@@ -73,12 +76,12 @@
         # light = lib.mkForce "Catppuccin Latte";
         # dark = lib.mkForce "Catppuccin Mocha";
       };
-      icon_theme = {
-        mode = "system";
-        # TODO: infer from catppuccin-nix instead once https://github.com/catppuccin/nix/pull/467 is merged
-        light = "Catppuccin Mocha";
-        dark = "Catppuccin Mocha";
-      };
+      # icon_theme = {
+      #   mode = "system";
+      # TODO: infer from catppuccin-nix instead once https://github.com/catppuccin/nix/pull/467 is merged
+      # light = "Catppuccin Mocha";
+      # dark = "Catppuccin Mocha";
+      # };
       current_line_highlight = "line";
       tabs = {
         file_icons = true;

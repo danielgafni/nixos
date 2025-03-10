@@ -1,6 +1,7 @@
 {
   pkgs,
   host-settings,
+  vsCodeExtensionsPythonPinnedPkgs,
   ...
 }: let
   lsp = import ./lsp.nix;
@@ -11,9 +12,9 @@ in {
   ];
   programs.vscode = {
     enable = true;
+    mutableExtensionsDir = false;
     profiles.default = {
       enableUpdateCheck = false;
-      mutableExtensionsDir = false;
       extensions = with pkgs.vscode-extensions;
         [
           ms-azuretools.vscode-docker
@@ -23,7 +24,7 @@ in {
           github.copilot
           hashicorp.terraform
           ms-kubernetes-tools.vscode-kubernetes-tools
-          ms-python.python
+          # ms-python.python
           redhat.vscode-yaml
           shd101wyy.markdown-preview-enhanced
           davidanson.vscode-markdownlint
@@ -38,6 +39,9 @@ in {
             version = "0.2.0";
             sha256 = "5dca2210308fa7a1b36100e1240ad90445b14a766b4931e87c8c8b15e82c6e1d";
           }
+        ]
+        ++ [
+          vsCodeExtensionsPythonPinnedPkgs.vscode-extensions.ms-python.python
         ];
       userSettings = {
         "workbench.colorTheme" = "Catppuccin Mocha";
