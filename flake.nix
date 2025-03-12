@@ -44,8 +44,7 @@
     nixpkgs-23_11.url = "github:nixos/nixpkgs/nixos-23.11";
 
     zed = {
-      # I'm forking Zed until https://github.com/zed-industries/zed/issues/22098 is resolved
-      url = "github:danielgafni/zed";
+      url = "github:zed-industries/zed";
     };
 
     sops-nix.url = "github:Mic92/sops-nix";
@@ -137,7 +136,7 @@
           }
           {
             workspace = "3";
-            program = "zed";
+            program = "${inputs.zed.packages.x86_64-linux.default}/bin/zed";
           }
         ];
       };
