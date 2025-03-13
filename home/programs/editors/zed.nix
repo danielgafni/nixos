@@ -25,7 +25,7 @@
   ];
   programs.zed-editor = {
     enable = true;
-    # package = inputs.zed.packages.x86_64-linux.default;
+    package = inputs.zed.packages.x86_64-linux.default;
     extensions = [
       "catppuccin"
       "catppuccin-icons"
