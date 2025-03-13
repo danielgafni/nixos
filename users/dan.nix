@@ -30,6 +30,7 @@
       (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
       opentofu
       terragrunt
+      pulumi-bin
       argocd
       kind
       inputs.dagger.packages.x86_64-linux.dagger
