@@ -7,6 +7,19 @@
       };
     };
   };
+  basedpyright = {
+    binary = {
+      path = ".venv/bin/basedpyright-langserver";
+      arguments = [
+        "--stdio"
+      ];
+    };
+    settings = {
+      python = {
+        pythonPath = ".venv/bin/python";
+      };
+    };
+  };
   pyright = {
     binary = {
       path = ".venv/bin/pyright-langserver";
