@@ -19,6 +19,9 @@
     # misc
     typos
     typos-lsp # language server for typos
+
+    # python dev
+    basedpyright
   ];
   programs.zed-editor = {
     enable = true;
@@ -39,6 +42,7 @@
       "justfile"
       "sql"
       "csv"
+      "basedpyright"
     ];
     userKeymaps = [
       {
@@ -129,7 +133,7 @@
         Python = {
           # the here order matters!
           # for example, "go to definition" doesn't work with [ruff, pyright] order
-          language_servers = ["pyright" "ruff"];
+          language_servers = ["basedpyright" "ruff"];
         };
         Zig = {
           language_servers = ["zls"];
