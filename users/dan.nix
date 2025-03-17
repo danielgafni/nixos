@@ -24,6 +24,7 @@
       kubeseal
       #lens
       sops
+      rage
       age
       (pkgs.wrapHelm pkgs.kubernetes-helm {plugins = [];})
       awscli2
