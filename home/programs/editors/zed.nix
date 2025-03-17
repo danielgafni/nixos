@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  zedNixPkgs,
   ...
 }: {
   home.packages = with pkgs; [
@@ -25,7 +26,8 @@
   ];
   programs.zed-editor = {
     enable = true;
-    package = inputs.zed.packages.x86_64-linux.default;
+    # package = inputs.zed.packages.x86_64-linux.default;
+    package = zedNixPkgs.zed-editor;
     extensions = [
       "catppuccin"
       "catppuccin-icons"

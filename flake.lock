@@ -1049,6 +1049,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-zed": {
+      "locked": {
+        "lastModified": 1742050676,
+        "narHash": "sha256-9XdKDCtvtfj8WM4nAF8pBcZEFO44lu7plubnVjca/d0=",
+        "owner": "NixOs",
+        "repo": "nixpkgs",
+        "rev": "d4cab85cf6089bfe7142c2fc9163c137d4f24e0c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOs",
+        "repo": "nixpkgs",
+        "rev": "d4cab85cf6089bfe7142c2fc9163c137d4f24e0c",
+        "type": "github"
+      }
+    },
     "nixpkgs_10": {
       "locked": {
         "lastModified": 1741513245,
@@ -1332,6 +1348,7 @@
         "nixpkgs-23_11": "nixpkgs-23_11",
         "nixpkgs-vsCodeExtensionsPythonPinned": "nixpkgs-vsCodeExtensionsPythonPinned",
         "nixpkgs-wayland": "nixpkgs-wayland",
+        "nixpkgs-zed": "nixpkgs-zed",
         "nixvim": "nixvim",
         "pre-commit-hooks": "pre-commit-hooks_2",
         "rust-overlay": "rust-overlay",

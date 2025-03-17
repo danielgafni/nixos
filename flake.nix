@@ -57,6 +57,10 @@
     nixpkgs-vsCodeExtensionsPythonPinned = {
       url = "github:NixOs/nixpkgs?rev=2d068ae5c6516b2d04562de50a58c682540de9bf";
     };
+
+    nixpkgs-zed = {
+      url = "github:NixOs/nixpkgs?rev=d4cab85cf6089bfe7142c2fc9163c137d4f24e0c";
+    };
   };
 
   outputs = {
@@ -72,6 +76,7 @@
     stylix,
     nixvim,
     sops-nix,
+    nixpkgs-zed,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -89,6 +94,10 @@
     };
 
     vsCodeExtensionsPythonPinnedPkgs = import inputs.nixpkgs-vsCodeExtensionsPythonPinned {
+      inherit system;
+    };
+
+    zedNixPkgs = import inputs.nixpkgs-zed {
       inherit system;
     };
 
@@ -189,7 +198,7 @@
         inherit pkgs;
         extraSpecialArgs = {
           # these args are passed to the other home-manager modules
-          inherit user inputs vsCodeExtensionsPythonPinnedPkgs;
+          inherit user inputs vsCodeExtensionsPythonPinnedPkgs zedNixPkgs;
           host-settings = import ./hosts/${host}/settings.nix;
           userConfig = user-configs.${user};
         };
