@@ -47,8 +47,6 @@
       url = "github:zed-industries/zed";
     };
 
-    sops-nix.url = "github:Mic92/sops-nix";
-
     dagger = {
       url = "github:dagger/nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -56,6 +54,16 @@
 
     nixpkgs-vsCodeExtensionsPythonPinned = {
       url = "github:NixOs/nixpkgs?rev=2d068ae5c6516b2d04562de50a58c682540de9bf";
+    };
+
+    ragenix = {
+      url = "github:yaxitech/ragenix";
+    };
+
+    homeage = {
+        url = "github:jordanisaacs/homeage";
+        # Optional
+        inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -71,7 +79,7 @@
     hyprpanel,
     stylix,
     nixvim,
-    sops-nix,
+    ragenix,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -175,7 +183,7 @@
           catppuccin.nixosModules.catppuccin
           stylix.nixosModules.stylix
           {programs.hyprland.xwayland.enable = true;}
-          sops-nix.nixosModules.sops
+          ragenix.nixosModules.default
         ];
       };
 
@@ -199,7 +207,6 @@
           ./hosts/${host}/home
           catppuccin.homeManagerModules.catppuccin
           nixvim.homeManagerModules.nixvim
-          sops-nix.homeManagerModules.sops
         ];
       };
   in {
