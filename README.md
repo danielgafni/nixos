@@ -1,6 +1,6 @@
 # NixOS Config
 
-My NixOS configuration with multi-host setup, a few GitHub Actions, [personal build cache](https://www.cachix.org/), checks via pre-commit hooks & CI, and [Catppuccin](https://catppuccin.com/) theme for all programs.
+My NixOS configuration with multi-host setup, a few GitHub Actions, [personal build cache](https://danielgafni.cachix.org/), checks via pre-commit hooks & CI, and [Catppuccin](https://catppuccin.com/) theme for all programs.
 
 Key components:
 - [NixOS](https://nixos.org/) for system configuration
@@ -16,42 +16,36 @@ Minor stuff:
 
 - [Starship](https://starship.rs/) terminal prompt. Nothing can beat it in terms of speed, features, and looks.
 - [YubiKey](https://www.yubico.com/) for SSH and GPG. It makes life easier and more secure.
-- VS Code and Zed Editor setups. I am moving to Zed while
+- [Zed](https://github.com/zed-industries/zed) editor setup with a bunch of language servers and plugins. Zed is the future. The GOAT Python LSs are configured for Zed: `ruff` and `basedpyright`.
+
+Packages are cached in CI so local installations are faster (this is critical for nightly Zed builds from the flake which take 40+ min).
 
 ## Usage
 
+### Prerequisites
+
+
+- [NixOS](https://nixos.org/download/) or just [nix](https://nix.dev/install-nix.html) (only `$HOME` setup)
+- [nh](https://github.com/viperML/nh) - an excellent Nix helper. It has a better UX and the output is nicer. 
+
 ### Installation
 
-prerequisites: `nix`
-
-The repo contains a helper `justfile` to assist with common NixOS management tasks.
-`just`, `unbuffer` (provided by `expect` package) and `nom` commands are required to use it. They can be installed with `Nix` in case they are missing:
-
 ```shell
-nix-shell -p just expect nix-output-monitor
+nh os switch
 ```
 
-To test a new NixOS build, run:
+This will download, build and install **system** packages, files and configurations.
+
+> [!NOTE]
+> Use `nh os test` to test configurations without adding boot entries.
+
 
 ```shell
-just nixos-rebuild <host>
+nh home switch
 ```
 
-This will download, build and install **system** packages and configurations.
+This will download, build and install **user** packages, files and configurations.
 
-To make the build permanent, add `mode=switch`:
-
-```shell
-just mode=switch nixos-rebuild <host>
-```
-
-This will add a new boot record to the bootloader.
-
-Files in `$HOME` are defined via `Home Manager`, which can be invoked separately:
-
-```shell
-just home <host> switch
-```
 
 ## Notes
 
