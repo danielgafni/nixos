@@ -146,6 +146,9 @@
       };
       lsp = import ./lsp.nix;
       show_edit_predictions = true;
+      features = {
+        edit_prediction_provider = "zed"; # alternative: "copilot"
+      };
       assistant = {
         enabled = true;
         version = "2";
