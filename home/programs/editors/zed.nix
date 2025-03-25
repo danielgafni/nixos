@@ -43,6 +43,7 @@
       "typos"
       "justfile"
       "sql"
+      "sqlruff"
       "csv"
       "basedpyright"
     ];
