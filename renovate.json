@@ -2,5 +2,22 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
-  ]
+  ],
+  "labels": ["dependencies"],
+  "reviewers": ["danielgafni"],
+  "packageRules": [
+    {
+      "matchDepNames": ["zed"],
+      "addLabels": ["zed"],
+      "schedule": ["before 11am"],
+      "automerge": true
+    }
+  ],
+  "lockFileMaintenance": {
+      "enabled": true,
+      "extends": ["schedule:weekly"]
+  },
+  "nix": {
+    "enabled": true
+  }
 }
