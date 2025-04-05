@@ -104,7 +104,82 @@
     fontconfig.enable = true;
   };
 
+  # networking.extraHosts = ''
+  #   127.0.0.1 services.local
+  # '';
+
   services = {
+    grafana = {
+      enable = true;
+      settings = {
+        server = {
+          # Listening Address
+          http_addr = "127.0.0.1";
+          # and Port
+          http_port = 3000;
+          # Grafana needs to know on which domain and URL it's running
+          # domain = "services.local";
+          # root_url = "https://services.local/grafana/"; # Not needed if it is `https://your.domain/`
+          # serve_from_sub_path = true;
+        };
+      };
+      provision = {
+        enable = true;
+        datasources.settings.datasources = [
+          # "Built-in" datasources can be provisioned - c.f. https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources
+          {
+            name = "Prometheus";
+            type = "prometheus";
+            uid = "prometheus";
+            url = "http://${config.services.prometheus.listenAddress}:${toString config.services.prometheus.port}";
+            isDefault = true;
+          }
+        ];
+        dashboards.settings = {
+          providers = [
+            {
+              name = "Default";
+              options.path = "/etc/grafana/dashboards";
+            }
+          ];
+        };
+      };
+    };
+    prometheus = {
+      enable = true;
+      exporters = {
+        node = {
+          enable = true;
+          enabledCollectors = [
+            "systemd"
+            # "process"
+          ];
+        };
+        smartctl.enable = true;
+      };
+      retentionTime = "14d";
+      scrapeConfigs = [
+        {
+          job_name = "node";
+          static_configs = [
+            {
+              targets = ["localhost:${toString config.services.prometheus.exporters.node.port}"];
+            }
+          ];
+        }
+        {
+          job_name = "smartctl";
+          static_configs = [
+            {
+              targets = ["localhost:${toString config.services.prometheus.exporters.smartctl.port}"];
+              # labels = {
+              #   instance = "localhost";
+              # };
+            }
+          ];
+        }
+      ];
+    };
     tailscale = {
       enable = true;
       extraUpFlags = [
@@ -174,9 +249,27 @@
       "NIXOS_OZONE_WL" = "1"; # this **must** be a system variable, it can't be defined in user space
     };
     shells = with pkgs; [zsh];
-    etc."greetd/environments".text = ''
-      Hyprland
-    '';
+    # etc."greetd/environments".text = ''
+    #   Hyprland
+    # '';
+    etc = {
+      "greetd/environments".text = ''
+        Hyprland
+      '';
+
+      "grafana/dashboards/smartctl.json" = {
+        source = ./. + "/grafana-dashboards/smartctl-v1.json";
+        group = "grafana";
+        user = "grafana";
+      };
+
+      "grafana/dashboards/node-exporter.json" = {
+        source = ./. + "/grafana-dashboards/node-exporter-v1.json";
+        group = "grafana";
+        user = "grafana";
+      };
+    };
+
     systemPackages = with pkgs; [
       gnumake
       cachix
