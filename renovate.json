@@ -3,20 +3,29 @@
   "extends": [
     "config:recommended"
   ],
+  "schedule": "every 6 hours",
   "labels": ["dependencies"],
   "reviewers": ["danielgafni"],
   "packageRules": [
     {
+      "description": "Group ALL Nix flake inputs into a single PR, updated weekly",
+      "matchManagers": ["nix"],
+      "groupName": "Weekly Flake Inputs Update",
+      "schedule": ["at 6:00pm on Friday"],
+      "addLabels": ["weekly-update", "flake"]
+    },
+    {
+      "description": "Create/update a separate PR for the 'zed' flake input daily",
       "matchManagers": ["nix"],
       "matchDepNames": ["zed"],
-      "addLabels": ["zed"],
-      "schedule": ["before 11am"],
+      "groupName": "Daily Zed Update",
+      "schedule": ["at 9:00am"],
+      "addLabels": ["daily-update", "zed"],
       "automerge": true
     }
   ],
   "lockFileMaintenance": {
-      "enabled": true,
-      "extends": ["schedule:weekly"]
+      "enabled": true
   },
   "nix": {
     "enabled": true
