@@ -16,7 +16,7 @@
   ],
   "lockFileMaintenance": {
       "enabled": true,
-      "schedule": ["weekly"]
+      "extends": ["schedule:weekly"]
   },
   "nix": {
     "enabled": true
