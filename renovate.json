@@ -21,7 +21,7 @@
       "matchDepNames": ["zed"],
       "groupName": "Daily Zed Update",
       "prCreation": "schedule",
-      "schedule": ["after 9am daily"],
+      "schedule": ["after 9am"],
       "addLabels": ["daily-update", "zed"],
       "automerge": true
     }
