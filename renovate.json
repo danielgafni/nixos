@@ -7,6 +7,7 @@
   "reviewers": ["danielgafni"],
   "packageRules": [
     {
+      "matchManagers": ["nix"],
       "matchDepNames": ["zed"],
       "addLabels": ["zed"],
       "schedule": ["before 11am"],
@@ -15,7 +16,7 @@
   ],
   "lockFileMaintenance": {
       "enabled": true,
-      "extends": ["schedule:weekly"]
+      "schedule": ["weekly"]
   },
   "nix": {
     "enabled": true
