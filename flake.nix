@@ -43,9 +43,12 @@
     # tmp fix for nvidia-docker until it's working in nixos-unstable
     nixpkgs-23_11.url = "github:nixos/nixpkgs/nixos-23.11";
 
-    zed = {
-      url = "github:zed-industries/zed";
-    };
+    #zed = {
+    #  url = "github:zed-industries/zed";
+    #};
+
+    # chaotic provides a bunch of bleeding edge packages
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     sops-nix.url = "github:Mic92/sops-nix";
 
@@ -77,6 +80,7 @@
     nixvim,
     sops-nix,
     nixpkgs-zed,
+    chaotic,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -145,7 +149,7 @@
           }
           {
             workspace = "3";
-            program = "${inputs.zed.packages.x86_64-linux.default}/bin/zed";
+            program = "zed";
           }
         ];
       };
@@ -209,6 +213,7 @@
           catppuccin.homeManagerModules.catppuccin
           nixvim.homeManagerModules.nixvim
           sops-nix.homeManagerModules.sops
+          # chaotic.homeManagerModules.default
         ];
       };
   in {
