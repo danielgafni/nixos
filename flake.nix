@@ -59,7 +59,7 @@
     };
 
     nixpkgs-zed = {
-      url = "github:NixOs/nixpkgs?rev=856dfe49bdfdd614155c23a22b661ad66ca85f84";
+      url = "github:NixOs/nixpkgs?rev=39b98eae0a643db212439f7198f4901d3b12cbd6";
     };
   };
 
