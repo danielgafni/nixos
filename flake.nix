@@ -13,7 +13,8 @@
       inputs.hyprland.follows = "hyprland";
     };
     hyprpanel = {
-      url = "github:Jas-SinghFSU/HyprPanel";
+      # newer versions were broken
+      url = "github:Jas-SinghFSU/HyprPanel?rev=2be9f1ef6c2df2ecf0eebe5a039e8029d8d151cd";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
