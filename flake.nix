@@ -150,7 +150,7 @@
           }
           {
             workspace = "3";
-            program = "${inputs.zed.packages.x86_64-linux.default}/bin/zed";
+            program = "zeditor";
           }
         ];
       };
