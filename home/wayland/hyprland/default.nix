@@ -14,9 +14,6 @@
   }: "[workspace ${workspace} silentt] ${program}";
   mkAutostartList = entries: (map mkAutostartEntry entries);
 in {
-  # imports = [
-  #   inputs.hyprland.homeManagerModules.default
-  # ];
   home = {
     packages = with pkgs; [
       hyprcursor # catppuccin-nix will automatically set the cursor theme
@@ -55,8 +52,9 @@ in {
       };
       input = {
         kb_layout = "us,ru";
-        kb_variant = "ffffff";
+        kb_variant = ",";
         kb_options = "grp:alt_shift_toggle";
+
         sensitivity = 0.3; # for mouse cursor
 
         # must click on window to move focus
@@ -67,10 +65,12 @@ in {
           scroll_factor = 0.7;
         };
       };
+
       gestures = {
         workspace_swipe = "yes";
         workspace_swipe_fingers = 4;
       };
+
       general = {
         resize_on_border = true;
         gaps_in = 3;
@@ -137,14 +137,14 @@ in {
         "ignorealpha 0, gtk-layer-shell" # remove blurred surface around borders
 
         # use `hyprctl layers` to get layer namespaces
-        # rules for Mako notifications
         "blur, notifications"
         "ignorealpha 0, notifications" # remove blurred surface around borders
 
-        # wofi
-        "blur, wofi"
-        "ignorealpha 30, wofi" # remove blurred surface around borders
-        "dimaround, wofi"
+        # anyrun
+        "blur, (anyrun)"
+        "ignorealpha 30, anyrun" # remove blurred surface around borders
+        "dimaround, anyrun"
+        "ignorezero, (anyrun)"
       ];
       env = [
         "WLR_NO_HARDWARE_CURSORS,1"
@@ -174,9 +174,9 @@ in {
         # starting applications
         "SUPER,RETURN,exec,ghostty"
         "SUPER,E,exec,ghostty -e yazi"
-        # wofi - application launcher
+        # anyrun - application launcher
         # TODO: exlore running with --normal-window for Hyprland theming purposes
-        "SUPER,space,exec,wofi --show drun -i -I -m -G -o DP-3 --width 55% --height 50%"
+        "SUPER,space,exec,anyrun"
 
         # window management
         "SUPER,Q,killactive"
@@ -190,11 +190,11 @@ in {
         # toggle pseudo tiling mode for a window
         "SUPER,P,pseudo,"
         # start hyprexpo - an overview of all workspaces
-        "SUPER, grave, hyprexpo:expo, toggle" # can be: toggle, off/disable or on/enable
+        # "SUPER, grave, hyprexpo:expo, toggle" # can be: toggle, off/disable or on/enable
 
         # screenshots
         ",Print,exec,grim - | wl-copy"
-        ''SHIFT,Print,exec,grim -g "$(slurp)" - | wl-copy''
+        ''SHIFT,Print,exec,grim -g "$(slurp)" - | satty --filename -''
 
         # brightness control
         ", XF86MonBrightnessUp,     exec, brightnessctl set 10%+"

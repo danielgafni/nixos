@@ -37,7 +37,6 @@
 
       # wayland/DE
       libnotify # notify-send command
-      wofi
       hyprpaper
       hyprpicker
       grim
@@ -84,7 +83,7 @@
       helix
       obsidian
 
-      jetbrains.gateway
+      # jetbrains.gateway
 
       # Python tools
       pyright

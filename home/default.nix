@@ -38,7 +38,7 @@ in {
 
       # the flake is expected to be here
       # this setting is for the `nh` CLI
-      FLAKAE = "/home/${user}/nixos";
+      NH_FLAKE = "/home/${user}/nixos";
     };
   };
 
@@ -82,10 +82,10 @@ in {
         recursive = true;
         source = ./.config/wallpapers;
       };
-      wofi = {
-        recursive = true;
-        source = ./.config/wofi;
-      };
+      # wofi = {
+      #   recursive = true;
+      #   source = ./.config/wofi;
+      # };
       helix = {
         recursive = true;
         source = ./.config/helix;

@@ -29,7 +29,7 @@
     };
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # provides catppuccin for lots of packages
@@ -60,6 +60,11 @@
 
     nixpkgs-zed = {
       url = "github:NixOs/nixpkgs?rev=39b98eae0a643db212439f7198f4901d3b12cbd6";
+    };
+
+    anyrun = {
+      url = "github:anyrun-org/anyrun";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -206,7 +211,7 @@
         modules = [
           ./home
           ./hosts/${host}/home
-          catppuccin.homeManagerModules.catppuccin
+          catppuccin.homeModules.catppuccin
           nixvim.homeManagerModules.nixvim
           sops-nix.homeManagerModules.sops
         ];
