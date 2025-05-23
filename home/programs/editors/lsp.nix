@@ -24,15 +24,18 @@
     };
   };
   pyright = {
-    binary = {
-      path = ".venv/bin/pyright-langserver";
-      arguments = [
-        "--stdio"
-      ];
-    };
+    # binary = {
+    #   path = ".venv/bin/pyright-langserver";
+    #   arguments = [
+    #     "--stdio"
+    #   ];
+    # };
     settings = {
       python = {
         pythonPath = ".venv/bin/python";
+      };
+      "basedpyright.analysis" = {
+        diagnosticMode = "openFilesOnly";
       };
     };
   };

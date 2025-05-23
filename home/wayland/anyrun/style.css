@@ -1,0 +1,75 @@
+* {
+  font-family: 'Recursive';
+  font-size: 1.5rem;
+}
+
+#window {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+box#main {
+  border-radius: 20px;
+  background-color: rgba(30, 30, 46, 0.8); /* Catppuccin Mocha: Base */
+  border: 2px solid #89b4fa; /* Catppuccin Mocha: Blue */
+}
+
+entry#entry {
+  min-height: 40px;
+  border-radius: 20px;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+list#main {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+#plugin {
+  background: transparent;
+  padding-bottom: 5px;
+}
+
+#match {
+  padding: 2.5px;
+}
+
+#match:selected {
+  background: transparent;
+  border-right: 4px solid #89b4fa; /* Catppuccin Mocha: Blue */
+  border-left: 4px solid #89b4fa; /* Catppuccin Mocha: Blue */
+  border-radius: 4px;
+  color: #89b4fa; /* Catppuccin Mocha: Blue */
+}
+
+#match:selected label#info {
+  color: #cdd6f4; /* Catppuccin Mocha: Subtext1 */
+  animation: fade 0.1s linear
+}
+
+@keyframes fade {
+  0% {
+    color: transparent;
+  }
+
+  100% {
+    color: #cdd6f4; /* Catppuccin Mocha: Subtext1 */
+  }
+}
+
+#match label#info {
+  color: transparent;
+}
+
+#match:hover {
+  background: transparent;
+}
+
+label#match-desc {
+  font-size: 10px;
+  color: #cdd6f4; /* Catppuccin Mocha: Subtext1 */
+}
+
+label#plugin {
+  font-size: 14px;
+}

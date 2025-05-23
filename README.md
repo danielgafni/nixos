@@ -14,6 +14,7 @@ Key components:
 
 Minor stuff:
 
+- [Anyrun](https://github.com/anyrun-org/anyrun) minimalistic (but configurable and extensible) wayland-native application launcher.
 - [Starship](https://starship.rs/) terminal prompt. Nothing can beat it in terms of speed, features, and looks.
 - [YubiKey](https://www.yubico.com/) for SSH and GPG. It makes life easier and more secure.
 - [Zed](https://github.com/zed-industries/zed) editor setup with a bunch of language servers and plugins. Zed is the future. The GOAT Python LSs are configured for Zed: `ruff` and `basedpyright`.
@@ -24,9 +25,8 @@ Packages are cached in CI so local installations are faster (this is critical fo
 
 ### Prerequisites
 
-
 - [NixOS](https://nixos.org/download/) or just [nix](https://nix.dev/install-nix.html) (only `$HOME` setup)
-- [nh](https://github.com/viperML/nh) - an excellent Nix helper. It has a better UX and the output is nicer. 
+- [nh](https://github.com/viperML/nh) - an excellent Nix helper. It has a better UX and the output is more informative.
 
 ### Installation
 

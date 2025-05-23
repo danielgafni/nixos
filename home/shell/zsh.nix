@@ -21,7 +21,7 @@
       save = 100000;
     };
 
-    initExtra = builtins.readFile ./.zshrc;
+    initContent = builtins.readFile ./.zshrc;
 
     shellAliases = {
       grep = "grep --color";
