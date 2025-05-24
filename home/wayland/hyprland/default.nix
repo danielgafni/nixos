@@ -194,7 +194,8 @@ in {
 
         # screenshots
         ",Print,exec,grim - | wl-copy"
-        ''SHIFT,Print,exec,grim -g "$(slurp)" - | satty --filename -''
+        ''SHIFT,Print,exec,grim -g "$(slurp)" - | wl-copy''
+        ''CTRL_SHIFT,Print,exec,grim - | satty --filename -''
 
         # brightness control
         ", XF86MonBrightnessUp,     exec, brightnessctl set 10%+"

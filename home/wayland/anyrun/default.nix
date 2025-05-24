@@ -10,6 +10,7 @@
       config = {
         # layer = "top";
         closeOnClick = true;
+        showResultsImmediately = true;
         y = {fraction = 0.3;};
         # height = { fraction = 0.3; };
         # width = { fraction = 0.3; };
