@@ -156,6 +156,7 @@
           provider = "copilot_chat";
           model = "gpt-4o";
         };
+        always_allow_tool_actions = true;
         inline_alternatives = [
           {
             provider = "zed.dev";
@@ -170,6 +171,14 @@
             model = "o1-preview";
           }
         ];
+      };
+      context_servers = {
+        nixos = {
+          command = {
+            path = "uvx";
+            args = ["mcp-nixos"];
+          };
+        };
       };
     };
   };
