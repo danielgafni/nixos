@@ -13,6 +13,7 @@
 
   imports = [
     ../modules/NixOS/yubikey
+    ../modules/NixOS/1password
   ];
 
   nix = {
@@ -346,13 +347,6 @@
       clean.enable = true;
       clean.extraArgs = "--keep-since 4d --keep 3";
       flake = "/home/dan/nixos";
-    };
-    _1password = {
-      enable = true;
-    };
-    _1password-gui = {
-      package = pkgs._1password-gui-beta;
-      polkitPolicyOwners = ["dan "];
     };
   };
 
