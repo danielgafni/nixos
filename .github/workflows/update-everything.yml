@@ -1,0 +1,30 @@
+name: Update All Flake Inputs
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 1 * *'
+
+jobs:
+  update-flake-lock:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install Determinate Nix
+        uses: DeterminateSystems/determinate-nix-action@v3
+      - name: Update flake.lock
+        uses: DeterminateSystems/update-flake-lock@main
+        with:
+          pr-title: "Update All Flake Input"
+          token: ${{ secrets.NIX_UPDATE_FLAKE_LOCK_ACTION }}
+          git-author-name: Github Actions
+          git-author-email: github-actions[bot]@users.noreply.github.com
+          git-committer-name: Daniel Gafni
+          git-committer-email: danielgafni16@gmail.com
+          sign-commits: true
+          gpg-private-key: ${{ secrets.NIX_FLAKE_UPDATE_GPG_PRIVATE_KEY }}
+          gpg-passphrase: ${{ secrets.NIX_FLAKE_UPDATE_GPG_PASSPHRASE }}
+          pr-labels: |
+            dependencies
+            automated
