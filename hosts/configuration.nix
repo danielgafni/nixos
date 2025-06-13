@@ -225,7 +225,9 @@
       #jack.enable = true;
     };
 
-    mullvad-vpn.enable = true;
+    # mullvad has broken all network for me once!
+    # disabling it until better times
+    mullvad-vpn.enable = false;
   };
 
   location.provider = "geoclue2";
@@ -345,7 +347,7 @@
     nh = {
       enable = true;
       clean.enable = true;
-      clean.extraArgs = "--keep-since 4d --keep 3";
+      clean.extraArgs = "--keep-since 30d --keep 10";
       flake = "/home/dan/nixos";
     };
   };
