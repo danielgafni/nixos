@@ -19,6 +19,7 @@ jobs:
           pr-title: "Update Nixpkgs Flake Input"
           inputs: nixpkgs
           token: ${{ secrets.NIX_UPDATE_FLAKE_LOCK_ACTION }}
+          branch: update-nixpkgs-action
           git-author-name: Github Actions
           git-author-email: github-actions[bot]@users.noreply.github.com
           git-committer-name: Daniel Gafni
