@@ -16,8 +16,9 @@ jobs:
       - name: Update flake.lock
         uses: DeterminateSystems/update-flake-lock@main
         with:
-          pr-title: "Update All Flake Input"
+          pr-title: "Update All Flake Inputs"
           token: ${{ secrets.NIX_UPDATE_FLAKE_LOCK_ACTION }}
+          branch: update-everything-action
           git-author-name: Github Actions
           git-author-email: github-actions[bot]@users.noreply.github.com
           git-committer-name: Daniel Gafni

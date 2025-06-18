@@ -22,7 +22,7 @@
     typos-lsp # language server for typos
 
     # python dev
-    basedpyright
+    # basedpyright
   ];
   programs.zed-editor = {
     enable = true;
