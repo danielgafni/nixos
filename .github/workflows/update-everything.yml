@@ -16,7 +16,7 @@ jobs:
       - name: Update flake.lock
         uses: DeterminateSystems/update-flake-lock@main
         with:
-          pr-title: "Update All Flake Inputs"
+          pr-title: "Update Everything"
           token: ${{ secrets.NIX_UPDATE_FLAKE_LOCK_ACTION }}
           branch: update-everything-action
           git-author-name: Github Actions
