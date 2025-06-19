@@ -15,8 +15,8 @@ with lib; let
       makeWrapper,
       installShellFiles,
     }: let
-      version = "0.12.16";
-      hash = "sha256-LaFcU8jzgDc3TVAosJMZ5JN7PhgminNURisZG5/CflY=";
+      version = "0.12.73"; # to get the latest version: curl https://storage.eu-north1.nebius.cloud/cli/release/stable
+      hash = "sha256-DvGiAMxUPNZj7AF3s1FDEpA1jCMlrKezBNitJ6zhUEI=";
       os =
         if stdenv.isDarwin
         then "darwin"
