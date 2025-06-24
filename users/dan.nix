@@ -34,6 +34,7 @@
       argocd
       kind
       inputs.dagger.packages.x86_64-linux.dagger
+      devspace
 
       # wayland/DE
       libnotify # notify-send command
