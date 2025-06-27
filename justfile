@@ -1,3 +1,5 @@
+mod gt 'just/gt.just'
+
 mode := "test"
 user := "dan"
 
