@@ -23,6 +23,7 @@ jobs:
           git-author-email: github-actions[bot]@users.noreply.github.com
           git-committer-name: Daniel Gafni
           git-committer-email: danielgafni16@gmail.com
+          pr-assignees: danielgafni
           sign-commits: true
           gpg-private-key: ${{ secrets.NIX_FLAKE_UPDATE_GPG_PRIVATE_KEY }}
           gpg-passphrase: ${{ secrets.NIX_FLAKE_UPDATE_GPG_PASSPHRASE }}
