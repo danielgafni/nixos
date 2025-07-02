@@ -6,8 +6,11 @@
   ...
 }: {
   imports = [
-    ../../packages/nebius-cli.nix
+    ../../modules/home-manager/programs
+
+    ./hyprpaper
     ./sops
+    ../../packages/nebius-cli.nix
   ];
 
   programs = {
@@ -83,7 +86,6 @@
 
       # editors & IDE
       vim
-      helix
       obsidian
 
       # jetbrains.gateway
