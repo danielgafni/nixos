@@ -14,7 +14,6 @@ in {
     # You can also split up your configuration and import pieces of it here:
     ./wayland
     ./services
-    ./programs
     ./shell
     ./environment.nix
     ./fonts.nix
@@ -72,20 +71,6 @@ in {
         "text/html" = ["google-chrome.desktop"];
         "x-scheme-handler/about" = ["google-chrome.desktop"];
         "x-scheme-handler/unknown" = ["google-chrome.desktop"];
-      };
-    };
-    configFile = {
-      wallpapers = {
-        recursive = true;
-        source = ./.config/wallpapers;
-      };
-      # wofi = {
-      #   recursive = true;
-      #   source = ./.config/wofi;
-      # };
-      helix = {
-        recursive = true;
-        source = ./.config/helix;
       };
     };
     portal = {
