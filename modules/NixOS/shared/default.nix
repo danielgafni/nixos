@@ -12,8 +12,9 @@
   inherit users;
 
   imports = [
-    ../modules/NixOS/yubikey
-    ../modules/NixOS/1password
+    ../yubikey
+    ../1password
+    ../secrets
   ];
 
   nix = {
@@ -121,7 +122,7 @@
           # Listening Address
           http_addr = "127.0.0.1";
           # and Port
-          http_port = 3000;
+          http_port = 3123;
           # Grafana needs to know on which domain and URL it's running
           # domain = "services.local";
           # root_url = "https://services.local/grafana/"; # Not needed if it is `https://your.domain/`

@@ -77,6 +77,7 @@
       ui_font_size = 18;
       buffer_font_size = 17;
       buffer_font_fallbacks = ["'Symbols Nerd Font Mono'"];
+      double_click_in_multibuffer = "open";
       theme = {
         mode = "system";
         # light = lib.mkForce "Catppuccin Latte";

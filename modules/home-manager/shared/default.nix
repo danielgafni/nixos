@@ -18,9 +18,6 @@ in {
     ./shell
     ./environment.nix
     ./fonts.nix
-
-    # per-user settings (like packages) are here
-    ../users/${user}.nix
   ];
   home = {
     username = user;

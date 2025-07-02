@@ -46,6 +46,9 @@ nh home switch
 
 This will download, build and install **user** packages, files and configurations.
 
+## Secrets
+
+Secrets are configured with [sops-nix](https://github.com/Mic92/sops-nix).
 
 ## Notes
 
@@ -65,9 +68,9 @@ fc-cache -rf
 
 ### Custom modules
 
-- `modules/` contains some custom modules. They are:
+- `packages/` contains some custom packages. They are:
 
-- `modules/home-manager/nebius-cli.nix` - [Nebius CLI](https://docs.nebius.com/cli)
+- `packages/nebius-cli.nix` - [Nebius CLI](https://docs.nebius.com/cli)
 
 ### Debugging mime-type
 

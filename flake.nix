@@ -50,7 +50,10 @@
     # chaotic provides a bunch of bleeding edge packages
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
-    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     dagger = {
       url = "github:dagger/nix";
@@ -125,7 +128,7 @@
       };
     };
 
-    # todo: move this to users/
+    # todo: move this to homes/
     user-configs = {
       dan = rec {
         email = "danielgafni16@gmail.com";
@@ -187,8 +190,8 @@
           };
         };
         modules = [
-          ./hosts/configuration.nix
-          ./hosts/${host}/NixOS
+          ./modules/NixOS/shared
+          ./systems/x86_64-linux/${host}
           # hyprland.nixosModules.default
           catppuccin.nixosModules.catppuccin
           stylix.nixosModules.stylix
@@ -208,17 +211,16 @@
         extraSpecialArgs = {
           # these args are passed to the other home-manager modules
           inherit user inputs vsCodeExtensionsPythonPinnedPkgs zedNixPkgs;
-          host-settings = import ./hosts/${host}/settings.nix;
+          host-settings = import ./modules/settings/${host};
           userConfig = user-configs.${user};
         };
-        # > Our main home-manager configuration file <
         modules = [
-          ./home
-          ./hosts/${host}/home
+          ./homes/${user}
+          ./modules/home-manager/hosts/${host}
+          ./modules/home-manager/shared
           catppuccin.homeModules.catppuccin
           nixvim.homeManagerModules.nixvim
           sops-nix.homeManagerModules.sops
-          # chaotic.homeManagerModules.default
         ];
       };
   in {

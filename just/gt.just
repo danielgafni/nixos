@@ -9,7 +9,7 @@ create branch comment:
     git add .
     git commit -m "{{ comment }}"
 
-submit merge="--auto":
+submit merge="":
     git commit --amend --no-edit
     git push --force
     (gh pr create --fill-verbose && gh pr view --web) || (gh pr view)
