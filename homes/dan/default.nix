@@ -6,7 +6,8 @@
   ...
 }: {
   imports = [
-    ../modules/home-manager/nebius-cli.nix
+    ../../packages/nebius-cli.nix
+    ./sops
   ];
 
   programs = {
@@ -67,6 +68,7 @@
       just
       sad
       expect
+      claude-code
 
       # messengers
       telegram-desktop
