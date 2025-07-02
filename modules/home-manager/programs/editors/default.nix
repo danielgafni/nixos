@@ -5,5 +5,6 @@ _: {
     # ./pycharm.nix
     ./zed.nix
     ./cursor
+    ./helix
   ];
 }

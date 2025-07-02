@@ -43,12 +43,9 @@
     # tmp fix for nvidia-docker until it's working in nixos-unstable
     nixpkgs-23_11.url = "github:nixos/nixpkgs/nixos-23.11";
 
-    #zed = {
-    #  url = "github:zed-industries/zed";
-    #};
-
-    # chaotic provides a bunch of bleeding edge packages
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    zed = {
+      url = "github:zed-industries/zed";
+    };
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -62,10 +59,6 @@
 
     nixpkgs-vsCodeExtensionsPythonPinned = {
       url = "github:NixOs/nixpkgs?rev=2d068ae5c6516b2d04562de50a58c682540de9bf";
-    };
-
-    nixpkgs-zed = {
-      url = "github:NixOs/nixpkgs?rev=39b98eae0a643db212439f7198f4901d3b12cbd6";
     };
 
     anyrun = {
@@ -87,8 +80,7 @@
     stylix,
     nixvim,
     sops-nix,
-    nixpkgs-zed,
-    chaotic,
+    zed,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -106,10 +98,6 @@
     };
 
     vsCodeExtensionsPythonPinnedPkgs = import inputs.nixpkgs-vsCodeExtensionsPythonPinned {
-      inherit system;
-    };
-
-    zedNixPkgs = import inputs.nixpkgs-zed {
       inherit system;
     };
 
@@ -210,7 +198,7 @@
         inherit pkgs;
         extraSpecialArgs = {
           # these args are passed to the other home-manager modules
-          inherit user inputs vsCodeExtensionsPythonPinnedPkgs zedNixPkgs;
+          inherit user inputs vsCodeExtensionsPythonPinnedPkgs;
           host-settings = import ./modules/settings/${host};
           userConfig = user-configs.${user};
         };

@@ -54,14 +54,14 @@ jobs:
     - uses: DeterminateSystems/nix-installer-action@main
       with:
         extra-conf: |
-          substituters = https://hyprland.cachix.org https://nixpkgs-wayland.cachix.org https://pre-commit-hooks.cachix.org https://danielgafni.cachix.org https://nix-community.cachix.org https://chaotic-nyx.cachix.org/ https://cache.nixos.org/
-          trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc= nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA= pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc= danielgafni.cachix.org-1:ZdXJoJEqeiGGOf/MtAiocqj7/vvFbA2MWFVwopJ2WQM= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8
+          substituters = https://hyprland.cachix.org https://nixpkgs-wayland.cachix.org https://pre-commit-hooks.cachix.org https://danielgafni.cachix.org https://nix-community.cachix.org https://zed.cachix.org/ https://cache.nixos.org/
+          trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc= nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA= pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc= danielgafni.cachix.org-1:ZdXJoJEqeiGGOf/MtAiocqj7/vvFbA2MWFVwopJ2WQM= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= zed.cachix.org-1:/pHQ6dpMsAZk2DiP4WCL0p9YDNKWj2Q5FL20bNmw1cU=
     - uses: cachix/cachix-action@v16
       with:
         name: danielgafni
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
         useDaemon: true
-        extraPullNames: hyprland,nixpkgs-wayland,pre-commit-hooks,nix-community,anyrun,chaotic-nyx
+        extraPullNames: hyprland,nixpkgs-wayland,pre-commit-hooks,nix-community,anyrun,zed
     - run: nix-channel --update
     - run: nix build --impure .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
 
@@ -97,14 +97,14 @@ jobs:
     - uses: DeterminateSystems/nix-installer-action@main
       with:
         extra-conf: |
-          substituters = https://hyprland.cachix.org https://nixpkgs-wayland.cachix.org https://pre-commit-hooks.cachix.org https://danielgafni.cachix.org https://nix-community.cachix.org https://chaotic-nyx.cachix.org/ https://cache.nixos.org/
-          trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc= nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA= pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc= danielgafni.cachix.org-1:ZdXJoJEqeiGGOf/MtAiocqj7/vvFbA2MWFVwopJ2WQM= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8
+          substituters = https://hyprland.cachix.org https://nixpkgs-wayland.cachix.org https://pre-commit-hooks.cachix.org https://danielgafni.cachix.org https://nix-community.cachix.org https://zed.cachix.org/ https://cache.nixos.org/
+          trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc= nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA= pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc= danielgafni.cachix.org-1:ZdXJoJEqeiGGOf/MtAiocqj7/vvFbA2MWFVwopJ2WQM= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= zed.cachix.org-1:/pHQ6dpMsAZk2DiP4WCL0p9YDNKWj2Q5FL20bNmw1cU=
     - uses: cachix/cachix-action@v16
       with:
         name: danielgafni
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
         useDaemon: true
-        extraPullNames: hyprland,nixpkgs-wayland,pre-commit-hooks,nix-community,anyrun,chaotic-nyx
+        extraPullNames: hyprland,nixpkgs-wayland,pre-commit-hooks,nix-community,anyrun,zed
     - run: nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
     - run: nix-channel --update
     - run: nix-env -i home-manager

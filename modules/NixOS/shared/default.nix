@@ -27,7 +27,7 @@
         "https://danielgafni.cachix.org"
         "https://nix-community.cachix.org"
         "https://anyrun.cachix.org"
-        "https://chaotic-nyx.cachix.org/"
+        "https://zed.cachix.org/"
       ];
       trusted-public-keys = [
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
@@ -36,7 +36,7 @@
         "danielgafni.cachix.org-1:ZdXJoJEqeiGGOf/MtAiocqj7/vvFbA2MWFVwopJ2WQM="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
-        "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8"
+        "zed.cachix.org-1:/pHQ6dpMsAZk2DiP4WCL0p9YDNKWj2Q5FL20bNmw1cU="
       ];
       experimental-features = ["nix-command" "flakes"];
       auto-optimise-store = true;
@@ -86,7 +86,6 @@
 
   # stylix
   stylix = {
-    image = ./.config/wallpapers/catppuccin-forrest.png;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     fonts = {
       sansSerif = {

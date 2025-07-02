@@ -17,7 +17,7 @@ jobs:
         uses: DeterminateSystems/update-flake-lock@main
         with:
           pr-title: "Update Zed Flake Input"
-          inputs: chaotic
+          inputs: zed
           token: ${{ secrets.NIX_UPDATE_FLAKE_LOCK_ACTION }}
           branch: update-zed-action
           git-author-name: Github Actions
