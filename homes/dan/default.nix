@@ -80,6 +80,7 @@
       discord
       zoom
       whatsapp-for-linux
+      element-desktop
 
       # browsers
       google-chrome
