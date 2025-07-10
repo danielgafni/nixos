@@ -3,6 +3,7 @@ let
   lockAfterSeconds = 60 * 15;
   suspendAfterSeconds = 60 * 30;
 in rec {
+  hyprlock.monitor = "eDP-1";
   ui.scale = 1.6;
   scaled = x: (builtins.ceil (x * ui.scale));
   wayland.hyprland.monitor = [
