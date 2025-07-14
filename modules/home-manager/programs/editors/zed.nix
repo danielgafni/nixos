@@ -180,6 +180,12 @@
             args = ["mcp-nixos"];
           };
         };
+        kubernetes = {
+          command = {
+            path = "npx";
+            args = ["mcp-server-kubernetes"];
+          };
+        };
       };
     };
   };
