@@ -11,17 +11,22 @@
   mkAutostartEntry = {
     program,
     workspace,
-  }: "[workspace ${workspace} silentt] ${program}";
+  }: "[workspace ${workspace} silent] ${program}";
   mkAutostartList = entries: (map mkAutostartEntry entries);
 in {
   home = {
     packages = with pkgs; [
       hyprcursor # catppuccin-nix will automatically set the cursor theme
+      wl-clip-persist # clipboard persistence for Wayland
     ];
     sessionVariables = {
       HYPRCURSOR_SIZE = lib.mkForce (toString host-settings.cursor.size);
       ELECTRON_OZONE_PLATFORM_HINT = "wayland"; # helps with electron apps like 1password
     };
+  };
+
+  services = {
+    hyprpolkitagent.enable = true;
   };
 
   xdg.configFile."electron-flags.conf" = {
@@ -156,6 +161,7 @@ in {
         [
           # import env vars set with home.sessionVariables
           "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP ELECTRON_OZONE_PLATFORM_HINT"
+          "wl-clip-persist --clipboard regular"
         ]
         ++ mkAutostartList userConfig.hyprland.autostart;
 
@@ -168,6 +174,21 @@ in {
         "float,initialClass:^*(qimgv)$" # image viewer
         "float,initialClass:^(chrome-.*)$"
         "stayfocused,class:^(pinentry-.*)$"
+        "pin,class:^(pinentry-.*)$" # pin == show on all workspaces
+
+        # persist window size between launches
+        "persistentsize,title:^*(Media viewer)$"
+        "float,initialClass:^*(qimgv)$" # image viewer
+
+        # automatically open applications at specific workspaces
+        "workspace 2,class:org.telegram.desktop"
+
+        # forbid screensharing for sensitive apps
+        "noscreenshare 1,class:org.telegram.desktop"
+        "noscreenshare 1,class:Slack"
+        "noscreenshare 1,class:discord"
+        "noscreenshare 1,class:Bitwarden"
+        "noscreenshare 1,class:1Password"
       ];
 
       bind = [
