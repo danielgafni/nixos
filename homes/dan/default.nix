@@ -20,7 +20,7 @@
   home = {
     packages = with pkgs; [
       # YubiKey
-      yubikey-personalization-gui
+      yubioath-flutter
       yubikey-manager
 
       # devops

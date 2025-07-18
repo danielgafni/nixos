@@ -12,10 +12,6 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-    hyprpanel = {
-      url = "github:Jas-SinghFSU/HyprPanel";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
@@ -83,7 +79,6 @@
     catppuccin,
     hyprland,
     hyprland-plugins,
-    hyprpanel,
     stylix,
     nixvim,
     sops-nix,
@@ -97,7 +92,6 @@
       inherit system;
       overlays = [
         inputs.nixpkgs-wayland.overlay
-        inputs.hyprpanel.overlay
       ];
       config = {
         allowUnfree = true;
