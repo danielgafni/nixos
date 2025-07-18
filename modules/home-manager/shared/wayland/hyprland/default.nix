@@ -229,8 +229,7 @@ in {
         # "SHIFT_SUPER,N,exec,makoctl mode -t do-not-disturb"
 
         # screen locking
-        "SUPER,L,exec,pidof hyprlock || hyprlock"
-
+        "SUPER,L,exec,grim -o ${host-settings.hyprlock.monitor} /tmp/screenshot.png && (pidof hyprlock || hyprlock)"
         # hyprland management
         "SUPER,R,exec,hyprctl reload"
       ];

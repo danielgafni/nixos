@@ -22,6 +22,9 @@ in rec {
       on-timeout = ''loginctl lock-session''; # lock screen when timeout has passed
     }
   ];
+  wayland.hyprlock.auth = [
+    "pam:enabled"
+  ];
   font = {
     titles = {
       size = 14;
