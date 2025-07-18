@@ -9,6 +9,10 @@ in rec {
   wayland.hyprland.monitor = [
     ",preferred,auto,${toString ui.scale}"
   ];
+  wayland.hyprlock.auth = [
+    "pam:enabled"
+    "fingerprint:enabled"
+  ];
   wayland.hypridle.listener = [
     {
       timeout = darkAfterSeconds;
