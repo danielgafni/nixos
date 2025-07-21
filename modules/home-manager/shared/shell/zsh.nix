@@ -35,9 +35,12 @@
       devbox-start = "aws ec2 start-instances --instance-ids i-04faa7b6877e3da94 --region eu-north-1";
       devbox-stop = "aws ec2 stop-instances --instance-ids i-04faa7b6877e3da94 --region eu-north-1";
       hyprlock-restart = "hyprctl --instance 0 'keyword misc:allow_session_lock_restore 1' && hyprctl --instance 0 'dispatch exec hyprlock'";
-      #zed = "zeditor";
+      hyprland-logs-tty = "cat $XDG_RUNTIME_DIR/hypr/$(ls -t $XDG_RUNTIME_DIR/hypr/ | head -n 1)/hyprland.log";
+      hyprland-logs = "cat $XDG_RUNTIME_DIR/hypr/$(ls -t $XDG_RUNTIME_DIR/hypr/ | head -n 2 | tail -n 1)/hyprland.log";
     };
-    shellGlobalAliases = {eza = "eza --icons --git";};
+    shellGlobalAliases = {
+      eza = "eza --icons --git";
+    };
     zplug = {
       enable = true;
       plugins = [
