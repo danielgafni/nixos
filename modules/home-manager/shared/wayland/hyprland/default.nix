@@ -20,7 +20,7 @@ in {
       wl-clip-persist # clipboard persistence for Wayland
     ];
     sessionVariables = {
-      HYPRCURSOR_SIZE = lib.mkForce (toString host-settings.cursor.size);
+      HYPRCURSOR_SIZE = lib.mkForce (toString host-settings.cursor.size); # this doesn't seem to affect hyprland. TODO: set the var in hyprland config
       ELECTRON_OZONE_PLATFORM_HINT = "wayland"; # helps with electron apps like 1password
     };
   };
@@ -232,7 +232,7 @@ in {
         # "SHIFT_SUPER,N,exec,makoctl mode -t do-not-disturb"
 
         # screen locking
-        "SUPER,L,exec,grim -o HDMI-A-1 /tmp/screenshot.png && hyprlock"
+        "SUPER,L,exec,pidof hyprlock || hyprlock"
 
         # hyprland management
         "SUPER,R,exec,hyprctl reload"
