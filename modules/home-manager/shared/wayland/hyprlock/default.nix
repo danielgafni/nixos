@@ -29,7 +29,7 @@ in {
       };
       background = {
         monitor = "";
-        path = "/tmp/screenshot.png";
+        path = "screenshot";
         blur_passes = 2;
         blur_size = 7;
         color = "$base";
