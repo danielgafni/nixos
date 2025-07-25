@@ -30,7 +30,6 @@
 
       # messengers
       telegram-desktop
-      zoom
 
       # browsers
       google-chrome
