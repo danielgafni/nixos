@@ -350,6 +350,12 @@
       clean.extraArgs = "--keep-since 30d --keep 10";
       flake = "/home/dan/nixos";
     };
+    zoom-us = {
+      # don't forget to manually set xwayland=false in ~/.zoomus.conf
+      # this is not included in the Nix conf since there are no options for Zoom config
+      # and for some reason it's a huge file with lots of defaults which I don't feel comfortable bundling here
+      enable = true;
+    };
   };
 
   services.fprintd.enable = true;
