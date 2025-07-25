@@ -7,32 +7,16 @@
   programs.hyprpanel = {
     enable = true;
     settings = {
-      # Configure bar layouts for monitors.
-      # See 'https://hyprpanel.com/configuration/panel.html'.
-      # Default: null
-      layout = {
-        "bar.layouts" = {
+      bar = {
+        layouts = {
+          # See 'https://hyprpanel.com/configuration/panel.html'.
           "0" = {
             "left" = ["dashboard" "workspaces" "windowtitle"];
             "middle" = ["media"];
             "right" = host-settings.hyprpanel.modules.right;
           };
-          # TODO: add layouts for more monitors once I have them :)
-          #   "1"= {
-          #     "left"= ["dashboard" "workspaces" "windowtitle"];
-          #     "middle"= ["media"];
-          #     "right"= ["volume" "clock" "notifications"];
-          #   };
-          #   "2"= {
-          #     "left"= ["dashboard" "workspaces" "windowtitle"];
-          #     "middle"= ["media"];
-          #     "right"= ["volume" "clock" "notifications"];
-
-          # };
         };
-      };
 
-      bar = {
         customModules = {
           updates.pollingInterval = 1440000;
           cpuTemp.sensor = host-settings.hyprpanel.modules.config.cpuTemperature.sensorPath;
