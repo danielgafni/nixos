@@ -81,3 +81,7 @@ XDG_UTILS_DEBUG_LEVEL=2 xdg-mime query default application/pdf
 
 fd evince.desktop /
 ```
+
+### GPG + SSH + YubiKey setup via NixOS
+
+[See this tutorial](https://github.com/danielgafni/YubiKey-Guide?tab=readme-ov-file#install-software) on building a secure live NixOS image. It can be used to generate a GPG key and transfer it to multiple YubiKeys.
