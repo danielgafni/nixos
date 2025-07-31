@@ -46,7 +46,7 @@ in {
     portalPackage = null;
 
     plugins = [
-      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
+      # inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
     ];
     systemd.variables = ["--all"];
     settings = {
