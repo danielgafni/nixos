@@ -6,6 +6,10 @@ _: {
         source = ./yubikey.pgp;
         trust = 5;
       }
+      {
+        source = ./yubikey-old.pgp;
+        trust = 5;
+      }
     ];
   };
 }
