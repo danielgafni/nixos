@@ -136,7 +136,7 @@
         git = {
           userName = "danielgafni";
           userEmail = email;
-          signingkey = "7B0740201D518DB134D5C75AB8D13360DED17662";
+          signingkey = "2DD3012F76C19D80";
         };
         hyprland.autostart = with pkgs; [
           {
