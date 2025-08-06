@@ -5,7 +5,8 @@
   };
   programs.ssh.startAgent = false; # using gpg agent instead
   environment.shellInit = ''
-    gpg-connect-agent /bye
+    export GPG_TTY="$(tty)"
+    gpg-connect-agent updatestartuptty /bye
     export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
   '';
 }
