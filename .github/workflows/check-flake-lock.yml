@@ -12,6 +12,6 @@ jobs:
         os: [ubuntu-latest]
         arch: [x86_64-linux]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Check Nix flake inputs
         uses: DeterminateSystems/flake-checker-action@v12
