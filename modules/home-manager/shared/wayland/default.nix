@@ -5,7 +5,8 @@
     ./hyprlock
     ./hypridle
     ./hyprpaper
-    ./anyrun
+    ./walker
+    # ./anyrun
     ./satty
   ];
 }

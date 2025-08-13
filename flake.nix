@@ -64,10 +64,12 @@
       url = "github:NixOs/nixpkgs?rev=39b98eae0a643db212439f7198f4901d3b12cbd6";
     };
 
-    anyrun = {
-      url = "github:anyrun-org/anyrun";
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
+    walker.url = "github:abenz1267/walker";
+
+    # anyrun = {
+    #   url = "github:anyrun-org/anyrun";
+    #   # inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs = {
