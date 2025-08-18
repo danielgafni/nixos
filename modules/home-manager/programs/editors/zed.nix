@@ -150,41 +150,44 @@
       features = {
         edit_prediction_provider = "zed"; # alternative: "copilot"
       };
-      assistant = {
+      agent = {
         enabled = true;
-        version = "2";
-        default_model = {
-          provider = "copilot_chat";
-          model = "gpt-4o";
-        };
         always_allow_tool_actions = true;
+        default_model = {
+          provider = "anthropic";
+          model = "claude-sonnet-4";
+        };
+        inline_assistant_model = {
+          provider = "anthropic";
+          model = "claude-sonnet-4";
+        };
         inline_alternatives = [
           {
             provider = "zed.dev";
-            model = "claude-3-5-sonnet-latest";
-          }
-          {
-            provider = "zed.dev";
-            model = "gpt-4o";
-          }
-          {
-            provider = "copilot_chat";
-            model = "o1-preview";
+            model = "gpt-5";
           }
         ];
       };
+      language_models = {
+        anthropic = {
+          available_models = [
+            {
+              name = "claude-sonnet-4";
+              display_name = "Claude Sonnet 4";
+              max_tokens = 128000;
+              max_output_tokens = 2560;
+            }
+          ];
+        };
+      };
       context_servers = {
         nixos = {
-          command = {
-            path = "uvx";
-            args = ["mcp-nixos"];
-          };
+          command = "uvx";
+          args = ["mcp-nixos"];
         };
         kubernetes = {
-          command = {
-            path = "npx";
-            args = ["mcp-server-kubernetes"];
-          };
+          command = "npx";
+          args = ["mcp-server-kubernetes"];
         };
       };
     };

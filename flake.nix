@@ -60,9 +60,9 @@
       url = "github:NixOs/nixpkgs?rev=2d068ae5c6516b2d04562de50a58c682540de9bf";
     };
 
-    nixpkgs-zed = {
-      url = "github:NixOs/nixpkgs?rev=39b98eae0a643db212439f7198f4901d3b12cbd6";
-    };
+    # nixpkgs-zed = {
+    #   url = "github:NixOs/nixpkgs";
+    # };
 
     anyrun = {
       url = "github:anyrun-org/anyrun";
@@ -82,7 +82,7 @@
     stylix,
     nixvim,
     sops-nix,
-    nixpkgs-zed,
+    # nixpkgs-zed,
     chaotic,
     ...
   } @ inputs: let
@@ -103,9 +103,9 @@
       inherit system;
     };
 
-    zedNixPkgs = import inputs.nixpkgs-zed {
-      inherit system;
-    };
+    # zedNixPkgs = import inputs.nixpkgs-zed {
+    #   inherit system;
+    # };
 
     users = {
       dan = {
@@ -204,7 +204,7 @@
         inherit pkgs;
         extraSpecialArgs = {
           # these args are passed to the other home-manager modules
-          inherit user inputs vsCodeExtensionsPythonPinnedPkgs zedNixPkgs;
+          inherit user inputs vsCodeExtensionsPythonPinnedPkgs; # zedNixpkgs
           host-settings = import ./modules/settings/${host};
           userConfig = user-configs.${user};
         };
