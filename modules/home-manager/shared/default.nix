@@ -45,10 +45,6 @@ in {
       enable = true;
       accent = cursorAccent; # affects HYPRCURSOR_THEME
     };
-    gtk = {
-      enable = true; # TODO: remove as it's deprecated
-      icon.enable = true;
-    };
   };
 
   # default browser for electron-based apps
