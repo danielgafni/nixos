@@ -59,15 +59,6 @@
     nixpkgs-vsCodeExtensionsPythonPinned = {
       url = "github:NixOs/nixpkgs?rev=2d068ae5c6516b2d04562de50a58c682540de9bf";
     };
-
-    # nixpkgs-zed = {
-    #   url = "github:NixOs/nixpkgs";
-    # };
-
-    anyrun = {
-      url = "github:anyrun-org/anyrun";
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
