@@ -17,6 +17,7 @@ in {
     ./shell
     ./environment.nix
     ./fonts.nix
+    ./stylix.nix
   ];
   home = {
     username = user;
@@ -93,8 +94,8 @@ in {
   gtk = {
     enable = true;
     font = {
-      name = "Cabin";
-      package = pkgs.cabin;
+      name = lib.mkForce "Cabin";
+      package = lib.mkForce pkgs.cabin;
     };
 
     gtk3.extraConfig = {

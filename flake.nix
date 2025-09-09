@@ -210,6 +210,7 @@
           nixvim.homeManagerModules.nixvim
           sops-nix.homeManagerModules.sops
           vicinae.homeManagerModules.default
+          stylix.homeModules.stylix
         ];
       };
   in {
