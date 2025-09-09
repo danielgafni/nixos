@@ -59,6 +59,8 @@
     nixpkgs-vsCodeExtensionsPythonPinned = {
       url = "github:NixOs/nixpkgs?rev=2d068ae5c6516b2d04562de50a58c682540de9bf";
     };
+
+    walker.url = "github:abenz1267/walker";
   };
 
   outputs = {
@@ -75,6 +77,7 @@
     sops-nix,
     # nixpkgs-zed,
     chaotic,
+    walker,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -204,8 +207,9 @@
           ./modules/home-manager/hosts/${host}
           ./modules/home-manager/shared
           catppuccin.homeModules.catppuccin
-          nixvim.homeManagerModules.nixvim
+          nixvim.homeModules.nixvim
           sops-nix.homeManagerModules.sops
+          walker.homeManagerModules.default
         ];
       };
   in {

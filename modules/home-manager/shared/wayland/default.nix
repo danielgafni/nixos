@@ -5,7 +5,7 @@
     ./hyprlock
     ./hypridle
     ./hyprpaper
-    ./anyrun
     ./satty
+    ./launchers
   ];
 }

@@ -149,6 +149,18 @@ in {
         "ignorealpha 30, anyrun" # remove blurred surface around borders
         "dimaround, anyrun"
         "ignorezero, (anyrun)"
+
+        # fuzzel
+        "blur, (fuzzel)"
+        "ignorealpha 30, fuzzel" # remove blurred surface around borders
+        "dimaround, fuzzel"
+        "ignorezero, (fuzzel)"
+
+        # walker
+        "blur, (walker)"
+        "ignorealpha 30, walker" # remove blurred surface around borders
+        "dimaround, walker"
+        "ignorezero, (walker)"
       ];
       env = [
         "WLR_NO_HARDWARE_CURSORS,1"
@@ -194,9 +206,9 @@ in {
         # starting applications
         "SUPER,RETURN,exec,ghostty"
         "SUPER,E,exec,ghostty -e yazi"
-        # anyrun - application launcher
-        # TODO: exlore running with --normal-window for Hyprland theming purposes
-        "SUPER,space,exec,anyrun"
+
+        # application launcher
+        "SUPER,space,exec,walker"
 
         # window management
         "SUPER,Q,killactive"
