@@ -14,7 +14,7 @@ Key components:
 
 Minor stuff:
 
-- [Anyrun](https://github.com/anyrun-org/anyrun) minimalistic (but configurable and extensible) wayland-native application launcher.
+- [Vicinae](https://github.com/vicinaehq/vicinae) a feature-rich, fast, user-friendly launcher compatible with the Raycast plugin ecosystem
 - [Starship](https://starship.rs/) terminal prompt. Nothing can beat it in terms of speed, features, and looks.
 - [YubiKey](https://www.yubico.com/) for SSH and GPG. It makes life easier and more secure.
 - [Zed](https://github.com/zed-industries/zed) editor setup with a bunch of language servers and plugins. Zed is the future. The GOAT Python LSs are configured for Zed: `ruff` and `basedpyright`.
