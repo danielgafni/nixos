@@ -72,8 +72,7 @@ in {
       };
 
       gestures = {
-        workspace_swipe = "yes";
-        workspace_swipe_fingers = 4;
+        workspace_swipe_touch = "yes";
       };
 
       general = {

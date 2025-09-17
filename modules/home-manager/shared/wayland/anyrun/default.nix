@@ -6,7 +6,6 @@
   programs = {
     anyrun = {
       enable = true;
-      package = inputs.anyrun.packages.${pkgs.system}.anyrun;
       config = {
         # layer = "top";
         closeOnClick = true;
@@ -16,7 +15,7 @@
         # width = { fraction = 0.3; };
         plugins = [
           # An array of all the plugins you want, which either can be paths to the .so files, or their packages
-          inputs.anyrun.packages.${pkgs.system}.applications
+          "${pkgs.anyrun}/lib/libapplications.so"
           # file search
           # inputs.anyrun.packages.${pkgs.system}.kidex
           # inputs.anyrun.packages.${pkgs.system}.websearch

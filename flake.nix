@@ -17,6 +17,7 @@
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
     nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "github:NixOs/nixpkgs/nixpkgs-unstable";
     rust-overlay.url = "github:oxalica/rust-overlay";
 
     nixvim = {
@@ -56,9 +57,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixpkgs-vsCodeExtensionsPythonPinned = {
-      url = "github:NixOs/nixpkgs?rev=2d068ae5c6516b2d04562de50a58c682540de9bf";
-    };
+    # nixpkgs-vsCodeExtensionsPythonPinned = {
+    #   url = "github:NixOs/nixpkgs?rev=2d068ae5c6516b2d04562de50a58c682540de9bf";
+    # };
 
     vicinae.url = "github:vicinaehq/vicinae";
   };
@@ -82,20 +83,41 @@
   } @ inputs: let
     system = "x86_64-linux";
 
-    pkgs = import nixpkgs {
-      inherit system;
-      overlays = [
-        inputs.nixpkgs-wayland.overlay
-      ];
+    overlays = [
+      inputs.rust-overlay.overlays.default
+      inputs.nixpkgs-wayland.overlay
+    ];
+
+    pkgs-unstable = import inputs.nixpkgs-unstable {
+      inherit system overlays;
       config = {
         allowUnfree = true;
         allowUnfreePredicate = _: true;
       };
     };
 
-    vsCodeExtensionsPythonPinnedPkgs = import inputs.nixpkgs-vsCodeExtensionsPythonPinned {
+    pkgs = import nixpkgs {
       inherit system;
+      overlays =
+        overlays
+        ++ [
+          (final: prev: {
+            python3 = prev.python3.override {
+              packageOverrides = python-final: python-prev: {
+                inherit (pkgs-unstable.python3Packages) pytest-asyncio;
+              };
+            };
+          })
+        ];
+      config = {
+        allowUnfree = true;
+        allowUnfreePredicate = _: true;
+      };
     };
+
+    # vsCodeExtensionsPythonPinnedPkgs = import inputs.nixpkgs-vsCodeExtensionsPythonPinned {
+    #   inherit system;
+    # };
 
     # zedNixPkgs = import inputs.nixpkgs-zed {
     #   inherit system;
@@ -169,7 +191,7 @@
         inherit system pkgs;
         specialArgs = {
           # Pass flake inputs to our config
-          inherit nixos-hardware inputs;
+          inherit nixos-hardware inputs pkgs-unstable;
           users = {
             extraGroups.docker.members = ["dan"];
             defaultUserShell = pkgs.zsh;
@@ -198,7 +220,7 @@
         inherit pkgs;
         extraSpecialArgs = {
           # these args are passed to the other home-manager modules
-          inherit user inputs vsCodeExtensionsPythonPinnedPkgs; # zedNixpkgs
+          inherit user inputs pkgs-unstable; # zedNixpkgs
           host-settings = import ./modules/settings/${host};
           userConfig = user-configs.${user};
         };
@@ -210,6 +232,7 @@
           nixvim.homeManagerModules.nixvim
           sops-nix.homeManagerModules.sops
           vicinae.homeManagerModules.default
+          stylix.homeModules.stylix
         ];
       };
   in {
