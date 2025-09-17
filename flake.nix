@@ -17,6 +17,7 @@
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
     nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "github:NixOs/nixpkgs/nixpkgs-unstable";
     rust-overlay.url = "github:oxalica/rust-overlay";
 
     nixvim = {
@@ -82,10 +83,21 @@
   } @ inputs: let
     system = "x86_64-linux";
 
+    pkgs-unstable = import inputs.nixpkgs-unstable {
+      inherit system;
+    };
+
     pkgs = import nixpkgs {
       inherit system;
       overlays = [
         inputs.nixpkgs-wayland.overlay
+        (final: prev: {
+          python3 = prev.python3.override {
+            packageOverrides = python-final: python-prev: {
+              inherit (pkgs-unstable.python3Packages) pytest-asyncio;
+            };
+          };
+        })
       ];
       config = {
         allowUnfree = true;
