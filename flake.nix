@@ -83,22 +83,32 @@
   } @ inputs: let
     system = "x86_64-linux";
 
+    overlays = [
+      inputs.rust-overlay.overlays.default
+      inputs.nixpkgs-wayland.overlay
+    ];
+
     pkgs-unstable = import inputs.nixpkgs-unstable {
-      inherit system;
+      inherit system overlays;
+      config = {
+        allowUnfree = true;
+        allowUnfreePredicate = _: true;
+      };
     };
 
     pkgs = import nixpkgs {
       inherit system;
-      overlays = [
-        inputs.nixpkgs-wayland.overlay
-        (final: prev: {
-          python3 = prev.python3.override {
-            packageOverrides = python-final: python-prev: {
-              inherit (pkgs-unstable.python3Packages) pytest-asyncio;
+      overlays =
+        overlays
+        ++ [
+          (final: prev: {
+            python3 = prev.python3.override {
+              packageOverrides = python-final: python-prev: {
+                inherit (pkgs-unstable.python3Packages) pytest-asyncio;
+              };
             };
-          };
-        })
-      ];
+          })
+        ];
       config = {
         allowUnfree = true;
         allowUnfreePredicate = _: true;
@@ -181,7 +191,7 @@
         inherit system pkgs;
         specialArgs = {
           # Pass flake inputs to our config
-          inherit nixos-hardware inputs;
+          inherit nixos-hardware inputs pkgs-unstable;
           users = {
             extraGroups.docker.members = ["dan"];
             defaultUserShell = pkgs.zsh;
@@ -210,7 +220,7 @@
         inherit pkgs;
         extraSpecialArgs = {
           # these args are passed to the other home-manager modules
-          inherit user inputs; # zedNixpkgs
+          inherit user inputs pkgs-unstable; # zedNixpkgs
           host-settings = import ./modules/settings/${host};
           userConfig = user-configs.${user};
         };
