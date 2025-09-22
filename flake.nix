@@ -3,15 +3,6 @@
 
   inputs = {
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    hyprland = {
-      type = "git";
-      url = "https://github.com/hyprwm/Hyprland";
-      submodules = true;
-    };
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
 
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
@@ -71,8 +62,6 @@
     pre-commit-hooks,
     home-manager,
     catppuccin,
-    hyprland,
-    hyprland-plugins,
     stylix,
     nixvim,
     sops-nix,
@@ -127,13 +116,21 @@
       dan = {
         isNormalUser = true;
         initialPassword = "pw123";
-        extraGroups = ["wheel" "docker" "video" "networkmanager"];
+        extraGroups = [
+          "wheel"
+          "docker"
+          "video"
+          "networkmanager"
+        ];
         packages = [pkgs.home-manager];
       };
       underdel = {
         isNormalUser = true;
         initialPassword = "pw123";
-        extraGroups = ["video" "networkmanager"];
+        extraGroups = [
+          "video"
+          "networkmanager"
+        ];
         packages = [pkgs.home-manager];
       };
     };
@@ -180,7 +177,10 @@
 
     host-users-map = {
       DanPC = ["dan"];
-      framnix = ["dan" "underdel"];
+      framnix = [
+        "dan"
+        "underdel"
+      ];
     };
 
     mkNixosConfiguration = {
@@ -202,7 +202,6 @@
         modules = [
           ./modules/NixOS/shared
           ./systems/x86_64-linux/${host}
-          # hyprland.nixosModules.default
           catppuccin.nixosModules.catppuccin
           stylix.nixosModules.stylix
           {programs.hyprland.xwayland.enable = true;}
@@ -257,7 +256,9 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#<hostname>' (hosts are taken from the 'hosts' list above)
     nixosConfigurations =
-      nixpkgs.lib.attrsets.mapAttrs (host: user-selection: mkNixosConfiguration {inherit host user-selection;})
+      nixpkgs.lib.attrsets.mapAttrs (
+        host: user-selection: mkNixosConfiguration {inherit host user-selection;}
+      )
       host-users-map;
 
     # Standalone home-manager configuration entrypoint
@@ -266,11 +267,13 @@
     homeConfigurations =
       pkgs.lib.concatMapAttrs (
         host: users:
-          pkgs.lib.listToAttrs (pkgs.lib.map (user: {
+          pkgs.lib.listToAttrs (
+            pkgs.lib.map (user: {
               name = "${user}@${host}";
               value = mkHomeConfiguration {inherit host user;};
             })
-            users)
+            users
+          )
       )
       host-users-map;
   };
