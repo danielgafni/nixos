@@ -73,7 +73,6 @@
     system = "x86_64-linux";
 
     overlays = [
-      inputs.rust-overlay.overlays.default
       inputs.nixpkgs-wayland.overlay
     ];
 
