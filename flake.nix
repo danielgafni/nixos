@@ -8,7 +8,6 @@
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
     nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
-    nixpkgs-unstable.url = "github:NixOs/nixpkgs/nixpkgs-unstable";
     rust-overlay.url = "github:oxalica/rust-overlay";
 
     nixvim = {
@@ -76,27 +75,8 @@
       inputs.nixpkgs-wayland.overlay
     ];
 
-    pkgs-unstable = import inputs.nixpkgs-unstable {
-      inherit system overlays;
-      config = {
-        allowUnfree = true;
-        allowUnfreePredicate = _: true;
-      };
-    };
-
     pkgs = import nixpkgs {
-      inherit system;
-      overlays =
-        overlays
-        ++ [
-          (final: prev: {
-            python3 = prev.python3.override {
-              packageOverrides = python-final: python-prev: {
-                inherit (pkgs-unstable.python3Packages) pytest-asyncio;
-              };
-            };
-          })
-        ];
+      inherit system overlays;
       config = {
         allowUnfree = true;
         allowUnfreePredicate = _: true;
@@ -190,7 +170,7 @@
         inherit system pkgs;
         specialArgs = {
           # Pass flake inputs to our config
-          inherit nixos-hardware inputs pkgs-unstable;
+          inherit nixos-hardware inputs;
           users = {
             extraGroups.docker.members = ["dan"];
             defaultUserShell = pkgs.zsh;
@@ -218,7 +198,7 @@
         inherit pkgs;
         extraSpecialArgs = {
           # these args are passed to the other home-manager modules
-          inherit user inputs pkgs-unstable; # zedNixpkgs
+          inherit user inputs; # zedNixpkgs
           host-settings = import ./modules/settings/${host};
           userConfig = user-configs.${user};
         };
