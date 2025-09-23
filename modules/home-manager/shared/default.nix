@@ -17,6 +17,7 @@ in {
     ./shell
     ./environment.nix
     ./fonts.nix
+    ./stylix.nix
   ];
   home = {
     username = user;
@@ -44,10 +45,6 @@ in {
     cursors = {
       enable = true;
       accent = cursorAccent; # affects HYPRCURSOR_THEME
-    };
-    gtk = {
-      enable = true; # TODO: remove as it's deprecated
-      icon.enable = true;
     };
   };
 
@@ -97,8 +94,8 @@ in {
   gtk = {
     enable = true;
     font = {
-      name = "Cabin";
-      package = pkgs.cabin;
+      name = lib.mkForce "Cabin";
+      package = lib.mkForce pkgs.cabin;
     };
 
     gtk3.extraConfig = {

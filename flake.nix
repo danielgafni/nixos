@@ -3,15 +3,6 @@
 
   inputs = {
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    hyprland = {
-      type = "git";
-      url = "https://github.com/hyprwm/Hyprland";
-      submodules = true;
-    };
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
 
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
@@ -56,9 +47,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixpkgs-vsCodeExtensionsPythonPinned = {
-      url = "github:NixOs/nixpkgs?rev=2d068ae5c6516b2d04562de50a58c682540de9bf";
-    };
+    # nixpkgs-vsCodeExtensionsPythonPinned = {
+    #   url = "github:NixOs/nixpkgs?rev=2d068ae5c6516b2d04562de50a58c682540de9bf";
+    # };
 
     vicinae.url = "github:vicinaehq/vicinae";
   };
@@ -70,8 +61,6 @@
     pre-commit-hooks,
     home-manager,
     catppuccin,
-    hyprland,
-    hyprland-plugins,
     stylix,
     nixvim,
     sops-nix,
@@ -82,20 +71,21 @@
   } @ inputs: let
     system = "x86_64-linux";
 
+    overlays = [
+      inputs.nixpkgs-wayland.overlay
+    ];
+
     pkgs = import nixpkgs {
-      inherit system;
-      overlays = [
-        inputs.nixpkgs-wayland.overlay
-      ];
+      inherit system overlays;
       config = {
         allowUnfree = true;
         allowUnfreePredicate = _: true;
       };
     };
 
-    vsCodeExtensionsPythonPinnedPkgs = import inputs.nixpkgs-vsCodeExtensionsPythonPinned {
-      inherit system;
-    };
+    # vsCodeExtensionsPythonPinnedPkgs = import inputs.nixpkgs-vsCodeExtensionsPythonPinned {
+    #   inherit system;
+    # };
 
     # zedNixPkgs = import inputs.nixpkgs-zed {
     #   inherit system;
@@ -105,13 +95,21 @@
       dan = {
         isNormalUser = true;
         initialPassword = "pw123";
-        extraGroups = ["wheel" "docker" "video" "networkmanager"];
+        extraGroups = [
+          "wheel"
+          "docker"
+          "video"
+          "networkmanager"
+        ];
         packages = [pkgs.home-manager];
       };
       underdel = {
         isNormalUser = true;
         initialPassword = "pw123";
-        extraGroups = ["video" "networkmanager"];
+        extraGroups = [
+          "video"
+          "networkmanager"
+        ];
         packages = [pkgs.home-manager];
       };
     };
@@ -158,7 +156,10 @@
 
     host-users-map = {
       DanPC = ["dan"];
-      framnix = ["dan" "underdel"];
+      framnix = [
+        "dan"
+        "underdel"
+      ];
     };
 
     mkNixosConfiguration = {
@@ -180,7 +181,6 @@
         modules = [
           ./modules/NixOS/shared
           ./systems/x86_64-linux/${host}
-          # hyprland.nixosModules.default
           catppuccin.nixosModules.catppuccin
           stylix.nixosModules.stylix
           {programs.hyprland.xwayland.enable = true;}
@@ -198,7 +198,7 @@
         inherit pkgs;
         extraSpecialArgs = {
           # these args are passed to the other home-manager modules
-          inherit user inputs vsCodeExtensionsPythonPinnedPkgs; # zedNixpkgs
+          inherit user inputs; # zedNixpkgs
           host-settings = import ./modules/settings/${host};
           userConfig = user-configs.${user};
         };
@@ -207,9 +207,10 @@
           ./modules/home-manager/hosts/${host}
           ./modules/home-manager/shared
           catppuccin.homeModules.catppuccin
-          nixvim.homeManagerModules.nixvim
+          nixvim.homeModules.nixvim
           sops-nix.homeManagerModules.sops
           vicinae.homeManagerModules.default
+          stylix.homeModules.stylix
         ];
       };
   in {
@@ -234,7 +235,9 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#<hostname>' (hosts are taken from the 'hosts' list above)
     nixosConfigurations =
-      nixpkgs.lib.attrsets.mapAttrs (host: user-selection: mkNixosConfiguration {inherit host user-selection;})
+      nixpkgs.lib.attrsets.mapAttrs (
+        host: user-selection: mkNixosConfiguration {inherit host user-selection;}
+      )
       host-users-map;
 
     # Standalone home-manager configuration entrypoint
@@ -243,11 +246,13 @@
     homeConfigurations =
       pkgs.lib.concatMapAttrs (
         host: users:
-          pkgs.lib.listToAttrs (pkgs.lib.map (user: {
+          pkgs.lib.listToAttrs (
+            pkgs.lib.map (user: {
               name = "${user}@${host}";
               value = mkHomeConfiguration {inherit host user;};
             })
-            users)
+            users
+          )
       )
       host-users-map;
   };

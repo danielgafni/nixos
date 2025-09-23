@@ -1,0 +1,20 @@
+{
+    "faviconService": "twenty",
+    "font": {
+        "normal": "Cabin",
+        "size": 10
+    },
+    "popToRootOnClose": true,
+    "rootSearch": {
+        "searchFiles": false
+    },
+    "theme": {
+        "iconTheme": "Catppuccin Mocha Lavender",
+        "name": "catppuccin-mocha.json"
+    },
+    "window": {
+        "csd": true,
+        "opacity": 0.7,
+        "rounding": 10
+    }
+}
