@@ -227,7 +227,7 @@
           ./modules/home-manager/hosts/${host}
           ./modules/home-manager/shared
           catppuccin.homeModules.catppuccin
-          nixvim.homeManagerModules.nixvim
+          nixvim.homeModules.nixvim
           sops-nix.homeManagerModules.sops
           vicinae.homeManagerModules.default
           stylix.homeModules.stylix
