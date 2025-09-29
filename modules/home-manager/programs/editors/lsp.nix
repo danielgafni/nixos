@@ -7,6 +7,23 @@
       };
     };
   };
+  pyrefly = {
+    binary = {
+      path = ".venv/bin/pyrefly";
+      arguments = ["lsp"];
+    };
+    settings = {
+      python = {
+        pythonPath = ".venv/bin/python";
+      };
+      pyrefly = {
+        project_includes = ["src/**/*.py" "tests/**/*.py"];
+        project_excludes = ["**/.[!/.]*" "**/*venv/**"];
+        search_path = ["src"];
+        ignore_errors_in_generated_code = true;
+      };
+    };
+  };
   basedpyright = {
     binary = {
       path = ".venv/bin/basedpyright-langserver";
