@@ -1,20 +1,22 @@
 {
   inputs,
   config,
+  host-settings,
   ...
 }: let
   # TODO: probably these is a cleaner way to get access to these variables?
   inherit (config.catppuccin) sources;
   cfg = config.wayland.windowManager.hyprland.catppuccin;
 in {
-  # tmp workaround for https://github.com/catppuccin/nix/issues/205
-  # just enable programs.swaylock for now
-  programs.swaylock.enable = true;
-
   # important! security.pam.services.hyprlock = {}; has to be added to NixOS config
+  catppuccin.hyprlock = {
+    useDefaultConfig = false;
+  };
+
   programs.hyprlock = {
     enable = true;
     settings = {
+      inherit (host-settings.wayland.hyprlock) auth;
       source = [
         "${sources.hyprland}/themes/${cfg.flavor}.conf"
         (builtins.toFile "hyprland-${cfg.accent}-accent.conf" ''
@@ -94,18 +96,18 @@ in {
           shadow_passes = 2;
         }
       ];
-      # image = [
-      #   {
-      #     monitor = "";
-      #     path = "/home/${user}/Media/avatar.jpg"; # avatar set in home/default.nix
-      #     size = 350;
-      #     border_color = "$accent";
-      #     rounding = -1;
-      #     position = "0, 75";
-      #     halign = "center";
-      #     valign = "center";
-      #     shadow_passes = 2;
-      #   }
+      #image = [
+      #  {
+      #    monitor = "";
+      #    path = toString config.home.file."Media/avatar.jpg".source;
+      #    size = 350;
+      #    border_color = "$accent";
+      #    rounding = -1;
+      #    position = "0, 75";
+      #    halign = "center";
+      #    valign = "center";
+      #    shadow_passes = 2;
+      #  }
       # ];
     };
   };
