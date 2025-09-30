@@ -9,6 +9,10 @@
   cfg = config.wayland.windowManager.hyprland.catppuccin;
 in {
   # important! security.pam.services.hyprlock = {}; has to be added to NixOS config
+  catppuccin.hyprlock = {
+    useDefaultConfig = false;
+  };
+
   programs.hyprlock = {
     enable = true;
     settings = {
