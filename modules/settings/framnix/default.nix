@@ -20,19 +20,19 @@ in rec {
       on-timeout = ''brightnessctl -sd platform::kbd_backlight set 0''; # turn off keyboard backlight.
       on-resume = ''brightnessctl -rd platform::kbd_backlight''; # turn on keyboard backlight.
     }
-    {
-      timeout = lockAfterSeconds;
-      on-timeout = ''loginctl lock-session''; # lock screen when timeout has passed
-    }
+    # {
+    #   timeout = lockAfterSeconds;
+    #   on-timeout = ''loginctl lock-session''; # lock screen when timeout has passed
+    # }
     {
       timeout = lockAfterSeconds + 30;
       on-timeout = ''hyprctl dispatch dpms off''; # screen off when timeout has passed
       on-resume = ''hyprctl dispatch dpms on''; # screen on when activity is detected after timeout has fired.
     }
-    {
-      timeout = suspendAfterSeconds;
-      on-timeout = ''systemctl suspend''; # suspend pc
-    }
+    # {
+    #   timeout = suspendAfterSeconds;
+    #   on-timeout = ''systemctl suspend''; # suspend pc
+    # }
   ];
   font = {
     titles = {
