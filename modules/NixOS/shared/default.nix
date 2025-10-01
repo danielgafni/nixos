@@ -51,7 +51,10 @@
 
   # Use the systemd-boot EFI boot loader.
   boot = {
-    loader.systemd-boot.enable = true;
+    loader.systemd-boot = {
+      enable = true;
+      configurationLimit = 5;
+    };
     loader.efi.canTouchEfiVariables = true;
   };
 
@@ -343,7 +346,7 @@
     nh = {
       enable = true;
       clean.enable = true;
-      clean.extraArgs = "--keep-since 30d --keep 10";
+      clean.extraArgs = "--keep-since 15d --keep 5";
       flake = "/home/dan/nixos";
     };
     zoom-us = {
