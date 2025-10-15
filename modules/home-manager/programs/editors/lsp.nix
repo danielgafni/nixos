@@ -7,6 +7,16 @@
       };
     };
   };
+  pyrefly = {
+    settings = {
+      python = {
+        pythonPath = ".venv/bin/python";
+      };
+      pyrefly = {
+        python_interpreter = ".venv/bin/python";
+      };
+    };
+  };
   basedpyright = {
     binary = {
       path = ".venv/bin/basedpyright-langserver";
