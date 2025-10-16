@@ -194,7 +194,7 @@ in {
         "SUPER,RETURN,exec,ghostty"
         "SUPER,E,exec,ghostty -e yazi"
         # application launcher
-        "SUPER,space,exec,vicinae"
+        "SUPER,space,exec,vicinae toggle"
 
         # window management
         "SUPER,Q,killactive"
