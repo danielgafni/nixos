@@ -195,6 +195,8 @@ in {
         "SUPER,E,exec,ghostty -e yazi"
         # application launcher
         "SUPER,space,exec,vicinae toggle"
+        # open obsidian daily note
+        "SUPER,B,exec, [float; minsize 500 500] obsidian obsidian://daily?vault=The%20Well"
 
         # window management
         "SUPER,Q,killactive"
