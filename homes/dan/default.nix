@@ -79,7 +79,7 @@
       slack
       discord
       zoom
-      whatsapp-for-linux
+      wasistlos
       element-desktop
 
       # browsers
