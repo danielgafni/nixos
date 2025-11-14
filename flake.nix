@@ -52,6 +52,11 @@
     # };
 
     vicinae.url = "github:vicinaehq/vicinae";
+
+    krewfile = {
+      url = "github:brumhard/krewfile";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
