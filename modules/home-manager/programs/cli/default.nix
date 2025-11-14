@@ -8,5 +8,6 @@
     ./zoxide.nix
     ./rbw.nix
     ./gh.nix
+    ./krewfile.nix
   ];
 }
