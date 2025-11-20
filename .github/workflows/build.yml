@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Flake Check
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
     - uses: DeterminateSystems/nix-installer-action@main
     - uses: cachix/cachix-action@v16
       with:
@@ -50,7 +50,7 @@ jobs:
         large-packages: true
         docker-images: true
         swap-storage: true
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
     - uses: DeterminateSystems/nix-installer-action@main
       with:
         extra-conf: |
@@ -93,7 +93,7 @@ jobs:
         large-packages: true
         docker-images: true
         swap-storage: true
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
     - uses: DeterminateSystems/nix-installer-action@main
       with:
         extra-conf: |
