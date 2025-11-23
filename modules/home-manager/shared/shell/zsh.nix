@@ -13,7 +13,7 @@
       vids = "$HOME/Videos";
       nixpkgs = "$HOME/Documents/code/git/nixpkgs";
     };
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
     history = {
       expireDuplicatesFirst = true;
       path = "${config.xdg.dataHome}/zsh_history";

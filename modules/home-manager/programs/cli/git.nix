@@ -3,20 +3,24 @@
     enable = true;
   };
 
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+    options = {
+      side-by-side = true;
+      whitespace-error-style = "22 reverse";
+    };
+  };
+
   programs.git =
     if builtins.hasAttr "git" userConfig
     then {
       enable = true;
-      inherit (userConfig.git) userName userEmail;
+
       signing.key = userConfig.git.signingkey;
-      delta = {
-        enable = true;
-        options = {
-          side-by-side = true;
-          whitespace-error-style = "22 reverse";
-        };
-      };
-      extraConfig = {
+
+      settings = {
+        inherit (userConfig.git) user;
         commit.gpgsign = true;
         # the below options are mostly taken from https://jvns.ca/blog/2024/02/16/popular-git-config-options/
         push.autosetupremote = true;
