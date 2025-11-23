@@ -125,8 +125,10 @@
         email = "danielgafni16@gmail.com";
         fullName = "Daniel Gafni";
         git = {
-          userName = "danielgafni";
-          userEmail = email;
+          user = {
+            name = "danielgafni";
+            email = email;
+          };
           signingkey = "2DD3012F76C19D80";
         };
         hyprland.autostart = with pkgs; [
