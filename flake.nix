@@ -127,7 +127,7 @@
         git = {
           user = {
             name = "danielgafni";
-            email = email;
+            inherit email;
           };
           signingkey = "2DD3012F76C19D80";
         };
@@ -135,10 +135,6 @@
           {
             workspace = "2";
             program = "${slack}/bin/slack";
-          }
-          {
-            workspace = "2";
-            program = "${discord}/bin/discord";
           }
           {
             workspace = "2";
