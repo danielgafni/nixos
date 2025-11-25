@@ -27,6 +27,7 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/env:$PATH"
 export PATH="$HOME/.yarn/bin:$PATH"
+export PATH="$HOME/.cache/.bun/bin:$PATH"
 export PYTHON_KEYRING_BACKEND=keyring.backends.fail.Keyring
 
 # The next line updates PATH for the Google Cloud SDK.
