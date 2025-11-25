@@ -90,8 +90,6 @@
       vim
       obsidian
 
-      # jetbrains.gateway
-
       # Python tools
       pyright
       ruff
@@ -106,6 +104,7 @@
       gcc
       cmake
       rust-analyzer
+      nodejs
 
       # extra
       xarchiver
