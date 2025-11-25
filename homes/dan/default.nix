@@ -15,6 +15,7 @@
 
   programs = {
     nebius-cli.enable = true;
+    bun.enable = true;
   };
 
   home = {
@@ -71,7 +72,7 @@
       just
       sad
       expect
-      claude-code
+      # claude-code
 
       # messengers
       telegram-desktop
