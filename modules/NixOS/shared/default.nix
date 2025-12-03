@@ -56,6 +56,8 @@
       configurationLimit = 5;
     };
     loader.efi.canTouchEfiVariables = true;
+    # Required for Docker containers that use iptables NAT (e.g., Dagger)
+    kernelModules = ["iptable_nat" "iptable_filter" "xt_nat"];
   };
 
   networking = {
