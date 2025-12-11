@@ -190,6 +190,12 @@ in {
       ];
 
       bind = [
+        # waystt - Speech to Text (press-to-talk)
+        # SUPER+SHIFT+T: start recording, transcribe on release, copy to clipboard
+        "SUPER_SHIFT,T,exec,pkill -9 waystt 2>/dev/null; notify-send -t 2000 '🎤 Recording...' 'Release to transcribe (clipboard)'; waystt --pipe-to wl-copy &"
+        # SUPER+T: start recording, transcribe on release, type via wtype (supports unicode)
+        "SUPER,T,exec,pkill -9 waystt 2>/dev/null; notify-send -t 2000 '🎤 Recording...' 'Release to transcribe (typing)'; waystt --pipe-to wtype - &"
+
         # starting applications
         "SUPER,RETURN,exec,ghostty"
         "SUPER,E,exec,ghostty -e yazi"
@@ -268,6 +274,10 @@ in {
 
     extraConfig = ''
       debug:disable_logs = false
+
+      # waystt - Release to stop recording and transcribe
+      bindr=SUPER,T,exec,pkill --signal SIGUSR1 waystt
+      bindr=SUPER_SHIFT,T,exec,pkill --signal SIGUSR1 waystt
 
       # special workspace
       bind=CTRL_SUPER,W,exec,hyprctl dispatch movetoworkspace special

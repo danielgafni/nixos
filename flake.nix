@@ -57,6 +57,13 @@
       url = "github:brumhard/krewfile";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    crane.url = "github:ipetkov/crane";
+
+    waystt = {
+      url = "github:sevos/waystt";
+      flake = false;
+    };
   };
 
   outputs = {

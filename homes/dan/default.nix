@@ -11,11 +11,19 @@
     ./hyprpaper
     ./sops
     ../../packages/nebius-cli.nix
+    ../../packages/waystt.nix
   ];
 
   programs = {
     nebius-cli.enable = true;
     bun.enable = true;
+    waystt = {
+      enable = true;
+      settings = {
+        TRANSCRIPTION_PROVIDER = "openai";
+      };
+      openaiKeyFile = "/home/dan/.config/sops-nix/secrets/OPENAI_API_KEY";
+    };
   };
 
   home = {
