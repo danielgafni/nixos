@@ -109,6 +109,21 @@
         "type": "github"
       }
     },
+    "crane": {
+      "locked": {
+        "lastModified": 1765145449,
+        "narHash": "sha256-aBVHGWWRzSpfL++LubA0CwOOQ64WNLegrYHwsVuVN7A=",
+        "owner": "ipetkov",
+        "repo": "crane",
+        "rev": "69f538cdce5955fcd47abfed4395dc6d5194c1c5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ipetkov",
+        "repo": "crane",
+        "type": "github"
+      }
+    },
     "dagger": {
       "inputs": {
         "nixpkgs": [
@@ -834,6 +849,7 @@
       "inputs": {
         "catppuccin": "catppuccin",
         "chaotic": "chaotic",
+        "crane": "crane",
         "dagger": "dagger",
         "home-manager": "home-manager_2",
         "krewfile": "krewfile",
@@ -847,7 +863,8 @@
         "rust-overlay": "rust-overlay_2",
         "sops-nix": "sops-nix",
         "stylix": "stylix",
-        "vicinae": "vicinae"
+        "vicinae": "vicinae",
+        "waystt": "waystt"
       }
     },
     "rust-overlay": {
@@ -1128,6 +1145,22 @@
       "original": {
         "owner": "vicinaehq",
         "repo": "vicinae",
+        "type": "github"
+      }
+    },
+    "waystt": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1759771559,
+        "narHash": "sha256-UFQn151U7JtnlERjG1hoYDK3cMPvB5QxhKhW3ayYeOc=",
+        "owner": "sevos",
+        "repo": "waystt",
+        "rev": "195a4eca64c452ae61e3b76073842bab7316189d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sevos",
+        "repo": "waystt",
         "type": "github"
       }
     }

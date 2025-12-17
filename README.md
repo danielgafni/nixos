@@ -68,9 +68,10 @@ fc-cache -rf
 
 ### Custom modules
 
-- `packages/` contains some custom packages. They are:
+`packages/` contains some custom packages. These are:
 
 - `packages/nebius-cli.nix` - [Nebius CLI](https://docs.nebius.com/cli)
+- `packages/waystt.nix` - [waystt](https://github.com/sevos/waystt) - Wayland speech-to-text tooling. Press `SUPER+T` to talk, release to type transcribed text via `wtype`. Using `SUPER+SHIFT+T` copies the transcript to clipboard instead. 
 
 ### Debugging mime-type
 
