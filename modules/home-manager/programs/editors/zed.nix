@@ -136,7 +136,7 @@
         Python = {
           # the here order matters!
           # for example, "go to definition" doesn't work with [ruff, pyright] order
-          language_servers = ["basedpyright" "ruff"];
+          language_servers = ["ty" "ruff" "!basedpyright"];
         };
         Zig = {
           language_servers = ["zls"];
