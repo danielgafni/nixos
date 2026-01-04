@@ -7,6 +7,14 @@
       };
     };
   };
+  ty = {
+    binary = {
+      path = ".venv/bin/ty";
+      arguments = [
+        "server"
+      ];
+    };
+  };
   pyrefly = {
     settings = {
       python = {
