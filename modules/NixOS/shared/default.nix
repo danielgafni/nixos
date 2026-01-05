@@ -291,6 +291,8 @@
       bat
       eza
       fd
+      dust # very fast disk usage inspector
+      dua # same but interactive
       btop
       zellij
       vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
