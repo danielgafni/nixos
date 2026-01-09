@@ -45,6 +45,7 @@
       "sqlruff"
       "csv"
       "basedpyright"
+      "ty"
     ];
     userKeymaps = [
       {

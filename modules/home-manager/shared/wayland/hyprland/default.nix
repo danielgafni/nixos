@@ -137,17 +137,13 @@ in {
       };
       layerrule = [
         # eww
-        "blur, gtk-layer-shell"
-        "ignorealpha 0, gtk-layer-shell" # remove blurred surface around borders
+        "blur on, ignore_alpha 0, match:namespace gtk-layer-shell"
 
         # use `hyprctl layers` to get layer namespaces
-        "blur, notifications"
-        "ignorealpha 0, notifications" # remove blurred surface around borders
+        "blur on, ignore_alpha 0, match:namespace notifications"
 
         # vicinae
-        "blur, (vicinae)"
-        "dimaround, vicinae"
-        "ignorezero, (vicinae)"
+        "blur on, dim_around on, xray on, match:namespace vicinae"
       ];
       env = [
         "WLR_NO_HARDWARE_CURSORS,1"
@@ -163,30 +159,29 @@ in {
         ]
         ++ mkAutostartList userConfig.hyprland.autostart;
 
-      windowrulev2 = [
-        "float,title:^(Open Folder)$" # File Shooser
-        "float,class:xarchiver"
-        "float,title:^(Вход .*)$" # chrome login in Russian
-        "float,title:^(Enter .*)$" # chrome login in English
-        "float,title:^*(Media viewer)$" # Telegram media viewer
-        "float,initialClass:^*(qimgv)$" # image viewer
-        "float,initialClass:^(chrome-.*)$"
-        "stayfocused,class:^(pinentry-.*)$"
-        "pin,class:^(pinentry-.*)$" # pin == show on all workspaces
+      windowrule = [
+        "float on, match:title ^(Open Folder)$" # File Chooser
+        "float on, match:class ^(xarchiver)$"
+        "float on, match:title ^(Вход .*)$" # chrome login in Russian
+        "float on, match:title ^(Enter .*)$" # chrome login in English
+        "float on, match:title (Media viewer)" # Telegram media viewer
+        "float on, match:initial_class ^(qimgv)$" # image viewer
+        "float on, match:initial_class ^(chrome-.*)$"
+        "stay_focused on, match:class ^(pinentry-.*)$"
+        "pin on, match:class ^(pinentry-.*)$" # pin == show on all workspaces
 
         # persist window size between launches
-        "persistentsize,title:^*(Media viewer)$"
-        "float,initialClass:^*(qimgv)$" # image viewer
+        "persistent_size on, match:title (Media viewer)"
 
         # automatically open applications at specific workspaces
-        "workspace 2,class:org.telegram.desktop"
+        "workspace 2, match:class ^(org.telegram.desktop)$"
 
         # forbid screensharing for sensitive apps
-        "noscreenshare 1,class:org.telegram.desktop"
-        "noscreenshare 1,class:Slack"
-        "noscreenshare 1,class:discord"
-        "noscreenshare 1,class:Bitwarden"
-        "noscreenshare 1,class:1Password"
+        "no_screen_share on, match:class ^(org.telegram.desktop)$"
+        "no_screen_share on, match:class ^(Slack)$"
+        "no_screen_share on, match:class ^(discord)$"
+        "no_screen_share on, match:class ^(Bitwarden)$"
+        "no_screen_share on, match:class ^(1Password)$"
       ];
 
       bind = [

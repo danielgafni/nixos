@@ -6,7 +6,7 @@
 }: let
   # TODO: probably these is a cleaner way to get access to these variables?
   inherit (config.catppuccin) sources;
-  cfg = config.wayland.windowManager.hyprland.catppuccin;
+  # cfg = config.wayland.windowManager.hyprland.catppuccin;
 in {
   # important! security.pam.services.hyprlock = {}; has to be added to NixOS config
   catppuccin.hyprlock = {
@@ -17,13 +17,13 @@ in {
     enable = true;
     settings = {
       inherit (host-settings.wayland.hyprlock) auth;
-      source = [
-        "${sources.hyprland}/themes/${cfg.flavor}.conf"
-        (builtins.toFile "hyprland-${cfg.accent}-accent.conf" ''
-          $accent=''$${cfg.accent}
-          $accentAlpha=''$${cfg.accent}Alpha
-        '')
-      ];
+      # source = [
+      #   "${sources.hyprland}/themes/${cfg.flavor}.conf"
+      #   (builtins.toFile "hyprland-${cfg.accent}-accent.conf" ''
+      #     $accent=''$${cfg.accent}
+      #     $accentAlpha=''$${cfg.accent}Alpha
+      #   '')
+      # ];
       "$font" = "Recursive";
       general = {
         disable_loading_bar = false;
