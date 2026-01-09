@@ -64,6 +64,11 @@
       url = "github:sevos/waystt";
       flake = false;
     };
+
+    beads = {
+      url = "github:steveyegge/beads";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
