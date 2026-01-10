@@ -206,7 +206,7 @@
             --time \
             --asterisks \
             --user-menu \
-            --cmd Hyprland
+            --cmd start-hyprland
         '';
       };
     };
@@ -266,7 +266,7 @@
     # '';
     etc = {
       "greetd/environments".text = ''
-        Hyprland
+        start-hyprland
       '';
 
       "grafana/dashboards/smartctl.json" = {
