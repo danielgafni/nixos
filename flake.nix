@@ -117,6 +117,7 @@
           "docker"
           "video"
           "networkmanager"
+          "plugdev"
         ];
         packages = [pkgs.home-manager];
       };

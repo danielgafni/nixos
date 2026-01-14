@@ -147,9 +147,11 @@ in {
     source = ./assets/avatar.jpg;
   };
 
-  # TODO: most packages were moved to users/*.nix
+  # TODO: most packages were moved to homes/*.nix
   # the common packages should be moved back here
   home.packages = with pkgs; [
     qimgv
+    unzip
+    jq
   ];
 }

@@ -15,6 +15,7 @@
     ../yubikey
     ../1password
     ../secrets
+    ../chrome-hidraw
   ];
 
   nix = {
