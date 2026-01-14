@@ -156,11 +156,11 @@
         always_allow_tool_actions = true;
         default_model = {
           provider = "anthropic";
-          model = "claude-sonnet-4";
+          model = "claude-opus-4.5";
         };
         inline_assistant_model = {
           provider = "anthropic";
-          model = "claude-sonnet-4";
+          model = "claude-opus-4.5";
         };
         inline_alternatives = [
           {
@@ -173,8 +173,8 @@
         anthropic = {
           available_models = [
             {
-              name = "claude-sonnet-4";
-              display_name = "Claude Sonnet 4";
+              name = "claude-opus-4.5";
+              display_name = "Claude Opus 4.5";
               max_tokens = 128000;
               max_output_tokens = 2560;
             }
