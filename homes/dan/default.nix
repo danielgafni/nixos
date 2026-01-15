@@ -10,6 +10,7 @@
 
     ./hyprpaper
     ./sops
+    ./keyboards
     ../../packages/nebius-cli.nix
     ../../packages/waystt.nix
   ];
