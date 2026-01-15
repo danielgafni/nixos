@@ -69,6 +69,8 @@
       url = "github:steveyegge/beads";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # xremap-flake.url = "github:xremap/nix-flake";
   };
 
   outputs = {
@@ -118,6 +120,7 @@
           "video"
           "networkmanager"
           "plugdev"
+          "input" # for xremap to access all keyboard devices
         ];
         packages = [pkgs.home-manager];
       };
@@ -227,6 +230,7 @@
           sops-nix.homeManagerModules.sops
           vicinae.homeManagerModules.default
           stylix.homeModules.stylix
+          # inputs.xremap-flake.homeManagerModules.default
         ];
       };
   in {

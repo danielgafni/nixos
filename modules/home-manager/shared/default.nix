@@ -15,6 +15,7 @@ in {
     ./wayland
     ./services
     ./shell
+    # ./xremap
     ./environment.nix
     ./fonts.nix
     ./stylix.nix

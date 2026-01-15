@@ -1,10 +1,11 @@
 _: {
-  # Create the plugdev group
+  # Create the plugdev group for device access
   users.groups.plugdev = {};
 
   services.udev.extraRules = ''
-    # Allow user access to /dev/hidraw2 for WebHID
-    # originally added for the VIA keyboard control web app
-    KERNEL=="hidraw2", MODE="0660", GROUP="plugdev", TAG+="uaccess"
+    # NuPhy keyboards - Allow user access for WebHID/VIA keyboard control
+    # Vendor ID 19f5 matches all NuPhy devices
+    SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="19f5", MODE="0660", GROUP="plugdev", TAG+="uaccess"
+    KERNEL=="hidraw*", ATTRS{idVendor}=="19f5", MODE="0660", GROUP="plugdev", TAG+="uaccess"
   '';
 }
