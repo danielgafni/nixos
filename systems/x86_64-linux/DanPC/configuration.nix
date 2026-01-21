@@ -8,6 +8,20 @@
 }: {
   networking.hostName = "DanPC";
 
+  # PipeWire audio tuning for Zed voice channels (fixes distortion from 48kHz->44.1kHz resampling)
+  services.pipewire = {
+    extraConfig.pipewire."99-allowed-rates" = {
+      "context.properties" = {
+        "default.clock.allowed-rates" = [44100 48000];
+      };
+    };
+    extraConfig.pipewire-pulse."99-resample" = {
+      "stream.properties" = {
+        "resample.quality" = 10; # highest quality resampler (0-14, default 4)
+      };
+    };
+  };
+
   services.xserver.videoDrivers = ["nvidia"];
 
   hardware = {
