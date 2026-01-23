@@ -229,11 +229,6 @@
       pulse.enable = true;
       # If you want to use JACK applications, uncomment this
       #jack.enable = true;
-      extraConfig.pipewire."99-allowed-rates" = {
-        "context.properties" = {
-          "default.clock.allowed-rates" = [44100 48000];
-        };
-      };
     };
 
     # mullvad has broken all network for me once!
