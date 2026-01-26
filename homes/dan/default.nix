@@ -13,6 +13,7 @@
     ./keyboards
     ../../packages/nebius-cli.nix
     ../../packages/waystt.nix
+    ../../modules/home-manager/programs/clawdbot
   ];
 
   programs = {

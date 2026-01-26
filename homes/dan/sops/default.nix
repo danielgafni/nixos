@@ -7,6 +7,7 @@ _: {
       CLAUDE_CODE_TOKEN = {};
       OPENAI_API_KEY = {};
       TESTPYPI_TOKEN = {};
+      CLADW_BOT_TOKEN = {};
     };
   };
 }

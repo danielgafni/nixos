@@ -65,6 +65,11 @@
       flake = false;
     };
 
+    nix-clawdbot = {
+      url = "github:clawdbot/nix-clawdbot";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     beads = {
       url = "github:steveyegge/beads";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -92,6 +97,7 @@
 
     overlays = [
       inputs.nixpkgs-wayland.overlay
+      inputs.nix-clawdbot.overlays.default
     ];
 
     pkgs = import nixpkgs {
@@ -230,6 +236,7 @@
           sops-nix.homeManagerModules.sops
           vicinae.homeManagerModules.default
           stylix.homeModules.stylix
+          inputs.nix-clawdbot.homeManagerModules.clawdbot
           # inputs.xremap-flake.homeManagerModules.default
         ];
       };
