@@ -81,6 +81,7 @@
       just
       sad
       expect
+      devenv
       # claude-code
 
       # messengers
