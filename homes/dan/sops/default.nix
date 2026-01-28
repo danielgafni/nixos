@@ -7,7 +7,9 @@ _: {
       CLAUDE_CODE_TOKEN = {};
       OPENAI_API_KEY = {};
       TESTPYPI_TOKEN = {};
-      CLADW_BOT_TOKEN = {};
+      # Per-host Telegram bot tokens for clawdbot
+      CLAWDBOT_TELEGRAM_TOKEN_DANPC = {};
+      CLAWDBOT_TELEGRAM_TOKEN_FRAMNIX = {};
     };
   };
 }
