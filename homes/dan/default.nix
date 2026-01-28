@@ -13,6 +13,7 @@
     ./keyboards
     ../../packages/nebius-cli.nix
     ../../packages/waystt.nix
+    # clawdbot is now configured per-host in modules/home-manager/hosts/{host}/clawdbot.nix
   ];
 
   programs = {

@@ -1,4 +1,8 @@
-_: {
+{...}: {
+  imports = [
+    ./clawdbot.nix
+  ];
+
   # add custom host-specific stuff here
   home.sessionVariables = {
     LIBVA_DRIVER_NAME = "nvidia";
