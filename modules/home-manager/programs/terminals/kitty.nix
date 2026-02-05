@@ -2,7 +2,7 @@
   programs.kitty = {
     enable = true;
     font = {
-      name = "FiraCode Nerd Font Mono";
+      name = "Maple Mono NF";
       inherit (host-settings.font.text) size;
     };
     settings = {

@@ -71,13 +71,14 @@
       border_size = 5.0;
       inactive_opacity = 0.9;
       format_on_save = "off";
-      buffer_font_family = "'Fira Code Nerd Fonts Mono', 'Fira Code', 'ZedMono Nerd Font', 'Noto Sans Symbols', 'Symbols Nerd Font Mono'";
+      buffer_font_family = "Maple Mono NF";
       buffer_font_features = {
         calt = true;
       };
+      ui_font_family = "Cabin";
       ui_font_size = 18;
       buffer_font_size = 17;
-      buffer_font_fallbacks = ["'Symbols Nerd Font Mono'"];
+      buffer_font_fallbacks = ["Symbols Nerd Font Mono"];
       double_click_in_multibuffer = "open";
       theme = {
         mode = "system";
@@ -102,7 +103,7 @@
           # TODO: enable once remote development supports running the "zed" command properly
           # EDITOR = "zed --wait";
         };
-        font_family = "'Fira Code Nerd Fonts Mono', 'Fira Code', 'ZedMono Nerd Font', 'Noto Sans Symbols', 'Symbols Nerd Font Mono'";
+        font_family = "Maple Mono NF";
         copy_on_select = true;
       };
       indent_guides = {

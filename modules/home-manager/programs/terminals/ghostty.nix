@@ -9,7 +9,7 @@
 
       #theme = "catppuccin-mocha";
 
-      font-family = "FiraCode Nerd Font Mono";
+      font-family = "Maple Mono NF";
       font-size = host-settings.font.text.size;
 
       # 100 MB in bytes
