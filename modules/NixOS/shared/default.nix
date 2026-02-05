@@ -100,8 +100,8 @@
       };
       serif = config.stylix.fonts.sansSerif;
       monospace = {
-        package = pkgs.nerd-fonts.fira-code;
-        name = "FiraCode Nerd Font Mono";
+        package = pkgs.maple-mono.NF;
+        name = "Maple Mono NF";
       };
       emoji = {
         package = pkgs.noto-fonts-color-emoji;

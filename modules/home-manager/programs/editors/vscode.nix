@@ -47,8 +47,8 @@ in {
         "workbench.colorTheme" = "Catppuccin Mocha";
         "workbench.iconTheme" = "catppuccin-mocha";
         "window.zoomLevel" = 1;
-        "editor.fontFamily" = "'Fira Code Nerd Fonts Mono', 'Fira Code', 'Fira Code Symbol', 'Symbols Nerd Font Mono', monospace";
-        "terminal.integrated.fontFamily" = "'Fira Code Nerd Fonts Mono', 'Fira Code', 'Fira Code Symbol', 'Symbols Nerd Font Mono', monospace";
+        "editor.fontFamily" = "'Maple Mono NF', 'Symbols Nerd Font Mono', monospace";
+        "terminal.integrated.fontFamily" = "'Maple Mono NF', 'Symbols Nerd Font Mono', monospace";
         "editor.fontSize" = host-settings.font.text.size;
         "terminal.integrated.fontSize" = host-settings.font.text.size;
         "github.copilot.enable" = {

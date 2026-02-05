@@ -3,6 +3,7 @@
 My NixOS configuration with multi-host setup, a few GitHub Actions, [personal build cache](https://danielgafni.cachix.org/), checks via pre-commit hooks & CI, and [Catppuccin](https://catppuccin.com/) theme for all programs.
 
 Key components:
+
 - [NixOS](https://nixos.org/) for system configuration
 - [Home Manager](https://github.com/nix-community/home-manager) for user configuration. Most user-space programs are installed and configured via Home Manager.
 - [Hyprland](https://hyprland.org/) as Wayland compositor & window manager. It's very fast, looks amazing, and has a lot of features. Now has a huge community and is finally stable!
@@ -39,7 +40,6 @@ This will download, build and install **system** packages, files and configurati
 > [!NOTE]
 > Use `nh os test` to test configurations without adding boot entries.
 
-
 ```shell
 nh home switch
 ```
@@ -54,11 +54,13 @@ Secrets are configured with [sops-nix](https://github.com/Mic92/sops-nix).
 
 ### Fonts
 
-| Purpose | Name | Comment |
-|----------|----------|-------|
-| Code    | FiraCode Nerd Font | |
-| UI    | Cabin   | Easy on eyes, good default |
-| UI    | Recursive  | Eye candy, catchy |
+| Purpose | Name                                                        | Comment                    |
+| ------- | ----------------------------------------------------------- | -------------------------- |
+| Code    | [Maple Mono NF](https://github.com/subframe7536/maple-font) | Programming                |
+| UI      | Cabin                                                       | Easy on eyes, good default |
+| UI      | Recursive                                                   | Eye candy, catchy          |
+
+Honorable mention: [Fira Code](https://github.com/tonsky/FiraCode) - an excellent programming font that served me very well for years.
 
 It's necessary to rebuild fonts cache in order to observe live changes after modifying the config:
 
@@ -71,7 +73,7 @@ fc-cache -rf
 `packages/` contains some custom packages. These are:
 
 - `packages/nebius-cli.nix` - [Nebius CLI](https://docs.nebius.com/cli)
-- `packages/waystt.nix` - [waystt](https://github.com/sevos/waystt) - Wayland speech-to-text tooling. Press `SUPER+T` to talk, release to type transcribed text via `wtype`. Using `SUPER+SHIFT+T` copies the transcript to clipboard instead. 
+- `packages/waystt.nix` - [waystt](https://github.com/sevos/waystt) - Wayland speech-to-text tooling. Press `SUPER+T` to talk, release to type transcribed text via `wtype`. Using `SUPER+SHIFT+T` copies the transcript to clipboard instead.
 
 ### Debugging mime-type
 
