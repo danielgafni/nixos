@@ -66,29 +66,6 @@ command_not_found_handler() {
 # Direnv
 eval "$(direnv hook zsh)"
 
-# Background GitHub PR cache updater for starship
-_update_gh_pr_cache() {
-  (
-    git_root=$(git rev-parse --show-toplevel 2>/dev/null) || return
-    branch=$(git branch --show-current 2>/dev/null) || return
-    [ -z "$branch" ] && return
-
-    cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/starship"
-    mkdir -p "$cache_dir"
-    repo_id=$(echo "$git_root" | md5sum | cut -c1-8)
-    cache_file="$cache_dir/gh_pr_$repo_id"
-
-    pr=$(gh api repos/{owner}/{repo}/pulls --jq ".[] | select(.head.ref == \"$branch\") | \"\\(.number)|\\(.html_url)\"" 2>/dev/null | head -1)
-    if [ -n "$pr" ]; then
-      num="${pr%|*}"
-      url="${pr#*|}"
-      printf '\e]8;;%s\e\\PR #%s\e]8;;\e\\' "$url" "$num" > "$cache_file"
-    else
-      rm -f "$cache_file"
-    fi
-  ) &>/dev/null &!
-}
-precmd_functions+=(_update_gh_pr_cache)
 
 # Yazi - change cwd on exit
 function y() {
