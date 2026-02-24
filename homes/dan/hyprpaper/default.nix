@@ -9,8 +9,13 @@ _: {
     };
   };
 
-  xdg.configFile."hypr/hyprpaper.conf".text = ''
-    preload=~/.config/wallpapers/catppuccin-forest.png
-    wallpaper =,~/.config/wallpapers/catppuccin-forest.png
-  '';
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      wallpaper = {
+        monitor = "";
+        path = "~/.config/wallpapers/catppuccin-forest.png";
+      };
+    };
+  };
 }

@@ -122,7 +122,7 @@
 
   services = {
     grafana = {
-      enable = true;
+      enable = false;
       settings = {
         server = {
           # Listening Address
@@ -158,7 +158,7 @@
       };
     };
     prometheus = {
-      enable = true;
+      enable = false;
       exporters = {
         node = {
           enable = true;
@@ -305,9 +305,8 @@
       brightnessctl
       pavucontrol
       direnv
-      (python310.withPackages (ps:
+      (python3.withPackages (ps:
         with ps; [
-          pipx
           pre-commit
         ]))
       nix-output-monitor
@@ -341,8 +340,7 @@
     nix-ld = {
       enable = true;
       libraries = with pkgs; [
-        # python 3.10
-        python310
+        python312
       ];
     };
     steam = {

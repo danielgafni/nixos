@@ -54,7 +54,6 @@
 
       # wayland/DE
       libnotify # notify-send command
-      hyprpaper
       hyprpicker
       grim
       slurp
