@@ -832,6 +832,7 @@
         "pre-commit-hooks": "pre-commit-hooks",
         "rust-overlay": "rust-overlay_2",
         "sops-nix": "sops-nix",
+        "stax": "stax",
         "stylix": "stylix",
         "vicinae": "vicinae",
         "waystt": "waystt"
@@ -893,6 +894,22 @@
       "original": {
         "owner": "Mic92",
         "repo": "sops-nix",
+        "type": "github"
+      }
+    },
+    "stax": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1771930657,
+        "narHash": "sha256-ualgngzUPz01P+pMZWxp11m8MLZb26Pl8PrXEt0D5PY=",
+        "owner": "cesarferreira",
+        "repo": "stax",
+        "rev": "7f39172ce60b9f5fa65ec5ae234abcd42d224813",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cesarferreira",
+        "repo": "stax",
         "type": "github"
       }
     },

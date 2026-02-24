@@ -70,6 +70,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    stax = {
+      url = "github:cesarferreira/stax";
+      flake = false;
+    };
+
     # xremap-flake.url = "github:xremap/nix-flake";
   };
 

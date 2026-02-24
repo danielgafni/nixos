@@ -26,5 +26,7 @@ in {
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
 
     TERRAGRUNT_PROVIDER_CACHE = "1";
+
+    PULUMI_IGNORE_AMBIENT_PLUGINS = "true";
   };
 }
