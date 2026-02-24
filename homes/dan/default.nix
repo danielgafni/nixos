@@ -12,12 +12,14 @@
     ./sops
     ./keyboards
     ../../packages/nebius-cli.nix
+    ../../packages/stax.nix
     ../../packages/waystt.nix
   ];
 
   programs = {
     nebius-cli.enable = true;
     bun.enable = true;
+    stax.enable = true;
     waystt = {
       enable = true;
       settings = {
