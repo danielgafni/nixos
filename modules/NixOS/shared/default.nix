@@ -66,8 +66,9 @@
     networkmanager = {
       enable = true;
       settings.main.authPolkit = false;
+      # Tailscale MagicDNS (100.100.100.100) must come first so .ts.net is resolved correctly
       # Easiest to use and most distros use this by default.
-      insertNameservers = ["1.1.1.1" "8.8.8.8"];
+      insertNameservers = ["100.100.100.100" "1.1.1.1" "8.8.8.8"];
     };
 
     # Configure network proxy if necessary
