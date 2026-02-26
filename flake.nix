@@ -65,10 +65,10 @@
       flake = false;
     };
 
-    beads = {
-      url = "github:steveyegge/beads";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # beads = {
+    #  url = "github:steveyegge/beads";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
 
     stax = {
       url = "github:cesarferreira/stax";

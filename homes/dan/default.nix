@@ -54,7 +54,6 @@
 
       # wayland/DE
       libnotify # notify-send command
-      hyprpaper
       hyprpicker
       grim
       slurp
@@ -128,7 +127,7 @@
       keepassxc
 
       # AI
-      inputs.beads.packages.x86_64-linux.default
+      # inputs.beads.packages.x86_64-linux.default
     ];
   };
 }
