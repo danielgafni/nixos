@@ -75,6 +75,8 @@
       flake = false;
     };
 
+    rip.url = "github:cesarferreira/rip";
+
     # xremap-flake.url = "github:xremap/nix-flake";
   };
 
