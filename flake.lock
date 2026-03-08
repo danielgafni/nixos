@@ -914,11 +914,11 @@
     "stax": {
       "flake": false,
       "locked": {
-        "lastModified": 1771930657,
-        "narHash": "sha256-ualgngzUPz01P+pMZWxp11m8MLZb26Pl8PrXEt0D5PY=",
+        "lastModified": 1772927388,
+        "narHash": "sha256-ekte33Tcd4VtcdZfsXGw47lHrbouGRW+4adJX6wxQiw=",
         "owner": "cesarferreira",
         "repo": "stax",
-        "rev": "7f39172ce60b9f5fa65ec5ae234abcd42d224813",
+        "rev": "57ab0d11cf5d2bbd6c2929d0a99bdee9f9c2f39b",
         "type": "github"
       },
       "original": {
