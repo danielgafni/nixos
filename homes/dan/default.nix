@@ -83,7 +83,7 @@
       just
       sad
       expect
-      devenv
+      inputs.devenv.packages.${pkgs.system}.devenv
       # claude-code
 
       # messengers

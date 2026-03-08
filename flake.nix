@@ -77,6 +77,8 @@
 
     rip.url = "github:cesarferreira/rip";
 
+    devenv.url = "github:cachix/devenv";
+
     # xremap-flake.url = "github:xremap/nix-flake";
   };
 
