@@ -1,0 +1,11 @@
+{
+  "lspServers": {
+    "nix": {
+      "command": "/usr/bin/env",
+      "args": ["nil"],
+      "extensionToLanguage": {
+        ".nix": "nix"
+      }
+    }
+  }
+}
