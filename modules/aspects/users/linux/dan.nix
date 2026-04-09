@@ -4,24 +4,6 @@
   lib,
   ...
 }: let
-  mkStax = pkgs: let
-    crane = inputs.crane.mkLib pkgs;
-    src = inputs.stax;
-    commonArgs = {
-      inherit src;
-      pname = "stax";
-      strictDeps = true;
-      nativeBuildInputs = with pkgs; [pkg-config cmake perl];
-      buildInputs = with pkgs; [zlib];
-    };
-    cargoArtifacts = crane.buildDepsOnly commonArgs;
-  in
-    crane.buildPackage (commonArgs
-      // {
-        inherit cargoArtifacts;
-        doCheck = false;
-      });
-
   mkWaystt = pkgs: let
     crane = inputs.crane.mkLib pkgs;
     src = inputs.waystt;
@@ -58,10 +40,6 @@ in {
     }: {
       programs = {
         nebius-cli.enable = true;
-        stax = {
-          enable = true;
-          package = mkStax pkgs;
-        };
         waystt = {
           enable = true;
           package = mkWaystt pkgs;

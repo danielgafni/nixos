@@ -8,5 +8,10 @@
     mac-app-util-hm = {
       homeManager.imports = [inputs.mac-app-util.homeManagerModules.default];
     };
+    raycast = {
+      homeManager = {pkgs, ...}: {
+        home.packages = [pkgs.raycast];
+      };
+    };
   };
 }
