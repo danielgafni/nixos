@@ -45,9 +45,6 @@
           alt - 4 : osascript -e 'tell application "System Events" to key code 21 using control down'
           alt - 5 : osascript -e 'tell application "System Events" to key code 23 using control down'
           alt - 6 : osascript -e 'tell application "System Events" to key code 22 using control down'
-
-          # Fullscreen toggle
-          alt - f : osascript -e 'tell application "System Events" to keystroke "f" using {control down, command down}'
         '';
       };
     };

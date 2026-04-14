@@ -50,6 +50,37 @@ Three subdirectories:
 - **`hosts/`** - Per-host aspects (`DanPC.nix`, `framnix.nix`, `MacBook.nix`) that include feature aspects and link to `systems/` hardware configs
 - **`users/`** - Per-user aspects (`dan.nix`, `underdel.nix`) that include feature aspects and set user-specific data
 
+#### Aspect structure (`modules/aspects/`)
+
+```
+aspects/
+├── features/
+│   ├── shell/          # Shell, CLI tools, terminals (cli.nix, default.nix, terminals.nix)
+│   ├── dev/            # Git, nix-tools, krewfile
+│   ├── editors/        # Neovim, Zed, Helix, Cursor
+│   ├── security/       # SSH, GPG, sops
+│   ├── desktop/        # Fonts, content, keyboards
+│   ├── darwin/         # macOS-only features (macos.nix, docker.nix)
+│   ├── nixos/          # NixOS-only features (system.nix, 1password.nix, yubikey.nix)
+│   ├── linux/          # Linux desktop (wayland, hyprland, hyprpanel, ...)
+│   ├── base.nix        # Base cross-platform HM config
+│   └── shared-hm.nix   # Cross-platform feature bundle + platform variants
+├── hosts/              # DanPC.nix, framnix.nix, MacBook.nix
+└── users/
+    ├── dan.nix         # Cross-platform user config
+    ├── underdel.nix    # Cross-platform user config
+    ├── darwin/         # macOS user entry points (dan-darwin)
+    └── linux/          # Linux user entry points (dan-linux, underdel-linux)
+```
+
+#### Include graph
+
+- **`shared-hm`** includes: base, shell, fonts, git, ssh, terminals, cli, nix-tools
+- **`shared-hm-darwin`** includes: gpg-darwin, cli-darwin, terminals-darwin, mac-app-util-hm
+- **`shared-hm-linux`** includes: desktop-linux, hyprland, hyprpanel, cli-linux, etc.
+- User aspects (e.g. `dan`) include `shared-hm` + editors + dev tools
+- Platform user aspects (e.g. `dan-darwin`) include base user + `shared-hm-darwin`
+
 ### Hardware & system configs (`systems/`)
 
 Platform-specific NixOS `configuration.nix` and `hardware-configuration.nix` files, imported by host aspects.
