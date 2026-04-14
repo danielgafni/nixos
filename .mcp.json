@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "nix": {
+      "command": "/usr/bin/env",
+      "args": ["nix", "run", "github:utensils/mcp-nixos", "--"]
+    }
+  }
+}
