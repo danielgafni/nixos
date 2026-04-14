@@ -6,7 +6,12 @@
       den.aspects.shared-hm-darwin
       den.aspects.raycast
     ];
-    homeManager = {lib, ...}: {
+    homeManager = {
+      lib,
+      pkgs,
+      ...
+    }: {
+      home.packages = [pkgs.iina];
       home.sessionVariables = {
         NH_FLAKE = "/Users/dan/nixos";
       };
