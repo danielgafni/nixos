@@ -11,7 +11,7 @@
       pname = "stax";
       strictDeps = true;
       nativeBuildInputs = with pkgs; [pkg-config cmake perl];
-      buildInputs = with pkgs; [zlib];
+      buildInputs = with pkgs; [zlib openssl];
     };
     cargoArtifacts = crane.buildDepsOnly commonArgs;
   in
@@ -73,7 +73,12 @@ in {
             package = mkStax pkgs;
           };
         };
-        home.packages = [pkgs._1password-cli];
+        home.packages = let
+          pkgs-1password = import inputs.nixpkgs-1password {
+            inherit (pkgs.stdenv.hostPlatform) system;
+            config.allowUnfree = true;
+          };
+        in [pkgs-1password._1password-cli];
       };
     };
     cli-darwin = {
