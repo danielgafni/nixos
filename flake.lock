@@ -1356,6 +1356,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-1password": {
+      "locked": {
+        "lastModified": 1774610258,
+        "narHash": "sha256-HaThtroVD9wRdx7KQk0B75JmFcXlMUoEdDFNOMOlsOs=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "832efc09b4caf6b4569fbf9dc01bec3082a00611",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "832efc09b4caf6b4569fbf9dc01bec3082a00611",
+        "type": "github"
+      }
+    },
     "nixpkgs-23_11": {
       "locked": {
         "lastModified": 1720535198,
@@ -1906,6 +1922,7 @@
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_13",
+        "nixpkgs-1password": "nixpkgs-1password",
         "nixpkgs-23_11": "nixpkgs-23_11",
         "nixpkgs-wayland": "nixpkgs-wayland",
         "nixvim": "nixvim",
@@ -2002,11 +2019,11 @@
     "stax": {
       "flake": false,
       "locked": {
-        "lastModified": 1772927388,
-        "narHash": "sha256-ekte33Tcd4VtcdZfsXGw47lHrbouGRW+4adJX6wxQiw=",
+        "lastModified": 1776168264,
+        "narHash": "sha256-Mg8r8O28t5c4BtxyhpGEheRcuTzg5ZyOkaanzL7omK4=",
         "owner": "cesarferreira",
         "repo": "stax",
-        "rev": "57ab0d11cf5d2bbd6c2929d0a99bdee9f9c2f39b",
+        "rev": "a7570b328a778b960739e9ead2a3a32c0ef425f3",
         "type": "github"
       },
       "original": {
