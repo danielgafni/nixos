@@ -15,7 +15,7 @@ _: {
       environment.variables.DOCKER_HOST = "unix:///Users/${config.system.primaryUser}/.colima/default/docker.sock";
 
       launchd.user.agents.colima = {
-        command = "${pkgs.colima}/bin/colima start --foreground --disk 500";
+        command = "${pkgs.colima}/bin/colima start --foreground --root-disk 500";
         path = [pkgs.docker pkgs.colima "/usr/bin" "/bin" "/usr/sbin"];
         serviceConfig = {
           Label = "com.github.abiosoft.colima";
