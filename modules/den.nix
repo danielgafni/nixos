@@ -49,6 +49,10 @@
                   type = lib.types.attrs;
                   default = {};
                 };
+                keymap = lib.mkOption {
+                  type = lib.types.attrs;
+                  default = {};
+                };
               };
             })
           ];
@@ -75,8 +79,11 @@
           hostName = builtins.elemAt parts 1;
         in {
           homeManager = {
-            my.hostSettings = config.hostData.${hostName} or {};
-            my.userConfig = config.userData.${userName} or {};
+            my = {
+              hostSettings = config.hostData.${hostName} or {};
+              userConfig = config.userData.${userName} or {};
+              inherit (config) keymap;
+            };
           };
         })
       ];
@@ -183,8 +190,8 @@
 
       MacBook = {
         font = {
-          titles.size = 16;
-          text.size = 14;
+          titles.size = 18;
+          text.size = 17;
         };
         cursor.size = 24;
       };

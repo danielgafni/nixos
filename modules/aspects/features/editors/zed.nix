@@ -5,7 +5,13 @@
 }: {
   den.aspects = {
     zed = {
-      homeManager = {pkgs, ...}: {
+      homeManager = {
+        pkgs,
+        config,
+        ...
+      }: let
+        hd = config.my.hostSettings;
+      in {
         home.packages = with pkgs; [nixd nil zls cargo rustc rust-analyzer clippy typos typos-lsp];
         programs.zed-editor = {
           enable = true;
@@ -36,8 +42,8 @@
             buffer_font_family = "Maple Mono NF";
             buffer_font_features = {calt = true;};
             ui_font_family = "Cabin";
-            ui_font_size = 18;
-            buffer_font_size = 17;
+            ui_font_size = hd.font.titles.size or 18;
+            buffer_font_size = hd.font.text.size or 17;
             buffer_font_fallbacks = ["Symbols Nerd Font Mono"];
             double_click_in_multibuffer = "open";
             theme = {mode = "system";};

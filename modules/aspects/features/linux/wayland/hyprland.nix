@@ -8,11 +8,19 @@
     }: let
       hd = config.my.hostSettings;
       ud = config.my.userConfig;
+      inherit (config.my) keymap;
+      toStr = builtins.toString;
       mkAutostartEntry = {
         program,
         workspace,
       }: "[workspace ${workspace} silent] ${program}";
       mkAutostartList = entries: (map mkAutostartEntry entries);
+      # Generate Hyprland workspace binding lines from shared keymap data.
+      mkWorkspaceLines = {
+        mod,
+        dispatcher,
+      }:
+        lib.concatMapStringsSep "\n" (w: "bind=${mod},${w.key},${dispatcher},${toStr w.workspace}") keymap.workspaces;
     in {
       home = {
         packages = with pkgs; [
@@ -167,15 +175,15 @@
 
             # starting applications
             "$mod,RETURN,exec,ghostty"
-            "$mod,E,exec,ghostty -e yazi"
+            "$mod,${keymap.keys.fileManager},exec,ghostty -e yazi"
             "$mod,space,exec,vicinae toggle"
             ''$mod,B,exec, [float; minsize 500 500] obsidian obsidian://daily?vault=The%20Well''
 
             # window management
-            "$mod,Q,killactive"
+            "$mod,${keymap.keys.killWindow},killactive"
             "SUPER_SHIFT,M,exit"
-            "$mod,S,togglefloating"
-            "$mod,F,fullscreen"
+            "$mod,${keymap.keys.floating},togglefloating"
+            "$mod,${keymap.keys.fullscreen},fullscreen"
             "$mod,N,swapnext"
             "$mod,A,togglesplit"
             "$mod,P,pseudo,"
@@ -195,7 +203,7 @@
             ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-"
 
             # screen locking
-            "$mod,L,exec,grim -o ${hd.hyprlock.monitor or "eDP-1"} /tmp/screenshot.png && (pidof hyprlock || hyprlock)"
+            "$mod,${keymap.keys.lock},exec,grim -o ${hd.hyprlock.monitor or "eDP-1"} /tmp/screenshot.png && (pidof hyprlock || hyprlock)"
             # hyprland management
             "$mod,R,exec,hyprctl reload"
           ];
@@ -249,34 +257,22 @@
           bind=$mod,down,movefocus,d
 
           # workspace selection
-          bind=$mod,1,workspace,1
-          bind=$mod,2,workspace,2
-          bind=$mod,3,workspace,3
-          bind=$mod,4,workspace,4
-          bind=$mod,5,workspace,5
-          bind=$mod,6,workspace,6
-          bind=$mod,7,workspace,7
-          bind=$mod,8,workspace,8
-          bind=$mod,9,workspace,9
-          bind=$mod,0,workspace,10
+          ${mkWorkspaceLines {
+            mod = "$mod";
+            dispatcher = "workspace";
+          }}
 
           # move window to workspace
-          bind=CTRL_SUPER,1,movetoworkspace,1
-          bind=CTRL_SUPER,2,movetoworkspace,2
-          bind=CTRL_SUPER,3,movetoworkspace,3
-          bind=CTRL_SUPER,4,movetoworkspace,4
-          bind=CTRL_SUPER,5,movetoworkspace,5
-          bind=CTRL_SUPER,6,movetoworkspace,6
-          bind=CTRL_SUPER,7,movetoworkspace,7
-          bind=CTRL_SUPER,8,movetoworkspace,8
-          bind=CTRL_SUPER,9,movetoworkspace,9
-          bind=CTRL_SUPER,0,movetoworkspace,10
+          ${mkWorkspaceLines {
+            mod = "CTRL_SUPER";
+            dispatcher = "movetoworkspace";
+          }}
 
           bind=$mod,mouse_down,workspace,e+1
           bind=$mod,mouse_up,workspace,e-1
 
           bind=$mod,g,togglegroup
-          bind=$mod,tab,changegroupactive
+          bind=$mod,${keymap.keys.cycleWindowInGroup},changegroupactive
         '';
       };
     };
