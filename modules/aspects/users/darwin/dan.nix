@@ -5,6 +5,10 @@
       # Darwin shared HM features
       den.aspects.shared-hm-darwin
       den.aspects.raycast
+      # Window manager + bar + borders (dan-only)
+      den.aspects.aerospace
+      den.aspects.sketchybar
+      den.aspects.jankyborders
     ];
     homeManager = {
       lib,

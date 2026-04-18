@@ -32,21 +32,6 @@
 
       # Touch ID for sudo
       security.pam.services.sudo_local.touchIdAuth = true;
-
-      services.skhd = {
-        enable = true;
-        skhdConfig = ''
-          alt - return : open -a Ghostty
-
-          # Switch desktops (requires Mission Control shortcuts enabled in System Settings)
-          alt - 1 : osascript -e 'tell application "System Events" to key code 18 using control down'
-          alt - 2 : osascript -e 'tell application "System Events" to key code 19 using control down'
-          alt - 3 : osascript -e 'tell application "System Events" to key code 20 using control down'
-          alt - 4 : osascript -e 'tell application "System Events" to key code 21 using control down'
-          alt - 5 : osascript -e 'tell application "System Events" to key code 23 using control down'
-          alt - 6 : osascript -e 'tell application "System Events" to key code 22 using control down'
-        '';
-      };
     };
   };
 }
