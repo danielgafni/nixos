@@ -42,6 +42,9 @@ _: {
           default-root-container-layout = "tiles";
           default-root-container-orientation = "auto";
 
+          on-focus-changed = ["move-mouse window-lazy-center"];
+          on-focused-monitor-changed = ["move-mouse monitor-lazy-center"];
+
           gaps = {
             outer = {
               left = 3;
