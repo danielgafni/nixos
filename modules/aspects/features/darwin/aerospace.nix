@@ -21,6 +21,39 @@ _: {
             value = "${action} ${toString w.workspace}";
           })
           keymap.workspaces);
+
+      # Auto-assign apps to workspaces on launch. Covers known release channels
+      # (beta / canary / preview) for free. Look up bundle IDs for new apps with
+      # `aerospace list-apps`.
+      workspaceApps = {
+        "1" = [
+          "com.apple.Safari"
+          "com.apple.SafariTechnologyPreview"
+          "com.google.Chrome"
+          "com.google.Chrome.beta"
+          "com.google.Chrome.dev"
+          "com.google.Chrome.canary"
+        ];
+        "2" = [
+          "com.tdesktop.Telegram" # Telegram Desktop
+          "ru.keepcoder.Telegram" # Telegram (Mac App Store)
+          "com.tinyspeck.slackmacgap"
+          "com.hnc.Discord"
+          "com.hnc.Discord.ptb" # Discord PTB (beta)
+          "com.hnc.Discord.canary"
+        ];
+        "3" = [
+          "dev.zed.Zed"
+          "dev.zed.Zed-Preview"
+        ];
+        "5" = ["md.obsidian"];
+      };
+      mkWindowDetectionRules = workspace: appIds:
+        map (appId: {
+          "if".app-id = appId;
+          run = ["move-node-to-workspace ${workspace}"];
+        })
+        appIds;
     in {
       # Tolerate `aerospace reload-config` failing when AeroSpace isn't running
       # yet (first install): launchd will still bootstrap it afterward.
@@ -44,6 +77,9 @@ _: {
 
           on-focus-changed = ["move-mouse window-lazy-center"];
           on-focused-monitor-changed = ["move-mouse monitor-lazy-center"];
+
+          on-window-detected =
+            lib.concatLists (lib.mapAttrsToList mkWindowDetectionRules workspaceApps);
 
           gaps = {
             outer = {
