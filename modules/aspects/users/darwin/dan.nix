@@ -22,6 +22,7 @@
       programs.zsh.initContent = lib.mkOrder 1500 ''
         op account list &>/dev/null 2>&1 || eval "$(op signin)"
       '';
+      programs.ssh.includes = ["~/.ssh/puffy/*"];
     };
   };
 }
