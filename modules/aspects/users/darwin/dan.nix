@@ -8,6 +8,7 @@
       # Window manager + borders (dan-only)
       den.aspects.aerospace
       den.aspects.jankyborders
+      den.aspects.commandshift
       # den.aspects.swiftbar  # disabled — AeroSpace has a native menubar indicator
     ];
     homeManager = {
