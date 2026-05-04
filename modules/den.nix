@@ -38,6 +38,7 @@
             ./_packages/nebius-cli.nix
             ./_packages/stax.nix
             ./_packages/waystt.nix
+            ./_packages/commandshift.nix
             # HM options for host/user data (works for both embedded and standalone HM)
             ({lib, ...}: {
               options.my = {

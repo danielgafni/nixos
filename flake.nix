@@ -61,6 +61,11 @@
       flake = false;
     };
 
+    commandshift = {
+      url = "github:VasylBaran/CommandShift/1.05";
+      flake = false;
+    };
+
     rip.url = "github:cesarferreira/rip";
 
     # pinned nixpkgs for stable 1password-cli (2.33.1)

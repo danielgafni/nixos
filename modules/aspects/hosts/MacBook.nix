@@ -33,11 +33,15 @@
       # Touch ID for sudo
       security.pam.services.sudo_local.touchIdAuth = true;
 
+      # Cache sudo authentication for 30 minutes per tty (default is short).
+      security.sudo.extraConfig = ''
+        Defaults timestamp_timeout=30
+      '';
+
       system.defaults = {
         dock = {
           autohide = true;
           autohide-delay = 3.0;
-          # autohide-time-modifier = 0.0;
         };
         # NSGlobalDomain._HIHideMenuBar = true;
       };

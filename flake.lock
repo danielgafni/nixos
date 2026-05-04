@@ -240,6 +240,23 @@
         "type": "github"
       }
     },
+    "commandshift": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1760859923,
+        "narHash": "sha256-IXP0++voGaSpSgyr+Cvgtpd1NQUG2OgF66ina+UtbHM=",
+        "owner": "VasylBaran",
+        "repo": "CommandShift",
+        "rev": "58cb1c2ae3750ec9fb798e81dc51925e9210d9a6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "VasylBaran",
+        "ref": "1.05",
+        "repo": "CommandShift",
+        "type": "github"
+      }
+    },
     "crane": {
       "locked": {
         "lastModified": 1771796463,
@@ -1909,6 +1926,7 @@
         "_1password-shell-plugins": "_1password-shell-plugins",
         "catppuccin": "catppuccin",
         "chaotic": "chaotic",
+        "commandshift": "commandshift",
         "crane": "crane",
         "dagger": "dagger",
         "darwin": "darwin",
