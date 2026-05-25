@@ -95,6 +95,8 @@
     import-tree.url = "github:vic/import-tree";
 
     devenv.url = "github:cachix/devenv";
+
+    nixpkgs-zed.url = "github:NixOS/nixpkgs/3d8f0f3f72a6cd4d93d0ad13203f2ea1cb7e1456";
   };
 
   outputs = inputs:

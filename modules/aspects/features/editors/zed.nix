@@ -11,11 +11,15 @@
         ...
       }: let
         hd = config.my.hostSettings;
+        pkgs-zed = import inputs.nixpkgs-zed {
+          inherit (pkgs.stdenv.hostPlatform) system;
+          config.allowUnfree = true;
+        };
       in {
         home.packages = with pkgs; [nixd nil zls cargo rustc rust-analyzer clippy typos typos-lsp];
         programs.zed-editor = {
           enable = true;
-          package = pkgs.zed-editor;
+          package = pkgs-zed.zed-editor;
           extensions = ["catppuccin" "catppuccin-icons" "catppuccin-blur" "nix" "dockerfile" "docker-compose" "git-firefly" "helm" "markdown-oxide" "toml" "zig" "typos" "justfile" "sql" "sqlruff" "csv" "basedpyright" "ty"];
           userKeymaps = [
             {
@@ -88,11 +92,11 @@
               always_allow_tool_actions = true;
               default_model = {
                 provider = "anthropic";
-                model = "claude-opus-4.5";
+                model = "claude-opus-4-6";
               };
               inline_assistant_model = {
                 provider = "anthropic";
-                model = "claude-opus-4.5";
+                model = "claude-opus-4-6";
               };
               inline_alternatives = [
                 {
@@ -105,8 +109,8 @@
               anthropic = {
                 available_models = [
                   {
-                    name = "claude-opus-4.5";
-                    display_name = "Claude Opus 4.5";
+                    name = "claude-opus-4-6";
+                    display_name = "Claude Opus 4.6";
                     max_tokens = 128000;
                     max_output_tokens = 2560;
                   }
@@ -129,13 +133,7 @@
     };
 
     zed-linux = {
-      homeManager = {
-        pkgs,
-        lib,
-        ...
-      }: {
-        programs.zed-editor.package = lib.mkForce inputs.chaotic.packages.${pkgs.stdenv.hostPlatform.system}.zed-editor_git;
-      };
+      homeManager = _: {};
     };
   };
 }

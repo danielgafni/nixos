@@ -127,6 +127,7 @@ in {
                 fpath+=~/.zfunc
                 bindkey "^[[1;5C" forward-word
                 bindkey "^[[1;5D" backward-word
+                eval "$(devenv hook zsh)"
               '')
               ''
                 # Google Cloud SDK
@@ -208,6 +209,14 @@ in {
             };
           };
         };
+      };
+    };
+
+    shell-darwin = {
+      homeManager = {lib, ...}: {
+        programs.zsh.initContent = lib.mkOrder 100 ''
+          eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+        '';
       };
     };
 
