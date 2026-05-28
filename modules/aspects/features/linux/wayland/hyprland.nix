@@ -255,6 +255,10 @@
           bind=$mod,right,movefocus,r
           bind=$mod,up,movefocus,u
           bind=$mod,down,movefocus,d
+          bind=$mod,h,movefocus,l
+          bind=$mod,l,movefocus,r
+          bind=$mod,k,movefocus,u
+          bind=$mod,j,movefocus,d
 
           # workspace selection
           ${mkWorkspaceLines {

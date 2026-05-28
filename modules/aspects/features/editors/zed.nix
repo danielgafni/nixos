@@ -133,7 +133,9 @@
     };
 
     zed-linux = {
-      homeManager = _: {};
+      homeManager = {lib, ...}: {
+        programs.zed-editor.userSettings.ui_font_size = lib.mkForce 21;
+      };
     };
   };
 }
