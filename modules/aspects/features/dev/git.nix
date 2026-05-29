@@ -38,6 +38,7 @@
               rebase = true;
             };
             rerere.enabled = true;
+            blame.ignoreRevsFile = ".git-blame-ignore-revs";
           };
         };
       };
