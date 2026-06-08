@@ -65,12 +65,12 @@ in {
         pipewire
         wireplumber
         strace
-        neofetch
+        fastfetch
         signal-desktop
         element-desktop
         slack
         zoom-us
-        wasistlos
+        karere
         google-chrome
         rustlings
         mpv
