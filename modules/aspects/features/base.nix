@@ -20,7 +20,7 @@
           home-manager.enable = true;
           dircolors.enable = true;
           btop.enable = true;
-          zathura.enable = true;
+          zathura.enable = !pkgs.stdenv.hostPlatform.isDarwin;
         };
         news = {
           display = "silent";

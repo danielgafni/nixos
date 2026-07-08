@@ -47,7 +47,7 @@
         kubeseal
         sops
         age
-        (pkgs.wrapHelm pkgs.kubernetes-helm {plugins = [];})
+        (pkgs.wrapHelm (pkgs.kubernetes-helm.overrideAttrs {doCheck = false;}) {plugins = [];})
         (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
         awscli2
         opentofu
@@ -70,7 +70,7 @@
         wget
         eza
         pfetch
-        neofetch
+        fastfetch
         pre-commit
         just
         sad
@@ -90,7 +90,6 @@
         rust-analyzer
         nodejs
         telegram-desktop
-        discord
       ];
     };
   };

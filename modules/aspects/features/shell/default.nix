@@ -118,7 +118,6 @@ in {
               ZSH_CACHE_DIR = "$HOME/.cache/zsh";
               PYENV_VIRTUALENV_DISABLE_PROMPT = "1";
               PYENV_ROOT = "$HOME/.pyenv";
-              PYTHON_KEYRING_BACKEND = "keyring.backends.fail.Keyring";
               USE_GKE_GCLOUD_AUTH_PLUGIN = "True";
               DAGSTER_HOME = "$HOME/.dagster_home";
             };

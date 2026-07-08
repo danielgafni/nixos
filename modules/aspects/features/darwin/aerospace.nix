@@ -100,7 +100,9 @@ _: {
             // {
               "alt-${keymap.keys.fullscreen}" = "fullscreen";
               "alt-shift-${keymap.keys.fullscreen}" = "flatten-workspace-tree";
-              "alt-${keymap.keys.killWindow}" = "close";
+              # Close the focused window; if it's the app's last window, quit the
+              # app too (avoids the lingering windowless process on macOS).
+              "alt-${keymap.keys.killWindow}" = "close --quit-if-last-window";
               "alt-${keymap.keys.cycleWindowInGroup}" = "focus dfs-next";
               "alt-${keymap.keys.floating}" = "layout floating tiling";
               "alt-slash" = "layout tiles horizontal vertical";
