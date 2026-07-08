@@ -89,6 +89,7 @@
         cmake
         rust-analyzer
         nodejs
+        go
         telegram-desktop
       ];
     };
