@@ -90,7 +90,6 @@
         rust-analyzer
         nodejs
         telegram-desktop
-        discord
       ];
     };
   };

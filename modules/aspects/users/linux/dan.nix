@@ -38,6 +38,10 @@ in {
       lib,
       ...
     }: {
+      # bitwarden-desktop pins EOL electron 39 (still the case on nixos-unstable as of 2026-07)
+      nixpkgs.config.permittedInsecurePackages = [
+        "electron-39.8.10"
+      ];
       programs = {
         nebius-cli.enable = true;
         waystt = {
@@ -68,6 +72,7 @@ in {
         fastfetch
         signal-desktop
         element-desktop
+        discord
         slack
         zoom-us
         karere
