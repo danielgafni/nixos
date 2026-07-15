@@ -35,6 +35,7 @@
     homeManager = {pkgs, ...}: {
       programs = {
         bun.enable = true;
+        devenv.enable = true;
         # _1password-shell-plugins = {
         #   enable = true;
         #   plugins = with pkgs; [gh awscli2 cachix];
@@ -75,7 +76,6 @@
         just
         sad
         expect
-        inputs.devenv.packages.${pkgs.stdenv.hostPlatform.system}.devenv
         vim
         obsidian
         pyright

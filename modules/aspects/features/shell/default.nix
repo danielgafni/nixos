@@ -126,7 +126,6 @@ in {
                 fpath+=~/.zfunc
                 bindkey "^[[1;5C" forward-word
                 bindkey "^[[1;5D" backward-word
-                eval "$(devenv hook zsh)"
               '')
               ''
                 # Google Cloud SDK
