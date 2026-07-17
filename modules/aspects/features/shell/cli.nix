@@ -4,7 +4,8 @@
   ...
 }: let
   mkStax = pkgs: let
-    crane = inputs.crane.mkLib pkgs;
+    rustBin = inputs.rust-overlay.lib.mkRustBin {} pkgs;
+    crane = (inputs.crane.mkLib pkgs).overrideToolchain rustBin.stable.latest.minimal;
     src = inputs.stax;
     commonArgs = {
       inherit src;
@@ -55,6 +56,7 @@ in {
             settings = {
               git_protocol = "ssh";
             };
+            extensions = [pkgs.gh-stack];
           };
           gh-dash = {
             enable = true;
