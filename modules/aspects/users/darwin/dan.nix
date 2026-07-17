@@ -20,6 +20,8 @@
       home.sessionVariables = {
         NH_FLAKE = "/Users/dan/nixos";
       };
+      xdg.configFile."herdr/config.toml".source = ./herdr.toml;
+      xdg.configFile."herdr/plugins/config/persiyanov.reviewr/config.toml".source = ./herdr-reviewr.toml;
       programs = {
         zsh.initContent = lib.mkOrder 1500 ''
           op account list &>/dev/null 2>&1 || eval "$(op signin)"
