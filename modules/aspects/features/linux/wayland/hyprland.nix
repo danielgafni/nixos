@@ -48,6 +48,9 @@
         enable = true;
         package = null;
         portalPackage = null;
+        # settings below are written in hyprlang; pin the config type so the
+        # new "lua" default doesn't reinterpret them.
+        configType = "hyprlang";
 
         plugins = [
           # inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo

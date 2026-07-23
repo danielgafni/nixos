@@ -13,6 +13,7 @@
         };
         catppuccin = {
           enable = true;
+          autoEnable = true;
           flavor = catppuccinFlavor;
         };
         xdg.enable = true;

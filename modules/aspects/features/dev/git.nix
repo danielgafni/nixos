@@ -19,13 +19,15 @@
         git = {
           enable = true;
           lfs.enable = true;
-          userName = ud.git.user.name or "danielgafni";
-          userEmail = ud.git.user.email or "danielgafni16@gmail.com";
           signing = {
             key = ud.git.signingkey or null;
             signByDefault = ud ? git.signingkey;
           };
-          extraConfig = {
+          settings = {
+            user = {
+              name = ud.git.user.name or "danielgafni";
+              email = ud.git.user.email or "danielgafni16@gmail.com";
+            };
             push.autoSetupRemote = true;
             push.default = "current";
             fetch.prune = true;
