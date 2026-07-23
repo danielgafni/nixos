@@ -63,6 +63,10 @@
         nixos = {
           system.stateVersion = lib.mkDefault "23.11";
           nixpkgs.config.allowUnfree = true;
+          # NixOS theming is handled by stylix; keep catppuccin's port
+          # auto-enrollment off and set it explicitly to silence the
+          # upcoming-default warning.
+          catppuccin.autoEnable = false;
           # External NixOS modules
           imports = [
             inputs.catppuccin.nixosModules.catppuccin

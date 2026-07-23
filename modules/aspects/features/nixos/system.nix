@@ -163,7 +163,7 @@
           enable = true;
           settings = {
             default_session.command = ''
-              ${pkgs.greetd.tuigreet}/bin/tuigreet \
+              ${pkgs.tuigreet}/bin/tuigreet \
                 --time \
                 --asterisks \
                 --user-menu \
@@ -174,7 +174,7 @@
         printing.enable = true;
         avahi = {
           enable = true;
-          nssmdns = true;
+          nssmdns4 = true;
           openFirewall = true;
         };
         pipewire = {
