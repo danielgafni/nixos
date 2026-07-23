@@ -36,6 +36,7 @@
       programs = {
         bun.enable = true;
         devenv.enable = true;
+        aviator-cli.enable = true;
         # _1password-shell-plugins = {
         #   enable = true;
         #   plugins = with pkgs; [gh awscli2 cachix];
@@ -82,6 +83,7 @@
         ruff
         uv
         graphite-cli
+        gh-stack
         cargo
         rustc
         yarn

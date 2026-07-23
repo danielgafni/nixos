@@ -35,6 +35,7 @@
             # inputs._1password-shell-plugins.hmModules.default
             inputs.vicinae.homeManagerModules.default
             # Custom HM program modules
+            ./_packages/aviator-cli.nix
             ./_packages/nebius-cli.nix
             ./_packages/stax.nix
             ./_packages/waystt.nix
