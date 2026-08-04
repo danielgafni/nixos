@@ -97,6 +97,9 @@
     devenv.url = "github:cachix/devenv";
 
     nixpkgs-zed.url = "github:NixOS/nixpkgs/3d8f0f3f72a6cd4d93d0ad13203f2ea1cb7e1456";
+
+    # pinned nixpkgs for devenv 2.2.1 (newer than the main nixpkgs pin)
+    nixpkgs-devenv.url = "github:NixOS/nixpkgs/fe6deff5fad4a42d0e08d2bab3f2d6c7c88f3fe5";
   };
 
   outputs = inputs:

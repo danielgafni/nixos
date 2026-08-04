@@ -16,6 +16,8 @@
       den.aspects.zed
       den.aspects.helix
       den.aspects.cursor
+      den.aspects.claude-code
+      den.aspects.codex
       # Dev tools
       den.aspects.krewfile
       den.aspects.content
@@ -32,10 +34,17 @@
         "input"
       ];
     };
-    homeManager = {pkgs, ...}: {
+    homeManager = {pkgs, ...}: let
+      pkgs-devenv = import inputs.nixpkgs-devenv {
+        inherit (pkgs.stdenv.hostPlatform) system;
+      };
+    in {
       programs = {
         bun.enable = true;
-        devenv.enable = true;
+        devenv = {
+          enable = true;
+          package = pkgs-devenv.devenv;
+        };
         aviator-cli.enable = true;
         # _1password-shell-plugins = {
         #   enable = true;
