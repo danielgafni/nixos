@@ -1554,11 +1554,11 @@
     "stax": {
       "flake": false,
       "locked": {
-        "lastModified": 1784150776,
-        "narHash": "sha256-QbHsJfN5zZJDQNIIbnWH8572zodAP0RDXH3Z8y2+PfM=",
+        "lastModified": 1785803912,
+        "narHash": "sha256-YYSCDyJ2/mgPkocLwa+jdwM1welWRKCqEDaWbWLOWwA=",
         "owner": "cesarferreira",
         "repo": "stax",
-        "rev": "8b5028018caeee3c1f92dc4d0c988b4d97ae8659",
+        "rev": "2f1173a2ba2fbf171129fd8f752f8e8f0ee5e14e",
         "type": "github"
       },
       "original": {
