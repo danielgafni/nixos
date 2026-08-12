@@ -16,9 +16,12 @@
       pkgs,
       ...
     }: {
-      home.packages = [pkgs.iina];
-      home.sessionVariables = {
-        NH_FLAKE = "/Users/dan/nixos";
+      home = {
+        packages = [pkgs.iina];
+        sessionPath = ["/Users/dan/.nebius/bin"];
+        sessionVariables = {
+          NH_FLAKE = "/Users/dan/nixos";
+        };
       };
       xdg.configFile."herdr/config.toml".source = ./herdr.toml;
       xdg.configFile."herdr/plugins/config/persiyanov.reviewr/config.toml".source = ./herdr-reviewr.toml;
