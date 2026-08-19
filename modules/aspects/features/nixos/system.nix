@@ -37,6 +37,9 @@
           ];
           experimental-features = ["nix-command" "flakes"];
           auto-optimise-store = true;
+          # Abort stalled/half-open substituter fetches instead of hanging forever
+          connect-timeout = 5;
+          stalled-download-timeout = 30;
         };
       };
 
