@@ -22,6 +22,9 @@
       nix.settings = {
         experimental-features = ["nix-command" "flakes"];
         trusted-users = ["root" "dan" "@admin"];
+        # Abort stalled/half-open substituter fetches instead of hanging forever
+        connect-timeout = 5;
+        stalled-download-timeout = 30;
         substituters = [
           "https://devenv.cachix.org"
           "https://zed.cachix.org"
