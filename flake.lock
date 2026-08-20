@@ -1269,11 +1269,11 @@
     "stax": {
       "flake": false,
       "locked": {
-        "lastModified": 1785803912,
-        "narHash": "sha256-YYSCDyJ2/mgPkocLwa+jdwM1welWRKCqEDaWbWLOWwA=",
+        "lastModified": 1787183241,
+        "narHash": "sha256-v0J1HNxGYE3NFCml89Nm+ewPsl5tSAuh9uL4n2uppQs=",
         "owner": "cesarferreira",
         "repo": "stax",
-        "rev": "2f1173a2ba2fbf171129fd8f752f8e8f0ee5e14e",
+        "rev": "6f17f1fce1c70ae4b4dcbdedb0415d6f46778d6a",
         "type": "github"
       },
       "original": {
