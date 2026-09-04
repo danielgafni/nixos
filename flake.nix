@@ -69,7 +69,7 @@
     rip.url = "github:cesarferreira/rip";
 
     # pinned nixpkgs for stable 1password-cli (2.33.1)
-    nixpkgs-1password.url = "github:NixOS/nixpkgs/832efc09b4caf6b4569fbf9dc01bec3082a00611";
+    nixpkgs-1password.url = "github:NixOS/nixpkgs/6e2d3fe12f15d592ebd45e721f65831232838b2e";
 
     # 1Password shell plugins
     _1password-shell-plugins.url = "github:1Password/shell-plugins";
