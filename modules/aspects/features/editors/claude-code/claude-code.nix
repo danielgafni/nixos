@@ -19,8 +19,8 @@
         kubernetes = ["npx" "-y" "mcp-server-kubernetes"];
       };
       registerMcp = name: argv: ''
-        run mcp remove -s user ${name}
-        run mcp add -s user ${name} -- ${lib.escapeShellArgs argv}
+        run --silence "${claudeBin}" mcp remove -s user ${name} || true
+        run --silence "${claudeBin}" mcp add -s user ${name} -- ${lib.escapeShellArgs argv} || true
       '';
     in {
       programs.claude-code = {
@@ -65,7 +65,6 @@
       # Register global MCP servers idempotently on every home activation.
       home.activation.claudeMcpServers = lib.hm.dag.entryAfter ["writeBoundary"] ''
         if [ -x "${claudeBin}" ]; then
-          run() { "${claudeBin}" "$@" >/dev/null 2>&1 || true; }
           ${lib.concatStrings (lib.mapAttrsToList registerMcp mcpServers)}
         fi
       '';
