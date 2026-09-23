@@ -103,7 +103,7 @@
 
     nixpkgs-zed.url = "github:NixOS/nixpkgs/3d8f0f3f72a6cd4d93d0ad13203f2ea1cb7e1456";
 
-    nixpkgs-devenv.url = "github:NixOS/nixpkgs/2cf660d998c4494fea0eec36d50013892fe8f281";
+    nixpkgs-devenv.url = "github:NixOS/nixpkgs";
   };
 
   outputs = inputs:
