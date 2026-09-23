@@ -84,7 +84,9 @@
     };
 
     # Den framework (Dendritic pattern)
-    den.url = "github:vic/den";
+    # pinned: den 4d69112 (2026-09) has a breaking aspect-resolver change that
+    # rejects parametric user aspects (e.g. "dan-darwin"); unpin after migrating.
+    den.url = "github:vic/den/2e3919636fd8baf2b544f25b25f46923127c515e";
 
     # Dendritic infrastructure
     flake-parts = {
