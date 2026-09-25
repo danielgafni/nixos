@@ -48,7 +48,7 @@
         ...
       }: {
         services.gpg-agent = {
-          pinentry.package = lib.mkForce pkgs.pinentry-gtk2;
+          pinentry.package = lib.mkForce pkgs.pinentry-qt;
         };
       };
     };
