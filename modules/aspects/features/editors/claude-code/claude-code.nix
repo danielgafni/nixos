@@ -40,9 +40,14 @@
           enabledPlugins = {
             "pyright-lsp@claude-plugins-official" = true;
             "codex@openai-codex" = true;
+            "avoid-ai-writing@conorbronsdon-skills" = true;
           };
 
           extraKnownMarketplaces = {
+            conorbronsdon-skills.source = {
+              source = "github";
+              repo = "conorbronsdon/avoid-ai-writing";
+            };
             pulumi-agent-skills.source = {
               source = "github";
               repo = "pulumi/agent-skills";
