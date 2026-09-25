@@ -5,7 +5,7 @@
 }: {
   den.aspects.vicinae = {
     homeManager = {pkgs, ...}: let
-      inherit (inputs.vicinae.packages.${pkgs.stdenv.hostPlatform.system}) mkRayCastExtension;
+      inherit (inputs.vicinae.lib.${pkgs.stdenv.hostPlatform.system}) mkRayCastExtension;
       extensionRev = "e7bfcf07b410e7dde824b6b80c673f336c882567";
       rayCastExtensions = [
         {
