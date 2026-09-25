@@ -44,6 +44,9 @@
 
     vicinae.url = "github:vicinaehq/vicinae";
 
+    # archived upstream and dropped from nixpkgs; keeps its own locked nixpkgs
+    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+
     krewfile = {
       url = "github:brumhard/krewfile";
       inputs.nixpkgs.follows = "nixpkgs";

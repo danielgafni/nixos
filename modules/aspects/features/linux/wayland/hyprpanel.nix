@@ -1,4 +1,8 @@
-{den, ...}: {
+{
+  den,
+  inputs,
+  ...
+}: {
   den.aspects.hyprpanel = {
     homeManager = {
       config,
@@ -11,6 +15,7 @@
     in {
       programs.hyprpanel = {
         enable = true;
+        package = inputs.hyprpanel.packages.${pkgs.stdenv.hostPlatform.system}.default;
         # systemd.enable defaults to true — starts hyprpanel via graphical-session.target
         settings = {
           bar = {
