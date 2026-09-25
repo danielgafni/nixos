@@ -12,6 +12,13 @@ inputs:
 runs:
   using: "composite"
   steps:
+    # Ubuntu 24.04 blocks unprivileged user namespaces via AppArmor, which
+    # breaks builds that run bwrap (buildFHSEnv, e.g. graphite-cli completions)
+    - name: Allow unprivileged user namespaces
+      if: inputs.platform == 'linux'
+      shell: bash
+      run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+
     - name: Install Nix
       uses: DeterminateSystems/nix-installer-action@main
       with:

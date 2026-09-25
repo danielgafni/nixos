@@ -90,7 +90,7 @@ in {
     };
     cli-linux = {
       homeManager = {pkgs, ...}: {
-        programs.rbw.settings.pinentry = pkgs.pinentry-gtk2;
+        programs.rbw.settings.pinentry = pkgs.pinentry-qt;
       };
     };
   };

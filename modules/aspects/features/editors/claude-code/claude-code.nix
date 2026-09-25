@@ -32,7 +32,7 @@
 
         # ~/.claude/settings.json (declarative — runtime toggles won't persist)
         settings = {
-          model = "claude-opus-4-8[1m]";
+          model = "claude-opus-5-5[1m]";
           effortLevel = "high";
           tui = "fullscreen";
           skipDangerousModePermissionPrompt = true;
@@ -40,9 +40,14 @@
           enabledPlugins = {
             "pyright-lsp@claude-plugins-official" = true;
             "codex@openai-codex" = true;
+            "avoid-ai-writing@conorbronsdon-skills" = true;
           };
 
           extraKnownMarketplaces = {
+            conorbronsdon-skills.source = {
+              source = "github";
+              repo = "conorbronsdon/avoid-ai-writing";
+            };
             pulumi-agent-skills.source = {
               source = "github";
               repo = "pulumi/agent-skills";
