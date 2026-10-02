@@ -72,7 +72,7 @@
     rip.url = "github:cesarferreira/rip";
 
     # pinned nixpkgs for stable 1password-cli (2.33.1)
-    nixpkgs-1password.url = "github:NixOS/nixpkgs/832efc09b4caf6b4569fbf9dc01bec3082a00611";
+    nixpkgs-1password.url = "github:NixOS/nixpkgs/b9210733e3e46fceaddc624cc2e3be94e94dd7cb";
 
     # 1Password shell plugins
     _1password-shell-plugins.url = "github:1Password/shell-plugins";
@@ -89,7 +89,7 @@
     # Den framework (Dendritic pattern)
     # pinned: den 4d69112 (2026-09) has a breaking aspect-resolver change that
     # rejects parametric user aspects (e.g. "dan-darwin"); unpin after migrating.
-    den.url = "github:vic/den/2e3919636fd8baf2b544f25b25f46923127c515e";
+    den.url = "github:vic/den/7594405b45e0ce2d5a418fe104a26e17f6b1dd8f";
 
     # Dendritic infrastructure
     flake-parts = {
