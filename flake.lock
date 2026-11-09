@@ -186,11 +186,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1787751959,
-        "narHash": "sha256-IY0FDSvjme7YH/UwQJNasYLEd9Ryw25urF3ZxsH3WJM=",
+        "lastModified": 1793803239,
+        "narHash": "sha256-o8b7qFUJ2fVXkw5s9lTiQ6lcyVcZ0t7/j8/pocHorCk=",
         "owner": "dagger",
         "repo": "nix",
-        "rev": "4a39fb35b724a8f85c254fa1513fa0ffc17162e7",
+        "rev": "ea8811f9eabb74d53db85c9eb18a36e56d71f836",
         "type": "github"
       },
       "original": {

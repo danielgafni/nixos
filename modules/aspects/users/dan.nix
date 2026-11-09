@@ -68,6 +68,7 @@
         kind
         devspace
         docker
+        inputs.dagger.packages.${pkgs.stdenv.hostPlatform.system}.dagger
         graphviz
         ripgrep
         fd

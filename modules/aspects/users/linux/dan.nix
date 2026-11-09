@@ -55,7 +55,6 @@ in {
       };
       home.packages = with pkgs; [
         yubioath-flutter
-        inputs.dagger.packages.${pkgs.stdenv.hostPlatform.system}.dagger
         inputs.rip.packages.${pkgs.stdenv.hostPlatform.system}.default
         libnotify
         hyprpicker
