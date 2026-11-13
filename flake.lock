@@ -1328,11 +1328,11 @@
     "stax": {
       "flake": false,
       "locked": {
-        "lastModified": 1789976368,
-        "narHash": "sha256-jhhaVIO/OhSeDWbLt+/XC+ZeJlzaF80BAnB8WYi9RhU=",
+        "lastModified": 1794492707,
+        "narHash": "sha256-3v0A1dSE5rPl4raTn065VwGTsG8P9zdBHuGvEPQ0n4k=",
         "owner": "cesarferreira",
         "repo": "stax",
-        "rev": "f4fbb3e9de5d2eadb9c7f7f729c8f01691756ce8",
+        "rev": "7f70d4e829a134617871faff5f3f2e63686353c5",
         "type": "github"
       },
       "original": {
