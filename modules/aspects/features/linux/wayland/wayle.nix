@@ -94,7 +94,7 @@
         hyprsunset
         btop
         matugen
-        swww
+        awww
         grimblast
       ];
     };

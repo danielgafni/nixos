@@ -55,7 +55,8 @@ in {
       };
       home.packages = with pkgs; [
         yubioath-flutter
-        inputs.rip.packages.${pkgs.stdenv.hostPlatform.system}.default
+        # upstream flake uses deprecated stdenv.isDarwin in buildInputs
+        (inputs.rip.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs {buildInputs = [];})
         libnotify
         hyprpicker
         grim

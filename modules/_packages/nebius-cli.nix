@@ -18,11 +18,11 @@ with lib; let
       version = "0.12.73"; # to get the latest version: curl https://storage.eu-north1.nebius.cloud/cli/release/stable
       hash = "sha256-DvGiAMxUPNZj7AF3s1FDEpA1jCMlrKezBNitJ6zhUEI=";
       os =
-        if stdenv.isDarwin
+        if stdenv.hostPlatform.isDarwin
         then "darwin"
         else "linux";
       arch =
-        if stdenv.isAarch64
+        if stdenv.hostPlatform.isAarch64
         then "arm64"
         else "x86_64";
       pname = "nebius-cli";
