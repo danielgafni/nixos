@@ -163,13 +163,16 @@
         greetd = {
           enable = true;
           settings = {
-            default_session.command = ''
-              ${pkgs.tuigreet}/bin/tuigreet \
-                --time \
-                --asterisks \
-                --user-menu \
-                --cmd start-hyprland
-            '';
+            # Must stay a single-line string: greetd's config parser is a
+            # hand-rolled INI-style one, not real TOML, so it chokes on the
+            # ''' multi-line literals that pkgs.formats.toml now emits.
+            default_session.command = lib.concatStringsSep " " [
+              "${pkgs.tuigreet}/bin/tuigreet"
+              "--time"
+              "--asterisks"
+              "--user-menu"
+              "--cmd start-hyprland"
+            ];
           };
         };
         printing.enable = true;

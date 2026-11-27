@@ -130,7 +130,19 @@
         hyprlock.monitor = "HDMI-A-2";
         ui.scale = 1.5;
         scaled = x: (builtins.ceil (x * ui.scale));
-        wayland.hyprland.monitor = [",preferred,auto,${toString ui.scale}" "Unknown-1,disable"];
+        # Shape matches Hyprland 0.57's Lua hl.monitor({...}) table.
+        wayland.hyprland.monitor = [
+          {
+            output = "";
+            mode = "preferred";
+            position = "auto";
+            inherit (ui) scale;
+          }
+          {
+            output = "Unknown-1";
+            disabled = true;
+          }
+        ];
         wayland.hypridle.listener = [
           {
             timeout = darkAfterSeconds;
@@ -148,9 +160,11 @@
           text.size = 12;
         };
         cursor.size = 32;
-        hyprpanel.modules = {
-          config.cpuTemperature.sensorPath = "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp1_input";
-          right = ["clock" "volume" "ram" "cpu" "storage" "cputemp" "systray" "hypridle" "notifications" "kbinput" "power"];
+        wayle.modules = {
+          # k10temp on this box; `temp-sensor` takes a sensors(1) label, not a
+          # sysfs path. cputemp is folded into the cpu module's format.
+          cpu.tempSensor = "Tctl";
+          right = ["clock" "volume" "ram" "cpu" "storage" "systray" "idle-inhibit" "notifications" "keyboard-input" "power"];
         };
       };
 
@@ -161,7 +175,14 @@
         hyprlock.monitor = "eDP-1";
         ui.scale = 1.6;
         scaled = x: (builtins.ceil (x * ui.scale));
-        wayland.hyprland.monitor = [",preferred,auto,${toString ui.scale}"];
+        wayland.hyprland.monitor = [
+          {
+            output = "";
+            mode = "preferred";
+            position = "auto";
+            inherit (ui) scale;
+          }
+        ];
         wayland.hyprlock.auth = ["pam:enabled" "fingerprint:enabled"];
         wayland.hypridle.listener = [
           {
@@ -185,12 +206,11 @@
           text.size = 12;
         };
         cursor.size = 12;
-        hyprpanel = {
-          settings = {};
-          modules = {
-            config.cpuTemperature.sensorPath = "/sys/devices/platform/coretemp.0/hwmon/hwmon5/temp1_input";
-            right = ["clock" "volume" "network" "bluetooth" "cputemp" "systray" "hypridle" "notifications" "battery" "kbinput" "power"];
-          };
+        wayle.modules = {
+          # coretemp on this box. Unverified from DanPC — if the label differs,
+          # `sensors` lists it, or set "auto".
+          cpu.tempSensor = "Package id 0";
+          right = ["clock" "volume" "network" "bluetooth" "cpu" "systray" "idle-inhibit" "notifications" "battery" "keyboard-input" "power"];
         };
       };
 

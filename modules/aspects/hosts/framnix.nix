@@ -65,7 +65,7 @@
       };
 
       services = {
-        # battery module in hyprpanel
+        # battery module in wayle
         gvfs.enable = true;
         power-profiles-daemon.enable = true;
         upower.enable = true;

@@ -11,7 +11,7 @@
     den.aspects.desktop-linux
     den.aspects.services-linux
     den.aspects.hyprland
-    den.aspects.hyprpanel
+    den.aspects.wayle
     den.aspects.hyprlock
     den.aspects.hypridle
     den.aspects.satty
