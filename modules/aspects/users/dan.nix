@@ -52,6 +52,11 @@
         # };
       };
 
+      xdg.configFile = {
+        "herdr/config.toml".source = ./dan/herdr.toml;
+        "herdr/plugins/config/persiyanov.reviewr/config.toml".source = ./dan/herdr-reviewr.toml;
+      };
+
       home.packages = with pkgs; [
         yubikey-manager
         kubectl

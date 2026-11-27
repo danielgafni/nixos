@@ -24,8 +24,6 @@
         };
       };
       xdg.configFile = {
-        "herdr/config.toml".source = ./herdr.toml;
-        "herdr/plugins/config/persiyanov.reviewr/config.toml".source = ./herdr-reviewr.toml;
         "herdr-app/themes/catppuccin-mocha.json".source = ./herdr-app-catppuccin-mocha.json;
       };
       programs = {
