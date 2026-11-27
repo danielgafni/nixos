@@ -21,7 +21,7 @@ _: {
             TITLE="$TITLE $ws"
           fi
         done
-        echo "$TITLE | font='JetBrainsMono Nerd Font' size=13"
+        echo "$TITLE | font='Maple Mono NF' size=13"
         echo "---"
         for ws in $ALL; do
           if [ "$ws" = "$FOCUSED" ]; then
