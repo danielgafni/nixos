@@ -21,7 +21,7 @@
       ];
     in {
       # Theme handled by catppuccin.vicinae.enable (globally enabled)
-      services.vicinae = {
+      programs.vicinae = {
         enable = true;
         systemd.enable = true;
         extensions = builtins.map mkRayCastExtension rayCastExtensions;

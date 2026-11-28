@@ -29,8 +29,8 @@
 
       settings = {
         general = {
-          font-sans = "Recursive Sans Casual Static Italic";
-          font-mono = "JetBrains Mono";
+          font-sans = "Recursive Sans Casual Static";
+          font-mono = "Maple Mono NF";
         };
 
         bar = {
@@ -94,7 +94,7 @@
         hyprsunset
         btop
         matugen
-        swww
+        awww
         grimblast
       ];
     };

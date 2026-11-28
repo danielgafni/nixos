@@ -1,7 +1,10 @@
 {den, ...}: {
   den.aspects.fonts = {
     homeManager = {pkgs, ...}: {
-      fonts.fontconfig.enable = true;
+      fonts.fontconfig = {
+        enable = true;
+        defaultFonts.monospace = ["Maple Mono NF"];
+      };
       xdg.configFile."fontconfig/fonts.conf".text = ''
         <?xml version='1.0'?>
         <!DOCTYPE fontconfig SYSTEM 'urn:fontconfig:fonts.dtd'>

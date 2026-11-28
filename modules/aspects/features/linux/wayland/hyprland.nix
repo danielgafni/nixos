@@ -362,7 +362,7 @@
           hl.bind("${mod} + ${keymap.keys.lock}", hl.dsp.exec_cmd("grim -o ${hd.hyprlock.monitor or "eDP-1"} /tmp/screenshot.png && (pidof hyprlock || hyprlock)"))
 
           -- hyprland management
-          hl.bind("${mod} + R", hl.dsp.reload_config())
+          hl.bind("${mod} + R", hl.dsp.exec_cmd("hyprctl reload"))
 
           -- move and resize windows with the mouse cursor
           hl.bind("${mod} + mouse:272", hl.dsp.window.drag(), {mouse = true})
