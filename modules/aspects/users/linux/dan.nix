@@ -56,6 +56,8 @@ in {
       home.packages = with pkgs; [
         yubioath-flutter
         herdr
+        herdr-desktop
+        pi-coding-agent
         # upstream flake uses deprecated stdenv.isDarwin in buildInputs
         (inputs.rip.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs {buildInputs = [];})
         libnotify

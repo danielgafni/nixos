@@ -55,6 +55,7 @@
       xdg.configFile = {
         "herdr/config.toml".source = ./dan/herdr.toml;
         "herdr/plugins/config/persiyanov.reviewr/config.toml".source = ./dan/herdr-reviewr.toml;
+        "herdr-app/themes/catppuccin-mocha.json".source = ./dan/herdr-app-catppuccin-mocha.json;
       };
 
       home.packages = with pkgs; [

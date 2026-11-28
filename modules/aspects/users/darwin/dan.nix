@@ -23,9 +23,6 @@
           NH_FLAKE = "/Users/dan/nixos";
         };
       };
-      xdg.configFile = {
-        "herdr-app/themes/catppuccin-mocha.json".source = ./herdr-app-catppuccin-mocha.json;
-      };
       programs = {
         zsh.initContent = lib.mkOrder 1500 ''
           op account list &>/dev/null 2>&1 || eval "$(op signin)"
